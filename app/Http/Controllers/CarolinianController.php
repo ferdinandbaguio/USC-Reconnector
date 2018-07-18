@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Carolinian;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\CarolinianRequest;
 class CarolinianController extends Controller
 {
     /**

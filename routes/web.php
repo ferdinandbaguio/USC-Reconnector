@@ -17,3 +17,14 @@ Route::get('/', function () {
 
 
 Route::resource('carolinians','CarolinianController');
+
+Route::resources([
+    'carolinians' => 'CarolinianController',
+    'companies' => 'CompanyController',
+    'courses' => 'CourseController',
+    'departments' => 'DepartmentController',
+    'industries' => 'IndustryController',
+    'jobs' => 'JobController',
+    'schools' => 'SchoolController'
+
+]);
