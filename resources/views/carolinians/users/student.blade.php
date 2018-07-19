@@ -3,9 +3,9 @@
 
 <!-- /header -->
 @section('header')
-   
+    <h1 class="h2">Client</h1>
+    <a class="btn btn-success btn-sm" href="{{ route('alumni.create') }}"><i class="fas fa-plus"></i> New Client</a>
 @endsection
-
 
 
 <!-- /content -->
@@ -15,6 +15,7 @@
                 <div class="ibox">
                     <div class="ibox-head">
                         <div class="ibox-title">Data Table</div>
+                        <a class="btn btn-success btn-sm" href="{{ route('alumni.create') }}"><i class="fa fa-plus"></i> New Student</a>
                     </div>
                     <div class="ibox-body">
                         <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
@@ -331,6 +332,6 @@
                         </table>
                     </div>
                 </div>
-
+</div>
 @endsection
 
