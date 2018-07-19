@@ -3,7 +3,7 @@
             <div id="sidebar-collapse">
                 <div class="admin-block d-flex">
                     <div>
-                        <img src="dist/assets/img/admin-avatar.png" width="45px" />
+                        <img src="{{asset('dist/assets/img/admin-avatar.png')}}" width="45px" />
                     </div>
                     <div class="admin-info">
                         <div class="font-strong">Ferdinand Bryle Baguio</div><small>Administrator</small></div>
@@ -20,12 +20,56 @@
                             <span class="nav-label">Carolinian</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="colors.html">Colors</a>
+                                <a href="{{url('carolinians/users/admin')}}">Admin</a>
                             </li>
                             <li>
-                                <a href="typography.html">Typography</a>
+                                <a href="{{url('carolinians/users/alumni')}}">Alumni</a>
+                            </li>
+                            <li>
+                                <a href="{{url('carolinians/users/teacher')}}">Teacher</a>
+                            </li>
+                            <li>
+                                <a href="{{url('carolinians/users/student')}}">Student</a>
                             </li>
                            
+                        </ul>
+                    </li>
+
+                    
+                    <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-sitemap"></i>
+                            <span class="nav-label">Schools</span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="javascript:;">
+                                    <span class="nav-label">School of Arts & Sciences</span><i class="fa fa-angle-left arrow"></i></a>
+                                <ul class="nav-3-level collapse">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="nav-label">Department</span><i class="fa fa-angle-left arrow"></i></a>
+                                        <ul class="nav-3-level collapse">
+                                             <li>
+                                                <a href="javascript:;">
+                                                     <span class="nav-label">Department of Science</span><i class="fa fa-angle-left arrow"></i></a>
+                                                <ul class="nav-3-level collapse">
+                                                    <li>
+                                                        <a href="javascript:;">
+                                                             <span class="nav-label">Courses</span><i class="fa fa-angle-left arrow"></i></a>
+                                                        <ul class="nav-3-level collapse">
+                                                            <li><a href="javascript:;">
+                                                     <span class="nav-label">ICT</span></a></li>
+                                                            <li><a href="javascript:;">
+                                                     <span class="nav-label">IT</span></a></li>
+                                                            <li><a href="javascript:;">
+                                                     <span class="nav-label">Comp Science</span></a></li>
+                                                        </ul>
+                                                    </li> 
+                                                </ul>
+                                             </li>   
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 
@@ -34,11 +78,9 @@
                             <span class="nav-label">Tracking</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="form_basic.html">Basic Forms</a>
+                                <a href="form_basic.html">Alumni</a>
                             </li>
-                            <li>
-                                <a href="form_advanced.html">Advanced Plugins</a>
-                            </li>
+                       
                         </ul>
                     </li>
 
@@ -109,27 +151,7 @@
                             <li>
                                 <a href="invoice.html">Invoice</a>
                             </li>
-                            <li>
-                                <a href="profile.html">Profile</a>
-                            </li>
-                            <li>
-                                <a href="login.html">Login</a>
-                            </li>
-                            <li>
-                                <a href="register.html">Register</a>
-                            </li>
-                            <li>
-                                <a href="lockscreen.html">Lockscreen</a>
-                            </li>
-                            <li>
-                                <a href="forgot_password.html">Forgot password</a>
-                            </li>
-                            <li>
-                                <a href="error_404.html">404 error</a>
-                            </li>
-                            <li>
-                                <a href="error_500.html">500 error</a>
-                            </li>
+                     
                         </ul>
                     </li>
                     <li>
@@ -146,9 +168,7 @@
                                     <li>
                                         <a href="javascript:;">Level 3</a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:;">Level 3</a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
                         </ul>

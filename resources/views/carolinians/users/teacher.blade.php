@@ -11,7 +11,7 @@
 <!-- /content -->
 @section('content')
     
-
+<h1>TEACHER INDEX</h1>
 
 @endsection
 

@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::resource('carolinians','CarolinianController');
 
 Route::resources([
     'carolinians' => 'CarolinianController',
@@ -25,6 +24,14 @@ Route::resources([
     'departments' => 'DepartmentController',
     'industries' => 'IndustryController',
     'jobs' => 'JobController',
-    'schools' => 'SchoolController'
+    'schools' => 'SchoolController',
+    'carolinians/users/admin' => 'AdminController',
+    'carolinians/users/alumni' => 'AlumniController',
+    'carolinians/users/student' => 'StudentController',
+    'carolinians/users/teacher' => 'TeacherController'
 
 ]);
+
+
+
+

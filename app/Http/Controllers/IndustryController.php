@@ -24,7 +24,7 @@ class IndustryController extends Controller
      */
     public function create()
     {
-        //
+        return view('industries.create');
     }
 
     /**

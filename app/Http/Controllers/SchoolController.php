@@ -24,7 +24,7 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        //
+        return view('schools.create');
     }
 
     /**
