@@ -47,7 +47,7 @@
                                     <li>
                                         <a href="javascript:;">
                                             <span class="nav-label">Department</span><i class="fa fa-angle-left arrow"></i></a>
-                                        <ul class="nav-3-level collapse">
+                                        <ul class="nav-2-level collapse">
                                              <li>
                                                 <a href="javascript:;">
                                                      <span class="nav-label">Department of Science</span><i class="fa fa-angle-left arrow"></i></a>
@@ -55,7 +55,7 @@
                                                     <li>
                                                         <a href="javascript:;">
                                                              <span class="nav-label">Courses</span><i class="fa fa-angle-left arrow"></i></a>
-                                                        <ul class="nav-3-level collapse">
+                                                        <ul class="nav-2-level collapse">
                                                             <li><a href="javascript:;">
                                                      <span class="nav-label">ICT</span></a></li>
                                                             <li><a href="javascript:;">
