@@ -16,7 +16,7 @@
                 <div class="ibox">
                     <div class="ibox-head">
                         <div class="ibox-title">Data Table</div>
-                        <a class="btn btn-success btn-sm" href="{{ route('alumni.create') }}"><i class="fa fa-plus"></i> New Alumni</a>
+                        <a class="btn btn-success btn-sm" href="{{url('carolinians/create?position=Alumni')}}"><i class="fa fa-plus"></i> New Alumni</a>
                     </div>
                     <div class="ibox-body">
                         <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">

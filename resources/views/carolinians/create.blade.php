@@ -52,7 +52,7 @@
                                                 <input type="radio" name="test">
                                                 <span class="input-span"></span>Female</label>
                                     </div>
-
+                                    @if(request()->position != 'admin')
                                     <div class="form-group">
                                         <select class="form-control">
                                             <option value="1">Position</option>
@@ -62,6 +62,7 @@
                                         </select>
                                     </div>
 
+
                                     <div class="form-group">
                                         <select class="form-control">
                                             <option value="1">Employment Status</option>
@@ -69,6 +70,7 @@
                                             <option value="3">Unemployeed</option>
                                         </select>
                                     </div>
+                                     @endif
 
                                     <div class="form-group">
                                         <div class="input-group">
@@ -103,6 +105,7 @@
 
                                     <button class="btn btn-success" type="submit">Submit</button>
                                 </form>
+
                             </div>
                         </div>
                     </div>
