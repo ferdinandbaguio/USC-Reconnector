@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         foreach (range(1,10) as $index) {
 
             DB::table('schools')->insert([
-                'name' => $faker->name,
+                'name' => 'School of Arts and Sciences',
                 'description' => $faker->paragraph,
                 'created_at' => $faker->dateTime($max = 'now'),
                 'updated_at' => $faker->dateTime($max = 'now')
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         foreach (range(1,10) as $index) {
 
             DB::table('departments')->insert([
-                'name' => $faker->name,
+                'name' => 'Department of Computer Information and Sciences',
                 'description' => $faker->paragraph,
                 'school_id' => $faker->randomElement($schoolsIDs),
                 'created_at' => $faker->dateTime($max = 'now'),
@@ -45,14 +45,27 @@ class DatabaseSeeder extends Seeder
         }
 
         $departmentsIDs = DB::table('departments')->pluck('id');
-        foreach (range(1,10) as $index) {
+        foreach (range(1,1) as $index) {
 
             DB::table('courses')->insert([
-                'name' => $faker->name,
-                'description' => $faker->paragraph,
-                'department_id' => $faker->randomElement($departmentsIDs),
-                'created_at' => $faker->dateTime($max = 'now'),
-                'updated_at' => $faker->dateTime($max = 'now')
+                ['name' => 'Computer Science',
+                 'description' => $faker->paragraph,
+                 'department_id' => $faker->randomElement($departmentsIDs),
+                 'created_at' => $faker->dateTime($max = 'now'),
+                 'updated_at' => $faker->dateTime($max = 'now')
+                ],
+                ['name' => 'Information Technology',
+                 'description' => $faker->paragraph,
+                 'department_id' => $faker->randomElement($departmentsIDs),
+                 'created_at' => $faker->dateTime($max = 'now'),
+                 'updated_at' => $faker->dateTime($max = 'now')
+                ],
+                ['name' => 'Information Communication Technology',
+                 'description' => $faker->paragraph,
+                 'department_id' => $faker->randomElement($departmentsIDs),
+                 'created_at' => $faker->dateTime($max = 'now'),
+                 'updated_at' => $faker->dateTime($max = 'now')
+                ]
             ]);
         }
     }
