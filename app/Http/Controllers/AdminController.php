@@ -25,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('carolinians.user.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

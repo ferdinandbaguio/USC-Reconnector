@@ -22,25 +22,28 @@
                                 </div>
                             </div>
                             <div class="ibox-body">
-                                <form>
+                                {!! Form::open(['method'=>'post','route' => 'carolinians.store', 'files' => true]) !!}
+                                    {{ csrf_field() }}
+
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <input class="form-control" type="text" placeholder="Firstname">
+                                            {!! Form::text('firstname',null,['placeholder' => 'Firstname']) !!}
+                                            
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <input class="form-control" type="text" placeholder="Middlename">
+                                            {!! Form::text('middlename',null,['placeholder' => 'Middlename']) !!}
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <input class="form-control" type="text" placeholder="Lastname">
+                                            {!! Form::text('lastname',null,['placeholder' => 'Lastname']) !!}
                                         </div>
                                     </div>
 
@@ -104,8 +107,9 @@
                                     </div>
 
                                     <button class="btn btn-success" type="submit">Submit</button>
-                                </form>
-
+                                <!-- </form> -->
+                                {!! Form::close() !!}
+                               
                             </div>
                         </div>
                     </div>

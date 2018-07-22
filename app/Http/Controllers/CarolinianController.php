@@ -35,7 +35,17 @@ class CarolinianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         Carolinian::create([
+            'firstname' => 'test',
+            'middlename' => 'test',
+            'lastname' => 'test',
+            'password' => 'test',
+            'description' => 'test',
+            'strength' => 'test',
+            'weakness' => 'test',
+            'course_id' => '1'
+        ]);   
+         return view('carolinians.users.admin');
     }
 
     /**
