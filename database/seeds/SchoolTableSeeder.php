@@ -15,14 +15,17 @@ class SchoolTableSeeder extends Seeder
     public function run()
     {
 	  
-	    factory(App\School::class,10)
+	     factory(App\School::class,10)
 		    ->create()
 		    ->each(function($school) {
 			    $school->department()
-			           ->saveMany( factory(App\Department::class,2)->create());
-			         //   ->each(function($department){
-			         //     $department->course()->saveMany(factory(App\Course::class,2)->create());
+			           ->saveMany( factory(App\Department::class,2)
+			           ->create(['school_id' => $school->id]))
+			           ->each(function($department){
+			             $department->course()
+			             	->saveMany(factory(App\Course::class,2)
+			             	->create(['department_id' => $department->id]));
 			        	});
-			// });
+			});
     }
 }

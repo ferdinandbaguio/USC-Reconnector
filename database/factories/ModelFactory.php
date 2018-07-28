@@ -33,7 +33,7 @@ $factory->define(App\Department::class, function (Faker $faker) {
     return [
         'name'        => 'Department',
         'description' => $faker->paragraph,
-        'school_id'   => factory(App\School::class)->create()->id
+        // 'school_id'   => factory(App\School::class)->create()->id
 
     ];
 });
