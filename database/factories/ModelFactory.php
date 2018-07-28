@@ -21,3 +21,27 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\School::class, function (Faker $faker) {
+    return [
+        'name' => 'jonas',
+        'description' =>  $faker->paragraph
+    ];
+});
+
+$factory->define(App\Department::class, function (Faker $faker) {
+    return [
+        'name'        => $faker->name,
+        'description' => $faker->paragraph,
+        // 'school_id'   => factory(App\School::class)->create()->id
+    ];
+});
+
+$factory->define(App\Course::class, function (Faker $faker) {
+    return [
+        'name'        => $faker->name,
+        'description' => $faker->paragraph,
+        // 'department_id'   => factory(App\Department::class)->create()->id
+    ];
+});
+

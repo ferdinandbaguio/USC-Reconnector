@@ -55,7 +55,7 @@
                                                 <input type="radio" name="test">
                                                 <span class="input-span"></span>Female</label>
                                     </div>
-                                    @if(request()->position != 'admin')
+                                    @if(request()->position != 'Admin')
                                     <div class="form-group">
                                         <select class="form-control">
                                             <option value="1">Position</option>
