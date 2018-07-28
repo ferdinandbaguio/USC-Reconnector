@@ -24,14 +24,14 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 $factory->define(App\School::class, function (Faker $faker) {
     return [
-        'name' => 'jonas',
+        'name' => 'School',
         'description' =>  $faker->paragraph
     ];
 });
 
 $factory->define(App\Department::class, function (Faker $faker) {
     return [
-        'name'        => $faker->name,
+        'name'        => 'Department',
         'description' => $faker->paragraph,
         // 'school_id'   => factory(App\School::class)->create()->id
     ];
@@ -39,7 +39,7 @@ $factory->define(App\Department::class, function (Faker $faker) {
 
 $factory->define(App\Course::class, function (Faker $faker) {
     return [
-        'name'        => $faker->name,
+        'name'        =>' Course',
         'description' => $faker->paragraph,
         // 'department_id'   => factory(App\Department::class)->create()->id
     ];
