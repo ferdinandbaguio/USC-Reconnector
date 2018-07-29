@@ -14,8 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // $admin = Carolinian::where('type', '=' 'Admin')->get();
-        return view('carolinians.users.admin');
+        $carolinians = Carolinian::where('usertype' ,'=', 'Admin')->get();
+        return view('carolinians.users.admin',compact('carolinian','carolinians'));
     }
 
     /**

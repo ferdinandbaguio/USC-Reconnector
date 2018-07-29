@@ -18,10 +18,12 @@ class CreateCaroliniansTable extends Migration
             $table->string('firstname');
             $table->string('middlename');
             $table->string('lastname');
+            $table->string('idnumber');
             $table->string('password');
             $table->text('description');
             $table->string('strength');
             $table->string('weakness');
+            $table->enum('usertype', ['Student', 'Teacher', 'Alumni', 'Admin']);    
 
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');

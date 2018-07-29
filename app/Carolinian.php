@@ -10,10 +10,12 @@ class Carolinian extends Model
         'firstname',
         'middlename',
         'lastname',
+        'idnumber',
         'password',
         'description',
         'strength',
         'weakness',
+        'usertype',
         'course_id'
     ];
 }

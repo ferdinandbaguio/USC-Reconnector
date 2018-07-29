@@ -80,6 +80,7 @@ class IndustryController extends Controller
      */
     public function destroy(Industry $industry)
     {
-        //
+        $industry->delete();
+        return redirect()->back();
     }
 }

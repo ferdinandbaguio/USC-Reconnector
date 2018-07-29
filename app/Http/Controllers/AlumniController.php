@@ -14,8 +14,8 @@ class AlumniController extends Controller
      */
     public function index()
     {
-        // $admin = Carolinian::where('type', '=' 'Alumni')->get();
-        return view('carolinians.users.alumni');
+        $carolinians = Carolinian::where('usertype' ,'=', 'Alumni')->get();
+        return view('carolinians.users.alumni',compact('carolinian','carolinians'));
     }
 
     /**
@@ -81,6 +81,6 @@ class AlumniController extends Controller
      */
     public function destroy(Carolinian $carolinian)
     {
-        //
+        
     }
 }

@@ -46,3 +46,22 @@ $factory->define(App\Course::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Carolinian::class, function (Faker $faker) {
+    $course_id = App\Course::pluck('id');
+    $idnumber = '14'. $faker->unique()->numberBetween($min = 100000 , $max = 999999);
+    $arrayValues = ['Student', 'Teacher', 'Alumni', 'Admin'];
+    return [
+            'firstname'     => $faker->firstName,
+            'middlename'    => $faker->lastName,
+            'lastname'      => $faker->lastName,
+            'idnumber'      => $idnumber,
+            'password'      => $idnumber,
+            'description'   => $faker->paragraph,
+            'strength'      => 'Strength',
+            'weakness'      => 'Weakness',
+            'usertype'      => $faker->randomElement($arrayValues),
+            'course_id'     => $faker->randomElement($course_id)
+    ];
+});
+
+
