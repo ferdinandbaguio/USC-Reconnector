@@ -17,17 +17,15 @@ Route::get('/', function () {
 
 
 
-// Route::resources([
-//     'carolinians' => 'CarolinianController',
-//     'companies' => 'CompanyController',
-//     'courses' => 'CourseController',
-//     'departments' => 'DepartmentController',
-//     'industries' => 'IndustryController',
-//     'jobs' => 'JobController',
-//     'schools' => 'SchoolController',
-
-
-// ]);
+Route::resources([
+    'carolinians' => 'CarolinianController',
+    'companies' => 'CompanyController',
+    'courses' => 'CourseController',
+    'departments' => 'DepartmentController',
+    'industries' => 'IndustryController',
+    'jobs' => 'JobController',
+    'schools' => 'SchoolController',
+]);
 
 // Route::resources([
 

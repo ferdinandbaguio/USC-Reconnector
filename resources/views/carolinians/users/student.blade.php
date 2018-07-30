@@ -3,8 +3,7 @@
 
 <!-- /header -->
 @section('header')
-    <h1 class="h2">Client</h1>
-    <a class="btn btn-success btn-sm" href="{{ route('alumni.create') }}"><i class="fas fa-plus"></i> New Client</a>
+    
 @endsection
 
 
@@ -25,6 +24,7 @@
                                     <th>Name</th>
                                     <th>Position</th>
                                     <th>Department</th>
+                                    <th>Course</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -34,7 +34,8 @@
                                     <td>{{$admin->idnumber}}</td>
                                     <td>{{$admin->firstname }}</td>
                                     <td>{{$admin->usertype}}</td>
-                                    <td>{{'Department of Computer Science'}}</td>
+                                    <td>{{$admin->course->department->name}}</td>
+                                    <td>{{$admin->course->name}}</td>
                                     <td>
                                         <a href="#" class="btn btn-success" style="color: white;">Show</a>
                                     

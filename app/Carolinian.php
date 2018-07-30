@@ -18,4 +18,9 @@ class Carolinian extends Model
         'usertype',
         'course_id'
     ];
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course','course_id');
+    }
 }

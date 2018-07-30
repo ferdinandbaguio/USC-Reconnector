@@ -25,6 +25,7 @@
                                     <th>Name</th>
                                     <th>Position</th>
                                     <th>Department</th>
+                                    <th>Course</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -34,7 +35,8 @@
                                     <td>{{$admin->idnumber}}</td>
                                     <td>{{$admin->firstname }}</td>
                                     <td>{{$admin->usertype}}</td>
-                                    <td>{{'Department of Computer Science'}}</td>
+                                    <td>{{$admin->course->department->name}}</td>
+                                    <td>{{$admin->course->name}}</td>
                                     <td>
                                         <a href="#" class="btn btn-success" style="color: white;">Show</a>
                                     
@@ -54,7 +56,7 @@
                                     <th>Position</th>
                                     <th>Department</th>
                                 </tr>
-                            </tfoot>
+                            </tfoot>    
                         </table>
                     </div>
                 </div>
