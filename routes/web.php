@@ -25,30 +25,26 @@ Route::resources([
     'industries' => 'IndustryController',
     'jobs' => 'JobController',
     'schools' => 'SchoolController',
+    'carolinians/users/admin' => 'AdminController',
+    'carolinians/users/alumni' => 'AlumniController',
+    'carolinians/users/student' => 'StudentController',
+    'carolinians/users/teacher' => 'TeacherController'
 ]);
 
-// Route::resources([
-
-//     'carolinians/users/admin' => 'AdminController',
-//     'carolinians/users/alumni' => 'AlumniController',
-//     'carolinians/users/student' => 'StudentController',
-//     'carolinians/users/teacher' => 'TeacherController',
-//      'only' => ['index', 'create', 'store']
+// Route::resource('carolinians/users/admin' , 'AdminController', 
+//     ['only' => ['index', 'show', 'store','destroy'],
 // ]);
-Route::resource('carolinians/users/admin' , 'AdminController', 
-    ['only' => ['index', 'show', 'store','destroy'],
-]);
 
-Route::resource('carolinians/users/alumni' , 'AlumniController', 
-    ['only' => ['index', 'show', 'store','destroy'],
-]);
+// Route::resource('carolinians/users/alumni' , 'AlumniController', 
+//     ['only' => ['index', 'show', 'store','destroy'],
+// ]);
 
-Route::resource('carolinians/users/student' , 'StudentController', 
-    ['only' => ['index', 'show', 'store','destroy'],
-]);
+// Route::resource('carolinians/users/student' , 'StudentController', 
+//     ['only' => ['index', 'show', 'store','destroy'],
+// ]);
 
-Route::resource('carolinians/users/teacher' , 'TeacherController', 
-    ['only' => ['index', 'show', 'store','destroy'],
-]);
+// Route::resource('carolinians/users/teacher' , 'TeacherController', 
+//     ['only' => ['index', 'show', 'store','destroy'],
+// ]);
 
 

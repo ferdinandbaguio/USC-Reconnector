@@ -20,16 +20,16 @@
                             <span class="nav-label">Carolinian</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="{{url('carolinians/users/admin')}}">Admin</a>
+                                <a href="{{url('carolinians?uType=Admin')}}">Admin</a>
                             </li>
                             <li>
-                                <a href="{{url('carolinians/users/alumni')}}">Alumni</a>
+                                <a href="{{url('carolinians?uType=Alumni')}}">Alumni</a>
                             </li>
                             <li>
-                                <a href="{{url('carolinians/users/teacher')}}">Teacher</a>
+                                <a href="{{url('carolinians?uType=Teacher')}}">Teacher</a>
                             </li>
                             <li>
-                                <a href="{{url('carolinians/users/student')}}">Student</a>
+                                <a href="{{url('carolinians?uType=Student')}}">Student</a>
                             </li>
                            
                         </ul>

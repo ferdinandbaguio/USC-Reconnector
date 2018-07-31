@@ -19,6 +19,11 @@ class Carolinian extends Model
         'course_id'
     ];
 
+    public function getFullnameAttribute()
+    {
+        return ucfirst($this->firstname) . ' ' . ucfirst($this->middlename) . ' ' . ucfirst($this->lastname);
+    }
+
     public function course()
     {
         return $this->belongsTo('App\Course','course_id');

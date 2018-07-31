@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         $carolinians = Carolinian::where('usertype' ,'=', 'Student')->get();
-        return view('carolinians.users.student',compact('carolinian','carolinians'));
+        return view('carolinians.users.student.index',compact('carolinian','carolinians'));
     }
 
     /**

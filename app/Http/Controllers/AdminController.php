@@ -13,9 +13,8 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $carolinians = Carolinian::where('usertype' ,'=', 'Admin')->get();
-        return view('carolinians.users.admin',compact('carolinian','carolinians'));
+    {   
+        
     }
 
     /**
@@ -25,7 +24,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('carolinians.user.create');
+        return view('carolinians.users.show');
     }
 
     /**
@@ -47,7 +46,7 @@ class AdminController extends Controller
      */
     public function show(Carolinian $carolinian)
     {
-        //
+        
     }
 
     /**

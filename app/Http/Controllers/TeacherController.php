@@ -15,7 +15,7 @@ class TeacherController extends Controller
     public function index()
     {
         $carolinians = Carolinian::where('usertype' ,'=', 'Teacher')->get();
-        return view('carolinians.users.teacher',compact('carolinian','carolinians'));
+        return view('carolinians.users.teacher.index',compact('carolinian','carolinians'));
     }
 
     /**

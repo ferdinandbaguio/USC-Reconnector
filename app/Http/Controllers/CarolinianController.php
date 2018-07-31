@@ -14,7 +14,19 @@ class CarolinianController extends Controller
      */
     public function index()
     {
-        return view('carolinians.index');
+        if(request()->uType == 'Admin'){
+            $carolinians = Carolinian::where('usertype' ,'=', 'Admin')->get();
+            return view('carolinians.index',compact('carolinian','carolinians'));
+        }else if(request()->uType == 'Alumni'){
+            $carolinians = Carolinian::where('usertype' ,'=', 'Alumni')->get();
+            return view('carolinians.index',compact('carolinian','carolinians'));
+        }else if(request()->uType == 'Teacher'){
+            $carolinians = Carolinian::where('usertype' ,'=', 'Teacher')->get();
+            return view('carolinians.users.teacher.index',compact('carolinian','carolinians'));
+        }else{
+            $carolinians = Carolinian::where('usertype' ,'=', 'Student')->get();
+            return view('carolinians.users.student.index',compact('carolinian','carolinians'));
+        }
     }
 
     /**
@@ -57,7 +69,8 @@ class CarolinianController extends Controller
      */
     public function show(Carolinian $carolinian)
     {
-        return view('carolinians.show');
+        $carolinians = Carolinian::where('id' ,'=', $carolinian->id)->first();
+        return view('carolinians.show',compact('carolinian','carolinians'));
     }
 
     /**
