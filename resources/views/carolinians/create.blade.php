@@ -24,23 +24,24 @@
                             <div class="ibox-body">
                                 {!! Form::open(['method'=>'post','route' => 'carolinians.store', 'files' => true]) !!}
                                     {{ csrf_field() }}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                {!! Form::text('firstname',null,['placeholder' => 'Firstname']) !!}
+                                                
+                                            </div>
+                                         </div>
 
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            {!! Form::text('firstname',null,['placeholder' => 'Firstname']) !!}
-                                            
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            {!! Form::text('middlename',null,['placeholder' => 'Middlename']) !!}
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
+                                         <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                {!! Form::text('middlename',null,['placeholder' => 'Middlename']) !!}
+                                            </div>
+                                         </div>
+                                        
+                                        <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                             {!! Form::text('lastname',null,['placeholder' => 'Lastname']) !!}
@@ -107,8 +108,12 @@
                                     </div>
 
                                     <button class="btn btn-success" type="submit">Submit</button>
-                                <!-- </form> -->
-                                {!! Form::close() !!}
+                                        
+                                    </div>
+                                </div>
+
+
+
                                
                             </div>
                         </div>

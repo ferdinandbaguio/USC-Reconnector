@@ -22,10 +22,10 @@ class CarolinianController extends Controller
             return view('carolinians.index',compact('carolinian','carolinians'));
         }else if(request()->uType == 'Teacher'){
             $carolinians = Carolinian::where('usertype' ,'=', 'Teacher')->get();
-            return view('carolinians.users.teacher.index',compact('carolinian','carolinians'));
+            return view('carolinians.index',compact('carolinian','carolinians'));
         }else{
             $carolinians = Carolinian::where('usertype' ,'=', 'Student')->get();
-            return view('carolinians.users.student.index',compact('carolinian','carolinians'));
+            return view('carolinians.index',compact('carolinian','carolinians'));
         }
     }
 
