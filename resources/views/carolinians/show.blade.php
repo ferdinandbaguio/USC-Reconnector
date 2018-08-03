@@ -70,6 +70,12 @@
                                                user info here / if alumni display info
                                                {{  'name :'. $carolinian->fullname}}
                                                
+                                               
+                                            </div>
+                                            <div class="col-md-6" style="border-right: 1px solid #eee;">
+                                           
+                                               <h1>almuni info</h1>
+                                               
                                             </div>
                                             
                                         </div>
@@ -156,34 +162,72 @@
                                         </ul>
                                     </div>
                                     <div class="tab-pane fade" id="tab-4">
-                                        <form action="javascript:void(0)">
-                                            <div class="row">
-                                                <div class="col-sm-6 form-group">
-                                                    <label>First Name</label>
-                                                    <input class="form-control" type="text" placeholder="First Name">
+                                        {!! Form::open(['method'=>'post', 'route' => 'carolinians.store']) !!}
+                                                {{ csrf_field() }}
+                                            <div class="card">
+                                                <H1>industry</H1>
+                                                <div class="card-body">
+                                                    <div>
+                                                        {!! Form::text('industryName',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('firstname',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('firstname',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('firstname',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Last Name</label>
-                                                    <input class="form-control" type="text" placeholder="First Name">
+                                            </div>
+
+                                            <div class="card">
+                                                <H1>company</H1>
+                                                <div class="card-body">
+                                                    <div>
+                                                        {!! Form::text('firstname',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('firstname',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('firstname',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('firstname',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input class="form-control" type="text" placeholder="Email address">
+
+                                            <div class="card">
+                                                <H1>job</H1>
+                                                <div class="card-body">
+                                                    <div>
+                                                        {!! Form::text('jobname',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('jobaddress',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('jobStart',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        {!! Form::text('jobEnd',null) !!}
+                                                    </div>
+                                                    <div>
+                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Password</label>
-                                                <input class="form-control" type="password" placeholder="Password">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="ui-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="input-span"></span>Remamber me</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <button class="btn btn-default" type="button">Submit</button>
-                                            </div>
-                                        </form>
+                                            
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                             </div>

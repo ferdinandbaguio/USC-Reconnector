@@ -28,4 +28,9 @@ class Carolinian extends Model
     {
         return $this->belongsTo('App\Course','course_id');
     }
+
+    public function job()
+    {
+        return $this->hasMany('App\Job','carolinian_id');
+    }
 }
