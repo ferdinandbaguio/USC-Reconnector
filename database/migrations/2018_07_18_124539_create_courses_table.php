@@ -19,7 +19,8 @@ class CreateCoursesTable extends Migration
             $table->text('description');
             
             $table->unsignedInteger('department_id');
-            $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('department_id')->references('id')->on('departments')
+            ->onUpdate('cascade')->onDelete('cascade');
             
             $table->timestamps();
             $table->softDeletes();

@@ -23,10 +23,12 @@ class CreateJobsTable extends Migration
             $table->string('jobEnd');
 
             $table->unsignedInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedInteger('carolinian_id');
-            $table->foreign('carolinian_id')->references('id')->on('carolinians')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('carolinian_id')->references('id')->on('carolinians')
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

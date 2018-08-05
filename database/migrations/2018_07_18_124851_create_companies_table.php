@@ -23,7 +23,8 @@ class CreateCompaniesTable extends Migration
             $table->string('service');
 
             $table->unsignedInteger('industry_id');
-            $table->foreign('industry_id')->references('id')->on('industries')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('industry_id')->references('id')->on('industries')
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();
