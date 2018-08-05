@@ -21,13 +21,16 @@ class CreateCaroliniansTable extends Migration
             $table->string('idnumber');
             $table->string('password');
             $table->text('description');
-            $table->string('strength');
-            $table->string('weakness');
-            $table->enum('usertype', ['Student', 'Teacher', 'Alumni', 'Admin']);    
+            $table->enum('usertype', ['Student', 'Teacher', 'Alumni', 'Admin']);
+            $table->enum('jobstatus', ['Employed', 'Unemployeed', 
+                                       'Part-Time Job', 'Summer Job', 
+                                       'On-the-Job Training']); 
 
             $table->unsignedInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
+            $table->foreign('course_id')->references('id')->on('courses')
+            ->onUpdate('cascade')->onDelete('cascade');
+            
+            $table->timestamps();   
             $table->softDeletes();
         });
     }

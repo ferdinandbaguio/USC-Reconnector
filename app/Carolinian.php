@@ -13,9 +13,8 @@ class Carolinian extends Model
         'idnumber',
         'password',
         'description',
-        'strength',
-        'weakness',
         'usertype',
+        'jobstatus',
         'course_id'
     ];
 
