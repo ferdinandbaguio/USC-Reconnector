@@ -25,4 +25,9 @@ class Message extends Model
     {
         return $this->hasMany('App\Message_Thread','message_id');
     }
+
+    public function message_category()
+    {
+        return $this->hasMany('App\Message_Category','message_id');
+    }
 }
