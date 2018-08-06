@@ -21,6 +21,7 @@ class CreateCaroliniansTable extends Migration
             $table->string('idnumber');
             $table->string('password');
             $table->text('description');
+            $table->string('picture');
             $table->enum('usertype', ['Student', 'Teacher', 'Alumni', 'Admin']);
             $table->enum('jobstatus', ['Employed', 'Unemployeed', 
                                        'Part-Time Job', 'Summer Job', 

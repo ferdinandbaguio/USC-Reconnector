@@ -16,11 +16,6 @@ class Message extends Model
         return $this->belongsTo('App\Carolinian','carolinian_id');
     }
 
-    public function category()
-    {
-        return $this->belongsTo('App\Category','category_id');
-    }
-
     public function message_thread()
     {
         return $this->hasMany('App\Message_Thread','message_id');

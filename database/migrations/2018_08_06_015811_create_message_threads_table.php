@@ -13,8 +13,16 @@ class CreateMessageThreadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('message__threads', function (Blueprint $table) {
+        Schema::create('message_threads', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->text('message');
+            $table->boolean('is_seen');
+
+            $table->unsignedInteger('message_id');
+            $table->foreign('message_id')->references('id')->on('messages')
+            ->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessagesTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->text('announcement');
+            $table->string('picture');
 
-            $table->unsignedInteger('sender_id');
-            $table->foreign('sender_id')->references('id')->on('carolinians')
-            ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->unsignedInteger('receiver_id');
-            $table->foreign('receiver_id')->references('id')->on('carolinians')
+            /* Poster is a Carolinian who posted the announcement. 
+            Poster is a noun specifically a person. */
+            $table->unsignedInteger('poster_id');
+            $table->foreign('poster_id')->references('id')->on('carolinians')
             ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
@@ -36,6 +37,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('posts');
     }
 }

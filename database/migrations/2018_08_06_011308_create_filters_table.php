@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessageCategoriesTable extends Migration
+class CreateFiltersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateMessageCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('message__categories', function (Blueprint $table) {
+        Schema::create('filters', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('filter');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +29,6 @@ class CreateMessageCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message__categories');
+        Schema::dropIfExists('filters');
     }
 }

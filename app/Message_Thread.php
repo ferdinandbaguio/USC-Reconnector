@@ -8,7 +8,7 @@ class Message_Thread extends Model
 {
     protected $fillable = [
         'title',
-        'message',
+        'message'
     ];
 
     public function message()
