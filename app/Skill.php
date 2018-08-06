@@ -10,4 +10,9 @@ class Skill extends Model
         'name',
         'description'
     ];
+
+   public function carolinian_skill()
+   {
+       return $this->hasMany('App\Carolinian_Skill','skill_id');
+   } 
 }

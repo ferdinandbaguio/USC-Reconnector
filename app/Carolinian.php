@@ -32,4 +32,19 @@ class Carolinian extends Model
     {
         return $this->hasMany('App\Job','carolinian_id');
     }
+
+    public function carolinian_skill()
+    {
+        return $this->hasMany('App\Carolinian_Skill','carolinian_id');
+    }
+
+    public function post()
+    {
+        return $this->hasMany('App\Post', 'carolinian_id');
+    }
+
+    public function message()
+    {
+        return $this->hasMany('App\Message','sender_id');
+    }
 }
