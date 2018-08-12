@@ -10,7 +10,6 @@ class Course extends Model
         'name',
         'description',
         'department_id'
-    
     ];
 
     public function department()

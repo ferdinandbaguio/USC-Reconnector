@@ -48,4 +48,19 @@ class Carolinian extends Model
     {
         return $this->hasMany('App\Message','sender_id');
     }
+
+    public function teacher()
+    {
+        return $this->hasMany('App\Class_Group','carolinian_id');
+    }
+
+    public function consultation()
+    {
+        return $this->hasMany('App\Consultation','carolinian_id');
+    }
+
+    public function student()
+    {
+        return $this->hasMany('App\Student_Class','carolinian_id');
+    }
 }

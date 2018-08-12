@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostCategoriesTable extends Migration
+class CreateSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreatePostCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('post__categories', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
+            $table->tinyInteger('day');
+            $table->time('class_start');
+            $table->time('class_end');
 
-            $table->unsignedInteger('post_id');
-            $table->foreign('post_id')->references('id')->on('posts')
-            ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->unsignedInteger('filter_id');
-            $table->foreign('filter_id')->references('id')->on('filters')
+            $table->unsignedInteger('semester_id');
+            $table->foreign('semester_id')->references('id')->on('semesters')
             ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
@@ -36,6 +35,6 @@ class CreatePostCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post__categories');
+        Schema::dropIfExists('schedules');
     }
 }
