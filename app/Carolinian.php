@@ -12,6 +12,7 @@ class Carolinian extends Model
         'lastname',
         'idnumber',
         'password',
+        'gender',
         'description',
         'picture',
         'usertype',

@@ -20,6 +20,7 @@ class CreateCaroliniansTable extends Migration
             $table->string('lastname');
             $table->string('idnumber');
             $table->string('password');
+            $table->enum('gender', ['Male', 'Female']);
             $table->text('description');
             $table->string('picture');
             $table->enum('usertype', ['Student', 'Teacher', 'Alumni', 'Admin']);
