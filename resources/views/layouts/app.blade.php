@@ -17,7 +17,7 @@
 	        <header class="header">
 	            <div class="page-brand">
 	                <a class="link" href="index.html">
-	                    <span class="brand">USC-
+	                    <span class="brand">Student-
 	                        <span class="brand-tip">Reconnector</span>
 	                    </span>
 	                    <span class="brand-mini">USC</span>

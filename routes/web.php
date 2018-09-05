@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/language', function () {
     return view('welcome');
 });
 
-
+Route::get('/', function () {
+    return view('login');
+});
 
 Route::resources([
     'carolinians' => 'CarolinianController',
