@@ -18,7 +18,7 @@
   92% { transform: rotate(1deg); }
   100% { transform: rotate(0); }
 }
-/* ----------------Side Navigation Bar----------------*/
+/* ---------------Side Navigation Bar----------------*/
 .sideDiv{
   background:#5A8E6B;
   position:fixed;
