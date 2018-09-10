@@ -19,6 +19,14 @@ Route::get('/', function () {
     return view('login');
 });
 
+Route::get('/alumnus', function () {
+    return view('users.alumni.profile');
+});
+
+Route::get('/student', function () {
+    return view('users.students.profile');
+});
+
 Route::resources([
     'carolinians' => 'CarolinianController',
     'companies' => 'CompanyController',

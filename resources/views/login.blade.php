@@ -7,8 +7,7 @@
     <!-- Main bootstrap Core files -->
 	<link href="{{ asset('dist/assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Customized css file -->
-    <link href="{{ asset('dist/assets/modify/css/index.css') }}" rel="stylesheet">
-    <!-- Noto Font -->
+    <link href="{{ asset('modify/css/index.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
 </head>
 
@@ -31,19 +30,19 @@
     <div class="container-fluid slideContainer">
       <div id="slideshow">
          <div class="firstSlide logoSC">
-          <img class="slidediv firstSlidePic" src="{{ asset('dist/assets/img/images/homepage_images/Pic4.png') }}"/>
+          <img class="slidediv firstSlidePic" src="{{ asset('img/homepage_images/Pic4.png') }}"/>
          </div>
          <div class="divSlides">
-           <img class="slidediv" src="{{ asset('dist/assets/img/images/homepage_images/Pic3.jpg') }}"/>
+           <img class="slidediv" src="{{ asset('img/homepage_images/Pic3.jpg') }}"/>
          </div>
          <div class="divSlides">
-           <img class="slidediv" src="{{ asset('dist/assets/img/images/homepage_images/Pic6.jpg') }}"/>
+           <img class="slidediv" src="{{ asset('img/homepage_images/Pic6.jpg') }}"/>
          </div>
          <div class="divSlides">
-           <img class="slidediv" src="{{ asset('dist/assets/img/images/homepage_images/Pic5.jpg') }}"/>
+           <img class="slidediv" src="{{ asset('img/homepage_images/Pic5.jpg') }}"/>
          </div>
          <div class="divSlides">
-           <img class="slidediv" src="{{ asset('dist/assets/img/images/homepage_images/Pic7.jpg') }}"/>
+           <img class="slidediv" src="{{ asset('img/homepage_images/Pic7.jpg') }}"/>
          </div>
       </div>
     </div>
@@ -58,7 +57,7 @@
         <div class="announcements">
             <div class="row">
             <div class="col-2 col-md-1">  
-            <img src="{{ asset('dist/assets/img/images/homepage_images/boy.jpg') }}" id="annopic">
+            <img src="{{ asset('img/homepage_images/boy.jpg') }}" id="annopic">
             </div>
             <div class="col-8 col-md-5">
                 <h6> Romeo E. Yappie </h6>
@@ -76,14 +75,14 @@
                 occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
                 mollit anim id est laborum. </h4>
             </div>
-        </div> {{-- announcements --}}
-        </div> {{-- col-md-6 mt-1 --}}
+        </div> <!-- announcements -->
+        </div> <!-- col-md-6 mt-1 -->
 
         <div class="col-md-6 mt-1">
         <div class="announcements">
             <div class="row">
             <div class="col-2 col-md-1">  
-            <img src="{{ asset('dist/assets/img/images/homepage_images/boy.jpg') }}" id="annopic">
+            <img src="{{ asset('img/homepage_images/boy.jpg') }}" id="annopic">
             </div>
             <div class="col-8 col-md-5">
                 <h6> Romeo E. Yappie </h6>
@@ -101,11 +100,11 @@
                     occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
                     mollit anim id est laborum. </h4>
             </div>
-        </div> {{-- announcements --}}
-        </div> {{-- col-md-6 mt-1 --}}
-    </div> {{-- row --}}
-    </div> {{-- announcementbox --}}
-    </div> {{-- container-fluid annoContainer --}}
+        </div> <!-- announcements -->
+        </div> <!-- col-md-6 mt-1 -->
+    </div> <!-- row -->
+    </div> <!-- announcementbox -->
+    </div> <!-- container-fluid annoContainer -->
     <!-- Announcement end -->
 
     <!-- Map School Location start -->
@@ -128,7 +127,7 @@
             var marker = new google.maps.Marker({position: SanCarlosTalamban, map: map});
             }
         </script>
-    </div> {{-- container-fluid mapContainer --}}
+    </div> <!-- container-fluid mapContainer -->
     <!-- Map School Location end -->
 
     <!-- Footer start -->
@@ -217,17 +216,17 @@
                 </div>
             </form>
             </center>
-        </div> {{-- col-12 col-md mb-5 --}}
-        </div> {{-- row --}}
-        </div> {{-- modal-body --}}
+        </div> <!-- col-12 col-md mb-5 -->
+        </div> <!-- row -->
+        </div> <!-- modal-body -->
         <!-- Modal body end -->
         <!--<div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
         </div> -->
-    </div> {{-- modal-content modalBg --}}
-    </div> {{-- modal-dialog modal-lg modalWidth --}}
-    </div> {{-- modal fade --}}
+    </div> <!-- modal-content modalBg -->
+    </div> <!-- modal-dialog modal-lg modalWidth -->
+    </div> <!-- modal fade -->
     <!-- LOGIN MODAL end  --> 
 
     <!-- Data feather icons -->
@@ -238,7 +237,7 @@
     <!-- jQuery minified -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <!-- Homepage javascript -->
-    <script src="{{ asset('dist/assets/modify/js/index.js') }}"></script>
+    <script src="{{ asset('modify/js/index.js') }}"></script>
     <!-- The three main javascript files of bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 

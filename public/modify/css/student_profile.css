@@ -1,0 +1,107 @@
+/* ----------------Top Navigation Bar----------------*/
+.navbar{
+    background: linear-gradient(-90deg, #5A8E6B, #5A8E6B, #356A46);
+    z-index: 999.1;
+}
+.signOutBtn:hover{
+  animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) both;
+  backface-visibility: hidden;
+}
+@keyframes bellshake {
+  0% { transform: rotate(0); }
+  15% { transform: rotate(5deg); }
+  30% { transform: rotate(-5deg); }
+  45% { transform: rotate(4deg); }
+  60% { transform: rotate(-4deg); }
+  75% { transform: rotate(2deg); }
+  85% { transform: rotate(-2deg); }
+  92% { transform: rotate(1deg); }
+  100% { transform: rotate(0); }
+}
+/* ----------------Side Navigation Bar----------------*/
+.sideDiv{
+  background:#5A8E6B;
+  position:fixed;
+  width:210px;
+  height:100%;
+  left:-140px;
+  top:0;
+  direction: right;
+  transition: 0.4s ease-in-out; 
+  transition-delay: 0.2s;
+  z-index:999;
+}
+.sideDiv:hover{
+  left:0px;
+}
+.sideHeading{
+  font-family: 'Roboto', sans-serif;
+}
+#hyperlink{
+  text-decoration:none;
+  color: white;
+}
+#classCollapse{
+  text-decoration:none;
+}
+.hyperlink:hover{
+  background-color: rgb(193,198,193,0.125);
+}
+.rowSide{
+  height:50px;
+}
+.navbar-toggler:focus{
+  outline: none;
+}
+/* ------------------------- Page Contents --------------------------*/
+.contentContainer{
+  padding-top:100px;
+  padding-left: 140px;
+  padding-right: 60px;
+}
+.fontRoboto{
+  font-family: 'Roboto', sans-serif;
+}
+.divInfoBg{
+  background:url("/img/div_bgs/sbg.jpg");
+}
+.dashboardBg{
+  background: linear-gradient(90deg, #16222A, #3A6073);
+  box-shadow: 0 0 8px 0;
+}
+/* ------------------------- Footer --------------------------*/
+footer{
+  background: linear-gradient(-90deg, #5A8E6B, #5A8E6B, #356A46);
+  margin-top: 100px;
+}
+#footerUl li a{
+  -webkit-transition: 0.2s; /* For Safari 3.1 to 6.0 */
+  transition: 0.3s;
+}
+#footerUl li a:hover{
+    padding-left:6px;
+}
+.socialIcons{
+  color:white;
+  transition: 0.3s ease;
+}
+.socialIcons:hover{
+  color:#A4DEE6;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+/* MEDIA QUERIES */
+@media only screen and (max-width: 767.98px) { 
+  .signOutBtn:hover{
+    animation:none;
+  }
+  .contentContainer{
+    padding-top:80px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .divInfoBg{
+    background:url("/img/div_bgs/sbg.jpg");
+    background-size: cover;
+  }
+}
