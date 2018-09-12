@@ -20,12 +20,11 @@ Route::get('/', function () {
 });
 
 Route::get('/alumnus', function () {
-    return view('users.alumni.profile');
+    return view('users.alumni.index');
 });
 
-Route::get('/student', function () {
-    return view('users.students.profile');
-});
+Route::get('users/student', 'PLoginController@index')->name('student.login');
+Route::post('users/student', 'PLoginController@login')->name('login.submit');
 
 Route::resources([
     'carolinians' => 'CarolinianController',

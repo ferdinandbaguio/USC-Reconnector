@@ -202,17 +202,18 @@
             <img src="//txt-dynamic.static.1001fonts.net/txt/dHRmLjMyLmZlZmJmYi5TbTl1WVhNZ1IzZGhjRzgsLjAA/blackchancery.regular.png" 
             style="width: auto;">
             <h1 class="signInHeader"> Sign In </h1>
-            <form autocomplete="off">
+            <form autocomplete="off" action="{{route('login.submit')}}" method="POST">
+                {{ csrf_field() }}
                 <div class="col-md-12">
                     <span data-feather="user" class="logFeather"> </span>
-                    <input type="text" placeholder="Username" id="loginInput">
+                    <input type="text" placeholder="Username" name="username" id="loginInput">
                 </div>
                 <div class="col-md-12">
                     <span data-feather="lock" class="logFeather"> </span>
-                    <input type="password" placeholder="Password" id="loginInput">
+                    <input type="password" placeholder="Password" name="password" id="loginInput">
                 </div>
                 <div>
-                    <input type="submit" value="Login" id="loginButton" class="mt-5" href="index.php"><br>
+                    <input type="submit" value="Login" id="loginButton" class="mt-5" ><br>
                 </div>
             </form>
             </center>
