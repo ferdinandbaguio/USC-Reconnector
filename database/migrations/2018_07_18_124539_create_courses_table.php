@@ -21,7 +21,7 @@ class CreateCoursesTable extends Migration
             $table->unsignedInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments')
             ->onUpdate('cascade')->onDelete('cascade');
-            
+                        $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

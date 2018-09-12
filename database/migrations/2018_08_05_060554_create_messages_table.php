@@ -23,7 +23,7 @@ class CreateMessagesTable extends Migration
             $table->unsignedInteger('receiver_id');
             $table->foreign('receiver_id')->references('id')->on('carolinians')
             ->onUpdate('cascade')->onDelete('cascade');
-
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

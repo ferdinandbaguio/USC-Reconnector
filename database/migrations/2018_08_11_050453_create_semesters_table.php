@@ -20,7 +20,7 @@ class CreateSemestersTable extends Migration
             $table->unsignedInteger('year_id');
             $table->foreign('year_id')->references('id')->on('years')
             ->onUpdate('cascade')->onDelete('cascade');
-
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

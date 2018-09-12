@@ -24,7 +24,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('poster_id');
             $table->foreign('poster_id')->references('id')->on('carolinians')
             ->onUpdate('cascade')->onDelete('cascade');
-
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

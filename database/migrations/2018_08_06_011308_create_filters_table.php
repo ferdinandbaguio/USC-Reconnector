@@ -16,7 +16,7 @@ class CreateFiltersTable extends Migration
         Schema::create('filters', function (Blueprint $table) {
             $table->increments('id');
             $table->string('filter');
-
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

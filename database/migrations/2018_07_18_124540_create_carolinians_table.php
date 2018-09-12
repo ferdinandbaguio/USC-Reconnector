@@ -31,7 +31,7 @@ class CreateCaroliniansTable extends Migration
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')
             ->onUpdate('cascade')->onDelete('cascade');
-            
+            $table->rememberToken();            
             $table->timestamps();   
             $table->softDeletes();
         });

@@ -27,7 +27,7 @@ class CreateClassGroupsTable extends Migration
             $table->unsignedInteger('schedule_id');
             $table->foreign('schedule_id')->references('id')->on('schedules')
             ->onUpdate('cascade')->onDelete('cascade');
-
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

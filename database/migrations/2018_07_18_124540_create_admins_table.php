@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCaroliniansTable extends Migration
+class AdminTable extends Migration
 {
     /**
      * Run the migrations.
@@ -28,10 +28,7 @@ class CreateCaroliniansTable extends Migration
                                        'Part-Time Job', 'Summer Job', 
                                        'On-the-Job Training']); 
 
-            $table->unsignedInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')
-            ->onUpdate('cascade')->onDelete('cascade');
-            
+            $table->rememberToken();
             $table->timestamps();   
             $table->softDeletes();
         });

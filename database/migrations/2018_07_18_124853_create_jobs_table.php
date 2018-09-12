@@ -29,7 +29,7 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('carolinian_id');
             $table->foreign('carolinian_id')->references('id')->on('carolinians')
             ->onUpdate('cascade')->onDelete('cascade');
-
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
