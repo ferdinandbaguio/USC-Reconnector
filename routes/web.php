@@ -40,24 +40,8 @@ Route::resources([
     'carolinians/users/teacher' => 'TeacherController'
 ]);
 
-// Route::resource('carolinians/users/admin' , 'AdminController', 
-//     ['only' => ['index', 'show', 'store','destroy'],
-// ]);
-
-// Route::resource('carolinians/users/alumni' , 'AlumniController', 
-//     ['only' => ['index', 'show', 'store','destroy'],
-// ]);
-
-// Route::resource('carolinians/users/student' , 'StudentController', 
-//     ['only' => ['index', 'show', 'store','destroy'],
-// ]);
-
-// Route::resource('carolinians/users/teacher' , 'TeacherController', 
-//     ['only' => ['index', 'show', 'store','destroy'],
-// ]);
-
-
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
+Route::get('/admin', 'AdminController@index');
