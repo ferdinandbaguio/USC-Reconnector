@@ -21,7 +21,7 @@ class CreateDepartmentsTable extends Migration
             $table->unsignedInteger('school_id');
             $table->foreign('school_id')->references('id')->on('schools')
             ->onUpdate('cascade')->onDelete('cascade');
-
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

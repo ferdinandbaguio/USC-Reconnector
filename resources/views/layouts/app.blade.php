@@ -1,74 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- GLOBAL MAINLY STYLES-->
-    <link href="{{asset('dist/assets/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('dist/assets/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('dist/assets/vendors/themify-icons/css/themify-icons.css')}}" rel="stylesheet" />
-    <link href="{{asset('dist/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" />
-    <!-- THEME STYLES-->
-    <link href="{{asset('dist/assets/css/main.min.css')}}" rel="stylesheet" />
-    <!-- PAGE LEVEL STYLES-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="fixed-navbar">
-         <!-- START HEADER-->
-         <div class="page-wrapper">
-	        <header class="header">
-	            <div class="page-brand">
-	                <a class="link" href="index.html">
-	                    <span class="brand">Student-
-	                        <span class="brand-tip">Reconnector</span>
-	                    </span>
-	                    <span class="brand-mini">USC</span>
-	                </a>
-	            </div>
-	            <div class="flexbox flex-1">
-                    <!-- START TOP-LEFT TOOLBAR-->
-                     @include('partials.top-left-toolbar')
-                    <!-- END TOP-LEFT TOOLBAR-->
-	               <!-- START TOP-RIGHT TOOLBAR-->
-                    @include('partials.top-right-toolbar')
-                   <!-- END TOP-RIGHT TOOLBAR-->  
-	              
-	 
-	            </div>
-	        </header>
-        <!-- END HEADER-->
-        <!-- START SIDEBAR-->
-        @include('partials.side-nav')
-         <!-- END SIDEBAR-->
-        <div class="content-wrapper">
-        
-        @yield('content')
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <footer class="page-footer">
-                <div class="font-13">2018 © <b>AdminCAST</b> - All rights reserved.</div>
-                <a class="px-4" href="http://themeforest.net/item/adminca-responsive-bootstrap-4-3-angular-4-admin-dashboard-template/20912589" target="_blank">BUY PREMIUM</a>
-                <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
-            </footer>
-        </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
 
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
     </div>
-
-    <!-- BEGIN PAGA BACKDROPS-->
-    <div class="sidenav-backdrop backdrop"></div>
-    <div class="preloader-backdrop">
-        <div class="page-preloader">Loading</div>
-    </div>
-    <!-- END PAGA BACKDROPS-->
-    <!-- CORE PLUGINS-->
-    <script src="{{asset('dist/assets/vendors/jquery/dist/jquery.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('dist/assets/vendors/popper.js/dist/umd/popper.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('dist/assets/vendors/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('dist/assets/vendors/metisMenu/dist/metisMenu.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('dist/assets/vendors/jquery-slimscroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
-   
-    <!-- CORE SCRIPTS-->
-    <script src="{{asset('dist/assets/js/app.min.js')}}" type="text/javascript"></script>
-  
-    		
-        
-
 </body>
-</html>
