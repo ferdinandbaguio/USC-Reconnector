@@ -24,6 +24,18 @@ Route::get('/alumnus', function () {
 });
 
 
+Route::get('/alumni_profile', function () {
+    return view('users.alumni.profile');
+});
+
+Route::get('/empty', function () {
+    return view('users.empty_template.alumni');
+});
+
+Route::get('/maptest', function () {
+    return view('users.googlemap_test.map');
+});
+
 
 Route::resources([
     'carolinians' => 'CarolinianController',
