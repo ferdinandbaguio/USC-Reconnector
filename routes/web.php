@@ -23,6 +23,11 @@ Route::get('/alumnus', function () {
     return view('users.alumni.index');
 });
 
+Route::get('/maptest', function () {
+    return view('users.googlemap_test.map');
+});
+
+
 Route::get('users/student', 'PLoginController@index')->name('student.login');
 Route::post('users/student', 'PLoginController@login')->name('login.submit');
 
