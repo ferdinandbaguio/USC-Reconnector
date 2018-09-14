@@ -23,8 +23,7 @@ Route::get('/alumnus', function () {
     return view('users.alumni.index');
 });
 
-Route::get('users/student', 'PLoginController@index')->name('student.login');
-Route::post('users/student', 'PLoginController@login')->name('login.submit');
+
 
 Route::resources([
     'carolinians' => 'CarolinianController',
@@ -44,4 +43,5 @@ Route::resources([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::post('/admin/login','Auth\AdminloginController@login')->name('admin.login.submit');
 Route::get('/admin', 'AdminController@index');

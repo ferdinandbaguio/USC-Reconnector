@@ -15,18 +15,9 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname');
-            $table->string('middlename');
-            $table->string('lastname');
             $table->string('idnumber');
             $table->string('password');
-            $table->enum('gender', ['Male', 'Female']);
-            $table->text('description');
-            $table->string('picture');
-            $table->string('usertype');
-            $table->enum('jobstatus', ['Employed', 'Unemployeed', 
-                                       'Part-Time Job', 'Summer Job', 
-                                       'On-the-Job Training']); 
+            
 
             $table->rememberToken();
             $table->timestamps();   
