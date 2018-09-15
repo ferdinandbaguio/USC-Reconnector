@@ -22,7 +22,7 @@ class CreateCaroliniansTable extends Migration
             $table->string('password');
             $table->enum('gender', ['Male', 'Female']);
             $table->text('description');
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->enum('usertype', ['Student', 'Teacher', 'Alumni', 'Admin']);
             $table->enum('jobstatus', ['Employed', 'Unemployeed', 
                                        'Part-Time Job', 'Summer Job', 

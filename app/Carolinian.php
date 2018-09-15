@@ -3,12 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Carolinian extends Authenticatable
+class Carolinian extends Model
 {
-    use Notifiable;
+
 
     protected $fillable = [
         'firstname',
@@ -68,4 +66,13 @@ class Carolinian extends Authenticatable
     {
         return $this->hasMany('App\Student_Class','carolinian_id');
     }
+
+    public function is_admin(){
+        if($this->Admin){
+            return true;
+        }
+        return false;
+    }
+
+
 }

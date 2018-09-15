@@ -55,10 +55,9 @@ $factory->define(App\Carolinian::class, function (Faker $faker) {
             'middlename'    => $faker->lastName,
             'lastname'      => $faker->lastName,
             'idnumber'      => $idnumber,
+            'gender'        => 'Male',
             'password'      => $idnumber,
             'description'   => $faker->paragraph,
-            'strength'      => 'Strength',
-            'weakness'      => 'Weakness',
             'usertype'      => $faker->randomElement($arrayValues),
             'course_id'     => $faker->randomElement($course_id)
     ];
