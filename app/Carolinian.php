@@ -3,12 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Carolinian extends Authenticatable
+class Carolinian extends Model
 {
-    use Notifiable;
+
 
     protected $fillable = [
         'idNumber',
@@ -72,4 +70,13 @@ class Carolinian extends Authenticatable
     {
         return $this->belongsTo('App\Department','department_id');
     }
+
+    public function is_admin(){
+        if($this->Admin){
+            return true;
+        }
+        return false;
+    }
+
+
 }

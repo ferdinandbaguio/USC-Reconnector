@@ -46,13 +46,14 @@ return [
             'provider' => 'users',
         ],
 
-        'admin' => [
+        'carolinian' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'carolinians',
         ],
-        'admin-api' => [
+
+        'carolinian-api' => [
             'driver' => 'token',
-            'provider' => 'admins',
+            'provider' => 'carolinians',
         ],
         
     ],
@@ -80,10 +81,11 @@ return [
             'model' => App\User::class,
         ],
 
-        'admins' => [
+         'carolinians' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\Carolinian::class,
         ],
+
 
         // 'users' => [
         //     'driver' => 'database',

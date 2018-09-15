@@ -31,9 +31,9 @@ class CreateCaroliniansTable extends Migration
                                           'Recent']);
             $table->string('position');
 
-            $table->unsignedInteger('role_id');
             $table->foreign('role_id')->references('id')->on('roles')
             ->onUpdate('cascade')->onDelete('cascade');
+            $table->string('picture')->nullable(); 
 
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')

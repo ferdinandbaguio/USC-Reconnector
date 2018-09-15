@@ -18,7 +18,7 @@
             <img src="//txt-dynamic.static.1001fonts.net/txt/dHRmLjMyLmZlZmJmYi5TbTl1WVhNZ1IzZGhjRzgsLjAA/blackchancery.regular.png" 
             style="width: auto;">
             <h1 class="signInHeader"> Sign In </h1>
-            <form autocomplete="off" action="{{route('admin.login.submit')}}" method="POST">
+            <form autocomplete="off" action="{{route('login.submit')}}" method="POST">
                 {{ csrf_field() }}
                 <div class="col-md-12">
                     <span data-feather="user" class="logFeather"> </span>

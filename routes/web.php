@@ -55,5 +55,6 @@ Route::resources([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::post('/admin/login','Auth\AdminloginController@login')->name('admin.login.submit');
-Route::get('/admin', 'AdminController@index');
+Route::post('/login','LoginController@login')->name('login.submit');
+
+
