@@ -13,16 +13,16 @@ class Message extends Model
 
     public function receiver()
     {
-        return $this->belongsTo('App\Carolinian','carolinian_id');
-    }
-
-    public function message_thread()
-    {
-        return $this->hasMany('App\Message_Thread','message_id');
+        return $this->hasMany('App\Receiver','message_id');
     }
 
     public function message_category()
     {
         return $this->hasMany('App\Message_Category','message_id');
+    }
+
+    public function message_thread()
+    {
+        return $this->hasMany('App\Message_Thread','message_id');
     }
 }

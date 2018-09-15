@@ -11,8 +11,6 @@ class Post extends Model
         'announcement',
         'picture'
     ];
-    /* Poster is a Carolinian who posted the announcement. 
-       Poster is a noun specifically a person. */
        
     public function poster()
     {

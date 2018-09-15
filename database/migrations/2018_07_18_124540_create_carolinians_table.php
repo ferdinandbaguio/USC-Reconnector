@@ -15,21 +15,32 @@ class CreateCaroliniansTable extends Migration
     {
         Schema::create('carolinians', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname');
-            $table->string('middlename');
-            $table->string('lastname');
-            $table->string('idnumber');
+            $table->string('idNumber');
             $table->string('password');
             $table->enum('gender', ['Male', 'Female']);
+            $table->string('firstName');
+            $table->string('middleName');
+            $table->string('lastname');
             $table->text('description');
             $table->string('picture');
-            $table->enum('usertype', ['Student', 'Teacher', 'Alumni', 'Admin']);
-            $table->enum('jobstatus', ['Employed', 'Unemployeed', 
-                                       'Part-Time Job', 'Summer Job', 
-                                       'On-the-Job Training']); 
+            $table->integer('yearLevel');
+            $table->enum('employmentStatus', ['Employed', 'Unemployeed', 
+                                              'Part-Time Job', 'Summer Job', 
+                                              'On-the-Job Training']);
+            $table->enum('updateStatus', ['Updated', 'Outdated', 
+                                          'Recent']);
+            $table->string('position');
+
+            $table->unsignedInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')
+            ->onUpdate('cascade')->onDelete('cascade');
+            
+            $table->unsignedInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();            
             $table->timestamps();   

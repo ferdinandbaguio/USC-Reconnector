@@ -23,6 +23,6 @@ class Company extends Model
 
     public function industry()
     {
-    	return $this->belongsTo('App\Industry','industry_id');
+    	return $this->belongsToMany('App\Industry','industry_id');
     }
 }

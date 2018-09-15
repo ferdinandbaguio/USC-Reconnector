@@ -9,7 +9,6 @@ class Course extends Model
 	protected $fillable = [
         'name',
         'description',
-        'department_id'
     ];
 
     public function department()

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Job;
+use App\Receiver;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class ReceiverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Receiver  $receiver
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show(Receiver $receiver)
     {
         //
     }
@@ -52,10 +52,10 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Receiver  $receiver
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit(Receiver $receiver)
     {
         //
     }
@@ -64,10 +64,10 @@ class JobController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Job  $job
+     * @param  \App\Receiver  $receiver
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Job $job)
+    public function update(Request $request, Receiver $receiver)
     {
         //
     }
@@ -75,10 +75,10 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Receiver  $receiver
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)
+    public function destroy(Receiver $receiver)
     {
         //
     }

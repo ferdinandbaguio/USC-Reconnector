@@ -15,17 +15,12 @@ class CreateStudentClassesTable extends Migration
     {
         Schema::create('student_classes', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('premidterm', 1, 1);
-            $table->float('midterm', 1, 1);
-            $table->float('prefinal', 1, 1);
-            $table->float('final', 1, 1);
-
             $table->unsignedInteger('student_id');
             $table->foreign('student_id')->references('id')->on('carolinians')
             ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedInteger('class_group_id');
-            $table->foreign('class_group_id')->references('id')->on('class_groups')
+            $table->unsignedInteger('group_class_id');
+            $table->foreign('group_class_id')->references('id')->on('group_classes')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();            
             $table->timestamps();

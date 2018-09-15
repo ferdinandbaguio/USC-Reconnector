@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     protected $fillable = [
-        'name',
+        'code',
+        'title',
         'description'
     ];
 
-    public function class_group()
+    public function group_class()
     {
-        return $this->hasMany('App\Class_Group','subject_id');
+        return $this->hasMany('App\Group_Class','subject_id');
     }
 }

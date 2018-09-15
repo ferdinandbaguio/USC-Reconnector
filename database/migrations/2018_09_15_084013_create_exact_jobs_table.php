@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoursesTable extends Migration
+class CreateExactJobsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('exact_jobs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('description');
-            
-            $table->unsignedInteger('department_id');
-            $table->foreign('department_id')->references('id')->on('departments')
+
+            $table->unsignedInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('courses')
+            ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unsignedInteger('job_id');
+            $table->foreign('job_id')->references('id')->on('jobs')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
@@ -34,6 +36,6 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('exact_jobs');
     }
 }

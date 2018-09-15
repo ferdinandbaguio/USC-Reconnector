@@ -8,7 +8,8 @@ class Skill extends Model
 {
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'percentage'
     ];
 
    public function carolinian_skill()

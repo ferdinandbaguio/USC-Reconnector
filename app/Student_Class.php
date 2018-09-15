@@ -6,20 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student_Class extends Model
 {
-    protected $fillable = [
-        'premidterm',
-        'midterm',
-        'prefinal',
-        'final'
-    ];
 
     public function student()
     {
-        return $this->belongsTo('App\Carolinian','carolinian_id');
+        return $this->belongsTo('App\student','carolinian_id');
     }
 
-    public function class_group()
+    public function group_class()
     {
-        return $this->belongsTo('App\Class_Group','class_group_id');
+        return $this->belongsTo('App\Group_Class','class_group_id');
     }
 }

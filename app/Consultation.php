@@ -13,6 +13,6 @@ class Consultation extends Model
 
     public function schedule()
     {
-        return $this->belongsTo('App\Schedule','schedule_id');
+        return $this->belongsToMany('App\Schedule','schedule_id');
     }
 }

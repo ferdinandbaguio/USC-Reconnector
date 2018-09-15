@@ -5,23 +5,18 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
-{	
-	protected $fillable = [
-        'name',
-        'address',
-        'jobStart',
-        'jobEnd',
-        'company_id',
-        'carolinian_id'
+{
+    protected $fillable = [
+        'title'
     ];
 
-    public function carolinian()
+    public function exact_job()
     {
-    	return $this->belongsTo('App\Carolinian','carolinian_id');
+        return $this->hasMany('App\Exact_Job','job_id');
     }
 
-    public function company()
+    public function related_job()
     {
-    	return $this->belongsTo('App\Company','company_id');
+        return $this->hasMany('App\Related_Job','job_id');
     }
 }

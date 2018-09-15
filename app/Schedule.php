@@ -8,8 +8,8 @@ class Schedule extends Model
 {
     protected $fillable = [
         'day',
-        'time_start',
-        'time_end'
+        'classStart',
+        'classEnd'
     ];
 
     public function semester()
@@ -17,13 +17,8 @@ class Schedule extends Model
         return $this->belongsTo('App\Semester','semester_id');
     }
 
-    public function class_group()
+    public function group_class()
     {
-        return $this->hasOne('App\Class_Group','schedule_id');
-    }
-
-    public function consultation()
-    {
-        return $this->hasOne('App\Consultation','schedule_id');
+        return $this->hasMany('App\Group_Class','schedule_id');
     }
 }

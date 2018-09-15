@@ -11,32 +11,31 @@ class Carolinian extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'firstname',
-        'middlename',
-        'lastname',
-        'idnumber',
+        'idNumber',
         'password',
         'gender',
+        'firstName',
+        'middleName',
+        'lastName',
         'description',
         'picture',
-        'usertype',
-        'jobstatus',
-        'course_id'
+        'yearLevel',
+        'employmentStatus',
+        'updateStatus',
+        'position',
     ];
 
     public function getFullnameAttribute()
     {
         return ucfirst($this->firstname) . ' ' . ucfirst($this->middlename) . ' ' . ucfirst($this->lastname);
     }
-
-    public function course()
+    public function role()
     {
-        return $this->belongsTo('App\Course','course_id');
+        return $this->belongsTo('App\Role','role_id');
     }
-
-    public function job()
+    public function message()
     {
-        return $this->hasMany('App\Job','carolinian_id');
+        return $this->hasMany('App\Message','sender_id');
     }
 
     public function carolinian_skill()
@@ -44,28 +43,33 @@ class Carolinian extends Authenticatable
         return $this->hasMany('App\Carolinian_Skill','carolinian_id');
     }
 
-    public function post()
-    {
-        return $this->hasMany('App\Post', 'carolinian_id');
-    }
-
-    public function message()
-    {
-        return $this->hasMany('App\Message','sender_id');
-    }
-
-    public function teacher()
-    {
-        return $this->hasMany('App\Class_Group','carolinian_id');
-    }
-
-    public function consultation()
-    {
-        return $this->hasMany('App\Consultation','carolinian_id');
-    }
-
-    public function student()
+    public function student_class()
     {
         return $this->hasMany('App\Student_Class','carolinian_id');
+    }
+    
+    public function post()
+    {
+        return $this->hasMany('App\Post', 'poster_id');
+    }
+
+    public function occupation()
+    {
+        return $this->hasMany('App\Occupation', 'carolinian_id');
+    }
+
+    public function graduate()
+    {
+        return $this->hasMany('App\Graduate', 'carolinian_id');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course','course_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Department','department_id');
     }
 }
