@@ -30,7 +30,8 @@ class CreateCaroliniansTable extends Migration
             $table->enum('updateStatus', ['Updated', 'Outdated', 
                                           'Recent']);
             $table->string('position');
-
+            
+            $table->unsignedInteger('course_id');
             $table->foreign('role_id')->references('id')->on('roles')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->string('picture')->nullable(); 

@@ -15,7 +15,12 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('name', ['Student', 'Teacher',
+                                  'Alumni', 'Admin',
+                                  'Coordinator', 'Chair']);
+            $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
