@@ -22,7 +22,7 @@ class CreateCaroliniansTable extends Migration
             $table->string('middleName');
             $table->string('lastname');
             $table->text('description');
-            $table->string('picture');
+            $table->string('picture')->nullable(); 
             $table->integer('yearLevel');
             $table->enum('employmentStatus', ['Employed', 'Unemployeed', 
                                               'Part-Time Job', 'Summer Job', 
@@ -31,9 +31,10 @@ class CreateCaroliniansTable extends Migration
                                           'Recent']);
             $table->string('position');
 
+            $table->unsignedInteger('role_id');
             $table->foreign('role_id')->references('id')->on('roles')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->string('picture')->nullable(); 
+            
 
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')
@@ -42,6 +43,7 @@ class CreateCaroliniansTable extends Migration
             $table->unsignedInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments')
             ->onUpdate('cascade')->onDelete('cascade');
+
             $table->rememberToken();            
             $table->timestamps();   
             $table->softDeletes();
