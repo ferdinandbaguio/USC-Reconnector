@@ -26,7 +26,7 @@ class CreateCaroliniansTable extends Migration
             $table->integer('yearLevel')->nullable();
             $table->enum('employmentStatus', ['Employed', 'Unemployeed', 
                                               'Part-Time Job', 'Summer Job', 
-                                              'On-the-Job Training']);
+                                              'On-the-Job Training'])->nullable(); 
             $table->enum('updateStatus', ['Updated', 'Outdated', 
                                           'Recent'])->nullable();
             $table->string('position')->nullable();
