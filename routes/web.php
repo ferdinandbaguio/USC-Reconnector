@@ -22,12 +22,9 @@ Route::get('/language', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
 Route::get('/', function () {
     return view('auth.login');
 });
-=======
->>>>>>> 001e1dc9988145f2d6d605569c20a2c643354361
 
 Route::get('/alumnus', function () {
     return view('users.alumni.index');
