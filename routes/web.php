@@ -11,12 +11,19 @@
 |
 */
 
+// Test Routes
+    Route::resource('request', 'RequestsController');
+    Route::get('/alumnus/profile', function () {
+        return view('users.alumni.profileTest');
+    });
+// Test Routes
+
 Route::get('/language', function () {
     return view('welcome');
 });
 
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
 
 Route::get('/alumnus', function () {

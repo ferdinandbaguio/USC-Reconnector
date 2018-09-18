@@ -31,6 +31,10 @@
                 <div>
                     <input type="submit" value="Login" id="loginButton" class="mt-5" ><br>
                 </div>
+                <div>
+                    <input type="button" value="Join Us" id="loginButton" class="mt-5"
+                    onclick="window.location='/request/create';" ><br>
+                </div>
             </form>
             </center>
         </div> <!-- col-12 col-md mb-5 -->
