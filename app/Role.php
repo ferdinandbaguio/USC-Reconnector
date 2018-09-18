@@ -10,8 +10,8 @@ class Role extends Model
         'name'
     ];
 
-    public function job()
+    public function carolinian()
     {
-    	return $this->hasOne('App\Carolinian','role_id');
+    	return $this->belongsToMany('App\Carolinian','role_id');
     }
 }

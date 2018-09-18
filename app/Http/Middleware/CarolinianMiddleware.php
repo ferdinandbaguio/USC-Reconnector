@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AdminMiddleware
+class CarolinianMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->user_type == 2)
-            return $next($request);
-        return redirect('/');
+        if(auth()->check() && $request->carolinian()->userType == 'Student'){
+            return redirect()->route('users.student.profile');
+        }
+        return $next($request);
     }
 }

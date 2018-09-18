@@ -44,7 +44,7 @@
       <hr>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link signOutBtn" href="#"><i class="fas fa-walking"></i> Sign Out </a>
+          <a class="nav-link signOutBtn" href="/login"><i class="fas fa-walking"></i> Sign Out </a>
         </li>
       </ul>
     </div>

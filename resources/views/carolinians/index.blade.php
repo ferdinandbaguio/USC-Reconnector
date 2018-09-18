@@ -32,9 +32,9 @@
                              <tbody>
                                 @foreach($carolinians as $row)
                                 <tr>
-                                    <td>{{$row->idnumber}}</td>
+                                    <td>{{$row->idNumber}}</td>
                                     <td>{{$row->fullname }}</td>
-                                    <td>{{$row->usertype}}</td>
+                                    <td>{{$row->userType}}</td>
                                     <td>{{$row->course->department->name}}</td>
                                     <td>{{$row->course->name}}</td>
                                     <td>

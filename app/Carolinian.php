@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Carolinian extends Model
@@ -18,6 +19,7 @@ class Carolinian extends Model
         'description',
         'picture',
         'yearLevel',
+        'userType',
         'employmentStatus',
         'updateStatus',
         'position',

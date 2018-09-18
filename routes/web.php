@@ -15,9 +15,6 @@ Route::get('/language', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('login');
-});
 
 Route::get('/alumnus', function () {
     return view('users.alumni.index');
@@ -54,7 +51,22 @@ Route::resources([
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 Route::post('/login','LoginController@login')->name('login.submit');
 
+Route::group(['middleware' => ['web','auth']], function(){
+    Route::get('/', function(){
+        return view('welcome');
+    });
 
+
+    Route::get('/home',function(){
+    if(Auth::carolinian()->userType == 'Student'){
+        return view('users.student.profile');
+    }else{
+        return view('users.admin.profile');
+    }
+
+
+    });
+});
+ 
