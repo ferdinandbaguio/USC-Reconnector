@@ -2,7 +2,7 @@
 
 @section('content')
     <h1><i>Reconnect through us</i></h1>
-    {!! Form::open(['action' => 'User\RequestsController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['action' => 'User\RequestController@store', 'method' => 'POST']) !!}
         <div class="form-group">
             <b>{{Form::label('idNumber', 'ID Number')}}</b>
                 {{Form::number('idNumber', '', 

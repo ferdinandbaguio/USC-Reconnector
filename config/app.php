@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'USC-Reconnector'),
+    'name' => env('APP_NAME', 'Student - Reconnector'),
 
     /*
     |--------------------------------------------------------------------------

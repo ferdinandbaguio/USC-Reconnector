@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ asset('css/font/roboto.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font/fontawesome.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/alumnus/profile.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/unique/alumnus/profile.css') }}">
 
     {{-- App Name is 'Student - Reconnector' --}}
-    <title>{{ config('app:name') }}</title>
+    <title>{{ config('app.name', 'Student - Reconnector') }}</title>
 </head>
 
 <body>
@@ -93,9 +93,9 @@
   </script>
 
   <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/unique/arid.min.js') }}"></script>
   <script src="{{ asset('js/extra/popper.min.js') }}"></script>
   <script src="{{ asset('js/extra/jquery-3.3.1.slim.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/unique/arid.min.js') }}"></script>
 
 </body>
 </html>
