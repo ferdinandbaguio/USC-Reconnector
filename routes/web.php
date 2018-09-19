@@ -12,10 +12,8 @@
 */
 
 // Test Routes
-    Route::resource('request', 'User\RequestsController');
-    Route::get('/alumnus/profile', function () {
-        return view('users.alumni.profileTest');
-    });
+    Route::resource('request', 'User\RequestController');
+    Route::get('/alumnus/profile', 'User\AlumnusController@profile');
 // Test Routes
 
 Route::get('/language', function () {

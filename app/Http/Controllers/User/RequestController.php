@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Carolinian;
 use DB;
 
-class RequestsController extends Controller
+class RequestController extends Controller
 {
     /**
      * Display a listing of the resource.
