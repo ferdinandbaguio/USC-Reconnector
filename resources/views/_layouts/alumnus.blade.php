@@ -14,7 +14,7 @@
 </head>
 
 <body>    
-  @include('_layouts.navigation')
+  @include('_inc.navigation')
   <div class="container-fluid contentContainer">
   <div class="container">
       @include('_inc.messages')
