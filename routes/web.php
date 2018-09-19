@@ -12,7 +12,7 @@
 */
 
 // Test Routes
-    Route::resource('request', 'RequestsController');
+    Route::resource('request', 'User\RequestsController');
     Route::get('/alumnus/profile', function () {
         return view('users.alumni.profileTest');
     });

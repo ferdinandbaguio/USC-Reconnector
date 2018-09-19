@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Carolinian;
 use DB;
 
@@ -40,7 +41,6 @@ class RequestsController extends Controller
             'idNumber' => 'required',
             'gender' => 'required',
             'firstName' => 'required',
-            'middleName' => 'required',
             'lastName' => 'required',
             'employmentStatus' => 'required',
         ]);
@@ -50,12 +50,13 @@ class RequestsController extends Controller
         $user->idNumber = $request->input('idNumber');
         $user->gender = $request->input('gender');
         $user->firstName = $request->input('firstName');
-        $user->middleName = $request->input('middleName');
+        if(null !== $request->input('middleName'))
+            $user->middleName = $request->input('middleName');
         $user->lastName = $request->input('lastName');
         $user->employmentStatus = $request->input('employmentStatus');
 
         $user->password = $request->input('idNumber');
-
+        $user->userType = "Alumni";
         // $user->password = $request->input('idNumber');
         // $user->description = "Empty";
         // $user->yearLevel = 0;

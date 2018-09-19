@@ -10,6 +10,7 @@ class Carolinian extends Model
 
 
     protected $fillable = [
+        'userStatus',
         'idNumber',
         'password',
         'gender',

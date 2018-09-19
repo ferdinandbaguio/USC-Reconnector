@@ -19,21 +19,19 @@ class CreateCaroliniansTable extends Migration
             $table->string('password');
             $table->enum('gender', ['Male', 'Female']);
             $table->string('firstName');
-            $table->string('middleName');
+            $table->string('middleName')->nullable();
             $table->string('lastname');
             $table->text('description')->nullable();
             $table->string('picture')->nullable(); 
             $table->integer('yearLevel')->nullable();
-            $table->enum('employmentStatus', ['Employed', 'Unemployeed', 
+            $table->enum('userType', ['Student', 'Teacher', 'Alumni', 'Admin', 
+                        'Coordinator', 'Chair']);
+            $table->enum('employmentStatus', ['Full-Time Job', 'Unemployeed', 
                                               'Part-Time Job', 'Summer Job', 
-                                              'On-the-Job Training'])->nullable(); 
+                                              'On-the-Job Training']); 
             $table->enum('updateStatus', ['Updated', 'Outdated', 
                                           'Recent'])->nullable();
             $table->string('position')->nullable();
-
-            $table->unsignedInteger('role_id')->nullable();
-            $table->foreign('role_id')->references('id')->on('roles')
-            ->onUpdate('cascade')->onDelete('cascade');
             
             $table->unsignedInteger('course_id')->nullable();
             $table->foreign('course_id')->references('id')->on('courses')
