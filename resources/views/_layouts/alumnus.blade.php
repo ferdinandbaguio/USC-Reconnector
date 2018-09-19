@@ -88,14 +88,14 @@
   </div>
   
   {{-- Scripts --}}
-  <script src="{{ asset('js/feather.min.js') }}">
+  <script src="{{ asset('js/extra/feather.min.js') }}">
     feather.replace();
   </script>
 
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('js/popper.min.js') }}"></script>
-  <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/arid.min.js') }}"></script>
+  <script src="{{ asset('js/extra/popper.min.js') }}"></script>
+  <script src="{{ asset('js/extra/jquery-3.3.1.slim.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/unique/arid.min.js') }}"></script>
 
 </body>
 </html>
