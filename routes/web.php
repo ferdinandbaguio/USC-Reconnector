@@ -51,10 +51,6 @@ Route::resources([
     'carolinians/users/teacher' => 'TeacherController'
 ]);
 
-Route::get('/language', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::post('/login','LoginController@login')->name('login.submit');
@@ -75,4 +71,7 @@ Route::group(['middleware' => ['web','auth']], function(){
 
     });
 });
- 
+
+Route::get('/language', function () {
+    return view('welcome');
+});
