@@ -16,10 +16,6 @@
     Route::get('/alumnus/profile', 'User\AlumnusController@profile');
 // Test Routes
 
-Route::get('/language', function () {
-    return view('welcome');
-});
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -41,7 +37,6 @@ Route::get('/maptest', function () {
     return view('users.googlemap_test.map');
 });
 
-
 Route::resources([
     'carolinians' => 'CarolinianController',
     'companies' => 'CompanyController',
@@ -56,6 +51,9 @@ Route::resources([
     'carolinians/users/teacher' => 'TeacherController'
 ]);
 
+Route::get('/language', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
