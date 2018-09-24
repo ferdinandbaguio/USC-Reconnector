@@ -2,9 +2,9 @@
   Top Navigation Bar
 */
 .navbar{
-    background: linear-gradient(-90deg, #5A8E6B, #5A8E6B, #356A46);
-    z-index: 999.1;
-    box-shadow: 0 0 3px 0;
+  background: linear-gradient(-90deg, #5A8E6B, #5A8E6B, #356A46);
+  z-index: 999.1;
+  box-shadow: 0 0 3px 0;
 }
 .signOutBtn:hover{
   animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) both;
@@ -86,7 +86,5 @@
   .divInfoBg {
     background:url("/img/div_bgs/sbg.jpg");
     background-size: cover;
-  }
-  .alMapDiv{
   }
 }

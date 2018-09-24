@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Company;
-use App\Industry;
-use App\Job;
-use App\School;
-use App\Department;
+use App\Models\Company;
+use App\Models\Industry;
+use App\Models\Job;
+use App\Models\School;
+use App\Models\Department;
 class DatabaseSeeder extends Seeder
 {
     /**

@@ -11,14 +11,14 @@
 |
 */
 
+Route::get('/', function () {
+    return view('auth.login');
+});
+
 // Test Routes
     Route::resource('request', 'User\RequestController');
     Route::get('/alumnus/profile', 'User\AlumnusController@profile');
 // Test Routes
-
-Route::get('/', function () {
-    return view('auth.login');
-});
 
 Route::get('/alumnus', function () {
     return view('users.alumni.index');

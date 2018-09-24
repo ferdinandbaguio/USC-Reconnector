@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Carolinian;
+use App\Models\Carolinian;
 class CarolinianTableSeeder extends Seeder
 {
     /**
@@ -11,6 +11,6 @@ class CarolinianTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Carolinian::class,100)->create();
+        factory(App\Models\Carolinian::class,100)->create();
 	}	    
 }
