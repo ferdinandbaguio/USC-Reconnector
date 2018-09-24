@@ -5,22 +5,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Carolinian extends Model
+class User extends Model
 {
 
 
     protected $fillable = [
         'userStatus',
+        'userType',
         'idNumber',
         'password',
-        'gender',
+        'sex',
         'firstName',
         'middleName',
         'lastName',
+        'email',
         'description',
         'picture',
         'yearLevel',
-        'userType',
         'employmentStatus',
         'updateStatus',
         'position',
@@ -30,23 +31,19 @@ class Carolinian extends Model
     {
         return ucfirst($this->firstname) . ' ' . ucfirst($this->middlename) . ' ' . ucfirst($this->lastname);
     }
-    public function role()
-    {
-        return $this->belongsTo('App\Models\Role','role_id');
-    }
     public function message()
     {
         return $this->hasMany('App\Models\Message','sender_id');
     }
 
-    public function carolinian_skill()
+    public function user_skill()
     {
-        return $this->hasMany('App\Models\Carolinian_Skill','carolinian_id');
+        return $this->hasMany('App\Models\User_Skill','user_id');
     }
 
     public function student_class()
     {
-        return $this->hasMany('App\Models\Student_Class','carolinian_id');
+        return $this->hasMany('App\Models\Student_Class','student_id');
     }
     
     public function post()
@@ -56,12 +53,12 @@ class Carolinian extends Model
 
     public function occupation()
     {
-        return $this->hasMany('App\Models\Occupation', 'carolinian_id');
+        return $this->hasMany('App\Models\Occupation', 'alumni_id');
     }
 
     public function graduate()
     {
-        return $this->hasMany('App\Models\Graduate', 'carolinian_id');
+        return $this->hasMany('App\Models\Graduate', 'alumni_id');
     }
 
     public function course()

@@ -12,8 +12,8 @@ class Skill extends Model
         'percentage'
     ];
 
-   public function carolinian_skill()
+   public function user_skill()
    {
-       return $this->hasMany('App\Models\Carolinian_Skill','skill_id');
+       return $this->hasMany('App\Models\User_Skill','skill_id');
    } 
 }

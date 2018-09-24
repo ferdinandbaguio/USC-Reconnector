@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCaroliniansTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,21 @@ class CreateCaroliniansTable extends Migration
      */
     public function up()
     {
-        Schema::create('carolinians', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('userStatus', ['Pending', 'Approved', 'Denied']);
+            $table->enum('userType', ['Student', 'Teacher', 'Alumni', 
+                                        'Admin', 'Coordinator', 'Chair']);
             $table->string('idNumber');
             $table->string('password');
-            $table->enum('gender', ['Male', 'Female']);
+            $table->enum('sex', ['Male', 'Female']);
             $table->string('firstName');
             $table->string('middleName')->nullable();
             $table->string('lastname');
+            $table->string('email')->nullable();
             $table->text('description')->nullable();
             $table->string('picture')->nullable(); 
             $table->integer('yearLevel')->nullable();
-            $table->enum('userType', ['Student', 'Teacher', 'Alumni', 'Admin', 
-                        'Coordinator', 'Chair']);
             $table->enum('employmentStatus', ['Full-Time Job', 'Unemployeed', 
                                               'Part-Time Job', 'Summer Job', 
                                               'On-the-Job Training']); 
@@ -54,6 +56,6 @@ class CreateCaroliniansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carolinians');
+        Schema::dropIfExists('users');
     }
 }

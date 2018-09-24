@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Carolinian_Skill extends Model
+class User_Skill extends Model
 {
-    public function carolinian()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Carolinian','carolinian_id');
+        return $this->belongsTo('App\Models\User','user_id');
     }
     public function skill()
     {

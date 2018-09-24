@@ -25,7 +25,7 @@ class CreateGroupClassesTable extends Migration
             ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedInteger('teacher_id');
-            $table->foreign('teacher_id')->references('id')->on('carolinians')
+            $table->foreign('teacher_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();

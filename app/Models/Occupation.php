@@ -15,9 +15,9 @@ class Occupation extends Model
         'carolinian_id'
     ];
 
-    public function carolinian()
+    public function alumni()
     {
-    	return $this->belongsTo('App\Models\Carolinian','carolinian_id');
+    	return $this->belongsTo('App\Models\User','user_id');
     }
 
     public function company()

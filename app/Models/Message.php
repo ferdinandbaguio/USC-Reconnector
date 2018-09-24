@@ -8,12 +8,12 @@ class Message extends Model
 {
     public function sender()
     {
-        return $this->belongsTo('App\Models\Carolinian','carolinian_id');
+        return $this->belongsTo('App\Models\User','user_id');
     }
 
     public function receiver()
     {
-        return $this->hasMany('App\Models\Receiver','message_id');
+        return $this->hasMany('App\Models\User','message_id');
     }
 
     public function message_category()

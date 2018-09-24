@@ -8,7 +8,7 @@ class Consultation extends Model
 {
     public function teacher()
     {
-        return $this->belongsTo('App\Models\Carolinian','carolinian_id');
+        return $this->belongsTo('App\Models\User','user_id');
     }
 
     public function schedule()

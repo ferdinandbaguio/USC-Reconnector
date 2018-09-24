@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('picture');
 
             $table->unsignedInteger('poster_id');
-            $table->foreign('poster_id')->references('id')->on('carolinians')
+            $table->foreign('poster_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();

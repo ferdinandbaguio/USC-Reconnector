@@ -14,7 +14,7 @@ class Post extends Model
        
     public function poster()
     {
-        return $this->belongsTo('App\Models\Carolinian','carolinian_id');
+        return $this->belongsTo('App\Models\User','user_id');
     }
 
     public function post_category()

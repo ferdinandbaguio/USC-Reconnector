@@ -13,6 +13,6 @@ class Receiver extends Model
 
     public function recipient()
     {
-    	return $this->belongsTo('App\Models\Carolinian','carolinian_id');
+    	return $this->belongsTo('App\Models\User','user_id');
     }
 }

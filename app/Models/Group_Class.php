@@ -18,7 +18,7 @@ class Group_Class extends Model
 
     public function teacher()
     {
-        return $this->belongsTo('App\Models\Carolinian', 'carolinian_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function group_class()

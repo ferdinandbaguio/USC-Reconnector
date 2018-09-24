@@ -13,6 +13,6 @@ class Graduate extends Model
 
     public function alumni()
     {
-        return $this->belongsTo('App\Models\Carolinian','carolinian_id');
+        return $this->belongsTo('App\Models\User','uesr_id');
     }
 }

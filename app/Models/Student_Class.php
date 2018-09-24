@@ -9,7 +9,7 @@ class Student_Class extends Model
 
     public function student()
     {
-        return $this->belongsTo('App\Models\student','carolinian_id');
+        return $this->belongsTo('App\Models\User','user_id');
     }
 
     public function group_class()

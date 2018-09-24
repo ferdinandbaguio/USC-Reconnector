@@ -17,7 +17,7 @@ class CreateGraduatesTable extends Migration
             $table->increments('id');
 
             $table->unsignedInteger('alumni_id');
-            $table->foreign('alumni_id')->references('id')->on('carolinians')
+            $table->foreign('alumni_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedInteger('graduation_id');
