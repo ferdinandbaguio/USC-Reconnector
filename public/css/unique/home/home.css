@@ -1,0 +1,252 @@
+/* -------------MISCELLANOUS-----------------------*/
+.whiteText{
+    color:white !important;
+}
+/* --------------------NAVBAR------------------------ */
+.navbar{
+    background: linear-gradient(-90deg, #5A8E6B, #356A46);
+}
+.nav-link{
+    display: inline-flex;
+}
+.nav-link:focus{
+    outline: none;
+}
+.nav-link:hover{
+    animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) both;
+    backface-visibility: hidden;
+}
+@keyframes bellshake {
+    0% { transform: rotate(0); }
+    15% { transform: rotate(5deg); }
+    30% { transform: rotate(-5deg); }
+    45% { transform: rotate(4deg); }
+    60% { transform: rotate(-4deg); }
+    75% { transform: rotate(2deg); }
+    85% { transform: rotate(-2deg); }
+    92% { transform: rotate(1deg); }
+    100% { transform: rotate(0); }
+}
+/* --------------------SLIDESHOW START------------------------ */
+.slideContainer{
+    padding:0px;
+}
+#slideshow {
+    margin:auto;
+    margin-top:0.2px;
+    position: relative;
+    width: 100%;
+    max-width:1400px;
+    height: 530px;
+
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+.divSlides{
+    display: none;
+    position: relative;
+    width:100%;
+    height:100%;
+    border:0px solid yellow;
+    margin:auto;
+}
+.firstSlide{
+    margin:auto;
+    position: relative;
+    width:100%;
+    height:100%;
+    border:0px solid yellow;
+}
+.slidediv{
+    height:100%;
+    width:100%;
+}
+/*  ----------------------ANNOUNCEMENTS------------------------   */
+.annoContainer{
+    max-width:1400px;
+}
+.annohead{
+    text-align: center;
+    color:#395D45;
+    font-family: "Times New Roman", Times, serif;
+    border:0px solid blue;
+    margin-top: 50px;
+}
+.introHolder2{
+    border:0px solid brown;
+    clear:both;
+    width:100%;
+    margin:auto;
+    margin-top:0px;
+    margin-bottom: 200px;
+}
+.announcementbox{
+    width:100%;
+    border:0px solid blue;
+    margin-bottom: 50px;
+    padding:10px;
+}
+.announcements{
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    border:0px solid blue;
+    padding:10px;
+}
+#annopic{
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+}
+.annoCreator{
+    font-size: 80%;
+    font-weight: bold;
+}
+.datePosted{
+    font-size: 75%;
+    color:#8C9797;
+}
+.announcements p{
+    margin-top:-10px;
+}
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 25px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 25px solid #EBECF1;
+    margin-left:70px;
+}
+#annopost{
+    background-color: #EBECF1;
+    width:100%;
+    clear:both;
+    border:0px solid red;
+    border-radius: 8px;
+    padding:20px;
+}
+#annosubject{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+#annodesc{
+    margin: 0;
+    margin-top:20px;
+    padding: 0;
+    font-size: 100%;
+    font-family: 'Noto Serif', serif;
+}
+/* ------------------------- Footer --------------------------*/
+footer{
+    background: linear-gradient(-90deg, #71A180, #356A46);
+    bottom: 0;
+}
+#footerUl li a{
+    -webkit-transition: 0.2s; /* For Safari 3.1 to 6.0 */
+    transition: 0.3s;
+}
+#footerUl li a:hover{
+    padding-left:6px;
+}
+.socialIcons{
+    color:white;
+    transition: 0.3s ease;
+}
+.socialIcons:hover{
+    color:#A4DEE6;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+/*------------------------- School Map --------------------------*/
+.mapContainer{
+    padding:0px;
+}
+.mapHeader{
+    text-align: center;
+    color:#395D45;
+    font-family: "Times New Roman", Times, serif;
+    margin-top: 50px;
+}
+/*------------------------ MODAL CONTENT -----------------------------*/
+.modalBg{
+    background-color: #5A8E6B;
+}
+.modalWidth{
+    width:35% !important;
+}
+.signInHeader{
+    color:white;
+    font-family: 'Noto Serif', serif;
+}
+#loginInput{
+    background-color: #5A8E6B;
+    border:none;
+    border-bottom: 2px solid white;
+    width:57%;
+    margin-left:0px;
+    margin-top: 20px;
+    padding:10px;
+    padding-left:10px;
+}
+::-webkit-input-placeholder{
+    color: white;
+    opacity: 1;
+    margin-left:10px;
+}
+.logFeather{
+    vertical-align: middle;
+    display: inline-flex;
+    margin:0;
+    color:#CCE4E7;
+}
+#loginInput, select, textarea{
+    color: #FFFFFF;
+    outline: none;
+    cursor: alias;
+}
+#loginButton{
+    padding:12px;
+    width:70%;
+    margin-top: 20px;
+    border:none;
+    border-bottom: none;
+    box-shadow: 0 0 4px;
+    background-color: #6DC58A;
+    color:white;
+    font-family: "Times New Roman", Times, serif;
+    font-size:20px;
+}
+#cancelButton{
+    padding:7px;
+    width:70%;
+    margin-top: 7px;
+    border-radius:3px;
+    border:none;
+    border-bottom: none;
+    box-shadow: 0 0 1px;
+    background-color: #C56D79;
+    color:white;
+    font-family: "Times New Roman", Times, serif;
+    font-size:20px;
+}
+/*------------------ MEDIA SCREEN CONDITIOINS --------------------------------*/
+@media only screen and (max-width: 768px) {
+    /*Slideshow*/
+    #slideshow{
+        height: 250px;
+    }
+    .firstSlidePic{
+        height:100%;
+    }
+    /*Modal*/
+    .modalWidth{
+        margin-top:40px;
+        width:95% !important;
+    }
+    #loginInput{
+        width:70%;
+    }
+    #loginButton, #cancelButton{
+        width:90%;
+    }
+}
