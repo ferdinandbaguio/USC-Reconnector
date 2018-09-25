@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->enum('userStatus', ['Pending', 'Approved', 'Denied']);
             $table->enum('userType', ['Student', 'Teacher', 'Alumni', 
                                         'Admin', 'Coordinator', 'Chair']);
-            $table->string('idNumber');
+            $table->string('idnumber');
             $table->string('password');
             $table->enum('sex', ['Male', 'Female']);
             $table->string('firstName');

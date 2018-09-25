@@ -12,7 +12,7 @@ class User extends Model
     protected $fillable = [
         'userStatus',
         'userType',
-        'idNumber',
+        'idnumber',
         'password',
         'sex',
         'firstName',

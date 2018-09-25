@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Carolinian;
+use App\User;
 use DB;
 
 class RequestController extends Controller
@@ -47,7 +47,7 @@ class RequestController extends Controller
 
         $user = new Carolinian;
 
-        $user->idNumber = $request->input('idNumber');
+        $user->idNumber = $request->input('idnumber');
         $user->gender = $request->input('gender');
         $user->firstName = $request->input('firstName');
         if(null !== $request->input('middleName'))
