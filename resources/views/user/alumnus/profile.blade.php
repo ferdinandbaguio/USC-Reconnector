@@ -112,7 +112,7 @@
             <a href="/alumnus/jobs" class="linkSize"> Globe (January 2018)</a></li>
           <li> <img src="/img/company_logo/beats.png" class="align-middle rounded-circle" width="20px">
             <a href="/alumnus/jobs" class="linkSize"> Beats (July 2018)</a></li>
-          <li class="mt-2"><a href="#" class="linkSize">See more...</a> </li>
+          <li class="mt-2"><a href="/alumnus/jobs" class="linkSize">See more...</a> </li>
         </ul>
       </div>
     </div>

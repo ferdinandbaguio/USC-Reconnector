@@ -87,12 +87,12 @@
         </div>
       </a>
       <div class="col-12 collapse p-0" id="classDropdown">
-        <div class="container-fluid p-0">
-          <ul class="list-unstyled text-white">
-            <a href="" id="hyperlink"><li>Class List</li></a>
-            <a href="" id="hyperlink"><li>BS PSHYCOLOGY ENCONMIC CLASS</li></a>
-            <a href="" id="hyperlink"><li>Class 1</li></a>
-            <a href="" id="hyperlink"><li>Class 2</li></a>
+        <div class="container-fluid">
+          <ul class="list-unstyled text-white fontRoboto">
+            <a href="" class="text-white tooltip-test" title="Your teacher is I dont know"><li>Class List</li></a>
+            <a href="" class="text-white"><li>BS PSHYCOLOGY ENCONMIC CLASS</li></a>
+            <a href="" class="text-white"><li>Class 1</li></a>
+            <a href="" class="text-white"><li>Class 2</li></a>
           </ul>
         </div>
       </div>
@@ -119,6 +119,8 @@
   </script>
 
   <script src="{{ asset('js/app.js') }}"></script>
+
+
   <script src="{{ asset('js/unique/arid.min.js') }}"></script>
   <script src="{{ asset('js/extra/popper.min.js') }}"></script>
   <script src="{{ asset('js/extra/jquery-3.3.1.slim.min.js') }}"></script>
