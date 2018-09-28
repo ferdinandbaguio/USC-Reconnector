@@ -1,0 +1,64 @@
+/*BODY COLOR*/
+body{
+  background-color: #EFEFEF
+}
+
+.fontRoboto{
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300 !important;
+}
+/* 
+  Page Contents 
+*/
+.contentContainer{
+  padding-top:100px;
+  padding-left: 140px;
+  padding-right: 60px;
+  padding-bottom: 0px;
+}
+.fontRoboto{
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300 !important;
+}
+.postBox{
+  box-shadow:0 0 5px;
+} 
+
+.addJobBtn, .addJobBtn:focus{
+  background: url("/img/div_bgs/divbg.jpg");
+  background-size: cover; 
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+
+  border:1.5px solid gray;
+  border-top-right-radius:50px; 
+  border-bottom-right-radius:50px;
+  border-top-left-radius:50px; 
+  border-bottom-left-radius:50px;
+}
+
+
+/* 
+  MEDIA QUERIES 
+*/
+@media (max-width: 767.98px) { 
+  .signOutBtn:hover {
+    animation:none;
+  }
+  .contentContainer {
+    padding-top:80px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .divInfoBg {
+    background:url("/img/div_bgs/divbg.jpg");
+    background-size: cover;
+  }
+
+  .d-sm-block{
+    display:block;
+  }
+}

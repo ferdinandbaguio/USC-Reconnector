@@ -1,17 +1,21 @@
 @extends('_layouts.alumnus')
 
+@section('header')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/unique/alumnus/profile.css') }}">
+@endsection
+
 @section('content')
-<div class="row mt-3 mb-5">
+<div class="row mt-3 mb-5" style="box-shadow:2px 2px 2px;">
   <!-- Alumni Profile Details -->
-  <div class="col-sm-2 col-md-4 py-4" style="background:url('/img/div_bgs/abg.jpg');">
-    <div class="card border border-light position-absolute align-middle">
-      <img class="card-img-top mx-auto" src="/img/homepage_images/Girl.jpg" alt="Card image" style="width: 150px;">
-      <div class="card-body">
-      <h4 class="card-title fontRoboto">{{Auth::user()->full_name}}</h4>
-      <p class="card-text">Location: <em> IT.Park Qualfon Building Telstra Pizza Resto Bar </em></p>
+      <div class="col-sm-2 col-md-4 py-4" style="background:url('/img/div_bgs/abg.jpg');">
+        <div class="card border border-light position-absolute align-middle">
+          <img class="card-img-top mx-auto" src="/img/homepage_images/Girl.jpg" alt="Card image" style="width: 150px;">
+          <div class="card-body">
+          <h4 class="card-title fontRoboto"> {{Auth::user()->full_name}} </h4>
+          <p class="card-text">Location: <em> IT.Park Qualfon Building Telstra Pizza Resto Bar </em></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
   <!-- Alumni Profile Details END-->
 
   <!-- Alumni Map Location -->
@@ -40,7 +44,7 @@
 <div class="row" style="position: relative;">
   <div class="col-md-8"> <!-- Job archive/history separator -->
   <!-- JOB INFORMATION -->
-  <div class="row mb-5">
+  <div class="row mb-5" style="box-shadow:2px 2px 2px;">
   <div class="col-md-12 border-bottom shadow-lg divInfoBg">
     <div class="row p-3"> 
       <h5 class="fontRoboto"><i class="fas fa-user-md"></i> Personal Information (Alumnus)</h5>
@@ -86,7 +90,7 @@
   </div>
 
   <!-- Job archive/history container-->
-  <div class="col-md-3 mb-3 divInfoBg d-block archiveContainer"> 
+  <div class="col-md-3 mb-3 divInfoBg d-block archiveContainer" style="box-shadow:2px 2px 2px;"> 
     <div class="row mt-3">
       <div class="col-md-12">
         <h5 class="fontRoboto"><i class="fas fa-file-archive"></i> Job History </h5>
