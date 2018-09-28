@@ -15,7 +15,7 @@
         <div class="row">
         <div class="col-12 col-md mb-5">
             <center>
-            <img src="//txt-dynamic.static.1001fonts.net/txt/dHRmLjMyLmZlZmJmYi5TbTl1WVhNZ1IzZGhjRzgsLjAA/blackchancery.regular.png" 
+            <img src="{{ asset('img/logo/USC-Reconnector.png') }}" 
             style="width: auto;">
             <h1 class="signInHeader"> Sign In </h1>
             <form autocomplete="off" action="{{route('login.submit')}}" method="POST">

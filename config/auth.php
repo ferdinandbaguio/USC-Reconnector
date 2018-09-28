@@ -36,6 +36,7 @@ return [
     */
 
     'guards' => [
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -44,16 +45,6 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
-        ],
-
-        'carolinian' => [
-            'driver' => 'session',
-            'provider' => 'carolinians',
-        ],
-
-        'carolinian-api' => [
-            'driver' => 'token',
-            'provider' => 'carolinians',
         ],
         
     ],
@@ -76,21 +67,17 @@ return [
     */
 
     'providers' => [
+
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
-
-         'carolinians' => [
-            'driver' => 'eloquent',
-            'model' => App\Carolinian::class,
-        ],
-
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
     ],
 
     /*

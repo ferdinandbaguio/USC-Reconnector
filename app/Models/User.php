@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use Illuminate\Database\Eloquent\Model;
-
-class User extends Model
+class User extends Authenticatable
 {
-
+    use Notifiable;
 
     protected $fillable = [
         'userStatus',
@@ -27,9 +27,18 @@ class User extends Model
         'position',
     ];
 
-    public function getFullnameAttribute()
+    protected $hidden = [
+        'password', 'remember_token', 
+    ];
+
+    protected $appends = [
+        'full_name'
+    ];
+
+    public function getFullNameAttribute()
     {
-        return ucfirst($this->firstname) . ' ' . ucfirst($this->middlename) . ' ' . ucfirst($this->lastname);
+        return ucfirst($this->firstName) . ' ' . ucfirst($this->middleName) . ' ' . 
+        ucfirst($this->lastName);
     }
     public function message()
     {

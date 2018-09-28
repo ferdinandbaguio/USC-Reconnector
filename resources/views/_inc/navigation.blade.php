@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100">
 
 <a class="navbar-brand" href="#">
-    <img src="//txt-dynamic.static.1001fonts.net/txt/dHRmLjMyLmZlZmJmYi5TbTl1WVhNZ1IzZGhjRzgsLjAA/blackchancery.regular.png" style="width: auto;" alt="Oops! Something is not right">
+    <img src="{{ asset('img/logo/Logo.ico') }}" width="40" height="40" 
+    style="margin-right:10px;" alt="Oops! Something is not right">
+    <img src="{{ asset('img/logo/USC-Reconnector.png') }}" style="width: auto;" alt="Oops! Something is not right">
 </a>
 
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBarToggler" 
@@ -11,38 +13,35 @@
 
 <div class="collapse navbar-collapse" id="topNavBarToggler">
 
-    <ul class="navbar-nav mr-auto d-md-none d-lg-none">
-        <li class="nav-item">
-            <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="#"> Link </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#"> Disabled </a>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown04" 
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>Class</a>
-
-            <div class="dropdown-menu" style="transition: 0.4s ease-in-out !important;" 
-                aria-labelledby="dropdown04">
-
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+    <hr>
+    <ul class="navbar-nav ml-auto mr-1">
+        <li class="nav-item dropdown active">
+            <a class="nav-link ownerLink" id="dropdown03" data-toggle="dropdown" 
+            aria-haspopup="true" aria-expanded="false">
+                <img src="/img/homepage_images/Girl.jpg" class="rounded-circle" width="20px">
+                </i> {{Auth::user()->full_name}} <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-left" style="left:0" aria-labelledby="dropdown03">
+                <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings </a>
+                <a class="dropdown-item" href="#"><i class="fas fa-bug"></i> Report Bugs </a>
             </div>
         </li>
     </ul>
-
-    <hr>
-
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav" style="border-left:1px solid gray">
         <li class="nav-item active">
-            <a class="nav-link signOutBtn" href="#"><i class="fas fa-walking"></i> Sign Out </a>
+            @if (Route::has('login'))
+                    @auth
+                        {!! Form::open(['url' => route('logout'), 'method' => 'POST']) !!}
+                        <div class="nav-link active signOutBtn ml-2">
+                            <i class="fas fa-walking"></i>
+                            {!! Form::submit('Sign Out') !!}
+                        </div>
+                        {!! Form::close() !!}
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
+            @endif
         </li>
     </ul>
 

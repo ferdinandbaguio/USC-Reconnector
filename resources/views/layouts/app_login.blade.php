@@ -15,7 +15,7 @@
     <!-- Navigation bar start -->
     <nav class="navbar navbar-expand-md navbar-dark">
         <a class="navbar-brand" href="#">
-        <img src="//txt-dynamic.static.1001fonts.net/txt/dHRmLjMyLmZlZmJmYi5TbTl1WVhNZ1IzZGhjRzgsLjAA/blackchancery.regular.png"
+        <img src="{{ asset('img/logo/USC-Reconnector.png') }}"
         style="width: auto;" alt="Oops! Something is not right"></a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">

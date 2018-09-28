@@ -2,9 +2,15 @@
   Top Navigation Bar
 */
 .navbar{
-  background: linear-gradient(-90deg, #5A8E6B, #5A8E6B, #356A46);
+  background: linear-gradient(#6D6D71, #161619);
   z-index: 999.1;
   box-shadow: 0 0 3px 0;
+}
+.ownerLink, .ownerLink:focus{
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 .signOutBtn:hover{
   animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) both;
@@ -22,13 +28,12 @@
   100% { transform: rotate(0); }
 }
 /*
-  Side Navigation Bar
+Side Navigation Bar
 */
 .sideDiv{
-  background:#5A8E6B;
+  background:#39393F;
   position:fixed;
   width:210px;
-  height:100%;
   left:-140px;
   top:0;
   direction: right;
@@ -38,6 +43,10 @@
 }
 .sideDiv:hover{
   left:0px;
+}
+.sideDiv:not(:hover) .sideNavLink{
+  visibility: hidden;
+  transition: 0.5s ease-in-out; 
 }
 #hyperlink{
   text-decoration:none;
@@ -56,7 +65,7 @@
   outline: none;
 }
 /* 
-  Page Contents 
+Page Contents 
 */
 .contentContainer{
   padding-top:100px;
@@ -69,10 +78,21 @@
   font-weight: 300 !important;
 }
 .divInfoBg{
-  background:url("/img/div_bgs/sbg.jpg");
+  background:url("/img/div_bgs/divbg.jpg");
+  background-size: cover;
 }  
+#map{
+  height:100%;
+}
+.archiveContainer{
+  position:absolute; 
+  right:0;
+}
+.linkSize{
+  font-size:15px;
+}
 /* 
-  MEDIA QUERIES 
+MEDIA QUERIES 
 */
 @media only screen and (max-width: 767.98px) { 
   .signOutBtn:hover {
@@ -84,7 +104,17 @@
     padding-right: 10px !important;
   }
   .divInfoBg {
-    background:url("/img/div_bgs/sbg.jpg");
+    background:url("/img/div_bgs/divbg.jpg");
     background-size: cover;
+  }
+
+  #map{
+    height:300px;
+    width: 100% !important;
+    padding:0px !important;
+  }
+
+  .archiveContainer{
+    position:relative; 
   }
 }

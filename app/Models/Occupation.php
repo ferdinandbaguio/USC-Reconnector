@@ -12,7 +12,7 @@ class Occupation extends Model
         'jobStart',
         'jobEnd',
         'company_id',
-        'carolinian_id'
+        'alumni_id'
     ];
 
     public function alumni()

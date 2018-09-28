@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,4 +39,60 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    public function index()
+    {
+        $role = Auth::user()->role;
+
+        switch ($role) {
+            case 'Student':
+                return view('user.student.index');
+                break;
+            case 'Alumnus':
+                return view('user.alumnus.index');
+                break;
+            case 'Teacher':
+                return view('user.teacher.index');
+                break;
+            case 'Admin':
+                return view('user.admin.index');
+                break;
+            default:
+                return redirect('login');
+                break;
+        }
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('idnumber', 'password');
+
+        if (Auth::attempt($credentials)) {
+            switch(auth()->user()->userType) {
+                case 'Student':
+                    return view('user.student.index');
+                    break;
+                case 'Alumnus':
+                    return view('user.alumnus.index');
+                    break;
+                case 'Teacher':
+                    return view('user.teacher.index');
+                    break;
+                case 'Admin':
+                    return view('user.admin.index');
+                    break;
+                default:
+                    dd('not yet approved!@');
+                    return redirect()->back();
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
+
 }
