@@ -39,7 +39,7 @@
       </ul>
       <ul class="navbar-nav lDivider">
         <li class="nav-item active p-0 m-0">
-          <a class="nav-link signOutBtn" href="/login"> Sign Out <i class="fas fa-walking"></i> </a>
+          <a class="nav-link signOutBtn" href="/"> Sign Out <i class="fas fa-walking"></i> </a>
         </li>
 
         <!-- THE SIGN OUT WITH THE BACK END

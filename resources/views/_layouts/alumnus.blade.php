@@ -42,12 +42,10 @@
   </div>
 
   {{-- Side Navigation --}}
-  <div class="sideDiv d-md-block d-lg-block d-none" onmouseleave="deToggle()">
-  <div class="container-fluid">
-    <div class="row mt-5 rowSide">
-    </div>
+  <div class="sideDiv d-md-block d-lg-block d-none  rounded-bottom" onmouseleave="deToggle()">
+  <div class="container-fluid pt-4">
     <a href="/alumnus" class="text-white" id="hyperlink">
-      <div class="row hyperlink rowSide">
+      <div class="row hyperlink rowSide mt-5">
         <div class="col-8 mt-3"> 
           <h6 class="fontRoboto">Home</h6>
         </div>
@@ -76,6 +74,8 @@
           </div>
       </div>
     </a>
+
+
     <a href="/alumnus/communicate" class="text-white" id="hyperlink">
       <div class="row mt-4 hyperlink rowSide">
         <div class="col-8 mt-3">
@@ -86,16 +86,12 @@
         </div>
       </div>
     </a>
-    <div class="row mt-xs-0 rowSide">
-    </div>
+
   </div>
   </div>
   {{-- End Side Navigation --}}
   
   {{-- Scripts --}}
-  <script src="{{ asset('js/extra/feather.min.js') }}">
-    feather.replace();
-  </script>
 
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/unique/arid.min.js') }}"></script>
