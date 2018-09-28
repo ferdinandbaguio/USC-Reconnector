@@ -64,6 +64,7 @@
         </div>
       </div>
     </a>
+
     <a href="/alumnus/jobs" class="text-white" id="hyperlink">
       <div class="row mt-4 hyperlink test rowSide">
           <div class="col-8 mt-3 sideNavLink">
@@ -75,6 +76,26 @@
       </div>
     </a>
 
+    <a class="text-white" id="classCollapse" data-toggle="collapse" href="#classDropdown" aria-expanded="false">
+        <div class="row mt-4 hyperlink test rowSide">
+            <div class="col-8 mt-3">
+              <h6 class="fontRoboto">Class <i class="fas fa-caret-down"></i></h6>
+            </div>
+            <div class="col-4 mt-2">
+              <i class="fas fa-boxes text-white" style="font-size:33px;"></i>
+            </div>
+        </div>
+      </a>
+      <div class="col-12 collapse p-0" id="classDropdown">
+        <div class="container-fluid p-0">
+          <ul class="list-unstyled text-white">
+            <a href="" id="hyperlink"><li>Class List</li></a>
+            <a href="" id="hyperlink"><li>BS PSHYCOLOGY ENCONMIC CLASS</li></a>
+            <a href="" id="hyperlink"><li>Class 1</li></a>
+            <a href="" id="hyperlink"><li>Class 2</li></a>
+          </ul>
+        </div>
+      </div>
 
     <a href="/alumnus/communicate" class="text-white" id="hyperlink">
       <div class="row mt-4 hyperlink rowSide">
@@ -92,6 +113,10 @@
   {{-- End Side Navigation --}}
   
   {{-- Scripts --}}
+
+  <script src="{{ asset('js/unique/deToggle.js')}}" type="text/javascript">
+    
+  </script>
 
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/unique/arid.min.js') }}"></script>
