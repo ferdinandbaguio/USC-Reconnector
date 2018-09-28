@@ -6,27 +6,26 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Authentication =========================================================
 
-    Route::get('/home', 'Auth\LoginController@index')->name('home');
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('/home', 'LoginController@index')->name('home');
+    Route::post('/logout', 'LoginController@logout')->name('logout');
 
 // Views ==================================================================
-
     // Student
-    Route::view('/student', 'user.student.index')->name('students');
-
+    Route::view('/student', 'user.student.index');
     // Alumnus
-    Route::view('/alumnus', 'user.alumnus.index')->name('alumni');
+    Route::view('/alumnus', 'user.alumnus.index');
     Route::view('/alumnus/profile', 'user.alumnus.profile');
     Route::view('/alumnus/jobs', 'user.alumnus.jobs');
     Route::view('/alumnus/communicate', 'user.alumnus.communicate');
-
     // Teacher
-    Route::view('/teacher', 'user.teacher.index')->name('teachers');
-
+    Route::view('/teacher', 'user.teacher.index');
+    // Chair
+    Route::view('/admin', 'user.admin.index');
+    // Coor
+    Route::view('/admin', 'user.admin.index');
     // Admin
-    Route::view('/admin', 'user.admin.index')->name('admins');
-
-
+    Route::view('/admin', 'user.admin.index');
+    
 // Resources ==============================================================
 
     Route::resource('request', 'User\Alumnus\RequestController');
@@ -37,11 +36,11 @@ Route::group(['middleware' => 'guest'], function () {
 
 // Guest Users ============================================================
 
-    Route::view('/', 'auth.login')->name('login');
-    Route::post('/login','Auth\LoginController@login')->name('login.submit');
+    Route::view('/', 'authenticate.login')->name('login');
+    Route::post('/login','LoginController@login')->name('login.submit');
     
-	Route::view('/register', 'auth.register')->name('showRegister');
-    Route::post('/register', 'Auth\RegisterController@create')->name('register.submit');
+	Route::view('/register', 'authenticate.register')->name('showRegister');
+    Route::post('/register', 'RegisterController@create')->name('register.submit');
     
 });
 
