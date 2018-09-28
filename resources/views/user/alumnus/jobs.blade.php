@@ -1,11 +1,15 @@
 @extends('_layouts.alumnus')
 
+@section('header')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/unique/alumnus/jobs.css') }}">
+@endsection
+
 @section('content')
-<div class="row mb-5 pb-4" style="background:url('/img/div_bgs/abg.jpg');">
+<div class="row mb-5 pb-4 shadowBox">
     <div class="row w-100 p-0 m-0">
         <div class="col-md-4 py-4 pr-0">
             <div class="card">
-            <img class="card-img-top mx-auto" src="/img/company_logo/globe.jpg" alt="Card image" style="min-width: 150px; max-width: 150px;">
+            <img class="card-img-top mx-auto companyCardImg" src="/img/company_logo/globe.jpg" alt="Card image">
             <div class="card-body">
             <h4 class="card-title">Globe Telecom</h4>
             <p class="card-text">Location: <em> IT.Park Qualfon Building Telstra Pizza Resto Bar </em></p>
@@ -35,7 +39,7 @@
         </div> 
     </div>
     <div class="row p-0 m-0 w-100">
-    <div class="col-md-5 ml-auto p-2 mb-2" style="background-color: rgba(237, 237, 237, 0.6); box-shadow: 6px 10px 8px;">
+    <div class="col-md-5 ml-auto p-2 mb-2 boxInside">
         <!-- COMPANY INFORMATION --> 
         <div class="col-12">
         <h5 class="fontRoboto"><i class="fas fa-building"></i> Company Information </h5>
@@ -70,7 +74,7 @@
         </ul>
         </div>
     </div>
-    <div class="col-md-5 ml-2 p-2 mb-2 mr-auto" style="background-color: rgba(237, 237, 237, 0.6); box-shadow: 6px 10px 8px;">
+    <div class="col-md-5 ml-2 p-2 mb-2 mr-auto boxInside">
     <!-- JOB INFORMATION -->
         <div class="col-12"> 
         <h5 class="fontRoboto"><i class="fas fa-building"></i> Job Information </h5>
@@ -93,7 +97,7 @@
     </div>
 </div>
 
-<div class="row mt-3 mb-5"> <!-- Father Row -->
+<div class="row mt-3 mb-5 p-3 divInfoBg" style="box-shadow: 0px 2px 4px;"> <!-- Father Row -->
     <h4 class="fontRoboto"><i class="fas fa-history"></i> Job History</h4>
     <table class="table">
     <thead class="thead-dark">

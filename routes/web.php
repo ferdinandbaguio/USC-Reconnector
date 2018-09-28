@@ -18,14 +18,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::view('/alumnus/jobs', 'user.alumnus.jobs');
     Route::view('/alumnus/communicate', 'user.alumnus.communicate');
     // Teacher
-    Route::view('/teacher', 'user.teacher.index');
-    // Chair
-    Route::view('/admin', 'user.admin.index');
-    // Coor
-    Route::view('/admin', 'user.admin.index');
-    // Admin
-    Route::view('/admin', 'user.admin.index');
-    
+    Route::view('/teacher', 'user.teacher.index')->name('teachers');
+    // Admin & Coordinator & Chair
+    Route::view('/admin', 'user.admin.index')->name('admins');
+
 // Resources ==============================================================
 
     Route::resource('request', 'User\Alumnus\RequestController');

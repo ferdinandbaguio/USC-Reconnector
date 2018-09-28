@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <!-- fonts -->
   <link rel="stylesheet" href="{{ asset('css/font/roboto.css')}}">
   <link rel="stylesheet" href="{{ asset('css/font/fontawesome.css')}}">
   <link rel="stylesheet" href="{{ asset('dist/assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}">
