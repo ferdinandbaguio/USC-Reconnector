@@ -4,17 +4,17 @@
     <h1><i>Reconnect through us</i></h1>
     {!! Form::open(['action' => 'User\RequestController@store', 'method' => 'POST']) !!}
         <div class="form-group">
-            <b>{{Form::label('idNumber', 'ID Number')}}</b>
-                {{Form::number('idNumber', '', 
+            <b>{{Form::label('idnumber', 'ID Number')}}</b>
+                {{Form::number('idnumber', '', 
                 ['class' => 'form-control', 'placeholder' => 'Please type in your ID Number'])}}
         </div>
         <div class="form-group">
-            <b>{{Form::label('gender', 'Gender')}}</b>
+            <b>{{Form::label('sex', 'Sex')}}</b>
             <br>
                 {{Form::label('male', 'Male')}}
-                {{Form::radio('gender', 'Male')}}
+                {{Form::radio('sex', 'Male')}}
                 {{Form::label('female', 'Female')}}
-                {{Form::radio('gender', 'Female')}}
+                {{Form::radio('sex', 'Female')}}
         </div>
         <div class="form-group">
             <b>{{Form::label('name', 'Name')}}</b>

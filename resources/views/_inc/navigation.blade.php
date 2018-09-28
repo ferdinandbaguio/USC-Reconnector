@@ -2,8 +2,8 @@
 
 <a class="navbar-brand" href="#">
     <img src="{{ asset('img/logo/Logo.ico') }}" width="40" height="40" 
-    style="margin-right:10px;" alt="Oops! Something is not right">
-    <img src="{{ asset('img/logo/USC-Reconnector.png') }}" style="width: auto;" alt="Oops! Something is not right">
+    style="margin-right:10px;" alt="Logo">
+    <img src="{{ asset('img/logo/USC-Reconnector.png') }}" style="width: auto;" alt="USC-Reconnector">
 </a>
 
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBarToggler" 

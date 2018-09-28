@@ -25,13 +25,24 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin
     Route::view('/admin', 'user.admin.index')->name('admins');
-
-
+    
 // Resources ==============================================================
 
+    //Student
+
+
+    //Alumnus
     Route::resource('request', 'User\Alumnus\RequestController');
 
+    // Teacher
+
+
+    // Admin
+    Route::resource('/admin/requests/users', 'User\Admin\Requests\UserRequestsController');
+
 });
+
+// MIDDLEWARES ------------------------------------------------------------
 
 Route::group(['middleware' => 'guest'], function () {
 

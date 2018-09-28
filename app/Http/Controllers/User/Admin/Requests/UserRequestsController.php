@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\User\Alumnus;
+namespace App\Http\Controllers\User\Admin\Requests;
 
 use DB;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class RequestController extends Controller
+class UserRequestsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::where('userStatus', '=', 'Pending')->get();
+        return view('user.admin.requests.users.index')->with('users',$users);
     }
 
     /**
@@ -26,7 +27,7 @@ class RequestController extends Controller
      */
     public function create()
     {
-        return view('request.alumni.create');
+        //
     }
 
     /**
@@ -37,39 +38,7 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'idnumber' => 'required',
-            'sex' => 'required',
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'employmentStatus' => 'required',
-        ]);
-
-        $user = new User;
-
-        $user->idnumber = $request->input('idnumber');
-        $user->sex = $request->input('sex');
-        $user->firstName = $request->input('firstName');
-        if(null !== $request->input('middleName'))
-            $user->middleName = $request->input('middleName');
-        $user->lastName = $request->input('lastName');
-        $user->employmentStatus = $request->input('employmentStatus');
-
-        $user->password = $request->input('idnumber');
-        $user->userType = "Alumni";
-        // $user->password = $request->input('idnumber');
-        // $user->description = "Empty";
-        // $user->yearLevel = 0;
-        // $user->updateStatus = "Outdated";
-        // $user->position = "None";
-
-        // $user->role_id = null;
-        // $user->course_id = null;
-        // $user->department_id = null;
-
-        $user->save();
-
-        return redirect('/request/create')->with('success','Your request has been successfully submitted!');
+        //
     }
 
     /**

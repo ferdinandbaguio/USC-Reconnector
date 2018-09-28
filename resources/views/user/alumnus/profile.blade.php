@@ -75,7 +75,7 @@
         <h6 class="d-inline"> Date of Birth:</h6> <p class="fontRoboto d-inline"> 20134497 </p>
       </div>
       <div class="col-sm-12 col-md-6 p-0">
-        <h6 class="d-inline"> Gender:</h6> <p class="fontRoboto d-inline"> Not Specified </p>
+        <h6 class="d-inline"> Sex:</h6> <p class="fontRoboto d-inline"> Not Specified </p>
       </div>
     </div>
   </div>
