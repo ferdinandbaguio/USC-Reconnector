@@ -299,6 +299,8 @@
     </div>
   </div>
 </div>
+
   <!-- ADD ANNOUNCEMENT MODAL END-->
+
 
 @endsection
