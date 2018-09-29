@@ -19,33 +19,49 @@
     <div class="page-content fade-in-up">
         <div class="ibox">
             <div class="ibox-head">
-                <div class="ibox-title">Data Table</div>
+                <div class="ibox-title">User Requests</div>
             </div>
             <div class="ibox-body">
                 <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Type</th>
-                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
                             <th>ID Number</th>
                             <th>Sex</th>
+                            <th>Option</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Type</th>
-                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
                             <th>ID Number</th>
                             <th>Sex</th>
+                            <th>Option</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <th>{{ $user->userType }}</th>
-                            <th>{{ $user->full_name }}</th>
-                            <th>{{ $user->idnumber }}</th>
-                            <th>{{ $user->sex }}</th>
+                            <td>{{ $user->userType }}</td>
+                            <td>{{ $user->firstName }}</td>
+                            <td>{{ $user->middleName }}</td>
+                            <td>{{ $user->lastName }}</td>
+                            <td>{{ $user->idnumber }}</td>
+                            <td>{{ $user->sex }}</td>
+                            <td>
+                                <button class="btn btn-success btn-xs m-r-5" data-toggle="tooltip" data-original-title="Approve">
+                                    <i class="fa fa-pencil font-14"></i>
+                                </button>
+                                <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">
+                                    <i class="fa fa-trash font-14"></i>
+                                </button>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
