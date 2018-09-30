@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class RequestController extends Controller
 {
+	public function index (){
+		$users = User::all();
+		return view('test', compact('users')); 
+
+	}
 	 public function request (Request $request) {
     	$data = $this->validate($request, [
         	
@@ -16,8 +21,7 @@ class RequestController extends Controller
 	        'middlename'		=> 'nullable',
 	        'lastname' 			=> 'required', 
 	        'employmentStatus' 	=> 'required',
-	        'role' 				=> 'required',
-	        'status' 			=> 'required'
+	        'userStatus' 		=> 'required'
     	]);
 
     	$data['password'] = $data['idnumber'];

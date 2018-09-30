@@ -3,6 +3,7 @@
 @section('content')
     <h1><i>Reconnect through us</i></h1>
     {!! Form::open(['action' => 'register.submit', 'method' => 'POST']) !!}
+    {{ Form::hidden('userStatus', 'Pending') }} 
         <div class="form-group">
             <b>{{Form::label('idNumber', 'ID Number')}}</b>
                 {{Form::number('idnumber', '', 
