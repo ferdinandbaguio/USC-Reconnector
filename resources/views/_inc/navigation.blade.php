@@ -37,33 +37,19 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav lDivider">
-        <li class="nav-item active p-0 m-0">
-          <a class="nav-link signOutBtn" href="/"> Sign Out <i class="fas fa-walking"></i> </a>
-        </li>
+      <ul class="navbar-nav px-3">
+			{!! Form::open(['url' => route('logout'), 'method' => 'POST', 'class' => 'logout', 'id' => 'logout-form']) !!}
+			{!! Form::close() !!}
 
-        THE SIGN OUT WITH THE BACK END
-        <li class="nav-item active">
-            @if (Route::has('login'))
-                    @auth
-                        {!! Form::open(['url' => route('logout'), 'method' => 'POST']) !!}
-                        <div class="nav-link active signOutBtn ml-2">
-                            <i class="fas fa-walking"></i>
-                            {!! Form::submit('Sign Out') !!}
-                        </div>
-                        {!! Form::close() !!}
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-            @endif
-        </li>
-       
-
-      </ul>
+      <li class="nav-item text-nowrap">
+				<a class="btn btn-outline-light btn-sm  logout" href="#" onclick="event.preventDefault();
+         document.getElementById('logout-form').submit();" >Sign out</a>
+			</li>
+			
+		</ul>
       </div>
   </nav> <!-- Top Navigation Bar end -->
-
+  
   
   <style type="text/css">
   .lDivider{

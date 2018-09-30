@@ -13,12 +13,14 @@ Route::group(['middleware' => 'guest'], function () {
         
 });
 
+
+Route::post('logout', 'LoginController@logout')->name('logout');
+
 Route::group(['middleware' => 'auth'], function () {
 
 // Authentication =========================================================
 
     Route::get('/home', 'LoginController@index')->name('home');
-    Route::post('/logout', 'LoginController@logout')->name('logout');
 
 // Views ==================================================================
     // Student

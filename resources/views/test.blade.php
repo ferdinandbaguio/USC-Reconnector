@@ -10,7 +10,7 @@
 
 <!-- /content -->
 @section('content')
-    
+   
 <div class="page-content fade-in-up">
                 <div class="ibox">
                     <div class="ibox-head">
@@ -50,11 +50,26 @@
                                     <th>Name</th>
                                     <th>Position</th>
                                     <th>Department</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>    
                         </table>
                     </div>
                 </div>
 </div>
+
+{!! Form::open(['method'=>'GET','url'=>url()->current(),'class'=>'navbar-form navbar-left'])  !!}
+
+
+<div class="form-inline">
+    {!! Form::input('text',null,null , ['class' => 'form-group' , 'placeholder' => ' ID Number']) !!}
+    {!! Form::input('text',null,null , ['class' => 'form-group' , 'placeholder' => 'Name']) !!}
+    {!! Form::select('userType',['' => 'Select Type', 'Admin' => 'Admin', 'Agent' => 'Agent'], null, ['class' => 'form-control']) !!}
+    <button class="btn btn-default" type="submit">
+            <i class="fa fa-search"></i>
+    </button>
+   
+</div>
+{!! Form::close() !!} 
 @endsection
 
