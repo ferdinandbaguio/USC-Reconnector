@@ -42,7 +42,7 @@
 			{!! Form::close() !!}
 
       <li class="nav-item text-nowrap">
-				<a class="btn btn-outline-light btn-sm  logout" href="#" onclick="event.preventDefault();
+				<a class="btn btn-outline-light btn-sm" href="#" onclick="event.preventDefault();
          document.getElementById('logout-form').submit();" >Sign out</a>
 			</li>
 			

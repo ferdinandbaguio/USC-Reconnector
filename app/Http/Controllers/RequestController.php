@@ -12,7 +12,7 @@ class RequestController extends Controller
 		return view('test', compact('users')); 
 
 	}
-	 public function request (Request $request) {
+	 public function store (Request $request) {
     	$data = $this->validate($request, [
         	
         	'idnumber' 			=> 'required',

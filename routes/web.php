@@ -8,8 +8,8 @@ Route::group(['middleware' => 'guest'], function () {
         Route::view('/', 'authenticate.login')->name('login');
         Route::post('/login','LoginController@login')->name('login.submit');
         
-        Route::view('/register', 'authenticate.register')->name('showRegister');
-        Route::post('/register', 'RequestController@request')->name('request.submit');
+        Route::view('request', 'authenticate.register')->name('showRegister');
+        Route::post('request', 'RequestController@store')->name('request.submit');
         
 });
 
@@ -38,7 +38,12 @@ Route::group(['middleware' => 'auth'], function () {
     // Admin & Coordinator & Chair
     // Route::view('/admin', 'user.admin.index')->name('admins');
 
-    Route::get('/test','RequestController@index');
+
+    //Resource Controllers
+    Route::resource('jobs','JobController')->except('create');
+
+    //TEST for admin table pending access request
+    Route::get('test','RequestController@index');
 });
 
 

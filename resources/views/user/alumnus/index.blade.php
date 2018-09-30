@@ -228,37 +228,39 @@
           </button>
         </div>
         <div class="modal-body">
-          <form method="" action="" enctype="">
-          <div class="form-group">
-            <label class="col-form-label"> Company: </label>
-            <input type="text" class="form-control" placeholder="Company"> 
-            <label class="col-form-label"> Location: </label>
-            <input type="text" class="form-control" placeholder="Location">
-            <label class="col-form-label"> Job Title: </label>
-            <input type="text" class="form-control" placeholder="Job Title">
-            <label class="col-form-label"> Job Description: </label>
-            <textarea class="form-control" placeholder="Type description here..."></textarea>
-            <label class="col-form-label"> Salary Range: </label>
-            <input type="text" class="form-control" placeholder="Salary Range">
-            <label class="col-form-label"> Contact: </label>
-            <input type="text" class="form-control" placeholder="+639 000 0000">
-            <label class="col-form-label"> Email: </label>
-            <input type="text" class="form-control" placeholder="example@gmail.com">
-            <label class="col-form-label"> Upload Pictures (Optional): </label>
-            <input type="file" class="form-control fontRoboto" multiple>
+          <form method="POST" action="{{route('jobs.store')}}" >
+            @csrf
+            <div class="form-group">
+              <label class="col-form-label"> Company: </label>
+              <input type="text" class="form-control" placeholder="Company" name="companyName"> 
+              <label class="col-form-label"> Address: </label>
+              <input type="text" class="form-control" placeholder="Address" name="address">
+              <label class="col-form-label"> Job Title: </label>
+              <input type="text" class="form-control" placeholder="Job Title" name="jobTitle">
+              <label class="col-form-label"> Job Description: </label>
+              <textarea class="form-control" placeholder="Type description here..." name="description"></textarea>
+              <label class="col-form-label"> Salary Range: </label>
+              <input type="text" class="form-control" placeholder="Salary Range" name="salaryRange">
+              <label class="col-form-label"> Contact: </label>
+              <input type="text" class="form-control" placeholder="+639 000 0000" name="contactNo">
+              <label class="col-form-label"> Email: </label>
+              <input type="text" class="form-control" placeholder="example@gmail.com" name="email">
+              <label class="col-form-label"> Upload Pictures (Optional): </label>
+              <input type="file" class="form-control fontRoboto" multiple name="image">
+            </div>
+            <div class="modal-footer p-0">
+            <div class="row w-100 m-0">
+            <div class="col-6 p-0 m-0 border-secondary" style="border-left:1px solid">
+            <button type="submit" class="btn text-primary btn-light fontRoboto w-100">Post Job Offer</button>
+            </div>
+            <div class="col-6 p-0 m-0 border-secondary" style="border-right:1px solid;">
+            <button type="button" class="btn text-danger btn-light fontRoboto w-100" data-dismiss="modal">Close</button>
+            </div>
+            </div>
           </div>
           </form>
         </div>
-        <div class="modal-footer p-0">
-          <div class="row w-100 m-0">
-          <div class="col-6 p-0 m-0 border-secondary" style="border-right:1px solid;">
-          <button type="button" class="btn text-danger btn-light fontRoboto w-100" data-dismiss="modal">Close</button>
-          </div>
-          <div class="col-6 p-0 m-0 border-secondary" style="border-left:1px solid">
-          <button type="button" class="btn text-primary btn-light fontRoboto w-100">Post Job Offer</button>
-          </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>
