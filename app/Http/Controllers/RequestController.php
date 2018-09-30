@@ -7,7 +7,8 @@ use App\Models\User;
 class RequestController extends Controller
 {
 	public function index (){
-		$users = User::all();
+		$users = User::where('userStatus' , '=' , 'Pending')->get();
+		
 		return view('test', compact('users')); 
 
 	}

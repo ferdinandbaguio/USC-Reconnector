@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('_layouts.alumnus')
 
 
 <!-- /header -->
@@ -24,8 +24,7 @@
                                     <th>ID Numnber</th>
                                     <th>Name</th>
                                     <th>Position</th>
-                                    <th>Department</th>
-                                    <th>Course</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -33,14 +32,13 @@
                                 @foreach($users as $row)
                                 <tr>
                                     <td>{{$row->idNumber}}</td>
-                                    <td>{{$row->firstName }}</td>
-                                    <td>{{$row->usertype}}</td>
-                                    <td>{{$row->course->department->name}}</td>
-                                    <td>{{$row->course->name}}</td>
+                                    <td>{{$row->full_name }}</td>
+                                    <td>{{$row->userType}}</td>
+                                    <td>{{$row->userStatus}}</td>
                                     <td>
-                                        <a href="{{url('carolinians/'.$row->id.'')}}" class="btn btn-success" style="color: white;">Show</a>
-                                        {{ Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $row->id]]) }}
-                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                        <a href="#" class="btn btn-success" style="color: white;">Accept</a>
+                                        {{ Form::open(['method' => 'DELETE', ]) }}
+                                        {{ Form::submit('Decline', ['class' => 'btn btn-danger']) }}
                                         {{ Form::close() }}
                                     </td>  
                                 </tr>

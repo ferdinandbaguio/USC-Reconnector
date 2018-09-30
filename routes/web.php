@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Admin & Coordinator & Chair
     // Route::view('/admin', 'user.admin.index')->name('admins');
 
-
+    Route::get('/test','RequestController@index');
 });
 
 
