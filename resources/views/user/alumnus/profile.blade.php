@@ -21,7 +21,7 @@
   <!-- Alumni Map Location -->
   <div class="col-md-8 p-0">
     <!-- This is only a test map for visual purposes only no back end -->
-    <div id="map" class="w-100 bg-dark">
+    <div id="map" class="w-100" style="background: url(/img/alt_imgs/GoogleMap.jpg);">
     </div>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap">

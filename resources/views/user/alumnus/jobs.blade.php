@@ -19,7 +19,7 @@
 
         <div class="col-md-8 py-4 pr-0">
         <div class="col-12" style="height:100%;">
-            <div id="map" class="w-100 bg-dark">
+            <div id="map" class="w-100" style="background: url(/img/alt_imgs/GoogleMap.jpg);">
             </div>
             <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap">
