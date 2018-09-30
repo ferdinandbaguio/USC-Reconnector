@@ -15,16 +15,8 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('companyName');
-            $table->string('address');
-            $table->string('jobTitle');
-            $table->string('description');
-            $table->string('salaryRange');
-            $table->string('contactNo');
-            $table->string('email');
-            $table->string('image')->nullable();
-            $table->enum('jobStatus', ['Pending', 'Approved', 'Denied']);
-            
+            $table->string('title');
+        
             $table->timestamps();
             $table->softDeletes();
         });

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Job;
-class JobController extends Controller
+use App\Models\JobPost;
+class JobPostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $users = Job::where('userStatus' , '=' , 'Pending')->get();
+        $users = JobPost::where('userStatus' , '=' , 'Pending')->get();
 		
 		return view('test', compact('users')); 
     }
@@ -41,7 +41,7 @@ class JobController extends Controller
 
         // dd($data);
 
-        Job::create($data);
+        JobPost::create($data);
         
         return redirect()->back();
     }

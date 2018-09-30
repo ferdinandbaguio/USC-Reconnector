@@ -7,15 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     protected $fillable = [
-            'companyName',
-            'address',
-            'jobTitle',
-            'description',
-            'salaryRange',
-            'contactNo',
-            'email',
-            'image',
-            'jobStatus'
+            'title'
     ];
 
     public function exact_job()

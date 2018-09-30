@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //Resource Controllers
-    Route::resource('jobs','JobController')->except('create');
+    Route::resource('jobPosts','JobPostController')->except('create');
 
     //TEST for admin table pending access request
     Route::get('test','RequestController@index');
