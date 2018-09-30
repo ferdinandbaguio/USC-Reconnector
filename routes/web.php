@@ -32,13 +32,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //Alumnus
-    Route::resource('request', 'User\Alumnus\RequestController');
+    Route::resource('/request', 'User\Alumnus\RequestController');
 
     // Teacher
 
 
     // Admin
-    Route::resource('/admin/requests/users', 'User\Admin\Requests\UserRequestsController');
+    Route::resource('/users/registration', 'User\Admin\Requests\UserRegistrationController', 
+    ['only' => ['index', 'edit', 'update', 'destroy']]);
 
 });
 
