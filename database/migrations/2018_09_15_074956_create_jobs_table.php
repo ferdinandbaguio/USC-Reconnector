@@ -17,7 +17,7 @@ class CreateJobsTable extends Migration
             $table->increments('id');
             $table->string('title');
             
-            $table->rememberToken();
+            
             $table->timestamps();
             $table->softDeletes();
         });

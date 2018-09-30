@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Teacher
     Route::view('/teacher', 'user.teacher.index')->name('teachers');
     // Admin & Coordinator & Chair
-    Route::view('/admin', 'user.admin.index')->name('admins');
+    // Route::view('/admin', 'user.admin.index')->name('admins');
 
 // Resources ==============================================================
 

@@ -29,7 +29,7 @@ class CreateOccupationsTable extends Migration
             $table->unsignedInteger('alumni_id');
             $table->foreign('alumni_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->rememberToken();
+          
             $table->timestamps();
             $table->softDeletes();
         });

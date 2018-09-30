@@ -22,7 +22,7 @@ class CreateMessageThreadsTable extends Migration
             $table->unsignedInteger('message_id');
             $table->foreign('message_id')->references('id')->on('messages')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->rememberToken();
+            
             $table->timestamps();
             $table->softDeletes();
         });

@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
-        'password', 'remember_token', 
+        'password', 
     ];
 
     protected $appends = [
@@ -80,12 +80,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Department','department_id');
     }
 
-    public function is_admin(){
-        if($this->Admin){
-            return true;
-        }
-        return false;
-    }
+    
 
 
 }

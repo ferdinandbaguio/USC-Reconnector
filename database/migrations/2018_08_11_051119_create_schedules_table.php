@@ -22,7 +22,7 @@ class CreateSchedulesTable extends Migration
             $table->unsignedInteger('semester_id');
             $table->foreign('semester_id')->references('id')->on('semesters')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->rememberToken();
+            
             $table->timestamps();
             $table->softDeletes();
         });
