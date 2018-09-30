@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JobPost;
+use Auth;
 class JobPostController extends Controller
 {
     /**
@@ -27,6 +28,7 @@ class JobPostController extends Controller
     public function store(Request $request)
     {
         $data = $this->validate($request, [
+            'user_id'       => 'nullable',
         	'companyName' 	=> 'required',
 	        'address'		=> 'nullable', 
 	        'jobTitle' 		=> 'required', 
@@ -37,6 +39,7 @@ class JobPostController extends Controller
             'image' 		=> 'nullable',
             'jobStatus' 	=> 'nullable'
         ]);
+        $data['user_id'] = Auth::user()->id;
         $data['jobStatus'] = 'Pending';
 
         // dd($data);

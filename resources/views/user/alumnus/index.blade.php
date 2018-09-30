@@ -228,7 +228,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{route('jobs.store')}}" >
+          <form method="POST" action="{{route('jobPosts.store')}}" >
             @csrf
             <div class="form-group">
               <label class="col-form-label"> Company: </label>
