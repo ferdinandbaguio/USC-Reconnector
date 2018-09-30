@@ -1,6 +1,17 @@
 <?php
 
-// MIDDLEWARES ------------------------------------------------------------
+
+Route::group(['middleware' => 'guest'], function () {
+
+    // Guest Users ============================================================
+    
+        Route::view('/', 'authenticate.login')->name('login');
+        Route::post('/login','LoginController@login')->name('login.submit');
+        
+        Route::view('/register', 'authenticate.register')->name('showRegister');
+        Route::post('/register', 'RequestController@request')->name('request.submit');
+        
+});
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -31,21 +42,4 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
-Route::group(['middleware' => 'guest'], function () {
 
-// Guest Users ============================================================
-
-    Route::view('/', 'authenticate.login')->name('login');
-    Route::post('/login','LoginController@login')->name('login.submit');
-    
-	Route::view('/register', 'authenticate.register')->name('showRegister');
-    Route::post('/register', 'RegisterController@create')->name('register.submit');
-    
-});
-
-
-// LARAVEL ---------------------------------------------------------------
-
-Route::get('/language', function () {
-    return view('welcome');
-});

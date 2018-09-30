@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-class RegisterController extends Controller
+class RequestController extends Controller
 {
-    public function create (Request $request) {
+	 public function request (Request $request) {
     	$data = $this->validate($request, [
         	
         	'idnumber' 			=> 'required',
 	        'password'			=> 'nullable', 
 	        'gender' 			=> 'required', 
 	        'firstname' 		=> 'required',
-	        'middlename'		=> 'required',
+	        'middlename'		=> 'nullable',
 	        'lastname' 			=> 'required', 
 	        'employmentStatus' 	=> 'required',
 	        'role' 				=> 'required',
@@ -24,5 +24,5 @@ class RegisterController extends Controller
 
     	User::create($data);
  
- 	}   
+ 	}     
 }

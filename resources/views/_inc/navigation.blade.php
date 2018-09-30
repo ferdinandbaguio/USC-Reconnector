@@ -42,7 +42,7 @@
           <a class="nav-link signOutBtn" href="/"> Sign Out <i class="fas fa-walking"></i> </a>
         </li>
 
-        <!-- THE SIGN OUT WITH THE BACK END
+        THE SIGN OUT WITH THE BACK END
         <li class="nav-item active">
             @if (Route::has('login'))
                     @auth
@@ -58,7 +58,7 @@
                     @endauth
             @endif
         </li>
-        -->
+       
 
       </ul>
       </div>

@@ -2,10 +2,10 @@
 
 @section('content')
     <h1><i>Reconnect through us</i></h1>
-    {!! Form::open(['action' => 'User\RequestController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['action' => 'register.submit', 'method' => 'POST']) !!}
         <div class="form-group">
             <b>{{Form::label('idNumber', 'ID Number')}}</b>
-                {{Form::number('idNumber', '', 
+                {{Form::number('idnumber', '', 
                 ['class' => 'form-control', 'placeholder' => 'Please type in your ID Number'])}}
         </div>
         <div class="form-group">
