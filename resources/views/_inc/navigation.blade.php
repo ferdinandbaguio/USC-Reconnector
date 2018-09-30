@@ -37,13 +37,13 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav px-3">
+      <ul class="navbar-nav lDivider">
 			{!! Form::open(['url' => route('logout'), 'method' => 'POST', 'class' => 'logout', 'id' => 'logout-form']) !!}
 			{!! Form::close() !!}
 
-      <li class="nav-item text-nowrap">
-				<a class="btn btn-outline-light btn-sm" href="#" onclick="event.preventDefault();
-         document.getElementById('logout-form').submit();" >Sign out</a>
+      <li class="nav-item">
+				<a class="btn text-white signOutBtn pl-0" href="#" onclick="event.preventDefault();
+         document.getElementById('logout-form').submit();" >Sign out <i class="fas fa-walking"></i> </a>
 			</li>
 			
 		</ul>
@@ -54,10 +54,12 @@
   <style type="text/css">
   .lDivider{
     border-left:1px solid gray;
+    padding-left: 10px;
   }
   @media (max-width: 767.98px) { 
   .lDivider{
     border-left:0px;
+    padding-left: 0px;
   }
    }
   </style>

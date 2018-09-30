@@ -248,19 +248,18 @@
               <label class="col-form-label"> Upload Pictures (Optional): </label>
               <input type="file" class="form-control fontRoboto" multiple name="image">
             </div>
-            <div class="modal-footer p-0">
-            <div class="row w-100 m-0">
-            <div class="col-6 p-0 m-0 border-secondary" style="border-left:1px solid">
-            <button type="submit" class="btn text-primary btn-light fontRoboto w-100">Post Job Offer</button>
-            </div>
-            <div class="col-6 p-0 m-0 border-secondary" style="border-right:1px solid;">
-            <button type="button" class="btn text-danger btn-light fontRoboto w-100" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-          </div>
-          </form>
         </div>
-        
+        <div class="modal-footer p-0">
+            <div class="row w-100 m-0">
+            <div class="col-6 p-0 m-0 border-primary" style="border-right:1px solid;border-bottom:1px solid;">
+            <button type="submit" class="btn text-primary btn-light w-100">Post Job Offer</button>
+            </div>
+            <div class="col-6 p-0 m-0 border-danger" style="border-left:1px solid;border-bottom:1px solid;">
+            <button type="button" class="btn text-danger btn-light w-100" data-dismiss="modal">Close</button>
+            </form>
+            </div>
+            </div>
+            </div>
       </div>
     </div>
   </div>
@@ -290,11 +289,11 @@
       </div>
       <div class="modal-footer p-0">
         <div class="row w-100 m-0">
-          <div class="col-6 p-0 m-0 border-secondary" style="border-right:1px solid;">
-          <button type="button" class="btn text-danger btn-light fontRoboto w-100" data-dismiss="modal">Close</button>
-          </div>
-          <div class="col-6 p-0 m-0 border-secondary" style="border-left:1px solid">
+          <div class="col-6 p-0 m-0 border-primary" style="border-right:1px solid;border-bottom:1px solid;">
           <button type="button" class="btn text-primary btn-light fontRoboto w-100">Post Announcement</button>
+          </div>
+          <div class="col-6 p-0 m-0 border-danger" style="border-left:1px solid;border-bottom:1px solid;">
+          <button type="button" class="btn text-danger btn-light fontRoboto w-100" data-dismiss="modal">Close</button>
           </div>
           </div>
       </div>

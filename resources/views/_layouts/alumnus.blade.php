@@ -89,10 +89,10 @@
       <div class="col-12 collapse p-0" id="classDropdown">
         <div class="container-fluid">
           <ul class="list-unstyled text-white fontRoboto">
-            <a href="" class="text-white tooltip-test" title="Your teacher is I dont know"><li>Class List</li></a>
-            <a href="" class="text-white"><li>BS PSHYCOLOGY ENCONMIC CLASS</li></a>
-            <a href="" class="text-white"><li>Class 1</li></a>
-            <a href="" class="text-white"><li>Class 2</li></a>
+            <a href="/student/class" class="text-white"><li>ENG 21</li></a>
+            <a href="/student/class" class="text-white"><li>PSHYCOLOGY ENCONOMIC 5</li></a>
+            <a href="/student/class" class="text-white"><li>ICT 210</li></a>
+            <a href="/student/class" class="text-white"><li>NSTP 32</li></a>
           </ul>
         </div>
       </div>
@@ -113,15 +113,12 @@
   {{-- End Side Navigation --}}
   
   {{-- Scripts --}}
-
-  <script src="{{ asset('js/unique/deToggle.js')}}" type="text/javascript">
-    
-  </script>
+  <!-- Jonas Customized JS -->
+  <script src="{{ asset('js/unique/arid.js') }}"></script>
 
   <script src="{{ asset('js/app.js') }}"></script>
 
-
-  <script src="{{ asset('js/unique/arid.min.js') }}"></script>
+  <!-- BOOTSTRAP JS -->
   <script src="{{ asset('js/extra/popper.min.js') }}"></script>
   <script src="{{ asset('js/extra/jquery-3.3.1.slim.min.js') }}"></script>
 
