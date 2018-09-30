@@ -65,3 +65,11 @@
 .navbar-toggler:focus{
   outline: none;
 }
+
+
+@media (max-width: 349.98px) { 
+
+.logo{
+  width:200px;
+}
+}

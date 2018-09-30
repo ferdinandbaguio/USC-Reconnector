@@ -2,9 +2,9 @@
 
 <!-- New Top Navigation Bar start -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100">
-    <a class="navbar-brand" href="/alumnus">
+    <a class="navbar-brand m-0" href="/alumnus">
       <img src="{{ asset('img/logo/Logo.ico') }}" width="40" height="40">
-      <img src="{{ asset('img/logo/USC-Reconnector.png') }}">
+      <img src="{{ asset('img/logo/USC-Reconnector.png')}}" class="logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBarToggler" aria-controls="topNavBarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-angle-double-down"></i>

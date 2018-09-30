@@ -11,7 +11,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Views ==================================================================
     // Student
-    Route::view('/student', 'user.student.index');
+    Route::view('/student', 'user.student.index')->name('students');
+    Route::view('/studenthome', 'user.student.home')->name('students');
+
+
     // Alumnus
     Route::view('/alumnus', 'user.alumnus.index');
     Route::view('/alumnus/profile', 'user.alumnus.profile');
