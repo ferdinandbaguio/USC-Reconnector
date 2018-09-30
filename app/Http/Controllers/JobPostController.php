@@ -57,7 +57,7 @@ class JobPostController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

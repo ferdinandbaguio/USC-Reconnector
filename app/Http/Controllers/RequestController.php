@@ -12,7 +12,7 @@ class RequestController extends Controller
 		return view('test', compact('users')); 
 
 	}
-	 public function store (Request $request) {
+	public function store (Request $request) {
     	$data = $this->validate($request, [
         	
         	'idnumber' 			=> 'required',
@@ -29,5 +29,17 @@ class RequestController extends Controller
 
     	User::create($data);
  
- 	}     
+	}  
+	public function approve ($id) {
+
+		$data = User::find($id)->update(['userStatus' => "Approved"]);
+		return redirect()->back();
+	}
+
+	public function decline ($id) {
+
+		$data = User::find($id)->update(['userStatus' => "Denied"]);
+		return redirect()->back();
+	} 
+	 
 }

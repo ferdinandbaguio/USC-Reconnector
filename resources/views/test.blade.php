@@ -36,11 +36,15 @@
                                     <td>{{$row->userType}}</td>
                                     <td>{{$row->userStatus}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-success" style="color: white;">Accept</a>
-                                        {{ Form::open(['method' => 'DELETE', ]) }}
+                                        {{ Form::open(['method' => 'POST', 'route' => ['request.approve', $row->id] ]) }}
+                                        {{ Form::submit('Accept', ['class' => 'btn btn-success']) }}
+                                        {{ Form::close() }}
+                                        {{ Form::open(['method' => 'POST', 'route' => ['request.decline', $row->id] ]) }}
                                         {{ Form::submit('Decline', ['class' => 'btn btn-danger']) }}
                                         {{ Form::close() }}
                                     </td>  
+
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>
