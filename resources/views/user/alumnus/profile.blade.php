@@ -67,7 +67,7 @@
     </div> 
     <div class="row px-3 mb-3">
       <div class="col-sm-12 col-md-6 p-0">
-        <h6 class="d-inline"> Email:</h6> <p class="fontRoboto d-inline"> jonasgwapo@gmail.com </p>
+        <h6 class="d-inline"> Email:</h6> <p class="fontRoboto d-inline"> {{Auth::user()->email}} </p>
       </div>
       <div class="col-sm-12 col-md-6 p-0">
         <h6 class="d-inline"> Phone Number:</h6> <p class="fontRoboto d-inline"> 0901001010 </p>
@@ -79,7 +79,7 @@
         <h6 class="d-inline"> Date of Birth:</h6> <p class="fontRoboto d-inline"> 20134497 </p>
       </div>
       <div class="col-sm-12 col-md-6 p-0">
-        <h6 class="d-inline"> Gender:</h6> <p class="fontRoboto d-inline"> Not Specified </p>
+        <h6 class="d-inline"> Sex:</h6> <p class="fontRoboto d-inline"> {{Auth::user()->sex}} </p>
       </div>
     </div>
   </div>
