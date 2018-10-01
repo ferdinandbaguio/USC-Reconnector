@@ -18,7 +18,7 @@ class CreateIndustriesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('service');
-            $table->rememberToken();
+          
             $table->timestamps();
             $table->softDeletes();
         });

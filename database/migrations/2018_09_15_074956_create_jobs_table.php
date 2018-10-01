@@ -16,8 +16,7 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            
-            $table->rememberToken();
+        
             $table->timestamps();
             $table->softDeletes();
         });

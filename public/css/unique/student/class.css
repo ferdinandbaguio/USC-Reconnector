@@ -1,0 +1,64 @@
+/*BODY COLOR*/
+body{
+  background-color: #EFEFEF
+}
+
+.fontRoboto{
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300 !important;
+}
+
+/* 
+  Page Contents 
+*/
+.contentContainer{
+  padding-top:100px;
+  padding-left: 140px;
+  padding-right: 60px;
+  padding-bottom: 0px;
+}
+.teacherCard{
+  background-image: linear-gradient(90deg,#899A95,#A9BBB6);
+  background-size: cover;
+}
+.studentCards{
+  background-image: linear-gradient(#899A95,#A9BBB6,#C8D8D4);
+  background-size: cover;
+}
+.cardButton, .cardButton:hover{
+  background-image: linear-gradient(-90deg,#6D6D71, #161619, #434343);
+
+  text-decoration: none;
+  box-shadow: 2px 2px 100px !important;
+
+  border-top-right-radius:50px; 
+  border-bottom-right-radius:50px;
+  border-top-left-radius:50px; 
+  border-bottom-left-radius:50px;
+
+}
+@keyframes pulse {
+  10% {transform: scale3d(1, 1, 1);}
+  50% {-webkit-transform: scale3d(1.05, 1.05, 1.05);transform: scale3d(1.05, 1.05, 1.05);}
+  100% {-webkit-transform: scale3d(1, 1, 1);transform: scale3d(1, 1, 1);}
+}
+.cardButton:hover{
+  -webkit-animation-name: pulse;
+  animation: pulse 0.8s infinite;
+}
+
+/* 
+  MEDIA QUERIES 
+*/
+@media (max-width: 767.98px) { 
+  .signOutBtn:hover {
+    animation:none;
+  }
+  .contentContainer {
+    padding-top:80px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+}
+

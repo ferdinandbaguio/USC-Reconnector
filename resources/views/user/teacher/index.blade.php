@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                              <tbody>
-                                @foreach($carolinians as $row)
+                                <!-- @foreach($carolinians as $row)
                                 <tr>
                                     <td>{{$row->idnumber}}</td>
                                     <td>{{$row->firstname }}</td>
@@ -44,7 +44,7 @@
                                         {{ Form::close() }}
                                     </td>  
                                 </tr>
-                                @endforeach
+                                @endforeach -->
                             </tbody>
                             <tfoot>
                                 <tr>

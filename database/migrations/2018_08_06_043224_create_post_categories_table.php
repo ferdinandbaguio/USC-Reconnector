@@ -23,7 +23,7 @@ class CreatePostCategoriesTable extends Migration
             $table->unsignedInteger('filter_id');
             $table->foreign('filter_id')->references('id')->on('filters')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->rememberToken();
+            
             $table->timestamps();
             $table->softDeletes();
         });
