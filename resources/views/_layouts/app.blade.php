@@ -26,7 +26,7 @@
     @yield('header')
 
     {{-- App Name is 'Student | Reconnector' --}}
-    <title>{{ config('app.name', 'Student | Reconnector') }}</title>
+    <title>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} | {{Auth::user()->userType}}</title>
 </head>
 
 <body>
