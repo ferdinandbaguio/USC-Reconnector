@@ -46,7 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Student
 
-
     //Alumnus
     Route::resource('/request', 'User\Alumnus\RequestController');
     Route::resource('jobPosts','JobPostController')->except('create');
@@ -59,5 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //TEST for admin table pending access request
     Route::get('test','RequestController@index');
+    Route::post('test/approve/{id}','RequestController@approve')->name('request.approve');
+    Route::post('test/decline/{id}','RequestController@decline')->name('request.decline');
 
 });
