@@ -23,7 +23,7 @@ class CreateGraduatesTable extends Migration
             $table->unsignedInteger('graduation_id');
             $table->foreign('graduation_id')->references('id')->on('graduations')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->rememberToken();
+            
             $table->timestamps();
             $table->softDeletes();
         });

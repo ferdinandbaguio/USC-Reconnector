@@ -22,7 +22,7 @@
                     <span class="nav-label">Requests</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="/admin/requests/users">Users</a>
+                        <a href="/users/registration">Users</a>
                     </li>
                 </ul>
             </li>

@@ -23,7 +23,7 @@ class CreateExactJobsTable extends Migration
             $table->unsignedInteger('job_id');
             $table->foreign('job_id')->references('id')->on('jobs')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->rememberToken();
+            
             $table->timestamps();
             $table->softDeletes();
         });

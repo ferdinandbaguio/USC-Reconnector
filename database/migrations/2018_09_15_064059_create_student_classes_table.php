@@ -22,7 +22,7 @@ class CreateStudentClassesTable extends Migration
             $table->unsignedInteger('group_class_id');
             $table->foreign('group_class_id')->references('id')->on('group_classes')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->rememberToken();            
+                       
             $table->timestamps();
             $table->softDeletes();
         });

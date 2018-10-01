@@ -15,10 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('userStatus', ['Pending', 'Approved', 'Denied']);
-            $table->enum('userType', ['Student', 'Teacher', 'Alumnus', 
-                                        'Admin', 'Coordinator', 'Chair']);
-            $table->string('idnumber');
+            $table->string('idNumber');
             $table->string('password');
             $table->enum('sex', ['Male', 'Female']);
             $table->string('firstName');
@@ -28,6 +25,9 @@ class CreateUsersTable extends Migration
             $table->text('description')->nullable();
             $table->string('picture')->nullable();
             $table->integer('yearLevel')->nullable();
+            $table->enum('userStatus', ['Pending', 'Approved', 'Denied']);
+            $table->enum('userType', ['Student', 'Teacher', 'Alumnus', 
+                                        'Admin', 'Coordinator', 'Chair']);
             $table->enum('employmentStatus', ['Full-Time Job', 'Unemployeed', 
                                               'Part-Time Job', 'Summer Job', 
                                               'On-the-Job Training']); 
@@ -43,7 +43,7 @@ class CreateUsersTable extends Migration
             $table->foreign('department_id')->references('id')->on('departments')
             ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->rememberToken();            
+            $table->rememberToken();                   
             $table->timestamps();   
             $table->softDeletes();
         });

@@ -1,8 +1,9 @@
-@extends('_layouts.alumnus')
+@extends('_layouts.app')
 
 @section('content')
     <h1><i>Reconnect through us</i></h1>
-    {!! Form::open(['action' => 'User\RequestController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['action' => 'register.submit', 'method' => 'POST']) !!}
+    {{ Form::hidden('userStatus', 'Pending') }} 
         <div class="form-group">
             <b>{{Form::label('idnumber', 'ID Number')}}</b>
                 {{Form::number('idnumber', '', 
