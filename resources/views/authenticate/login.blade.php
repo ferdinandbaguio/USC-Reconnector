@@ -1,4 +1,4 @@
-@extends('layouts.app_login')
+@extends('_layouts.login')
 
 @section('content')
 <!-- LOGIN MODAL start -->

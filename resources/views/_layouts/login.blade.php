@@ -7,7 +7,7 @@
     <!-- Main bootstrap Core files -->
     <link href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Customized css file -->
-    <link href="{{ asset('modify/css/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/unique/home.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
 </head>
 
@@ -195,7 +195,7 @@
     <!-- jQuery minified -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <!-- Homepage javascript -->
-    <script src="{{ asset('modify/js/index.js') }}"></script>
+    <script src="{{ asset('js/unique/home.js') }}"></script>
     <!-- The three main javascript files of bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 

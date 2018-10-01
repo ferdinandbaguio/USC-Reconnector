@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'LoginController@index')->name('home');
 
 // Views ==================================================================
+
     // Student
     Route::view('/student', 'user.student.index')->name('students');
     Route::view('/studenthome', 'user.student.home')->name('students');
@@ -34,30 +35,28 @@ Route::group(['middleware' => 'auth'], function () {
     Route::view('/alumnus/profile', 'user.alumnus.profile');
     Route::view('/alumnus/jobs', 'user.alumnus.jobs');
     Route::view('/alumnus/communicate', 'user.alumnus.communicate');
+
     // Teacher
     Route::view('/teacher', 'user.teacher.index')->name('teachers');
-    // Admin & Coordinator & Chair
-    // Route::view('/admin', 'user.admin.index')->name('admins');
 
     // Admin 
     Route::view('/admin', 'user.admin.index')->name('admins');
-    Route::view('/user/students', 'User\Admin\CRUD\UserController@students')->name('ShowStudents');
-    Route::view('/user/alumni', 'User\Admin\CRUD\UserController@alumni')->name('ShowAlumni');
-    Route::view('/user/teachers', 'User\Admin\CRUD\UserController@teachers')->name('ShowTeachers');
-    Route::view('/user/admins', 'User\Admin\CRUD\UserController@admins')->name('ShowAdmins');
+    Route::view('/user/students', 'Admin\UserController@students')->name('ShowStudents');
+    Route::view('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
+    Route::view('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
+    Route::view('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
 
 // Resources ==============================================================
 
     //Student
 
     //Alumnus
-    Route::resource('/request', 'User\Alumnus\RequestController');
     Route::resource('jobPosts','JobPostController')->except('create');
 
     // Teacher
 
     // Admin
-    Route::resource('/users/registration', 'User\Admin\Requests\UserRegistrationController', 
+    Route::resource('/users/registration', 'Admin\UserRegistrationController', 
     ['only' => ['index', 'edit', 'update', 'destroy']]);
 
     //TEST for admin table pending access request

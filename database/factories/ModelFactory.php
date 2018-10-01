@@ -14,35 +14,22 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
-		$role= ['Student', 'Teacher',
-	                    'Alumnus', 'Admin',
-                        'Coordinator', 'Chair'];
-        $userType = $faker->randomElement($role);
-        $updateStatusValues = ['Updated', 'Outdated', 
-            'Recent'];
-        if($userType === 'Alumnus'){
-            $updateStatus = $faker->randomElement($updateStatusValues);   
-        }else{
-            $updateStatus = null;
-        }
-        $statusValues = ['Approved', 'Pending','Denied'];    
-                        
         $sexValues = ['Male', 'Female'];
-        
+        $statusValues = ['Approved', 'Pending','Denied'];               
+        $updateStatusValues = ['Updated', 'Outdated', 'Recent'];
+        $roleValues= ['Student', 'Teacher', 'Alumnus', 'Admin', 'Coordinator', 'Chair'];
+
 	    $idnumber = '14'. $faker->unique()->numberBetween($min = 100000 , $max = 999999);
-        $fname=$faker->firstName;
-        $lname=$faker->lastName;
-        $email = $lname.'.'.$fname.'@gmail.com';
+        
 	    return [
             'idnumber'      => $idnumber,
             'email'         => $faker->email,
-            'sex'           => $faker->randomElement($sexValues),
             'password'      => bcrypt($idnumber),
             'sex'           => $faker->randomElement($sexValues),
 	        'firstName'     => $faker->firstName,
-            'middleName'    => $fname,
-            'lastName'      => $lname,
-            'email'         => $lname.'.'.$fname.'@gmail.com',
+            'middleName'    => $faker->lastName,
+            'lastName'      => $faker->lastName,
+            'email'         => $faker->firstName.'.'.$faker->lastName.'@gmail.com',
             'description'   => $faker->paragraph,
             'yearLevel'     => $faker->numberBetween($min = 1, $max = 5),    
             'userType'      => $faker->randomElement($roleValues),

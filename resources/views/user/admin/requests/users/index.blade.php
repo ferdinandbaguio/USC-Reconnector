@@ -72,9 +72,9 @@
                     
                     <i class="ti-close"></i>                                
                 </button>
-                {!! Form::close() !!} &nbsp;
+                {!! Form::close() !!}
                 {!! Form::open(['url' => '/users/registration/'.$user->id, 'method' => 'DELETE', 
-                                'style' => 'display:inline-block']) !!}
+                                'style' => 'display:inline-block;']) !!}
                 @csrf
                 <button type="submit" class="btn btn-danger btn-xs"
                         data-toggle="tooltip" data-original-title="Delete">
