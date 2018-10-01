@@ -10,21 +10,20 @@
 
 <div class="page-heading">
 
-<h1 class="page-title">User Registration</h1>
+<h1 class="page-title">Users</h1>
 
 @include('_inc.messages')
 
 <div class="page-content fade-in-up">
 <div class="ibox">
     <div class="ibox-head">
-        <div class="ibox-title text-warning">Pending Requests</div>
+        <div class="ibox-title text-info">Role: <b><i> {{ $user->userType }} </i></b></div>
     </div>
     <div class="ibox-body">
     <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Type</th>
                 <th>First Name</th>
                 <th>Middle Name</th>
                 <th>Last Name</th>
@@ -37,7 +36,6 @@
         <tfoot>
             <tr>
                 <th>ID</th>
-                <th>Type</th>
                 <th>First Name</th>
                 <th>Middle Name</th>
                 <th>Last Name</th>
@@ -51,13 +49,12 @@
             @foreach ($users as $user)
             <tr>
                 <td>{{ $user->id}}</td>
-                <td>{{ $user->userType }}</td>
                 <td>{{ $user->firstName }}</td>
                 <td>{{ $user->middleName }}</td>
                 <td>{{ $user->lastName }}</td>
-                <td>{{ $user->sex }}</td>
-                <td>{{ $user->idnumber }}</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->idnumber }}</td>
+                <td>{{ $user->sex }}</td>
                 <td>
                 {!! Form::open(['url' => '/users/registration/'.$user->id, 'method' => 'PATCH', 
                                 'style' => 'display:inline-block;']) !!}

@@ -23,9 +23,13 @@ Route::group(['middleware' => 'auth'], function () {
     // Teacher
     Route::view('/teacher', 'user.teacher.index')->name('teachers');
 
-    // Admin
+    // Admin 
     Route::view('/admin', 'user.admin.index')->name('admins');
-    
+    Route::view('/user/students', 'User\Admin\CRUD\UserController@students')->name('ShowStudents');
+    Route::view('/user/alumni', 'User\Admin\CRUD\UserController@alumni')->name('ShowAlumni');
+    Route::view('/user/teachers', 'User\Admin\CRUD\UserController@teachers')->name('ShowTeachers');
+    Route::view('/user/admins', 'User\Admin\CRUD\UserController@admins')->name('ShowAdmins');
+
 // Resources ==============================================================
 
     //Student

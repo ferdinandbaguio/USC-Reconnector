@@ -28,22 +28,19 @@
             </li>
             <li>
                 <a href="javascript:;"><i class="sidebar-item-icon fa fa-edit"></i>
-                    <span class="nav-label">Forms</span><i class="fa fa-angle-left arrow"></i></a>
+                    <span class="nav-label">Users</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="form_basic.html">Basic Forms</a>
+                        <a href="/users/students">Students</a>
                     </li>
                     <li>
-                        <a href="form_advanced.html">Advanced Plugins</a>
+                        <a href="/users/alumni">Alumni</a>
                     </li>
                     <li>
-                        <a href="form_masks.html">Form input masks</a>
+                        <a href="/users/teachers">Teachers</a>
                     </li>
                     <li>
-                        <a href="form_validation.html">Form Validation</a>
-                    </li>
-                    <li>
-                        <a href="text_editors.html">Text Editors</a>
+                        <a href="/user/admins">Admins</a>
                     </li>
                 </ul>
             </li>
