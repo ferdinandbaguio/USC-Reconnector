@@ -42,7 +42,7 @@
   </div>
 
   {{-- Side Navigation --}}
-  <div class="sideDiv d-md-block d-lg-block d-none  rounded-bottom" onmouseleave="deToggle()">
+  <div class="sideDiv d-md-block d-lg-block d-none rounded-bottom" onmouseleave="deToggle()">
   <div class="container-fluid pt-4">
     <a href="/alumnus" class="text-white" id="hyperlink">
       <div class="row hyperlink rowSide mt-5">

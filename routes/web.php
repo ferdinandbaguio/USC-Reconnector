@@ -8,6 +8,7 @@ Route::group(['middleware' => 'guest'], function () {
     
         // Login
         Route::view('/', 'authenticate.login')->name('login');
+        Route::view('/newhome', '.newhome');
         Route::post('/login','LoginController@login')->name('login.submit');
         
         Route::view('request', 'authenticate.register')->name('showRegister');

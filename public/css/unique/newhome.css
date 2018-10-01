@@ -1,0 +1,77 @@
+/*BODY COLOR*/
+body{
+  background-color: #EFEFEF
+}
+
+
+@font-face {font-family: 'Roboto';src: url('{{ asset('css/font/Roboto/Roboto-Light.ttf')}}');}
+.fontRoboto{
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.logoPic{
+  width:180px;
+}
+.bellShake:hover{
+    animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) both;
+    backface-visibility: hidden;
+}
+@keyframes bellshake {
+    0% { transform: rotate(0); }
+    15% { transform: rotate(5deg); }
+    30% { transform: rotate(-5deg); }
+    45% { transform: rotate(4deg); }
+    60% { transform: rotate(-4deg); }
+    75% { transform: rotate(2deg); }
+    85% { transform: rotate(-2deg); }
+    92% { transform: rotate(1deg); }
+    100% { transform: rotate(0); }
+}
+/*Page Content*/
+.FirstContainer{
+	background-image: url("/img/homepage_images/Pic6.jpg");
+	background-size: cover; 
+  background-position: center;
+	height:100vh; 
+	opacity: 1;
+	border:0px solid red;
+	z-index: -1;
+}
+.SecondContainer{
+  background-color: rgba(0,0,0,0.85);
+  background-size: cover;
+  position: absolute;
+  top:0;
+  height: 100vh;
+  z-index: 1;
+}
+
+
+@media (max-width: 767.98px) {
+	.logoPic{
+  width:150px;
+}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
