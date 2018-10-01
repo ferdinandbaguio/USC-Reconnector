@@ -18,7 +18,7 @@ class CreateGraduationsTable extends Migration
             $table->date('dateOfGraduation');
             $table->integer('batch');
 
-            $table->rememberToken();
+            
             $table->timestamps();
             $table->softDeletes();
         });

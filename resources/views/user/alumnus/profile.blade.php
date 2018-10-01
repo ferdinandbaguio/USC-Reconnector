@@ -1,23 +1,27 @@
-@extends('_layouts.alumnus')
+@extends('_layouts.app')
+
+@section('header')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/unique/alumnus/profile.css') }}">
+@endsection
 
 @section('content')
-<div class="row mt-3 mb-5">
+<div class="row mt-3 mb-5" style="box-shadow:2px 2px 2px;">
   <!-- Alumni Profile Details -->
-  <div class="col-sm-2 col-md-4 py-4" style="background:url('/img/div_bgs/abg.jpg');">
-    <div class="card border border-light position-absolute align-middle">
-      <img class="card-img-top mx-auto" src="/img/homepage_images/Girl.jpg" alt="Card image" style="width: 150px;">
-      <div class="card-body">
-      <h4 class="card-title fontRoboto">{{Auth::user()->full_name}}</h4>
-      <p class="card-text">Location: <em> IT.Park Qualfon Building Telstra Pizza Resto Bar </em></p>
+      <div class="col-sm-2 col-md-4 py-4" style="background:url('/img/div_bgs/abg.jpg');">
+        <div class="card border border-light position-absolute align-middle">
+          <img class="card-img-top mx-auto" src="/img/homepage_images/Girl.jpg" alt="Card image" style="width: 150px;">
+          <div class="card-body">
+          <h4 class="card-title fontRoboto"> {{Auth::user()->full_name}} </h4>
+          <p class="card-text">Location: <em> IT.Park Qualfon Building Telstra Pizza Resto Bar </em></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
   <!-- Alumni Profile Details END-->
 
   <!-- Alumni Map Location -->
   <div class="col-md-8 p-0">
     <!-- This is only a test map for visual purposes only no back end -->
-    <div id="map" class="w-100 bg-dark">
+    <div id="map" class="w-100" style="background: url(/img/alt_imgs/GoogleMap.jpg);">
     </div>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap">
@@ -40,7 +44,7 @@
 <div class="row" style="position: relative;">
   <div class="col-md-8"> <!-- Job archive/history separator -->
   <!-- JOB INFORMATION -->
-  <div class="row mb-5">
+  <div class="row mb-5" style="box-shadow:2px 2px 2px;">
   <div class="col-md-12 border-bottom shadow-lg divInfoBg">
     <div class="row p-3"> 
       <h5 class="fontRoboto"><i class="fas fa-user-md"></i> Personal Information (Alumnus)</h5>
@@ -63,7 +67,7 @@
     </div> 
     <div class="row px-3 mb-3">
       <div class="col-sm-12 col-md-6 p-0">
-        <h6 class="d-inline"> Email:</h6> <p class="fontRoboto d-inline"> jonasgwapo@gmail.com </p>
+        <h6 class="d-inline"> Email:</h6> <p class="fontRoboto d-inline"> {{Auth::user()->email}} </p>
       </div>
       <div class="col-sm-12 col-md-6 p-0">
         <h6 class="d-inline"> Phone Number:</h6> <p class="fontRoboto d-inline"> 0901001010 </p>
@@ -86,7 +90,7 @@
   </div>
 
   <!-- Job archive/history container-->
-  <div class="col-md-3 mb-3 divInfoBg d-block archiveContainer"> 
+  <div class="col-md-3 mb-3 divInfoBg d-block archiveContainer" style="box-shadow:2px 2px 2px;"> 
     <div class="row mt-3">
       <div class="col-md-12">
         <h5 class="fontRoboto"><i class="fas fa-file-archive"></i> Job History </h5>
@@ -108,7 +112,7 @@
             <a href="/alumnus/jobs" class="linkSize"> Globe (January 2018)</a></li>
           <li> <img src="/img/company_logo/beats.png" class="align-middle rounded-circle" width="20px">
             <a href="/alumnus/jobs" class="linkSize"> Beats (July 2018)</a></li>
-          <li class="mt-2"><a href="#" class="linkSize">See more...</a> </li>
+          <li class="mt-2"><a href="/alumnus/jobs" class="linkSize">See more...</a> </li>
         </ul>
       </div>
     </div>

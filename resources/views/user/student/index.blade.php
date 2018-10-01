@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="{{ asset('css/font/roboto.css')}}">
-  <link rel="stylesheet" href="{{ asset('css/font/fontawesome.css')}}">
-  <link rel="stylesheet" href="{{ asset('dist/assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/font/roboto.css') }}">
+  <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/extra/vendors/font-awesome/css/font-awesome.min.css') }}">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('css/unique/student/profile.css') }}">
 
@@ -18,7 +18,7 @@
   <!-- Top Navigation Bar start -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top w-100">
       <a class="navbar-brand" href="#">
-        <img src="{{ asset('img/logo/USC-Reconnector') }}" style="width: auto;" alt="Oops! Something is not right">
+        <img src="{{ asset('img/logo/USC-Reconnector.png') }}" style="width: auto;" alt="Oops! Something is not right">
       </a>
       
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBarToggler" 
