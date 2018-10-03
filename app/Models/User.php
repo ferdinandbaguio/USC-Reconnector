@@ -40,12 +40,12 @@ class User extends Authenticatable
         return ucfirst($this->firstName) . ' ' . ucfirst($this->middleName) . ' ' . 
         ucfirst($this->lastName);
     }
-    public function message()
+    public function messages()
     {
         return $this->hasMany('App\Models\Message','sender_id');
     }
 
-    public function user_skill()
+    public function user_skills()
     {
         return $this->hasMany('App\Models\User_Skill','user_id');
     }
@@ -55,34 +55,39 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Student_Class','student_id');
     }
     
-    public function post()
+    public function posts()
     {
         return $this->hasMany('App\Models\Post', 'poster_id');
     }
 
-    public function occupation()
+    public function occupations()
     {
         return $this->hasMany('App\Models\Occupation', 'alumni_id');
     }
 
-    public function graduate()
+    public function graduates()
     {
         return $this->hasMany('App\Models\Graduate', 'alumni_id');
     }
 
-    public function course()
+    public function courses()
     {
         return $this->belongsTo('App\Models\Course','course_id');
     }
 
-    public function department()
+    public function departments()
     {
         return $this->belongsTo('App\Models\Department','department_id');
     }
 
-    public function jobPost()
+    public function jobPosts()
     {
         return $this->hasMany('App\Models\JobPost', 'user_id');
+    }
+
+    public function announcements()
+    {
+        return $this->hasMany('App\Models\Announcement', 'user_id');
     }
 
     
