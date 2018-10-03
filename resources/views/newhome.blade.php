@@ -38,30 +38,32 @@
         </nav>
 
         <div class="container-fluid mt-5">
-        <div class="row">
-          <div class="col-12 mt-5">
-          <img src="/img/logo/Logo.png" class="d-block mx-auto" width="180px">
+          <div class="row mt-auto">
+            <div class="col-12 mt-5">
+            <img src="/img/logo/Logo.png" class="d-block mx-auto" width="180px">
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-12">
+            <h1 class="display-4 text-white text-center">Welcome to Student-Reconnector!</h1>
+          </div>
+          </div>
+          <div class="row mb-auto">
+            <button type="button" class="btn btn-outline-light ml-auto mr-2">Jonas Gwapo</button>
+            <button type="button" class="btn btn-outline-light mr-auto">Join us now!</button>
           </div>
         </div>
-        <div class="row">
-        <div class="col-12">
-          <h1 class="display-4 text-white text-center">Welcome to Student-Reconnector!</h1>
-        </div>
-        </div>
-        <div class="row">
-          <button type="button" class="btn btn-outline-light ml-auto mr-2">Jonas Gwapo</button>
-          <button type="button" class="btn btn-outline-light mr-auto">Join us now!</button>
-        </div>
-        </div>
+        
       </div>
 
+    
       
 
     </div>
 
 
     
-      <div id="carouselExampleIndicators" class="carousel slide w-50" data-ride="carousel">
+      <div id="carouselExampleIndicators" class="carousel slide w-75 mx-auto" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -69,16 +71,32 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="/img/homepage_images/Pic5.jpg" alt="First slide">
+            <div class="d-block w-100" style="background: url(/img/homepage_images/Pic5.jpg);background-position: center;background-size: cover; height:400px">
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>JONAS GWAPO</h5>
+              <p>JONAS GWAPO</p>
+            </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/img/homepage_images/Pic6.jpg" alt="Second slide">
+            <div class="d-block w-100" style="background: url(/img/homepage_images/Pic6.jpg);background-position: center;background-size: cover; height:400px">
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>JONAS GWAPO</h5>
+              <p>JONAS GWAPO</p>
+            </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/img/homepage_images/Pic7.jpg" alt="Third slide">
+            <div class="w-100" style="background: url(/img/homepage_images/Pic7.jpg);background-position: center;background-size: cover; height:400px">
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>JONAS GWAPO</h5>
+              <p>JONAS GWAPO</p>
+            </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+
+        <a class="carousel-control-prev" style="border:5px solid red" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
