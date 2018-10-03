@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Teacher
 
     // Admin
-    Route::resource('/users/registration', 'Admin\UserRegistrationController', 
+    Route::resource('registration', 'Admin\UserRegistrationController', 
     ['only' => ['index', 'edit', 'update', 'destroy']]);
 
     //TEST for admin table pending access request

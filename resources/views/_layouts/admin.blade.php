@@ -46,11 +46,13 @@
         <div class="page-preloader">Loading</div>
     </div>
     <!-- END PAGA BACKDROPS-->
+
     <!-- CORE PLUGINS-->
     <script type="text/javascript" src="{{ asset('js/extra/vendors/jquery/dist/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/extra/vendors/metisMenu/dist/metisMenu.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/extra/vendors/popper.js/dist/umd/popper.min.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/extra/vendors/metisMenu/dist/metisMenu.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/extra/vendors/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     
     <!-- PAGE LEVEL PLUGINS-->
@@ -58,7 +60,6 @@
 
     <!-- CORE SCRIPTS-->
     <script type="text/javascript" src="{{ asset('js/extra/app.min.js') }}"></script>
-
 </body>
 
 </html>
