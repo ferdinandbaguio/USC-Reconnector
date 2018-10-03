@@ -1,12 +1,13 @@
-/*BODY COLOR*/
-body{
-  background-color: #EFEFEF
+/*div bg COLOR*/
+.bgDivs{
+  background-color: #D8D9DE;
 }
 
 
-@font-face {font-family: 'Roboto';src: url('{{ asset('css/font/Roboto/Roboto-Light.ttf')}}');}
+
 .fontRoboto{
     font-family: 'Roboto', sans-serif !important;
+    font-weight: 300 !important;
 }
 
 .logoPic{
@@ -32,10 +33,13 @@ body{
 	background-image: url("/img/homepage_images/Pic6.jpg");
 	background-size: cover; 
   background-position: center;
+  filter: blur(3px);
 	height:100vh; 
 	opacity: 1;
 	border:0px solid red;
 	z-index: -1;
+  position: sticky;
+  top:0;
 }
 .SecondContainer{
   background-color: rgba(0,0,0,0.85);
@@ -45,7 +49,17 @@ body{
   height: 100vh;
   z-index: 1;
 }
+.form-control{
+  box-shadow: inset 0px 0px 5px 0px #4E9DA6;
+  padding: 12px;
+}
 
+.featureIcons{
+  font-size: 70px;
+}
+.featMutedTxt{
+  color:#665F5F;
+}
 
 @media (max-width: 767.98px) {
 	.logoPic{
