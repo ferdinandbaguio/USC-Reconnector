@@ -9,7 +9,7 @@ class Announcement extends Model
     protected $fillable = [
         'title',
         'announcement',
-        'picture',
+        'image',
         'user_id'
     ];
 

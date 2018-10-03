@@ -69,9 +69,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/users/registration', 'Admin\UserRegistrationController', 
     ['only' => ['index', 'edit', 'update', 'destroy']]);
 
-    //TEST for admin table pending access request
-    Route::get('test','RequestController@index');
-    Route::post('test/approve/{id}','RequestController@approve')->name('request.approve');
-    Route::post('test/decline/{id}','RequestController@decline')->name('request.decline');
+    Route::resource('announcements','AnnouncementController')->except('create');    
 
 });

@@ -27,7 +27,7 @@
     <div class="col-md-12" style="border-bottom: 1px solid gray;">
     </div>
   </div>  <!-- School Ann Header END-->
-  
+  @foreach($announcements as $row)
   <!-- Div latest announcement container -->
   <div class="row">
   <div class="col-12 col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
@@ -49,7 +49,7 @@
 
   </div>
   </div><!-- Div latest announcement container end -->
-
+  @endforeach
 
 
   <div class="row mt-5"><!-- Alumni Job Header -->
