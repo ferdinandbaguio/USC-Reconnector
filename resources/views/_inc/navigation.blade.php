@@ -1,9 +1,8 @@
 <!-- New Top Navigation Bar start -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100">
-    <a class="navbar-brand" href="#">
-      <img src="{{ asset('img/logo/Logo.ico') }}" width="40" height="40" 
+    <a class="navbar-brand py-0" href="#">
+      <img src="{{ asset('img/logo/studrec2.png') }}" width="200" height="50" 
       style="margin-right:10px;" alt="Logo">
-      <img src="{{ asset('img/logo/USC-Reconnector.png') }}" style="width: auto;" alt="USC-Reconnector">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBarToggler" aria-controls="topNavBarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-angle-double-down"></i>

@@ -9,6 +9,10 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
+
+    public function index(){
+        return view('authenticate.login');
+    }
 	public function login(Request $request)
     {
         $credentials = $request->only('idnumber', 'password');
@@ -24,7 +28,7 @@ class LoginController extends Controller
                         return view('user.student.index');
                         break;
                     case 'Alumnus':
-                        return view('user.alumnus.index');
+                        return redirect(route('lecar'));
                         break;
                     case 'Teacher':
                         return view('user.teacher.index');
@@ -38,18 +42,13 @@ class LoginController extends Controller
                     case 'Admin':
                         return view('user.admin.index');
                         break;
-                    
-                    default:
-                         Auth::logout();
-                        return redirect()->back();
-                        break;
                 }
             }else{
                 Auth::logout();
                 return redirect()->route('login');
             }
         }
-        return redirect()->back();
+        return redirect()->route('login');
     }
 
     public function logout()
