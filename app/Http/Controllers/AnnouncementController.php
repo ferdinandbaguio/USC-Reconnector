@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Announcement;
+use App\Models\User;
+use Auth;
 class AnnouncementController extends Controller
 {
     /**
@@ -13,8 +15,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $announcements = Announcement::all();
-        return view('users.alumnus.index', compact('announcements')); 
+        
     }
     /**
      * Store a newly created resource in storage.

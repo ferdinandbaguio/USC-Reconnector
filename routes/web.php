@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Student
     Route::group(['middleware' => 'student'], function () {  
-        Route::view('/student', 'user.student.index')->name('home');
+
         Route::view('/studenthome', 'user.student.home')->name('students');
         Route::view('/student/class', 'user.student.class')->name('students');
     });
@@ -35,19 +35,20 @@ Route::group(['middleware' => 'auth'], function () {
     });
     // Alumnus
     // Route::group(['middleware' => 'alumnus'], function () {  
-        Route::view('/alumnus', 'user.alumnus.index')->name('lecar');
+      
         Route::view('/alumnus/profile', 'user.alumnus.profile');
         Route::view('/alumnus/jobs', 'user.alumnus.jobs');
         Route::view('/alumnus/communicate', 'user.alumnus.communicate');
 
         //Alumnus 
         Route::resource('jobPosts','JobPostController')->except('create');
+        Route::resource('announcements','AnnouncementController')->except('create');
     // });
 
     
     // Teacher
     // Route::group(['middleware' => 'teacher'], function () {
-        Route::view('/teacher', 'user.teacher.index')->name('teachers');
+        // 
     // });
     
 
@@ -69,6 +70,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/users/registration', 'Admin\UserRegistrationController', 
     ['only' => ['index', 'edit', 'update', 'destroy']]);
 
-    Route::resource('announcements','AnnouncementController')->except('create');    
+    Route::get('/home','HomeController@latestPost')->name('home');  
 
 });

@@ -44,7 +44,7 @@
   {{-- Side Navigation --}}
   <div class="sideDiv d-md-block d-lg-block d-none rounded-bottom" onmouseleave="deToggle()">
   <div class="container-fluid pt-4">
-    <a href="/alumnus" class="text-white" id="hyperlink">
+    <a href="{{ route('home') }}" class="text-white" id="hyperlink">
       <div class="row hyperlink rowSide mt-5">
         <div class="col-8 mt-3"> 
           <h6 class="fontRoboto">Home</h6>
