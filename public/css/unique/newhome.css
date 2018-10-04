@@ -10,7 +10,7 @@ body{
 
 
 .logoPic{
-  width:180px;
+  width:150px;
 }
 .bellShake:hover{
     animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) both;
@@ -48,6 +48,10 @@ body{
   height: 100vh;
   z-index: 1;
 }
+.loginBtn{
+  color: #CECFD5; 
+  font-size: 17px;
+}
 #loginForm{
   transition: 0.3s ease-in-out;
 }
@@ -65,6 +69,9 @@ body{
   color:#665F5F;
 }
 
+.borderBelowCount{
+  border-top:1px solid #8CC5CC;
+}
 .numCount{
   text-shadow:0 0 4px;
 }
