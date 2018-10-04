@@ -1,14 +1,13 @@
+body{
+    font-family: 'Roboto', sans-serif !important;
+}
+
+
 /*div bg COLOR*/
 .bgDivs{
   background-color: #D8D9DE;
 }
 
-
-
-.fontRoboto{
-    font-family: 'Roboto', sans-serif !important;
-    font-weight: 300 !important;
-}
 
 .logoPic{
   width:180px;
@@ -49,11 +48,16 @@
   height: 100vh;
   z-index: 1;
 }
+#loginForm{
+  transition: 0.3s ease-in-out;
+}
+#regForm{
+  transition: 0.3s ease-in-out;
+}
 .form-control{
   box-shadow: inset 0px 0px 5px 0px #4E9DA6;
   padding: 12px;
 }
-
 .featureIcons{
   font-size: 70px;
 }
@@ -61,11 +65,35 @@
   color:#665F5F;
 }
 
+.numCount{
+  text-shadow:0 0 4px;
+}
+
+
+
+
+.footTxtColor{
+  color: #2E4053;
+}
+.list-unstyled>li:hover,.list-unstyled>li>a:hover{
+  color: #2E4053;
+  margin-left:4px;
+  transition: 0.3s ease-in-out;
+}
+.containerBelow{
+  border-top:1.5px solid #707B7C
+}
+
+.socialLogoSize{
+  font-size: 30px;
+  margin-right: 15px;
+}
+/*MEDIA QUERY FOR MOBILE VIEW*/
 @media (max-width: 767.98px) {
-	.logoPic{
+.logoPic{
   width:150px;
 }
-	
+
 }
 
 
