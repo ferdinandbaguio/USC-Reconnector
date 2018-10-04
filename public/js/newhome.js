@@ -1,17 +1,19 @@
 
 
-// Count Up script animate
+    // Count Up script animate
     $('.count').each(function () {
     $(this).prop('Counter',0).animate({
             Counter: $(this).text()
         }, {
-            duration: 5000,
+            duration: 8000,
             easing: 'swing',
             step: function (now) {
                 $(this).text(Math.ceil(now));
             }
         });
     });
+
+
 
     // Login to register animate
     $(document).ready(function(){
