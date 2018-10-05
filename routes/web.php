@@ -5,9 +5,10 @@
 Route::group(['middleware' => 'guest'], function () {
 
 // Guest Users ============================================================
-    
+        //Landing Page
+        Route::view('/', 'newhome')->name('landingpage');
         // Login
-        Route::get('/', 'LoginController@index')->name('login');
+        Route::get('/old Login', 'LoginController@index')->name('login');
         Route::post('/login','LoginController@login')->name('login.submit');
         
         Route::view('request', 'authenticate.register')->name('showRegister');
@@ -22,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
 // Authentication =========================================================
 
     // Route::get('/home', 'LoginController@index')->name('home');
-    Route::view('/homie', 'newhome')->name('homie');
+    
 
 // Views ==================================================================
 
