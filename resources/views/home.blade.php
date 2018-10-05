@@ -28,7 +28,7 @@
     </div>
   </div>  <!-- School Ann Header END-->
  
-
+  @unless(!$latestannouncement)
   <!-- Div latest announcement container -->
   <div class="row">
   <div class="col-12 col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
@@ -50,7 +50,8 @@
 
   </div>
   </div><!-- Div latest announcement container end -->
-
+  @else
+  @endunless
 
  
   <div class="row mt-5"><!-- Alumni Job Header -->
@@ -62,37 +63,38 @@
     <div class="col-md-12" style="border-bottom: 1px solid gray;">
     </div>
   </div>  <!-- Alumni Job Header END-->
-
+@unless(!$latestjobpost)
   <!-- Div latest job container -->
   <div class="row">
-  <div class="col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
-    <div class="row">
-    <div class="col-2 col-md-1 mt-2">
-      <img src="/img/homepage_images/Girl.jpg" class="rounded-circle" width="50px" /> 
-    </div>
-    <div class="col-8 col-md-4 mt-2">
-      <p class="m-0 text-muted"> Posted by:  {{$latestjobpost->users->fullname}} </p>
-      <p class="m-0 text-muted"> </p>
-    </div>
-    </div>
 
-    <div class="row">
-      <div class="col-12 col-md-12 mt-4">
-      <p class="m-0"> Company: {{$latestjobpost->companyName}} </p>
-      <p class="m-0"> Location: {{$latestjobpost->address}} </p>
-      <p class="m-0"> Job Title: {{$latestjobpost->jobTitle}} </p>
-      <p class="m-0"> Job Description: {{$latestjobpost->description}} </p>
-      <p class="m-0"> Salary Range: {{$latestjobpost->salaryRange}} </p>
-      <p class="m-0"> Contact: {{$latestjobpost->contactNo}} </p>
-      <p class="m-0"> Email: {{$latestjobpost->email}} </p>
+    <div class="col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
+      <div class="row">
+      <div class="col-2 col-md-1 mt-2">
+        <img src="/img/homepage_images/Girl.jpg" class="rounded-circle" width="50px" /> 
+      </div>
+      <div class="col-8 col-md-4 mt-2">
+        <p class="m-0 text-muted"> Posted by:  {{$latestjobpost->users->fullname}} </p>
+        <p class="m-0 text-muted"> </p>
+      </div>
+      </div>
 
-      <img src="/img/homepage_images/Pic5.jpg" width="150px">
+      <div class="row">
+        <div class="col-12 col-md-12 mt-4">
+        <p class="m-0"> Company: {{$latestjobpost->companyName}} </p>
+        <p class="m-0"> Location: {{$latestjobpost->address}} </p>
+        <p class="m-0"> Job Title: {{$latestjobpost->jobTitle}} </p>
+        <p class="m-0"> Job Description: {{$latestjobpost->description}} </p>
+        <p class="m-0"> Salary Range: {{$latestjobpost->salaryRange}} </p>
+        <p class="m-0"> Contact: {{$latestjobpost->contactNo}} </p>
+        <p class="m-0"> Email: {{$latestjobpost->email}} </p>
+
+        <img src="/img/homepage_images/Pic5.jpg" width="150px">
+        </div>
       </div>
     </div>
-
-  </div>
   </div><!-- Div latest job container end -->
-
+  @else
+  @endunless
 
 
   <div class="row mt-5"><!-- Recent Posts Header -->
