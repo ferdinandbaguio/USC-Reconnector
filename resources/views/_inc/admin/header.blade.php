@@ -1,9 +1,9 @@
 <!-- START HEADER-->
 <header class="header">
     <div class="page-brand">
-        <a class="link" href="index.html">
+        <a class="link" href="/admin">
             <span class="brand">
-                <img src="{{  asset('img/logo/USC-Reconnector.png') }}">
+                <img src="{{  asset('img/logo/studrec2.png') }}" width="200" height="90" alt="Recon">
             </span>
             <span class="brand-mini">
                 <img src="{{ asset('img/logo/Logo.ico') }}" width="32" height="30" alt="Logo">
@@ -148,10 +148,15 @@
                     <span></span>{{ Auth::user()->userType }}<i class="fa fa-angle-down m-l-5"></i></a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="profile.html"><i class="fa fa-user"></i>Profile</a>
-                    <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i>Settings</a>
+                    <a class="dropdown-item" href="profile.html"><i class="fa fa-building"></i>Job Profile</a>
                     <a class="dropdown-item" href="javascript:;"><i class="fa fa-support"></i>Support</a>
                     <li class="dropdown-divider"></li>
-                    <a class="dropdown-item" href="login.html"><i class="fa fa-power-off"></i>Logout</a>
+                    {!! Form::open(['url' => route('logout'), 'method' => 'POST', 'class' => 'logout', 'id' => 'logout']) !!}
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault();
+                            document.getElementById('logout').submit();">
+                            <i class="fa fa-power-off"></i>Logout
+                        </a>
+			        {!! Form::close() !!}   
                 </ul>
             </li>
         </ul>

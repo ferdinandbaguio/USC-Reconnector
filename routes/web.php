@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
 // Authentication =========================================================
 
     // Route::get('/home', 'LoginController@index')->name('home');
+    Route::view('/homie', 'newhome')->name('home');
 
 // Views ==================================================================
 
@@ -54,10 +55,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin 
     Route::view('/admin', 'user.admin.index')->name('admins');
-    Route::view('/user/students', 'Admin\UserController@students')->name('ShowStudents');
-    Route::view('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
-    Route::view('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
-    Route::view('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
+    Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
+    Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
+    Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
+    Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
 
 // Resources ==============================================================
 
@@ -67,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Teacher
 
     // Admin
-    Route::resource('/users/registration', 'Admin\UserRegistrationController', 
+    Route::resource('registration', 'Admin\UserRegistrationController', 
     ['only' => ['index', 'edit', 'update', 'destroy']]);
 
     Route::get('/home','HomeController@latestPost')->name('home');  

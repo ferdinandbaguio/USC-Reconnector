@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" type="text/css" href="{{ asset('css/unique/student/profile.css') }}">
 
-  <title>{{Auth::user()->full_name}}</title>
+  <title>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} | {{Auth::user()->userType}}</title>
 </head>
 
 <body>
