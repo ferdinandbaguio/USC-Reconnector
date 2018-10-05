@@ -19,6 +19,8 @@ class CreateOccupationsTable extends Migration
 
             $table->string('name');
             $table->string('address');
+            $table->string('salaryRangeOne');
+            $table->string('salaryRangeTwo');
             $table->string('jobStart');
             $table->string('jobEnd');
 

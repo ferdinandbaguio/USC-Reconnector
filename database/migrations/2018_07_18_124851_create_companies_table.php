@@ -20,7 +20,8 @@ class CreateCompaniesTable extends Migration
             $table->string('country');
             $table->string('address');
             $table->text('description');
-            $table->string('service');
+            $table->string('picture');
+            $table->tinyinteger('linkage');
 
             $table->unsignedInteger('industry_id');
             $table->foreign('industry_id')->references('id')->on('industries')

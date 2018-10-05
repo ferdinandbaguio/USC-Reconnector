@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
 // Authentication =========================================================
 
     // Route::get('/home', 'LoginController@index')->name('home');
+    Route::view('/homie', 'newhome')->name('home');
 
 // Views ==================================================================
 
