@@ -12,21 +12,21 @@ class UserController extends Controller
     public function students()
     {
         $users = User::where('userType', '=', 'Student')->get();
-        return route('ShowStudents')->with('users',$users);
+        return view('user.admin.crud.users.students')->with('users',$users);
     }
     public function alumni()
     {
         $users = User::where('userType', '=', 'Alumnus')->get();
-        return route('ShowAlumni')->with('users',$users);
+        return view('user.admin.crud.users.alumni')->with('users',$users);
     }
     public function teachers()
     {
         $users = User::where('userType', '=', 'Teacher')->get();
-        return route('ShowTeachers')->with('users',$users);
+        return view('user.admin.crud.users.teachers')->with('users',$users);
     }
     public function admins()
     {
         $users = User::where('userType', '=', 'Admin')->get();
-        return route('ShowAdmins')->with('users',$users);
+        return view('user.admin.crud.users.admins')->with('users',$users);
     }
 }

@@ -54,10 +54,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin 
     Route::view('/admin', 'user.admin.index')->name('admins');
-    Route::view('/user/students', 'Admin\UserController@students')->name('ShowStudents');
-    Route::view('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
-    Route::view('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
-    Route::view('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
+    Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
+    Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
+    Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
+    Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
 
 // Resources ==============================================================
 

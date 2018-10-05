@@ -31,16 +31,16 @@
                     <span class="nav-label">Users</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="/users/students">Students</a>
+                        <a href="{{ route('ShowStudents') }}">Students</a>
                     </li>
                     <li>
-                        <a href="/users/alumni">Alumni</a>
+                        <a href="{{ route('ShowAlumni') }}">Alumni</a>
                     </li>
                     <li>
-                        <a href="/users/teachers">Teachers</a>
+                        <a href="{{ route('ShowTeachers') }}">Teachers</a>
                     </li>
                     <li>
-                        <a href="/user/admins">Admins</a>
+                        <a href="{{ route('ShowAdmins') }}">Admins</a>
                     </li>
                 </ul>
             </li>

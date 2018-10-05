@@ -16,10 +16,10 @@ class UserRegistrationController extends Controller
             $status = $request->status;
             if($status == 'Denied'){
                 $users = User::where('userStatus', '=', 'Denied')->get();
-                return view('user.admin.requests.users.index')->with('users', $users);
+                return view('user.admin.requests.registration')->with('users', $users);
             }
         }
-        return view('user.admin.requests.users.index')->with('users', $users);
+        return view('user.admin.requests.registration')->with('users', $users);
     }
 
     public function edit($id)
