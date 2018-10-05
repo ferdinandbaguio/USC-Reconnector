@@ -1,16 +1,16 @@
-/*BODY COLOR*/
 body{
-  background-color: #EFEFEF
-}
-
-
-@font-face {font-family: 'Roboto';src: url('{{ asset('css/font/Roboto/Roboto-Light.ttf')}}');}
-.fontRoboto{
     font-family: 'Roboto', sans-serif !important;
 }
 
+
+/*div bg COLOR*/
+.bgDivs{
+  background-color: #D8D9DE;
+}
+
+
 .logoPic{
-  width:180px;
+  width:150px;
 }
 .bellShake:hover{
     animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) both;
@@ -32,10 +32,13 @@ body{
 	background-image: url("/img/homepage_images/Pic6.jpg");
 	background-size: cover; 
   background-position: center;
+  filter: blur(3px);
 	height:100vh; 
 	opacity: 1;
 	border:0px solid red;
 	z-index: -1;
+  position: sticky;
+  top:0;
 }
 .SecondContainer{
   background-color: rgba(0,0,0,0.85);
@@ -45,13 +48,59 @@ body{
   height: 100vh;
   z-index: 1;
 }
+.loginBtn{
+  color: #CECFD5; 
+  font-size: 17px;
+}
+#loginForm{
+  transition: 0.3s ease-in-out;
+}
+#regForm{
+  transition: 0.3s ease-in-out;
+}
+.form-control{
+  box-shadow: inset 0px 0px 5px 0px #4E9DA6;
+  padding: 12px;
+}
+.featureIcons{
+  font-size: 70px;
+}
+.featMutedTxt{
+  color:#665F5F;
+}
+
+.borderBelowCount{
+  border-top:1px solid #8CC5CC;
+}
+.numCount{
+  text-shadow:0 0 4px;
+}
 
 
+
+
+.footTxtColor{
+  color: #2E4053;
+}
+.list-unstyled>li:hover,.list-unstyled>li>a:hover{
+  color: #2E4053;
+  margin-left:4px;
+  transition: 0.3s ease-in-out;
+}
+.containerBelow{
+  border-top:1.5px solid #707B7C
+}
+
+.socialLogoSize{
+  font-size: 30px;
+  margin-right: 15px;
+}
+/*MEDIA QUERY FOR MOBILE VIEW*/
 @media (max-width: 767.98px) {
-	.logoPic{
+.logoPic{
   width:150px;
 }
-	
+
 }
 
 
