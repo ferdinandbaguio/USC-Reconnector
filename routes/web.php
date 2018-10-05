@@ -5,10 +5,9 @@
 Route::group(['middleware' => 'guest'], function () {
 
 // Guest Users ============================================================
-        //Landing Page
-        Route::view('/', 'newhome')->name('landingpage');
+
         // Login
-        Route::get('/old Login', 'LoginController@index')->name('login');
+        Route::get('/', 'LoginController@index')->name('login');
         Route::post('/login','LoginController@login')->name('login.submit');
         
         Route::view('request', 'authenticate.register')->name('showRegister');
