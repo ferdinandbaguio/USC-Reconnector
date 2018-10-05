@@ -18,11 +18,11 @@ Route::group(['middleware' => 'guest'], function () {
         Route::post('logout', 'LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
-
+    Route::get('/home','HomeController@latestPost')->name('home');  
 // Authentication =========================================================
 
     // Route::get('/home', 'LoginController@index')->name('home');
-    Route::view('/homie', 'newhome')->name('home');
+    Route::view('/homie', 'newhome')->name('homie');
 
 // Views ==================================================================
 
@@ -71,6 +71,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('registration', 'Admin\UserRegistrationController', 
     ['only' => ['index', 'edit', 'update', 'destroy']]);
 
-    Route::get('/home','HomeController@latestPost')->name('home');  
+   
 
 });
