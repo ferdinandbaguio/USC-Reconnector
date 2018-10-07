@@ -258,7 +258,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content" style="background-color:#ECECEC">
           <div class="modal-header" style="border:none !important;">
-            <button type="button" class="close ml-auto" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close ml-auto p-0" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -287,20 +287,49 @@
             </div>
             <div class="row mt-4">
               <div class="col-md-8 mx-auto">
-                <input type="submit" value="Login" class="btn w-100 text-white" style="background-color:#4E9DA6">
+                <input type="submit" value="Login" class="btn w-100 text-white blueBtn">
               </div>
             </div>
             <div class="row mt-2 mb-4">
               <div class="col-md-8 mx-auto">
-                <a href="#" id="regClick"> Register Here </a> <label> to create an account</label> 
+                <a href="#" id="regClick"> Register Here</a> <label> to create an account</label> 
               </div>
             </div>
             </form>
             </div>
-            <!-- FORM FOR SIGNING IN END-->
+            <!-- FORM FOR SIGNING IN END-->          
+
+            <!-- Choose to what register type -->
+            <div class="container-fluid" id="chooseReg">
+              <div class="row mt-4">
+                <label class="mx-auto"> Register as: </label>
+              </div>
+              <div class="row">
+                <div class="col-md-8 mx-auto mt-2">
+                  <input type="button" value="Teacher" id="tForm" class="btn w-100 text-white blueBtn">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 mx-auto mt-4">
+                  <input type="button" value="Student" id="sForm" class="btn w-100 text-white blueBtn">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 mx-auto mt-4">
+                  <input type="button" value="Alumni" id="aForm" class="btn w-100 text-white blueBtn">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 mx-auto mt-4 mb-3">
+                  <input type="button" value="Back to Login" class="btn btn-danger w-100" id="logClick">
+                </div>
+              </div>
+            </div>
+            <!-- Choose to what register type END-->
+
 
             <!-- FORM FOR Registering -->
-            <div class="container-fluid collapse" id="regForm">
+            <div class="container-fluid" id="regForm">
             <form action="" method="POST">
               <div class="row mt-4">
                 <div class="col-md-8 mx-auto">
@@ -322,12 +351,12 @@
               </div>
               <div class="row mt-4 mb-2">
                 <div class="col-md-8 mx-auto">
-                  <input type="submit" value="Register" class="btn w-100 text-white" style="background-color:#4E9DA6">
+                  <input type="submit" value="Register" class="btn w-100 text-white blueBtn">
                 </div>
               </div>
-              <div class="row mb-4">
-                <div class="col-md-8 mx-auto">
-                  <input type="button" value="Back to Login" class="btn btn-danger w-100" id="logClick">
+              <div class="row">
+                <div class="col-md-8 mx-auto mt-2 mb-3">
+                  <input type="button" value="Back to Login" class="btn btn-danger w-100" id="logClick1">
                 </div>
               </div>
             </form>
@@ -346,11 +375,7 @@
 
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS, then Customized JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script
-  src="http://code.jquery.com/jquery-2.1.3.min.js"
-  integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
-  crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
