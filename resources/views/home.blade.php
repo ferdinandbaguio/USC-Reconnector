@@ -9,9 +9,12 @@
       <div class="col-md-12">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
       </div>
+
+      @if(Auth::user()->userType == "Teacher")
       <div class="col-md-12 mt-2">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#announcementModal"> <i class="fas fa-plus"></i> Add an Announcement</button>
       </div>
+      @endif
   </div>
 
   <div class="row"><!-- Father Row -->
@@ -19,7 +22,7 @@
 
 
   <div class="row"><!-- School Ann Header -->
-    <div class="col-9 col-md-5 py-2 rounded-top" style="background-image: linear-gradient(#32C275, #1CBB66)">
+    <div class="col-10 col-md-5 py-2 rounded-top" style="background-image: linear-gradient(#32C275, #1CBB66);">
       <p class="m-auto text-white"> Latest School Announcement </p>
     </div>
   </div>  
@@ -34,9 +37,9 @@
   <div class="col-12 col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
     <div class="row">
     <div class="col-2 col-md-1 mt-2">
-      <img src="/img/homepage_images/Boy.jpg" class="rounded-circle" width="50px" /> 
+      <img src="/img/homepage_images/Boy.jpg" class="rounded-circle postByImg" width="50px" /> 
     </div>
-    <div class="col-8 col-md-4 mt-2">
+    <div class="col-10 col-md-11 mt-2">
       <p class="m-0 text-muted"> Posted by:  {{$latestannouncement->users->fullname}} </p>
       <p class="m-0 text-muted"> {{$latestannouncement->created_at->format('M d Y g:i A')}} </p>
     </div>
@@ -44,7 +47,8 @@
 
     <div class="row">
       <div class="col-12 col-md-12 mt-4">
-      <p> {{$latestannouncement->announcement}}</p>
+      <strong> Title of Announcement </strong>
+      <p class="preserveLineBreaks"> {{$latestannouncement->announcement}} </p>
       </div>
     </div>
 
@@ -63,6 +67,7 @@
     <div class="col-md-12" style="border-bottom: 1px solid gray;">
     </div>
   </div>  <!-- Alumni Job Header END-->
+
 @unless(!$latestjobpost)
   <!-- Div latest job container -->
   <div class="row">
@@ -70,11 +75,11 @@
     <div class="col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
       <div class="row">
       <div class="col-2 col-md-1 mt-2">
-        <img src="/img/homepage_images/Girl.jpg" class="rounded-circle" width="50px" /> 
+        <img src="/img/homepage_images/Girl.jpg" class="rounded-circle postByImg" width="50px" /> 
       </div>
-      <div class="col-8 col-md-4 mt-2">
+      <div class="col-10 col-md-11 mt-2">
         <p class="m-0 text-muted"> Posted by:  {{$latestjobpost->users->fullname}} </p>
-        <p class="m-0 text-muted"> </p>
+        <p class="m-0 text-muted"> {{$latestjobpost->created_at->format('M d Y g:i A')}}</p>
       </div>
       </div>
 
@@ -88,7 +93,7 @@
         <p class="m-0"> Contact: {{$latestjobpost->contactNo}} </p>
         <p class="m-0"> Email: {{$latestjobpost->email}} </p>
 
-        <img src="/img/homepage_images/Pic5.jpg" width="150px">
+        <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px">
         </div>
       </div>
     </div>
@@ -98,27 +103,28 @@
 
 
   <div class="row mt-5"><!-- Recent Posts Header -->
-    <div class="col-6 col-md-4 py-2 rounded-top" style="background-image: linear-gradient(90deg, #1CBB66, #0A5492)" onmouseover = "this.style.cursor = 'pointer'">
-      <p class="m-auto text-white d-inline"> Announcements </p> <i class="fas fa-arrow-down text-white"></i>
+    <div class="col-7 col-md-4 py-2 rounded-top annBtn" onclick="hideJob()">
+      <p class="m-auto text-white d-inline"> Announcements </p> <i class="fas fa-arrow-down text-white" id="annI"></i>
     </div>
-    <div class="col-5 col-md-4 py-2 ml-1 rounded-top" style="background-image: linear-gradient(90deg, #0A5492, #1CBB66)" onmouseover = "this.style.cursor = 'pointer'">
-      <p class="m-auto text-white"> Job Posts </p>
+    <div class="col-5 col-md-4 py-2 ml-md-1 rounded-top jobBtn" onclick="hideAnn()">
+      <p class="m-auto text-white"> Job Posts <i class="fas fa-arrow-down text-white" id="jobI"></i></p>
     </div>
   </div>  
   <div class="row">
-    <div class="col-md-12" style="border-bottom: 1px solid gray;">
+    <div class="col-12" style="border-bottom: 1px solid gray;">
     </div>
   </div>  <!-- Recent Posts Header END-->
 
-  <!-- Div Recent Posts container -->
-  @foreach($announcements as $row)
-  <div class="row">
+
+<!-- Div Recent Announcement container -->
+@foreach($announcements as $row)
+  <div class="row annHolder">
     <div class="col-12 col-md-12 mt-3 pb-2 postBox bg-light">
         <div class="row">
         <div class="col-2 col-md-1 mt-2">
-        <img src="/img/homepage_images/Boy.jpg" class="rounded-circle" width="50px" /> 
+        <img src="/img/homepage_images/Boy.jpg" class="rounded-circle postByImg" width="50px" /> 
         </div>
-        <div class="col-8 col-md-4 mt-2">
+        <div class="col-10 col-md-11 mt-2">
         <p class="m-0 text-muted"> Posted by: {{$row->users->fullname}} </p>
         <p class="m-0 text-muted"> {{$row->created_at->format('M d Y g:i A')}} </p>
         </div>
@@ -126,7 +132,8 @@
 
         <div class="row">
         <div class="col-12 col-md-12 mt-4">
-        <p> {{$row->announcement}} </p>
+        <strong> Title of Announcement </strong>
+        <p class="preserveLineBreaks"> {{$row->announcement}} </p>
         </div>
         </div>
 
@@ -136,13 +143,13 @@
 
 @foreach($jobposts as $row)
   <!-- Div latest job container -->
-  <div class="row">
+  <div class="row jobHolder">
   <div class="col-12 col-md-12 mt-3 pb-2 postBox bg-light">
     <div class="row">
     <div class="col-2 col-md-1 mt-2">
-      <img src="/img/homepage_images/Girl.jpg" class="rounded-circle" width="50px" /> 
+      <img src="/img/homepage_images/Girl.jpg" class="rounded-circle postByImg" width="50px" /> 
     </div>
-    <div class="col-8 col-md-4 mt-2">
+    <div class="col-10 col-md-11 mt-2">
       <p class="m-0 text-muted"> Posted by: {{$row->users->fullname}} </p>
       <p class="m-0 text-muted"> {{$row->created_at->format('M d Y g:i A')}} </p>
     </div>
@@ -158,13 +165,13 @@
       <p class="m-0"> Contact: {{$row->contactNo}} </p>
       <p class="m-0"> Email: {{$row->email}} </p>
 
-      <img src="/img/homepage_images/Pic5.jpg" width="150px">
+      <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px">
       </div>
     </div>
 
   </div>
   </div><!-- Div latest job container end -->
-  @endforeach
+@endforeach
  
 
   <center> <p class="fontRoboto text-muted mt-5"> You have seen all the recent posts! </p></center>
@@ -176,9 +183,11 @@
       <div class="col-md-12">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
       </div>
+      @if(Auth::user()->userType == "Teacher")
       <div class="col-md-12 mt-2">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#announcementModal"> <i class="fas fa-plus"></i> Add an Announcement</button>
       </div>
+      @endif
     </div>
 
     <div class="row mt-5">
@@ -193,7 +202,7 @@
         <source src="/vid/Sas_Bulletin.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
        </video>
-       <p> University of San Carlos Tour - LRC & Stadium </p>
+       <p> SAS Bulletin - Staff Sessions </p>
 
       </div>
     </div>
@@ -293,4 +302,5 @@
   <!-- ADD ANNOUNCEMENT MODAL END-->
 
 
+<script type="text/javascript" src="/js/unique/home_nf.js"></script>
 @endsection

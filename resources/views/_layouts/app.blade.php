@@ -6,6 +6,7 @@
     <link rel="icon" href="{{ asset('img/logo/Logo.ico') }}" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="{{ asset('css/unique/alumnus/topsidenav.css') }}">
 
+    <!-- Not working css, commented for now -->
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
     <link rel="stylesheet" href="{{ asset('css/font/fontawesome/css/all.css') }}">
@@ -25,7 +26,6 @@
     <!-- Yielded css for specific pages -->
     @yield('header')
 
-    {{-- App Name is 'Student | Reconnector' --}}
     <title>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} | {{Auth::user()->userType}}</title>
 </head>
 

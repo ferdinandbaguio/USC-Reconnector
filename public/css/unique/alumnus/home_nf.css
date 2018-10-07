@@ -1,3 +1,4 @@
+
 /*BODY COLOR*/
 body{
   background-color: #EFEFEF
@@ -23,6 +24,9 @@ body{
 .postBox{
   box-shadow:0 0 5px;
 } 
+.postByImg{
+  box-shadow:0 0 5px;
+}
 
 .addJobBtn, .addJobBtn:focus{
   background: url("/img/div_bgs/divbg.jpg");
@@ -40,6 +44,21 @@ body{
   border-bottom-left-radius:50px;
 }
 
+.preserveLineBreaks{
+  white-space: pre-wrap;
+}
+
+.annBtn, .annBtn:hover{
+  background-color: #1CBB66;
+  cursor: pointer;
+}
+.jobBtn, .jobBtn:hover{
+  background-color: #0A5492;
+  cursor: pointer;
+}
+.jobHolder, #jobI{
+  display: none;
+}
 
 /* 
   MEDIA QUERIES 
