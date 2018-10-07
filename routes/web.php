@@ -59,6 +59,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
     Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
     Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
+    Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
+    Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
+    Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
 
 // Resources ==============================================================
 
