@@ -146,7 +146,7 @@
                     'style' => 'display:inline-block;', 'files' => TRUE]) !!}
     @csrf
     <div class="modal-body">
-            @include('_inc.admin.userEditUserModal')
+        @include('_inc.admin.userEditUserModal')
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
