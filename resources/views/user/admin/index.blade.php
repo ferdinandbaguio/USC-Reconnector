@@ -512,7 +512,6 @@
 <script type="text/javascript" src="{{ asset('js/scripts/dashboard_1_demo.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/extra/vendors/chart.js/dist/Chart.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/extra/vendors/jvectormap/jquery-jvectormap-2.0.3.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/extra/vendors/jvectormap/jquery-jvectormap-us-aea-en.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/extra/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 
 @endsection

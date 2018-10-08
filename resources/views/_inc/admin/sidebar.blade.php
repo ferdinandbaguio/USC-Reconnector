@@ -57,13 +57,17 @@
             <li>
                 <a href="#"><i class="sidebar-item-icon fa fa-map"></i>
                     <span class="nav-label">Tracking</span><i class="fa fa-angle-left arrow"></i></a>
-                {{-- 
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="maps_vector.html">Vector maps</a>
+                        <a href="{{route('ShowTestMap')}}">Test Map</a>
                     </li>
-                </ul>
-                 --}}
+                    <li>
+                        <a href="{{route('ShowWorld')}}">Worldwide</a>
+                    </li>
+                    <li>
+                        <a href="{{route('ShowContinent')}}">Nationwide</a>
+                    </li>
+                </ul>             
             </li>
             <li>
                 <a href="#"><i class="sidebar-item-icon fa fa-child"></i>

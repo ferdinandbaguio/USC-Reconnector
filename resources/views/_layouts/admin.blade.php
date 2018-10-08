@@ -25,20 +25,27 @@
     <div class="page-wrapper">
 
         {{-- Header --}}
-        @include('_inc/admin/header');
+        @include('_inc/admin/header')
 
         {{-- Side Bar --}}
-        @include('_inc/admin/sidebar');
+        @include('_inc/admin/sidebar')
 
         {{-- Content --}}
         <div class="content-wrapper">
-            @yield('content')
+            <div class="page-content fade-in-up">
+                @yield('content')
+            </div>
+            <footer class="page-footer">
+                <div class="font-13">2018 © <b>Student | Reconnector</b> - All rights reserved.</div>
+                <a class="px-4" href="admin" target="_blank">Check us out!</a>
+                <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
+            </footer>
         </div>
 
     </div>
 
     {{-- Config Panel --}}
-    @include('_inc/admin/config_panel');
+    @include('_inc/admin/config_panel')
 
     <!-- BEGIN PAGA BACKDROPS-->
     <div class="sidenav-backdrop backdrop"></div>
