@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/alumnus/profile', 'user.alumnus.profile');
         Route::view('/alumnus/jobs', 'user.alumnus.jobs');
         Route::view('/alumnus/communicate', 'user.alumnus.communicate');
+        Route::view('/alumnus/form', 'user.alumnus.form');
 
         //Alumnus 
         Route::resource('jobPosts','JobPostController')->except('create');

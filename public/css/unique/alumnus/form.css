@@ -1,0 +1,48 @@
+/*BODY COLOR*/
+body{
+  background-color: #EFEFEF
+}
+
+.fontRoboto{
+  font-family: 'Roboto', sans-serif !important;
+}
+.btn:hover{
+  cursor: pointer;
+}
+
+
+
+/* 
+Page Contents 
+*/
+.contentContainer{
+  padding-top:100px;
+  padding-left: 140px;
+  padding-right: 60px;
+  padding-bottom: 0px;
+}
+.chsStatBtn{
+  background-color:#4E9DA6;
+  cursor: pointer;
+
+  border:1.5px solid white;
+  border-top-right-radius:50px; 
+  border-bottom-right-radius:50px;
+  border-top-left-radius:50px; 
+  border-bottom-left-radius:50px;
+}
+
+.bg-light{
+  background-color: white !important;
+}
+/* 
+MEDIA QUERIES 
+*/
+@media only screen and (max-width: 767.98px) { 
+  .contentContainer {
+    padding-top:80px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+}

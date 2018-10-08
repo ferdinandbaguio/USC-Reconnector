@@ -68,7 +68,9 @@
 
 
 @media (max-width: 349.98px) { 
-
+.signOutBtn:hover {
+    animation:none;
+  }
 .logo{
   width:200px;
 }
