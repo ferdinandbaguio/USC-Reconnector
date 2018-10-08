@@ -49,7 +49,7 @@ class UserController extends Controller
                 $request['picture'] = $pictureFemaleValues[$picture];
             }
 
-            $request['password'] = $request['idnumber'];
+            $request['password'] = bcrypt($request['idnumber']);
             $request['userStatus'] = 'Approved';
             User::create($request);
 
