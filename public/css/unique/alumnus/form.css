@@ -3,24 +3,21 @@ body{
   background-color: #EFEFEF
 }
 
-.fontRoboto{
-  font-family: 'Roboto', sans-serif !important;
-}
 .btn:hover{
   cursor: pointer;
 }
 
 
-
-/* 
-Page Contents 
-*/
 .contentContainer{
   padding-top:100px;
   padding-left: 140px;
   padding-right: 60px;
   padding-bottom: 0px;
 }
+/* 
+Page Contents 
+*/
+
 .chsStatBtn{
   background-color:#4E9DA6;
   cursor: pointer;
