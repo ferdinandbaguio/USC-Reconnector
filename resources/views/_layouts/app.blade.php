@@ -64,7 +64,7 @@
           </div>
         </div>
       </a>
-      @if(Auth::user()->userType == "Alumni")
+      @if(Auth::user()->userType == "Alumnus")
       <a href="/alumnus/jobs" class="text-white" id="hyperlink">
         <div class="row mt-4 hyperlink test rowSide">
             <div class="col-8 mt-3 sideNavLink">

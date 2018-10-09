@@ -14,7 +14,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/alumnus/profile"> Profile </a>
         </li>
-        @if(Auth::user()->userType == "Alumni")
+        @if(Auth::user()->userType == "Alumnus")
         <li class="nav-item">
           <a class="nav-link" href="alumnus/jobs"> Jobs </a>
         </li>
