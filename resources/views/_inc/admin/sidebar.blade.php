@@ -59,9 +59,6 @@
                     <span class="nav-label">Tracking</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="{{route('ShowTestMap')}}">Test Map</a>
-                    </li>
-                    <li>
                         <a href="{{route('ShowWorld')}}">Worldwide</a>
                     </li>
                     <li>
@@ -74,7 +71,7 @@
             </li>
             <li>
                 <a href="#"><i class="sidebar-item-icon fa fa-child"></i>
-                    <span class="nav-label">Communicate</span><i class="fa fa-angle-left arrow"></i>
+                    <span class="nav-label">Communicate</span><i class="fa fa-angle-right arrow"></i>
                 </a>
             </li>
         </ul>

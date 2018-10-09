@@ -16,13 +16,13 @@
     <div class="col-md-4 form-group">
         <b>{{Form::label('idnumber', 'ID Number')}}</b>
         {{Form::number('idnumber', '', ['class' => 'form-control input-rounded', 
-        'placeholder' => 'Change ID Number', 'required', 'min' => 10000000, 'max' => 99999999])}}
+        'placeholder' => 'Add ID Number', 'required', 'min' => 10000000, 'max' => 99999999])}}
     </div>
 
     <div class="col-md-8 form-group">
         <b>{{Form::label('firstName', 'First Name')}}</b>
         {{Form::text('firstName', '', ['class' => 'form-control input-rounded', 
-        'placeholder' => 'Change First Name', 'required'])}}
+        'placeholder' => 'Type in the First Name', 'required'])}}
     </div>
 </div>
 
@@ -30,13 +30,13 @@
     <div class="col-md-6 form-group">
         <b>{{Form::label('middleName', 'Middle Name')}}</b>
         {{Form::text('middleName', '', ['class' => 'form-control input-rounded', 
-        'placeholder' => 'Change Middle Name'])}}
+        'placeholder' => 'Type in the Middle Name'])}}
     </div>
 
     <div class="col-md-6 form-group">
         <b>{{Form::label('lastName', 'Last Name')}}</b>
         {{Form::text('lastName', '', ['class' => 'form-control input-rounded', 
-        'placeholder' => 'Change Last Name', 'required'])}}
+        'placeholder' => 'Type in the Last Name', 'required'])}}
     </div>
 </div>
 
@@ -44,7 +44,7 @@
     <b>{{Form::label('email', 'Email Address')}}</b>
     <div class="input-group">
         {{Form::email('email', '', 
-        ['class' => 'form-control input-rounded', 'placeholder' => 'Change Email Address', 'required'])}}
+        ['class' => 'form-control input-rounded', 'placeholder' => 'Type in the Email Address', 'required'])}}
         <div class="input-rounded input-group-addon">@example.com</div>
     </div>
 </div>
@@ -59,20 +59,15 @@
         <b>{{Form::label('sex', 'Sex')}}</b>
         {{Form::select('sex', ['Male' => 'Male', 
                             'Female' => 'Female'], null, 
-                            ['class' => 'form-control input-rounded', 'placeholder' => 'Change Sex', 'required'])}}</div>
+                            ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Sex', 'required'])}}</div>
 </div>
 
 <div class="row">
     <div class="col-md-6 form-group">
-        <b>{{Form::label('userType', 'User Type')}}</b>
-        {{Form::select('userType', ['Student'       => 'Student', 
-                                    'Alumnus'       => 'Alumnus',
-                                    'Teacher'       => 'Teacher',
-                                    'Admin'         => 'Admin',
-                                    'Coordinator'   => 'Coordinator',
-                                    'Chair'         => 'Chair'], null, 
-                                    ['class' => 'form-control input-rounded', 
-                                    'placeholder' => 'Change User Type', 'required'])}}</div>
+        <b>{{Form::label('position', 'Position')}}</b>
+        {{Form::text('position', '', ['class' => 'form-control input-rounded', 
+        'placeholder' => 'Type in the Position', 'required'])}}</div>
+                                    
     <div class="col-md-6 form-group">
             <b>{{Form::label('userStatus', 'User Status')}}</b>
             {{ Form::select('userStatus', ['Approved'   => 'Approved',

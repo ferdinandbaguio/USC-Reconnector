@@ -29,7 +29,7 @@ class UserRegistrationController extends Controller
 
     public function update(Request $request)
     {  
-        if(isset($request->id)){
+        if(!isset($request->action)){
             $user = User::findOrFail($request->id);
             $user->update($request->all());
 

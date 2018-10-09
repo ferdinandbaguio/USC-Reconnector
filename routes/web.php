@@ -64,7 +64,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
     Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
 
-    Route::get('/track/testmap', 'Admin\TrackController@testmap')->name('ShowTestMap');
     Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
     Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
     Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
