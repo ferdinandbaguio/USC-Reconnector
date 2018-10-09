@@ -98,11 +98,13 @@
 			</div>
 		</div>
 		<div class="row mt-1">
-			<div class="col-md-12">
-				<p class="m-0"> <i class="fas fa-book" style="color: #574B14"></i> ENG 21</p> 
-				<p class="m-0"> <i class="fas fa-book" style="color: #574B14"></i> ENG 21</p> 
-				<p class="m-0"> <i class="fas fa-book" style="color: #574B14"></i> ENG 21</p> 
-				<p class="m-0"> <i class="fas fa-book" style="color: #574B14"></i> ENG 21</p> 
+			<div class="col-md-5">
+				<ul class="list-group list-group-flush">
+				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
+				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
+				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
+				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
+				</ul>
 			</div>
 		</div>
 
