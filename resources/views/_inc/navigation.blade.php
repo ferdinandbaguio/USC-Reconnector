@@ -14,9 +14,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/alumnus/profile"> Profile </a>
         </li>
+        @if(Auth::user()->userType == "Alumni")
         <li class="nav-item">
           <a class="nav-link" href="alumnus/jobs"> Jobs </a>
         </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link" href="#"></i>Communicate</a>
         </li>

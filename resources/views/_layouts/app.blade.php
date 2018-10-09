@@ -64,7 +64,7 @@
         </div>
       </div>
     </a>
-
+    @if(Auth::user()->userType == "Alumni")
     <a href="/alumnus/jobs" class="text-white" id="hyperlink">
       <div class="row mt-4 hyperlink test rowSide">
           <div class="col-8 mt-3 sideNavLink">
@@ -75,6 +75,8 @@
           </div>
       </div>
     </a>
+    @endif
+    
 
     @if(Auth::user()->userType == "Student")
     <a class="text-white" id="classCollapse" data-toggle="collapse" href="#classDropdown" aria-expanded="false">

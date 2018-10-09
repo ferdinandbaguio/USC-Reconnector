@@ -6,10 +6,11 @@
 
 @section('content')
 <div class="row mb-3 d-md-none">
+      @if(Auth::user()->userType == "Alumni")
       <div class="col-md-12">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
       </div>
-
+      @endif
       @if(Auth::user()->userType == "Teacher")
       <div class="col-md-12 mt-2">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#announcementModal"> <i class="fas fa-plus"></i> Add an Announcement</button>
@@ -180,9 +181,12 @@
 
   <div class="col-md-3 ml-auto"> 
     <div class="row d-none d-md-block">
+      @if(Auth::user()->userType == "Alumni")
       <div class="col-md-12">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
       </div>
+      
+      
       @if(Auth::user()->userType == "Teacher")
       <div class="col-md-12 mt-2">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#announcementModal"> <i class="fas fa-plus"></i> Add an Announcement</button>
