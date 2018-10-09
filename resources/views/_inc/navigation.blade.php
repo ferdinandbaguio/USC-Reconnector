@@ -1,8 +1,7 @@
 <!-- New Top Navigation Bar start -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100">
     <a class="navbar-brand py-0" href="#">
-      <img src="{{ asset('img/logo/studrec2.png') }}" width="200" height="50" 
-      style="margin-right:10px;" alt="Logo">
+      <img src="{{ asset('img/logo/studrec2.png') }}" width="180" height="55" alt="Logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBarToggler" aria-controls="topNavBarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-angle-double-down"></i>
@@ -15,9 +14,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/alumnus/profile"> Profile </a>
         </li>
+        @if(Auth::user()->userType == "Alumnus")
         <li class="nav-item">
           <a class="nav-link" href="alumnus/jobs"> Jobs </a>
         </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link" href="#"></i>Communicate</a>
         </li>

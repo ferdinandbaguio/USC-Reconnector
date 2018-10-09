@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+
+<div class="row">
+  <div class="alert alert-danger" role="alert">
+  Setup your alumni details now to avoid feature restrictions in the website. <a href="/alumnus/form">Click here!</a>
+  </div>
+</div>
+
+
+<div class="container-fluid">
 <div class="row mt-3 mb-5" style="box-shadow:2px 2px 2px;">
   <!-- Alumni Profile Details -->
       <div class="col-sm-2 col-md-4 py-4" style="background:url('/img/div_bgs/abg.jpg');">
@@ -117,5 +126,7 @@
       </div>
     </div>
   </div>
+</div>
+
 </div>
 @endsection

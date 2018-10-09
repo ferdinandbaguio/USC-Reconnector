@@ -7,7 +7,10 @@ body{
 .bgDivs{
   background-color: #D8D9DE;
 }
-
+.close:hover{
+  animation: rotate 1s;
+  backface-visibility: hidden;
+}
 
 .logoPic{
   width:150px;
@@ -15,6 +18,10 @@ body{
 .bellShake:hover{
     animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) both;
     backface-visibility: hidden;
+}
+@keyframes rotate {
+    from{transform: rotate(0);}
+    to{transform: rotate(362deg);}
 }
 @keyframes bellshake {
     0% { transform: rotate(0); }
@@ -52,11 +59,12 @@ body{
   color: #CECFD5; 
   font-size: 17px;
 }
-#loginForm{
-  transition: 0.3s ease-in-out;
+.blueBtn, .blueBtn:hover{
+  background-color:#4E9DA6;
+  cursor: pointer;
 }
 #regForm{
-  transition: 0.3s ease-in-out;
+  display: none;
 }
 .form-control{
   box-shadow: inset 0px 0px 5px 0px #4E9DA6;

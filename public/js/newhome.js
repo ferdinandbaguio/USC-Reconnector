@@ -15,14 +15,53 @@
 
 
 
+    
+ 
+
     // Login to register animate
     $(document).ready(function(){
-      $("#regClick").click(function(){
-        $("#loginForm").hide();
-            $("#regForm").fadeIn(500);
-      });
-      $("#logClick").click(function(){
-          $("#regForm").hide();
-            $("#loginForm").fadeIn(500);
-      });
+        $("#regClick").click(function(){
+            $("#loginForm").slideUp(400, function() {});
+
+            setTimeout(function(){
+            $( "#chooseReg" ).slideDown(700, function() {});
+            },350);
+
+        });
+
+        // Back to Login Form Button
+        $("#logClick").click(function(){
+          $("#chooseReg").slideUp(400, function() {});
+          $("#regForm").slideUp(400, function() {});
+
+          $("#loginForm").slideDown(1200, function() {});
+        });
+
+        $("#logClick1").click(function(){
+          $("#chooseReg").slideUp(400, function() {});
+          $("#regForm").slideUp(400, function() {});
+
+          $("#loginForm").slideDown(1200, function() {});
+        });
+
+        // Teacher button
+        $("#tForm").click(function(){
+            $("#chooseReg").slideUp(400, function() {});
+            $("#regForm").slideDown(1200, function() {});
+        });
+        // Student button
+        $("#sForm").click(function(){
+            $("#chooseReg").slideUp(400, function() {});
+            $("#regForm").slideDown(1200, function() {});
+        });
+        // Alumni button
+        $("#aForm").click(function(){
+            $("#chooseReg").slideUp(400, function() {});
+            $("#regForm").slideDown(1200, function() {});
+        });
+
+
+        // Automatic SlideUp for non showed forms
+        $( "#regForm" ).slideUp( 10, function() {});
+        $( "#chooseReg" ).slideUp( 10, function() {});
     });
