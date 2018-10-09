@@ -118,12 +118,8 @@
   {{-- Scripts --}}
   <!-- Jonas Customized JS -->
   <script src="{{ asset('js/unique/arid.js') }}"></script>
-
   <script src="{{ asset('js/app.js') }}"></script>
 
-  <!-- BOOTSTRAP JS -->
-  <script src="{{ asset('js/extra/popper.min.js') }}"></script>
-  <script src="{{ asset('js/extra/jquery-3.3.1.slim.min.js') }}"></script>
 
 </body>
 </html>
