@@ -65,7 +65,10 @@
                         <a href="{{route('ShowWorld')}}">Worldwide</a>
                     </li>
                     <li>
-                        <a href="{{route('ShowContinent')}}">Nationwide</a>
+                        <a href="{{route('ShowUS')}}">United States</a>
+                    </li>
+                    <li>
+                        <a href="{{route('ShowNation')}}">Nationwide</a>
                     </li>
                 </ul>             
             </li>

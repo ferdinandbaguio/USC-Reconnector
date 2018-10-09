@@ -8,7 +8,7 @@
 
 @section('content')
 
-
+$('#map').vectorMap({map: 'ph_mill_en'});
 
 @endsection
 

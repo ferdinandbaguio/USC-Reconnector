@@ -16,8 +16,12 @@ class TrackController extends Controller
     public function worldwide()
     {
         return view('user.admin.tracking.worldwide');
+    } 
+    public function unitedstates()
+    {
+        return view('user.admin.tracking.unitedstates');
     }
-    public function continental()
+    public function nationwide()
     {       
         return view('user.admin.tracking.nationwide');
     }

@@ -18,7 +18,7 @@
             <thead>
                 <tr>
                     <th>Country</th>
-                    <th>Visits</th>
+                    <th>Number of Alumni</th>
                     <th>Data</th>
                 </tr>
             </thead>
@@ -109,7 +109,7 @@
 
 @section('scripts')
 
-<script type="text/javascript" src="{{asset('js/unique/worldwidemap-data.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/scripts/worldwidemap-data.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/extra/vendors/jvectormap/jquery-jvectormap-2.0.3.min.js')}}" ></script>
 <script type="text/javascript" src="{{asset('js/extra/vendors/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
 

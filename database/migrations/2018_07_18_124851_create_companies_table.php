@@ -17,11 +17,18 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->string('country');
             $table->string('address');
             $table->text('description');
             $table->string('picture');
             $table->tinyinteger('linkage');
+
+            $table->unsignedInteger('country_id');
+            $table->foreign('country_id')->references('id')->on('countries')
+            ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unsignedInteger('area_id');
+            $table->foreign('area_id')->references('id')->on('areas')
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedInteger('industry_id');
             $table->foreign('industry_id')->references('id')->on('industries')

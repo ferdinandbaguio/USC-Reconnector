@@ -65,7 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
 
     Route::get('/track/testmap', 'Admin\TrackController@testmap')->name('ShowTestMap');
-    Route::get('/track/continent', 'Admin\TrackController@continental')->name('ShowContinent');
+    Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
+    Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
     Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
 
 // Resources ==============================================================

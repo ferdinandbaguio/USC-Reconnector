@@ -14,16 +14,20 @@ var mapData = {
   }
   $('#world-map').vectorMap({
     map: 'world_mill_en',
-    backgroundColor: 'transparent',
-    regionStyle: {
-        initial: {
-            fill: '#DADDE0',
-        }
+    series: {
+      regions: [{
+      values: mapData,
+          scale: ['#C7FFC7', '#00A300'],
+          normalizeFunction: 'polynomial'
+      }]
     },
     showTooltip: true,
-    onRegionTipShowx: function(e, el, code){
-        el.html(el.html()+' (Visits - '+mapData[code]+')');
+    onRegionTipShow: function(e, el, code){
+      el.html(el.html()+' (GDP - '+mapData[code]+')');
     },
+    // onRegionTipShowx: function(e, el, code){
+    //     el.html(el.html()+' (Visits - '+mapData[code]+')');
+    // },
     markerStyle: {
       initial: {
         fill  : '#3498db',
