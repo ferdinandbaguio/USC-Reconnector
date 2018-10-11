@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'guest'], function () {  
     });
     // Alumnus
-    // Route::group(['middleware' => 'alumnus'], function () {  
+    Route::group(['middleware' => 'alumnus'], function () {  
       
         Route::view('/alumnus/profile', 'user.alumnus.profile');
         Route::view('/alumnus/jobs', 'user.alumnus.jobs');
@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
         //Alumnus 
         Route::resource('jobPosts','JobPostController')->except('create');
         Route::resource('announcements','AnnouncementController')->except('create');
-    // });
+    });
 
     
     // Teacher
