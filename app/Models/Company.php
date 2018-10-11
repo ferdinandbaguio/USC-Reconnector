@@ -20,14 +20,9 @@ class Company extends Model
     	return $this->hasOne('App\Models\Job','company_id');
     }
 
-    public function company()
+    public function country()
     {
-    	return $this->belongsTo('App\Models\Company','company_id');
-    }
-
-    public function area()
-    {
-    	return $this->belongsTo('App\Models\Area','area_id');
+    	return $this->belongsTo('App\Models\Country','country_id');
     }
 
     public function industry()

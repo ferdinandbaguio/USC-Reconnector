@@ -26,10 +26,6 @@ class CreateCompaniesTable extends Migration
             $table->foreign('country_id')->references('id')->on('countries')
             ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedInteger('area_id');
-            $table->foreign('area_id')->references('id')->on('areas')
-            ->onUpdate('cascade')->onDelete('cascade');
-
             $table->unsignedInteger('industry_id');
             $table->foreign('industry_id')->references('id')->on('industries')
             ->onUpdate('cascade')->onDelete('cascade');
