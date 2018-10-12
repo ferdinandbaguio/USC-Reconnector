@@ -3,7 +3,7 @@
     <div id="sidebar-collapse">
         <div class="admin-block d-flex">
             <div>
-                <img src="{{ asset('img/others/admin-avatar.png') }}" width="45px" />
+                <img src="{{ asset(Auth::user()->picture) }}" width="50px" height="50px" style="border-radius:50%;"/>
             </div>
             <div class="admin-info">
                 <div class="font-strong">
@@ -57,17 +57,21 @@
             <li>
                 <a href="#"><i class="sidebar-item-icon fa fa-map"></i>
                     <span class="nav-label">Tracking</span><i class="fa fa-angle-left arrow"></i></a>
-                {{-- 
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="maps_vector.html">Vector maps</a>
+                        <a href="{{route('ShowWorld')}}">Worldwide</a>
                     </li>
-                </ul>
-                 --}}
+                    <li>
+                        <a href="{{route('ShowUS')}}">United States</a>
+                    </li>
+                    <li>
+                        <a href="{{route('ShowNation')}}">Nationwide</a>
+                    </li>
+                </ul>             
             </li>
             <li>
                 <a href="#"><i class="sidebar-item-icon fa fa-child"></i>
-                    <span class="nav-label">Communicate</span><i class="fa fa-angle-left arrow"></i>
+                    <span class="nav-label">Communicate</span><i class="fa fa-angle-right arrow"></i>
                 </a>
             </li>
         </ul>

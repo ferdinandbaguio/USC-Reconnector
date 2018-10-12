@@ -9,7 +9,6 @@ class Company extends Model
 
     protected $fillable = [
         'name',
-        'country',
         'address',
         'description',
         'service',
@@ -19,6 +18,16 @@ class Company extends Model
     public function job()
     {
     	return $this->hasOne('App\Models\Job','company_id');
+    }
+
+    public function company()
+    {
+    	return $this->belongsTo('App\Models\Company','company_id');
+    }
+
+    public function area()
+    {
+    	return $this->belongsTo('App\Models\Area','area_id');
     }
 
     public function industry()

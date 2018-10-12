@@ -19,24 +19,16 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home','HomeController@latestPost')->name('home');  
-// Authentication =========================================================
-
-    // Route::get('/home', 'LoginController@index')->name('home');
-    
-
-// Views ==================================================================
 
     // Student
     Route::group(['middleware' => 'student'], function () {  
-
-        Route::view('/studenthome', 'user.student.home')->name('students');
         Route::view('/student/class', 'user.student.class')->name('students');
 
     });
     Route::group(['middleware' => 'guest'], function () {  
     });
     // Alumnus
-    // Route::group(['middleware' => 'alumnus'], function () {  
+    Route::group(['middleware' => 'alumnus'], function () {  
       
         Route::view('/alumnus/profile', 'user.alumnus.profile');
         Route::view('/alumnus/jobs', 'user.alumnus.jobs');
@@ -48,21 +40,32 @@ Route::group(['middleware' => 'auth'], function () {
         //Alumnus 
         Route::resource('jobPosts','JobPostController')->except('create');
         Route::resource('announcements','AnnouncementController')->except('create');
-    // });
+    });
 
     
     // Teacher
-    // Route::group(['middleware' => 'teacher'], function () {
-        // 
-    // });
+    Route::group(['middleware' => 'teacher'], function () {
+        
+    });
     
 
     // Admin 
-    Route::view('/admin', 'user.admin.index')->name('admins');
-    Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
-    Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
-    Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
-    Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
+    Route::group(['middleware' => 'admin'], function () {
+        Route::view('/admin', 'user.admin.index')->name('admins');
+
+        Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
+        Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
+        Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
+        Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
+        Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
+        Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
+        Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
+    
+        Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
+        Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
+        Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');     
+    });
+
 
 // Resources ==============================================================
 

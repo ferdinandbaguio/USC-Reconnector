@@ -104,7 +104,7 @@
                 {!! Form::close() !!}
 
                 {{-- Edit Request --}}
-                <span   data-toggle="modal"                 data-target="#edit"           
+                <span   data-toggle="modal"                 data-target="#edit-request"           
                         data-id="{{ $user->id }}"           data-status="{{ $user->userStatus}}"
                         data-fn="{{ $user->firstName }}"    data-mn="{{ $user->middleName }}"   
                         data-ln="{{ $user->lastName }}"     data-type="{{ $user->userType }}"   
@@ -133,7 +133,7 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="edit-request" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
     <div class="modal-header">
@@ -189,8 +189,7 @@
 
 @section('scripts')
 
-<script type="text/javascript" src="{{ asset('js/unique/userRequestEdit.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/unique/crud_user.js') }}"></script>
 <script type="text/javascript" src="{{ asset('css/extra/vendors/DataTables/datatables.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/unique/userRequestDeleteAndDataTablesPagination.js') }}"></script>
 
 @endsection

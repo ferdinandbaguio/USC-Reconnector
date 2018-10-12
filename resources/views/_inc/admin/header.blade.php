@@ -3,7 +3,7 @@
     <div class="page-brand">
         <a class="link" href="/admin">
             <span class="brand">
-                <img src="{{  asset('img/logo/studrec2.png') }}" width="200" height="90" alt="Recon">
+                <img src="{{  asset('img/logo/studrec2.png') }}" width="185" height="70" alt="Recon">
             </span>
             <span class="brand-mini">
                 <img src="{{ asset('img/logo/Logo.ico') }}" width="32" height="30" alt="Logo">
@@ -30,6 +30,8 @@
         <!-- END TOP-LEFT TOOLBAR-->
         <!-- START TOP-RIGHT TOOLBAR-->
         <ul class="nav navbar-toolbar">
+            {{-- 
+            Message
             <li class="dropdown dropdown-inbox">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope-o"></i>
                     <span class="badge badge-primary envelope-badge">9</span>
@@ -91,6 +93,7 @@
                     </li>
                 </ul>
             </li>
+            Notification
             <li class="dropdown dropdown-notification">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o rel"><span class="notify-signal"></span></i></a>
                 <ul class="dropdown-menu dropdown-menu-right dropdown-menu-media">
@@ -142,14 +145,16 @@
                     </li>
                 </ul>
             </li>
+            --}}
             <li class="dropdown dropdown-user">
                 <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
-                    <img src="{{ asset('img/others/admin-avatar.png') }}" />
-                    <span></span>{{ Auth::user()->userType }}<i class="fa fa-angle-down m-l-5"></i></a>
+                    <img src="{{ asset(Auth::user()->picture) }}" width="35px" height="35px"/>
+                    <span></span>{{ Auth::user()->userType }}<i class="fa fa-angle-down m-l-5"></i>
+                </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html"><i class="fa fa-user"></i>Profile</a>
-                    <a class="dropdown-item" href="profile.html"><i class="fa fa-building"></i>Job Profile</a>
-                    <a class="dropdown-item" href="javascript:;"><i class="fa fa-support"></i>Support</a>
+                    <a class="dropdown-item" href="/admin"><i class="fa fa-user"></i>Profile</a>
+                    <a class="dropdown-item" href="/admin"><i class="fa fa-building"></i>Job Profile</a>
+                    <a class="dropdown-item" href="/admin"><i class="fa fa-support"></i>Support</a>
                     <li class="dropdown-divider"></li>
                     {!! Form::open(['url' => route('logout'), 'method' => 'POST', 'class' => 'logout', 'id' => 'logout']) !!}
                         <a class="dropdown-item" href="#" onclick="event.preventDefault();
