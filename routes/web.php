@@ -42,9 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/alumnus/communicate', 'user.alumnus.communicate');
         Route::view('/alumnus/form', 'user.alumnus.form');       
 
-        //Alumnus 
-        Route::resource('jobPosts','JobPostController')->except('create');
-        Route::resource('announcements','AnnouncementController')->except('create');
     });
 
     
