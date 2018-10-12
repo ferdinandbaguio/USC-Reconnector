@@ -8,19 +8,19 @@ class Department extends Model
 {
     protected $fillable = [
         'name',
+        'code',
         'description',
         'school_id'
-
     ];
 
 
     public function school()
     {
-        return $this->belongsTo('App\Models\School','school_id');
+        return $this->belongsTo('App\Models\School');
     }
 
-    public function course()
+    public function courses()
     {
-        return $this->hasMany('App\Models\Course','department_id');
+        return $this->hasMany('App\Models\Course');
     }
 }

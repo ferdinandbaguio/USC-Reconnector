@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DB;
 use App\Models\User;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,22 +12,24 @@ class UserController extends Controller
 {
     public function students()
     {
-        $users = User::where('userType', '=', 'Student')->get();
-        return view('user.admin.crud.users.students')->with('users',$users);
+        $courses = Course::all('id', 'code');
+        $users = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->get();
+        return view('user.admin.crud.users.students')->with('users',$users)->with('courses', $courses);
     }
     public function alumni()
     {
-        $users = User::where('userType', '=', 'Alumnus')->get();
+        $users = User::where('userType', '=', 'Alumnus')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.alumni')->with('users',$users);
     }
     public function teachers()
     {
-        $users = User::where('userType', '=', 'Teacher')->get();
+        $users = User::where('userType', '=', 'Teacher')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.teachers')->with('users',$users);
     }
     public function admins()
     {
-        $users = User::where('userType', '=', 'Admin')->get();
+        $users = User::where('userType', '=', 'Admin')->where('userType', '=', 'Coordinator')
+                     ->where('userType', '=', 'Chair')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.admins')->with('users',$users);
     }
     public function store(Request $request)
@@ -63,7 +66,6 @@ class UserController extends Controller
     {  
         try{
             $request = $request->all();
-
             if(isset($request['picture'])){
                 $request['picture']->move('img/users','u'.$request['id'].'.jpg');
                 $picturePath = 'img/users/u'.$request['id'].'.jpg';

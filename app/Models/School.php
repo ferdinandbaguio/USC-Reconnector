@@ -8,12 +8,13 @@ class School extends Model
 {
     protected $fillable = [
         'name',
+        'code',
         'description'
     ];
 
 
-    public function department()
+    public function departments()
     {
-        return $this->hasMany('App\Models\Department','school_id');
+        return $this->hasMany('App\Models\Department');
     }
 }

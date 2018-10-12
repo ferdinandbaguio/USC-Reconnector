@@ -12,12 +12,13 @@ $('#show-user').on('show.bs.modal', function(event) {
     var year    = button.data('year')
     var updt    = button.data('updt')
     var pos     = button.data('pos')
-    var Ccode    = button.data('Ccode')
-    var Dcode    = button.data('Dcode')
-    var Scode    = button.data('Scode')
-    var Cname    = button.data('Cname')
-    var Dname    = button.data('Dname')
-    var Sname    = button.data('Sname')
+
+    var ccode    = button.data('ccode')
+    var dcode    = button.data('dcode')
+    var scode    = button.data('scode')
+    var cname    = button.data('cname')
+    var dname    = button.data('dname')
+    var sname    = button.data('sname')
     var modal   = $(this)
 
     modal.find('.modal-body #id').val(id);
@@ -32,12 +33,13 @@ $('#show-user').on('show.bs.modal', function(event) {
     modal.find('.modal-body #year').val(year);
     modal.find('.modal-body #updt').val(updt);
     modal.find('.modal-body #pos').val(pos);
-    modal.find('.modal-body #Ccode').val(Ccode);
-    modal.find('.modal-body #Dcode').val(Dcode);
-    modal.find('.modal-body #Scode').val(Scode);
-    modal.find('.modal-body #Cname').val(Cname);
-    modal.find('.modal-body #Dname').val(Dname);
-    modal.find('.modal-body #Sname').val(Sname);
+
+    modal.find('.modal-body #ccode').val(ccode);
+    modal.find('.modal-body #dcode').val(dcode);
+    modal.find('.modal-body #scode').val(scode);
+    modal.find('.modal-body #cname').val(cname);
+    modal.find('.modal-body #dname').val(dname);
+    modal.find('.modal-body #sname').val(sname);
 })
 
 $('#create').on('show.bs.modal', function(event){
@@ -64,7 +66,17 @@ $('#edit-user').on('show.bs.modal', function(event) {
     var year    = button.data('year')
     var updt    = button.data('updt')
     var pos     = button.data('pos')
-    var dept    = button.data('dept')
+
+    var cid     = button.data('cid')
+/*     var did     = button.data('did')
+    var sid     = button.data('sid') */
+    var ccode    = button.data('ccode')
+    var dcode    = button.data('dcode')
+    var scode    = button.data('scode')
+    var cname    = button.data('cname')
+    var dname    = button.data('dname')
+    var sname    = button.data('sname')
+
     var modal   = $(this)
 
     modal.find('.modal-body #id').val(id);
@@ -81,7 +93,17 @@ $('#edit-user').on('show.bs.modal', function(event) {
     modal.find('.modal-body #year').val(year);
     modal.find('.modal-body #updt').val(updt);
     modal.find('.modal-body #pos').val(pos);
-    modal.find('.modal-body #dept').val(dept);
+
+    modal.find('.modal-body #cid').val(cid);
+/*     modal.find('.modal-body #did').val(did);
+    modal.find('.modal-body #sid').val(sid); */
+    modal.find('.modal-body #ccode').val(ccode);
+    modal.find('.modal-body #dcode').val(dcode);
+    modal.find('.modal-body #scode').val(scode);
+    modal.find('.modal-body #cname').val(cname);
+    modal.find('.modal-body #dname').val(dname);
+    modal.find('.modal-body #sname').val(sname);
+
 })
 
 $('#edit-request').on('show.bs.modal', function(event) {
@@ -116,20 +138,16 @@ $('#delete').on('show.bs.modal', function(event){
     modal.find('.modal-body #id').val(id);
 })
 
+$('#create-course').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget)
+    var did = button.data('did')
+    var modal = $(this)
+
+    modal.find('.modal-body #did').val(did);
+})
+
 $(function() {
     $('#example-table').DataTable({
         pageLength: 10, 
     });
 })
-
-$('#edit-user').on('shown.bs.modal', function(event){
-    
-})
-
-// $('#delete').on('show.bs.modal', function(event){
-//     var button = $(event.relatedTarget)
-//     var id = button.data('id')
-//     var modal = $(this)
-
-//     modal.find('.modal-body #id').val(id);
-// })

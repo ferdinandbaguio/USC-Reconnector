@@ -58,9 +58,9 @@
         'id' => 'status', 'disabled']) }}</div>  
 
     <div class="col-md-6 form-group">
-        <b>{{Form::label('Ccode', 'Course Code')}}</b>
-        {{ Form::text('Ccode', '', ['class' => 'form-control input-rounded text-center', 
-        'id' => 'Ccode', 'disabled']) }}</div>  
+        <b>{{Form::label('course_code', 'Course Code')}}</b>
+        {{ Form::text('course_code', '', ['class' => 'form-control input-rounded text-center', 
+        'id' => 'ccode', 'disabled']) }}</div>  
 </div>
 
 {{-- Department Code and School Code --}}
@@ -68,33 +68,33 @@
     <div class="col-md-6 form-group">
         <b>{{Form::label('Dcode', 'Department Code')}}</b>
         {{ Form::text('Dcode', '', ['class' => 'form-control input-rounded text-center', 
-        'id' => 'Dcode', 'disabled']) }}</div>  
+        'id' => 'dcode', 'disabled']) }}</div>  
 
     <div class="col-md-6 form-group">
         <b>{{Form::label('Scode', 'School Code')}}</b>
         {{ Form::text('Scode', '', ['class' => 'form-control input-rounded text-center', 
-        'id' => 'Scode', 'disabled']) }}</div>  
+        'id' => 'scode', 'disabled']) }}</div>  
 </div>
 
 {{-- Course Name --}}
 <div class="form-group">
     <b>{{Form::label('Cname', 'Course')}}</b>
     {{ Form::text('Cname', '', ['class' => 'form-control input-rounded text-center', 
-    'id' => 'Cname', 'disabled']) }}
+    'id' => 'cname', 'disabled']) }}
 </div> 
 
 {{-- Department Name --}}
 <div class="form-group">
     <b>{{Form::label('Dname', 'Department')}}</b>
     {{ Form::text('Dname', '', ['class' => 'form-control input-rounded text-center', 
-    'id' => 'Dname', 'disabled']) }}
+    'id' => 'dname', 'disabled']) }}
 </div> 
 
 {{-- School Name --}}
 <div class="form-group">
     <b>{{Form::label('Sname', 'School')}}</b>
     {{ Form::text('Sname', '', ['class' => 'form-control input-rounded text-center', 
-    'id' => 'Sname', 'disabled']) }}
+    'id' => 'sname', 'disabled']) }}
 </div> 
 
 </center>
