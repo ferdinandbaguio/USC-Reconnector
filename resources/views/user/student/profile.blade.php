@@ -7,25 +7,29 @@
 @section('content')
 <div class="row fontRoboto mb-5">
 
+	<!-- LEFT BOX -->
 	<div class="col-md-4 p-4 align-self-start" style="background: url('/img/div_bgs/abg.jpg');">
 		<div class="row">
 			<div class="col-12">
-				<img src="/img/homepage_images/Girl2.jpg" width="100%">
+				<img src="{{ asset('/img/homepage_images/Boy2.jpg') }}" width="100%">
 			</div>
 		</div>
 
 		<div class="row mt-5">
 			<div class="col-12">
-				<h5 class="font-weight-bold"> Romea X. Yapzar </h5>
-				<h6 class="text-muted"> 15112441 </h6>
+				<h5 class="font-weight-bold"> {{Auth::user()->full_name}} </h5>
+				<h6 class="text-muted"> {{Auth::user()->idnumber}} </h6>
 
 				<p class="mt-3 mb-0"> Bachelor of Science in Information in Communication Technology </p>
-				<p class="m-0"> 4th Year </p>
+				<p class="m-0"> Year level: {{Auth::user()->yearLevel}}  </p>
 				<p class="m-0"> Birthday: February 31, 2018 </p>
+				<p class="m-0"> Sex: {{Auth::user()->sex}} </p>
 			</div>
 		</div>
 	</div>
+	<!-- LEFT BOX END -->
 
+	<!-- RIGHT BOX -->
 	<div class="col-md-8 p-4 pt-5 align-self-start" style="background-color: white;">
 		<div class="row">
 			<div class="col-md-5">
@@ -34,7 +38,7 @@
 		</div>
 		<div class="row mt-1">
 			<div class="col-md-12">
-				<p> I am a girl. I live in a house. I can graduate. I am a girl. I live in a house. I can graduate. I am a girl. I live in a house. I can graduate. I am a girl. I live in a house. I can graduate. I am a girl. I live in a house. I can graduate. I am a girl. I live in a house. I can graduate. </p>
+				<p> {{Auth::user()->description}} </p>
 			</div>
 		</div>
 
@@ -69,7 +73,9 @@
 				</div>
 			</div>
 			<div class="col-md-12 mt-4">
-				<a href="#" class="text-muted"> <i class="fas fa-plus-circle"></i> Add More</a>
+				<button type="button" class="btn addSkillBtn" data-toggle="modal" data-target="#addSkillModal">
+					<i class="fas fa-plus-circle"></i> Add a Skill
+				</button>
 			</div>
 		</div>
 
@@ -86,7 +92,9 @@
 				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> Champion on E-sports Gaming </p>
 			</div>
 			<div class="col-md-12 mt-2">
-				<a href="#" class="text-muted"> <i class="fas fa-plus-circle"></i> Add More</a>
+				<button type="button" class="btn addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
+					<i class="fas fa-plus-circle"></i> Add an achievement
+				</button>
 			</div>
 
 			
@@ -109,6 +117,66 @@
 		</div>
 
 	</div>
+	<!-- RIGHT BOX END -->
+
+
+	<!-- ADD SKILL MODAL -->
+	<div class="modal fade" id="addSkillModal" tabindex="-1" role="dialog" aria-labelledby="addSkillModal" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+
+	      <div class="modal-body mt-4">
+	        <form>
+	        	<div class="form-group">
+	        		<label><i class="fas fa-football-ball" style="color: #3CAEC1"></i> Title of Skill</label>
+	        		<input type="text" class="form-control" placeholder="Skill Title">
+	        	</div>
+	        	<div class="form-group">
+	        		<label>Rate your skill</label>
+	        		<center><output id="rangeValue">50</output>%</center>
+	        		<input type="range" min="1" max="100" id="range" value="50" oninput="rangeValue.value = range.value">	        	
+	        	</div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn addSkillBtn">
+				<i class="fas fa-plus-circle"></i> Add Skill
+			</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- ADD SKILL MODAL END -->
+
+
+	<!-- ADD ACHIEVEMENT MODAL -->
+	<div class="modal fade" id="addAchvModal" tabindex="-1" role="dialog" aria-labelledby="addAchvModal" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+
+	      <div class="modal-body mt-4">
+	        <form>
+	        	<div class="form-group">
+	        		<label><i class="fas fa-trophy" style="color: #EEEB4D"></i> Title of Achievement</label>
+	        		<input type="text" class="form-control" placeholder="Achievement Title">
+	        	</div>
+	        	<div class="form-group">
+	        		<label>Date Acquired</label>
+	        		<input type="text" class="form-control" placeholder="Example: 2009">
+	        	</div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn addAchvBtn">
+				<i class="fas fa-plus-circle"></i> Add achievement
+			</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- ADD ACHIEVEMENT MODAL END -->
 
 </div>
 @endsection

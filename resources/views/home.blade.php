@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="row mb-3 d-md-none">
-      @if(Auth::user()->userType == "Alumnus")
+      @if(Auth::user()->userType == "Alumnus" || Auth::user()->userType == "Teacher")
       <div class="col-md-12">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
       </div>
@@ -181,7 +181,7 @@
 
   <div class="col-md-3 ml-auto"> 
     <div class="row d-none d-md-block">
-      @if(Auth::user()->userType == "Alumnus")
+      @if(Auth::user()->userType == "Alumnus" || Auth::user()->userType == "Teacher")
       <div class="col-md-12">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
       </div>

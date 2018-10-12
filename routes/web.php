@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Student
     Route::group(['middleware' => 'student'], function () {  
         Route::view('/student/class', 'user.student.class')->name('students');
+        Route::view('/student/profile', 'user.student.profile');
 
     });
     Route::group(['middleware' => 'guest'], function () {  
@@ -35,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/alumnus/communicate', 'user.alumnus.communicate');
         Route::view('/alumnus/form', 'user.alumnus.form');
 
-        Route::view('/student/profile', 'user.student.profile');
+        
 
         //Alumnus 
         Route::resource('jobPosts','JobPostController')->except('create');
@@ -45,6 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
     
     // Teacher
     Route::group(['middleware' => 'teacher'], function () {
+
+        Route::view('/teacher/profile', 'user.teacher.profile');
         
     });
     
