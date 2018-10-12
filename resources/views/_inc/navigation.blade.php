@@ -1,5 +1,5 @@
 <!-- New Top Navigation Bar start -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top w-100">
     <a class="navbar-brand py-0" href="#">
       <img src="{{ asset('img/logo/studrec2.png') }}" width="180" height="55" alt="Logo">
     </a>
