@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="row mb-3 d-md-none">
-      @if(Auth::user()->userType == "Teacher" || Auth::user()->userType == "Alumnus")
+      @if(Auth::user()->userType == "Teachers" || Auth::user()->userType == "Alumnus")
       <div class="col-md-12">
         <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
       </div>
