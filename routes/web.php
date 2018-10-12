@@ -18,7 +18,11 @@ Route::group(['middleware' => 'guest'], function () {
         Route::post('logout', 'LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home','HomeController@latestPost')->name('home');  
+    
+    Route::group(['middleware' => 'home'], function () {
+        Route::get('/home','HomeController@latestPost')->name('home');   
+    });
+
 
     // Student
     Route::group(['middleware' => 'student'], function () {  
