@@ -10,7 +10,7 @@
 
 <div class="page-heading">
 
-<h1 class="page-title">{{ $users[0]->userType }}s</h1>
+<h1 class="page-title">{{ $users[0]->userType }}</h1>
 
 @include('_inc.messages')
 
@@ -35,8 +35,7 @@
                 <th>Name</th>
                 <th>Sex</th>
                 <th>Email Address</th>
-                <th>Course</th>
-                <th>Year Level</th>
+                <th>Job Title</th>
                 <th>Option</th>
             </tr>
         </thead>
@@ -47,23 +46,28 @@
                 <th>Name</th>
                 <th>Sex</th>
                 <th>Email Address</th>
-                <th>Course</th>
-                <th>Year Level</th>
+                <th>Job Title</th>
                 <th>Option</th>
             </tr>
         </tfoot>
         <tbody>
+            <?php $i=0; ?>
             @foreach ($users as $user)
             <tr>
                 <td><center>
-                    <img src="{{ asset($user->picture) }}" width="70" height="70" alt="User Default">
+                    <img src="{{ asset($user->picture) }}" height="28" style="border-radius: 50%;" alt="User Default">
                 </center></td>
                 <td>{{ $user->idnumber }}</td>
                 <td>{{ $user->full_name }}</td>
                 <td>{{ $user->sex }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->course['code'] }}</td>
-                <td>{{ $user->yearLevel }}</td>
+                <td>
+                    @if(isset($users[$i]->occupations[0]['title']))
+                        {{ $users[$i]->occupations[0]['title'] }}
+                    @else
+                        No occupation
+                    @endif
+                </td>
                 <td>
 
                     {{-- Show User --}}
@@ -72,30 +76,36 @@
                             data-id="{{ $user->id }}"           data-status="{{ $user->userStatus}}"
                             data-n="{{ $user->full_name }}"     data-type="{{ $user->userType }}"   
                             data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"         
-                            data-email="{{ $user->email }}"     data-desc="{{ $user->description }}"    
-                            data-year="{{ $user->yearLevel }}"      
-                            {{-- User Course, Department, and School Data --}}
-                            data-cname="{{$user->course['name']}}"              data-ccode="{{ $user->course['code'] }}"
-                            data-dname="{{$user->department['name']}}"          data-dcode="{{$user->department['code']}}"
-                            data-sname="{{$user->department->school['name']}}"  data-scode="{{$user->department->school['code']}}">
-                        <button class="btn btn-xs" data-toggle="tooltip"        data-original-title="Show">   
+                            data-email="{{ $user->email }}"     data-desc="{{ $user->description }}"
+                            {{-- Occupation and Company  --}}
+                            @if(isset($users[$i]->occupations[0]['title']))
+                                data-title="{{ $users[$i]->occupations[0]['title'] }}"              data-addr="{{ $users[$i]->occupations[0]['address'] }}"
+                                data-salar1="{{ $users[$i]->occupations[0]['salaryRangeOne'] }}"    data-salar2="{{ $users[$i]->occupations[0]['salaryRangeTwo'] }}"
+                                data-jobstr="{{ $users[$i]->occupations[0]['jobStart'] }}"          data-jobend="{{ $users[$i]->occupations[0]['jobEnd'] }}"
+                                {{-- data-compname="{{ $users[$i]->occupations[0]['title'] }}"      data-compaddr="{{ $users[$i]->occupations[0]['title'] }}"
+                                data-compdesc="{{ $users[$i]->occupations[0]['title'] }}"           data-linkage="{{ $users[$i]->occupations[0]['title'] }}" 
+                                data-country="{{ $users[$i]->occupations[0]['title'] }}"            data-area="{{ $users[$i]->occupations[0]['title'] }}" --}} 
+                            @endif >
+                        <button class="btn btn-xs" data-toggle="tooltip" data-original-title="Show">   
                             <i class="ti-eye"></i>                              
                         </button>
                     </span>
 
                     {{-- Edit User --}}
-                    <span   data-toggle="modal"                     data-target="#edit-user"   
+                    <span   data-toggle="modal" data-target="#edit-user"   
                             {{-- User Basic Data     --}}
-                            data-id="{{ $user->id }}"               data-status="{{ $user->userStatus}}"
-                            data-fn="{{ $user->firstName }}"        data-mn="{{ $user->middleName }}"   
-                            data-ln="{{ $user->lastName }}"         data-type="{{ $user->userType }}"   
-                            data-idnum="{{ $user->idnumber }}"      data-sex="{{ $user->sex }}"         
-                            data-email="{{ $user->email }}"         data-desc="{{ $user->description }}"
-                            data-year="{{ $user->yearLevel }}"      data-cid="{{$user->course['id']}}"
-                            {{-- User Course, Department, and School Data --}}
-                            data-cname="{{$user->course['name']}}"              data-ccode="{{ $user->course['code'] }}"
-                            data-dname="{{$user->department['name']}}"          data-dcode="{{$user->department['code']}}"
-                            data-sname="{{$user->department->school['name']}}"  data-scode="{{$user->department->school['code']}}">
+                            data-id="{{ $user->id }}"           data-status="{{ $user->userStatus}}"
+                            data-fn="{{ $user->firstName }}"    data-mn="{{ $user->middleName }}"   
+                            data-ln="{{ $user->lastName }}"     data-type="{{ $user->userType }}"   
+                            data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"         
+                            data-email="{{ $user->email }}"     data-desc="{{ $user->description }}"
+                            {{-- Occupation and Company  --}}
+                            {{-- data-title="{{ $user->email }}"     data-addr="{{ $user->email }}"
+                            data-salar1="{{ $user->email }}"    data-salar2="{{ $user->email }}"
+                            data-jobstr="{{ $user->email }}"    data-jobend="{{ $user->email }}" 
+                            data-compname="{{ $user->email }}"  data-compaddr="{{ $user->email }}"
+                            data-compdesc="{{ $user->email }}"  data-linkage="{{ $user->email }}" 
+                            data-country="{{ $user->email }}"   data-area="{{ $user->email }}" --}} >
                         <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
                             <i class="ti-pencil"></i>                                
                         </button>
@@ -109,6 +119,7 @@
                     </span>
                 </td>
             </tr>
+            <?php $i++; ?>
             @endforeach
         </tbody>
     </table>

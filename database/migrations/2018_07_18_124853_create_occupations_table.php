@@ -17,12 +17,12 @@ class CreateOccupationsTable extends Migration
             $table->increments('id');
 
 
-            $table->string('name');
+            $table->string('title');
             $table->string('address');
-            $table->string('salaryRangeOne');
-            $table->string('salaryRangeTwo');
-            $table->string('jobStart');
-            $table->string('jobEnd');
+            $table->float('salaryRangeOne', 9, 2);
+            $table->float('salaryRangeTwo', 9, 2);
+            $table->date('jobStart');
+            $table->date('jobEnd')->nullable();
 
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')

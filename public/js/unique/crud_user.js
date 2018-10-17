@@ -2,7 +2,7 @@ $('#show-user').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget)
     var id      = button.data('id')
     var status  = button.data('status')
-    var n      = button.data('n')
+    var n       = button.data('n')
     var type    = button.data('type')
     var idnum   = button.data('idnum')
     var sex     = button.data('sex')
@@ -13,12 +13,26 @@ $('#show-user').on('show.bs.modal', function(event) {
     var updt    = button.data('updt')
     var pos     = button.data('pos')
 
-    var ccode    = button.data('ccode')
-    var dcode    = button.data('dcode')
-    var scode    = button.data('scode')
-    var cname    = button.data('cname')
-    var dname    = button.data('dname')
-    var sname    = button.data('sname')
+    var ccode   = button.data('ccode')
+    var dcode   = button.data('dcode')
+    var scode   = button.data('scode')
+    var cname   = button.data('cname')
+    var dname   = button.data('dname')
+    var sname   = button.data('sname')
+
+    var title       = button.data('title')
+    var addr        = button.data('addr')
+    var salar1      = button.data('salar1')
+    var salar2      = button.data('salar2')
+    var jobstr      = button.data('jobstr')
+    var jobend      = button.data('jobend')
+    // var compname    = button.data('compname')
+    // var compaddr    = button.data('compaddr')
+    // var compdesc    = button.data('compdesc')
+    // var linkage     = button.data('linkage')
+    // var country     = button.data('country')
+    // var area        = button.data('area')
+
     var modal   = $(this)
 
     modal.find('.modal-body #id').val(id);
@@ -40,6 +54,19 @@ $('#show-user').on('show.bs.modal', function(event) {
     modal.find('.modal-body #cname').val(cname);
     modal.find('.modal-body #dname').val(dname);
     modal.find('.modal-body #sname').val(sname);
+
+    modal.find('.modal-body #title').val(title);
+    modal.find('.modal-body #addr').val(addr);
+    modal.find('.modal-body #salar1').val(salar1);
+    modal.find('.modal-body #salar2').val(salar2);
+    modal.find('.modal-body #jobstr').val(jobstr);
+    modal.find('.modal-body #jobend').val(jobend);
+    // modal.find('.modal-body #compname').val(compname);
+    // modal.find('.modal-body #compaddr').val(compaddr);
+    // modal.find('.modal-body #compdesc').val(compdesc);
+    // modal.find('.modal-body #linkage').val(linkage);
+    // modal.find('.modal-body #country').val(country);
+    // modal.find('.modal-body #area').val(area);
 })
 
 $('#create').on('show.bs.modal', function(event){
@@ -136,14 +163,6 @@ $('#delete').on('show.bs.modal', function(event){
     var modal = $(this)
 
     modal.find('.modal-body #id').val(id);
-})
-
-$('#create-course').on('show.bs.modal', function(event){
-    var button = $(event.relatedTarget)
-    var did = button.data('did')
-    var modal = $(this)
-
-    modal.find('.modal-body #did').val(did);
 })
 
 $(function() {

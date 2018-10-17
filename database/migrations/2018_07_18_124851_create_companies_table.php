@@ -20,14 +20,17 @@ class CreateCompaniesTable extends Migration
             $table->string('address');
             $table->text('description');
             $table->string('picture');
-            $table->tinyinteger('linkage');
+
+            $table->unsignedInteger('linkage_id');
+            $table->foreign('linkage_id')->references('id')->on('departments')
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries')
             ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedInteger('industry_id');
-            $table->foreign('industry_id')->references('id')->on('industries')
+            $table->unsignedInteger('area_id')->nullable();
+            $table->foreign('area_id')->references('id')->on('areas')
             ->onUpdate('cascade')->onDelete('cascade');
          
             $table->timestamps();

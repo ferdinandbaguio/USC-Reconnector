@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -41,6 +42,11 @@ class User extends Authenticatable
         'full_name'
     ];
 
+    public function occupations()
+    {
+        return $this->hasMany('App\Models\Occupation', 'alumni_id');
+    }
+
     public function course()
     {
         return $this->belongsTo('App\Models\Course');
@@ -74,11 +80,6 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany('App\Models\Post', 'poster_id');
-    }
-
-    public function occupations()
-    {
-        return $this->hasMany('App\Models\Occupation', 'alumni_id');
     }
 
     public function graduates()

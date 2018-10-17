@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use DB;
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,13 +14,15 @@ class UserController extends Controller
     public function students()
     {
         $courses = Course::all('id', 'code');
+        $departments = Department::all('id', 'code');
         $users = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->get();
-        return view('user.admin.crud.users.students')->with('users',$users)->with('courses', $courses);
+        return view('user.admin.crud.users.students')->with('users',$users)->with('courses', $courses)->with('departments', $departments);
     }
     public function alumni()
     {
+        $departments = Department::all('id', 'code');
         $users = User::where('userType', '=', 'Alumnus')->where('userStatus', '=', 'Approved')->get();
-        return view('user.admin.crud.users.alumni')->with('users',$users);
+        return view('user.admin.crud.users.alumni')->with('users',$users)->with('departments', $departments);
     }
     public function teachers()
     {

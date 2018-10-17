@@ -10,7 +10,7 @@
 
 <div class="page-heading">
 
-<h1 class="page-title">{{ $users[0]->userType }}s</h1>
+<h1 class="page-title">{{ $users[0]->userType }}</h1>
 
 @include('_inc.messages')
 
@@ -56,7 +56,7 @@
             @foreach ($users as $user)
             <tr>
                 <td><center>
-                    <img src="{{ asset($user->picture) }}" width="70" height="70" alt="User Default">
+                    <img src="{{ asset($user->picture) }}" height="28" style="border-radius: 50%;" alt="User Default">
                 </center></td>
                 <td>{{ $user->idnumber }}</td>
                 <td>{{ $user->full_name }}</td>
