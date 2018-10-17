@@ -10,7 +10,7 @@
 
 <div class="page-heading">
 
-<h1 class="page-title">{{ $users[0]->userType }}</h1>
+<h1 class="page-title">Admin</h1>
 
 @include('_inc.messages')
 
@@ -18,9 +18,9 @@
 <div class="ibox">
     <div class="ibox-head">
         <div class="ibox-title text-info">
-            Number of {{ $users[0]->userType }}<b><i> {{ $users->count() }} </i></b>
+            Number of Alumni:<b><i> @if(isset($users)){{$users->count()}}@endif</i></b>
         </div>
-        <span data-toggle="modal" data-target="#create" data-type="{{ $users[0]->userType }}">
+        <span data-toggle="modal" data-target="#create">
             <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New User">
                 Add <i class="ti-plus"></i>                            
             </button>

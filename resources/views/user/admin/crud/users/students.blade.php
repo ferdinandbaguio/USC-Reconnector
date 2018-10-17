@@ -10,7 +10,9 @@
 
 <div class="page-heading">
 
-<h1 class="page-title">{{ $users[0]->userType }}</h1>
+<h1 class="page-title">Students</h1>
+
+<?php $userType="Student"; ?>
 
 @include('_inc.messages')
 
@@ -18,9 +20,9 @@
 <div class="ibox">
     <div class="ibox-head">
         <div class="ibox-title text-info">
-            Number of {{ $users[0]->userType }}<b><i> {{ $users->count() }} </i></b>
+            Number of Students:<b><i> @if(isset($users)){{$users->count()}}@endif</i></b>
         </div>
-        <span data-toggle="modal" data-target="#create" data-type="{{ $users[0]->userType }}">
+        <span data-toggle="modal" data-target="#create" data-type="Student">
             <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New User">
                 Add <i class="ti-plus"></i>                            
             </button>
@@ -74,10 +76,15 @@
                             data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"         
                             data-email="{{ $user->email }}"     data-desc="{{ $user->description }}"    
                             data-year="{{ $user->yearLevel }}"      
-                            {{-- User Course, Department, and School Data --}}
-                            data-cname="{{$user->course['name']}}"              data-ccode="{{ $user->course['code'] }}"
-                            data-dname="{{$user->department['name']}}"          data-dcode="{{$user->department['code']}}"
-                            data-sname="{{$user->department->school['name']}}"  data-scode="{{$user->department->school['code']}}">
+                            {{-- Course Data --}}
+                            @if(isset($user->course))
+                                data-cname="{{$user->course['name']}}"              data-ccode="{{ $user->course['code'] }}"
+                            @endif 
+                            {{-- Department and School Data --}}
+                            @if(isset($user->department))
+                                data-dname="{{$user->department['name']}}"          data-dcode="{{$user->department['code']}}"
+                                data-sname="{{$user->department->school['name']}}"  data-scode="{{$user->department->school['code']}}"
+                            @endif >
                         <button class="btn btn-xs" data-toggle="tooltip"        data-original-title="Show">   
                             <i class="ti-eye"></i>                              
                         </button>
@@ -92,10 +99,15 @@
                             data-idnum="{{ $user->idnumber }}"      data-sex="{{ $user->sex }}"         
                             data-email="{{ $user->email }}"         data-desc="{{ $user->description }}"
                             data-year="{{ $user->yearLevel }}"      data-cid="{{$user->course['id']}}"
-                            {{-- User Course, Department, and School Data --}}
-                            data-cname="{{$user->course['name']}}"              data-ccode="{{ $user->course['code'] }}"
-                            data-dname="{{$user->department['name']}}"          data-dcode="{{$user->department['code']}}"
-                            data-sname="{{$user->department->school['name']}}"  data-scode="{{$user->department->school['code']}}">
+                            {{-- Course Data --}}
+                            @if(isset($user->course))
+                                data-cname="{{$user->course['name']}}"              data-ccode="{{ $user->course['code'] }}"
+                            @endif 
+                            {{-- Department and School Data --}}
+                            @if(isset($user->department))
+                                data-dname="{{$user->department['name']}}"          data-dcode="{{$user->department['code']}}"
+                                data-sname="{{$user->department->school['name']}}"  data-scode="{{$user->department->school['code']}}"
+                            @endif >
                         <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
                             <i class="ti-pencil"></i>                                
                         </button>
@@ -126,7 +138,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Showing {{ $users[0]->userType }}</h4>
+        <h4 class="modal-title" id="myModalLabel">Showing Student</h4>
     </div>
     <div class="modal-body">
         @include('_inc.admin.userShowUserModal')
@@ -146,7 +158,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Creating New {{ $users[0]->userType }}</h4>
+        <h4 class="modal-title" id="myModalLabel">Creating New Student</h4>
     </div>
     {!! Form::open(['route' => 'StoreUser', 'method' => 'POST', 
                     'style' => 'display:inline-block;', 'files' => TRUE]) !!}
@@ -175,7 +187,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         {{ Form::file('picture') }}
-        <h4 class="modal-title" id="myModalLabel">Editing {{ $users[0]->userType }}</h4>
+        <h4 class="modal-title" id="myModalLabel">Editing Student</h4>
     </div>
     <div class="modal-body">
         @include('_inc.admin.userEditUserModal')
@@ -197,7 +209,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title text-center" id="myModalLabel">Delete {{ $users[0]->userType }} Confirmation</h4>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Student Confirmation</h4>
     </div>
     {!! Form::open(['route' => 'DeleteUser', 'method' => 'DELETE', 
                     'style' => 'display:inline-block;']) !!}

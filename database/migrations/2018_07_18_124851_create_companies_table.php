@@ -21,7 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->text('description');
             $table->string('picture');
 
-            $table->unsignedInteger('linkage_id');
+            $table->unsignedInteger('linkage_id')->nullable();
             $table->foreign('linkage_id')->references('id')->on('departments')
             ->onUpdate('cascade')->onDelete('cascade');
 

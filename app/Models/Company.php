@@ -32,4 +32,8 @@ class Company extends Model
     {
     	return $this->belongsTo('App\Models\Area');
     }
+    public function linkage()
+    {
+    	return $this->belongsTo('App\Models\Department');
+    }
 }

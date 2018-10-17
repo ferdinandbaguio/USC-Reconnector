@@ -9,7 +9,9 @@ $('#show-user').on('show.bs.modal', function(event) {
     var email   = button.data('email')
     var pic     = button.data('pic')
     var desc    = button.data('desc')
+
     var year    = button.data('year')
+    var emply   = button.data('emply')
     var updt    = button.data('updt')
     var pos     = button.data('pos')
 
@@ -26,12 +28,12 @@ $('#show-user').on('show.bs.modal', function(event) {
     var salar2      = button.data('salar2')
     var jobstr      = button.data('jobstr')
     var jobend      = button.data('jobend')
-    // var compname    = button.data('compname')
-    // var compaddr    = button.data('compaddr')
-    // var compdesc    = button.data('compdesc')
-    // var linkage     = button.data('linkage')
-    // var country     = button.data('country')
-    // var area        = button.data('area')
+    var compname    = button.data('compname')
+    var compaddr    = button.data('compaddr')
+    var compdesc    = button.data('compdesc')
+    var linkage     = button.data('linkage')
+    var country     = button.data('country')
+    var area        = button.data('area')
 
     var modal   = $(this)
 
@@ -44,7 +46,9 @@ $('#show-user').on('show.bs.modal', function(event) {
     modal.find('.modal-body #email').val(email);
     modal.find('.modal-body #pic').val(pic);
     modal.find('.modal-body #desc').val(desc);
+
     modal.find('.modal-body #year').val(year);
+    modal.find('.modal-body #emply').val(emply);
     modal.find('.modal-body #updt').val(updt);
     modal.find('.modal-body #pos').val(pos);
 
@@ -61,12 +65,12 @@ $('#show-user').on('show.bs.modal', function(event) {
     modal.find('.modal-body #salar2').val(salar2);
     modal.find('.modal-body #jobstr').val(jobstr);
     modal.find('.modal-body #jobend').val(jobend);
-    // modal.find('.modal-body #compname').val(compname);
-    // modal.find('.modal-body #compaddr').val(compaddr);
-    // modal.find('.modal-body #compdesc').val(compdesc);
-    // modal.find('.modal-body #linkage').val(linkage);
-    // modal.find('.modal-body #country').val(country);
-    // modal.find('.modal-body #area').val(area);
+    modal.find('.modal-body #compname').val(compname);
+    modal.find('.modal-body #compaddr').val(compaddr);
+    modal.find('.modal-body #compdesc').val(compdesc);
+    modal.find('.modal-body #linkage').val(linkage);
+    modal.find('.modal-body #country').val(country);
+    modal.find('.modal-body #area').val(area);
 })
 
 $('#create').on('show.bs.modal', function(event){
@@ -90,7 +94,9 @@ $('#edit-user').on('show.bs.modal', function(event) {
     var email   = button.data('email')
     var pic     = button.data('pic')
     var desc    = button.data('desc')
+    
     var year    = button.data('year')
+    var emply   = button.data('emply')
     var updt    = button.data('updt')
     var pos     = button.data('pos')
 
@@ -117,7 +123,9 @@ $('#edit-user').on('show.bs.modal', function(event) {
     modal.find('.modal-body #email').val(email);
     modal.find('.modal-body #pic').val(pic);
     modal.find('.modal-body #desc').val(desc);
+
     modal.find('.modal-body #year').val(year);
+    modal.find('.modal-body #emply').val(emply);
     modal.find('.modal-body #updt').val(updt);
     modal.find('.modal-body #pos').val(pos);
 

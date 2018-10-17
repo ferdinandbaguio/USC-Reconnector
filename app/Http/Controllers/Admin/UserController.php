@@ -43,22 +43,20 @@ class UserController extends Controller
         $pictureFemaleValues = ['img/alt_imgs/default_female.png', 
                                 'img/alt_imgs/default_female1.png', 
                                 'img/alt_imgs/default_female2.png'];
-        
+        $request = $request->all();
+        $picture = array_rand($pictureMaleValues);
+
+        if($request['sex'] == 'Male'){
+            $request['picture'] = $pictureMaleValues[$picture];
+        }
+        else if($request['sex'] == 'Female'){
+            $request['picture'] = $pictureFemaleValues[$picture];
+        }
+
+        $request['password'] = bcrypt($request['idnumber']);
+
         try{
-            $request = $request->all();
-            $picture = array_rand($pictureMaleValues);
-
-            if($request['sex'] == 'Male'){
-                $request['picture'] = $pictureMaleValues[$picture];
-            }
-            else if($request['sex'] == 'Female'){
-                $request['picture'] = $pictureFemaleValues[$picture];
-            }
-
-            $request['password'] = bcrypt($request['idnumber']);
-            $request['userStatus'] = 'Approved';
             User::create($request);
-
             return redirect()->back()->with('success', 'Created User: Successful!');
         }
         catch(Exception $e){
@@ -67,16 +65,15 @@ class UserController extends Controller
     }
     public function update(Request $request)
     {  
+        $request = $request->all();
+        if(isset($request['picture'])){
+            $request['picture']->move('img/users','u'.$request['id'].'.jpg');
+            $picturePath = 'img/users/u'.$request['id'].'.jpg';
+            $request['picture'] = $picturePath;
+        }
         try{
-            $request = $request->all();
-            if(isset($request['picture'])){
-                $request['picture']->move('img/users','u'.$request['id'].'.jpg');
-                $picturePath = 'img/users/u'.$request['id'].'.jpg';
-                $request['picture'] = $picturePath;
-            }
             $user = User::findOrFail($request['id']);
             $user->update($request);
-
             return redirect()->back()->with('success', 'Edited User '.$request['id'].': Successful!');
         }
         catch(Exception $e){

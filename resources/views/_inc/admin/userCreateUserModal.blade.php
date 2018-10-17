@@ -1,5 +1,10 @@
 {{ Form::hidden('userType', null, array('id' => 'type')) }}
+{{ Form::hidden('userStatus', 'Approved') }}
+{{ Form::hidden('employmentStatus', 'Unemployed') }}
+{{ Form::hidden('updateStatus', 'Outdated') }}
 
+<center>
+<i>{{Form::label('jobDetails', '~ User Details ~')}}</i><br><br>
 {{-- Profile Picture and ID Number --}}
 <div class="row">
     <div class="col-md-6 form-group">
@@ -63,10 +68,12 @@
     </div>
 </div>
 
-
-<div class="row">
-    {{-- Course Code and Year Level --}}
-    @if($users[0]->userType == "Student")            
+{{-- User Type Details --}}
+@if($userType == "Student")
+    {{ Form::hidden('department_id', 1) }}
+    <br><i>{{Form::label('studentDetails', '~ Student Details ~')}}</i><br><br>
+    <div class="row">
+        {{-- Course Code and Year Level --}}            
         <div class="col-md-6 form-group">
             <b>{{Form::label('course_id', 'Course Code')}}</b>
             <select name="course_id" class = "form-control input-rounded text-center">
@@ -82,7 +89,21 @@
             {{Form::selectRange('yearLevel', 1, 5, null, ['class' => 'form-control input-rounded text-center',
             'id' => 'year',  'placeholder' => 'Input Year Level', 'required'])}}
         </div>
-    @endif
+    </div>
+@elseif($userType == "Teacher")
+    <br><i>{{Form::label('=Details', '~ Details ~')}}</i><br><br>
+    <div class="row">
+        {{-- Inputs --}}            
+        <div class="col-md-6 form-group">
 
+        </div>
 
-</div>
+        <div class="col-md-6 form-group">
+            
+        </div>
+    </div>
+@elseif($userType == "Alumnus")
+    {{ Form::hidden('course_id', null) }}
+    {{ Form::hidden('department_id', 1) }}
+@endif
+</center>

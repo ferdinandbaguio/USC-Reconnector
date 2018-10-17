@@ -10,7 +10,9 @@
 
 <div class="page-heading">
 
-<h1 class="page-title">{{ $users[0]->userType }}</h1>
+<h1 class="page-title">Alumni</h1>
+
+<?php $i=0; $userType="Alumnus"; ?>
 
 @include('_inc.messages')
 
@@ -18,9 +20,9 @@
 <div class="ibox">
     <div class="ibox-head">
         <div class="ibox-title text-info">
-            Number of {{ $users[0]->userType }}<b><i> {{ $users->count() }} </i></b>
+            Number of Alumni:<b><i> @if(isset($users)){{$users->count()}}@endif</i></b>
         </div>
-        <span data-toggle="modal" data-target="#create" data-type="{{ $users[0]->userType }}">
+        <span data-toggle="modal" data-target="#create" data-type="Alumnus">
             <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New User">
                 Add <i class="ti-plus"></i>                            
             </button>
@@ -51,7 +53,6 @@
             </tr>
         </tfoot>
         <tbody>
-            <?php $i=0; ?>
             @foreach ($users as $user)
             <tr>
                 <td><center>
@@ -62,8 +63,10 @@
                 <td>{{ $user->sex }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                    @if(isset($users[$i]->occupations[0]['title']))
-                        {{ $users[$i]->occupations[0]['title'] }}
+                    @if(count($users[$i]->occupations) > 0)
+                        {{-- LO short for Latest Occupation --}}
+                        <?php $LO=count($users[$i]->occupations)-1; ?>
+                        {{ $users[$i]->occupations[$LO]['title'] }}
                     @else
                         No occupation
                     @endif
@@ -74,17 +77,18 @@
                     <span   data-toggle="modal"                 data-target="#show-user" 
                             {{-- User Basic Data --}}
                             data-id="{{ $user->id }}"           data-status="{{ $user->userStatus}}"
-                            data-n="{{ $user->full_name }}"     data-type="{{ $user->userType }}"   
-                            data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"         
+                            data-n="{{ $user->full_name }}"     data-type="{{ $user->userType }}"
+                            data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"
                             data-email="{{ $user->email }}"     data-desc="{{ $user->description }}"
+                            data-updt="{{$user->updateStatus}}" data-emply="{{ $user->employmentStatus }}"
                             {{-- Occupation and Company  --}}
-                            @if(isset($users[$i]->occupations[0]['title']))
-                                data-title="{{ $users[$i]->occupations[0]['title'] }}"              data-addr="{{ $users[$i]->occupations[0]['address'] }}"
-                                data-salar1="{{ $users[$i]->occupations[0]['salaryRangeOne'] }}"    data-salar2="{{ $users[$i]->occupations[0]['salaryRangeTwo'] }}"
-                                data-jobstr="{{ $users[$i]->occupations[0]['jobStart'] }}"          data-jobend="{{ $users[$i]->occupations[0]['jobEnd'] }}"
-                                {{-- data-compname="{{ $users[$i]->occupations[0]['title'] }}"      data-compaddr="{{ $users[$i]->occupations[0]['title'] }}"
-                                data-compdesc="{{ $users[$i]->occupations[0]['title'] }}"           data-linkage="{{ $users[$i]->occupations[0]['title'] }}" 
-                                data-country="{{ $users[$i]->occupations[0]['title'] }}"            data-area="{{ $users[$i]->occupations[0]['title'] }}" --}} 
+                            @if(count($users[$i]->occupations) > 0)
+                                data-title="{{ $users[$i]->occupations[$LO]['title'] }}"                data-addr="{{ $users[$i]->occupations[$LO]['address'] }}"
+                                data-salar1="{{ $users[$i]->occupations[$LO]['salaryRangeOne'] }}"      data-salar2="{{ $users[$i]->occupations[$LO]['salaryRangeTwo'] }}"
+                                data-jobstr="{{ $users[$i]->occupations[$LO]['jobStart'] }}"            data-jobend="{{ $users[$i]->occupations[$LO]['jobEnd'] }}"
+                                data-compname="{{ $users[$i]->occupations[$LO]->company['name'] }}"       data-compaddr="{{ $users[$i]->occupations[$LO]->company['address'] }}"
+                                data-compdesc="{{$users[$i]->occupations[$LO]->company['description']}}"  data-linkage="{{ $users[$i]->occupations[$LO]->company->linkage['code'] }}" 
+                                data-country="{{$users[$i]->occupations[$LO]->company->country['name']}}" data-area="{{$users[$i]->occupations[$LO]->company->area['name']}}" 
                             @endif >
                         <button class="btn btn-xs" data-toggle="tooltip" data-original-title="Show">   
                             <i class="ti-eye"></i>                              
@@ -99,13 +103,7 @@
                             data-ln="{{ $user->lastName }}"     data-type="{{ $user->userType }}"   
                             data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"         
                             data-email="{{ $user->email }}"     data-desc="{{ $user->description }}"
-                            {{-- Occupation and Company  --}}
-                            {{-- data-title="{{ $user->email }}"     data-addr="{{ $user->email }}"
-                            data-salar1="{{ $user->email }}"    data-salar2="{{ $user->email }}"
-                            data-jobstr="{{ $user->email }}"    data-jobend="{{ $user->email }}" 
-                            data-compname="{{ $user->email }}"  data-compaddr="{{ $user->email }}"
-                            data-compdesc="{{ $user->email }}"  data-linkage="{{ $user->email }}" 
-                            data-country="{{ $user->email }}"   data-area="{{ $user->email }}" --}} >
+                            data-updt="{{$user->updateStatus}}" data-emply="{{ $user->employmentStatus }}">
                         <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
                             <i class="ti-pencil"></i>                                
                         </button>
@@ -137,7 +135,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Showing {{ $users[0]->userType }}</h4>
+        <h4 class="modal-title" id="myModalLabel">Showing Alumnus</h4>
     </div>
     <div class="modal-body">
         @include('_inc.admin.userShowUserModal')
@@ -157,7 +155,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Creating New {{ $users[0]->userType }}</h4>
+        <h4 class="modal-title" id="myModalLabel">Creating New Alumnus</h4>
     </div>
     {!! Form::open(['route' => 'StoreUser', 'method' => 'POST', 
                     'style' => 'display:inline-block;', 'files' => TRUE]) !!}
@@ -186,7 +184,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         {{ Form::file('picture') }}
-        <h4 class="modal-title" id="myModalLabel">Editing {{ $users[0]->userType }}</h4>
+        <h4 class="modal-title" id="myModalLabel">Editing Alumnus</h4>
     </div>
     <div class="modal-body">
         @include('_inc.admin.userEditUserModal')
@@ -208,7 +206,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title text-center" id="myModalLabel">Delete {{ $users[0]->userType }} Confirmation</h4>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Alumnus Confirmation</h4>
     </div>
     {!! Form::open(['route' => 'DeleteUser', 'method' => 'DELETE', 
                     'style' => 'display:inline-block;']) !!}

@@ -1,14 +1,9 @@
 {{ Form::hidden('id', null, array('id' => 'id')) }}
 
 <center>
-
+<i>{{Form::label('userDetails', '~ User Details ~')}}</i><br><br>
 {{-- ID Number, User Type, ID --}}
 <div class="row">
-    {{-- <div class="col-md-4 form-group">
-        <b>{{Form::label('pic', 'Profile Picture')}}</b>
-        {{ Form::file('picture') }}
-    </div> --}}
-
     <div class="col-md-4 form-group">
         <b>{{Form::label('idnumber', 'ID Number')}}</b>
         {{Form::number('idnumber', '', ['class' => 'form-control input-rounded text-center', 
@@ -17,18 +12,13 @@
 
     <div class="col-md-5 form-group">
         <b>{{Form::label('userType', 'User Type')}}</b>
-        {{Form::select('userType', ['Student'       => 'Student', 
-                                    'Alumnus'       => 'Alumnus',
-                                    'Teacher'       => 'Teacher',
-                                    'Admin'         => 'Admin',
-                                    'Coordinator'   => 'Coordinator',
-                                    'Chair'         => 'Chair'], null, 
-                                    ['class' => 'form-control input-rounded', 
-                                    'placeholder' => 'Input User Type', 
-                                    'id' => 'type', 'required'])}}</div>
+        {{Form::select('userType', ['Student'       => 'Student',       'Alumnus'       => 'Alumnus',
+                                    'Teacher'       => 'Teacher',       'Admin'         => 'Admin',
+                                    'Coordinator'   => 'Coordinator',   'Chair'         => 'Chair'], null, 
+                                    ['class' => 'form-control input-rounded', 'id' => 'type', 'required'])}}</div>
 
     <div class="col-md-3 form-group">
-        <b>{{ $users[0]->userType }} ID</b>
+        <b>{{ $userType }} ID</b>
         {{ Form::text('id', null, ['class' => 'form-control input-rounded text-center',
         'id' => 'id', 'disabled']) }}
     </div>
@@ -55,41 +45,18 @@
     </div>
 </div>
 
-{{-- Email Address and Sex --}}
-@if($users[0]->userType != "Alumnus")
-    <div class="row">
-        <div class="col-md-8 form-group">
-            <b>{{Form::label('email', 'Email Address')}}</b>
-            <div class="input-group">
-                {{Form::email('email', '', ['class' => 'form-control input-rounded text-center',
-                'id' => 'email', 'placeholder' => 'Input Email Address', 'required'])}}
-            </div>
-        </div>
-
-        <div class="col-md-4 form-group">
-            <b>{{Form::label('sex', 'Sex')}}</b>
-            <div class="input-group">
-                {{Form::select('sex', ['Male' => "Male", 'Female' => 'Female'], null, 
-                ['class' => 'form-control input-rounded text-center', 'id' => 'sex', 
-                'placeholder' => 'Input Sex', 'required'])}}
-            </div>
-        </div>
-    </div>
-@else
+{{-- Email Address --}}
+<div class="form-group">
     <b>{{Form::label('email', 'Email Address')}}</b>
     <div class="input-group">
         {{Form::email('email', '', ['class' => 'form-control input-rounded text-center',
         'id' => 'email', 'placeholder' => 'Input Email Address', 'required'])}}
     </div>
-@endif
+</div>
 
-{{-- User Status and Student --}}
+{{-- User Status and Sex --}}
 <div class="row">
-    @if($users[0]->userType == "Student")
-        <div class="col-md-4 form-group">
-    @else
-        <div class="col-md-6 form-group">
-    @endif
+    <div class="col-md-6 form-group">
         <b>{{Form::label('userStatus', 'User Status')}}</b>
         {{ Form::select('userStatus', [ 'Approved' => 'Approved', 
                                         'Pending' => 'Pending', 
@@ -97,9 +64,19 @@
         ['class' => 'form-control input-rounded text-center', 'id' => 'status', 'required']) }}
     </div>  
 
-    @if($users[0]->userType == "Student")
-        {{-- Course Code and Year Level --}}
-        <div class="col-md-4 form-group">
+    <div class="col-md-6 form-group">
+        <b>{{Form::label('sex', 'Sex')}}</b>
+        {{Form::select('sex', ['Male' => "Male", 'Female' => 'Female'], null, 
+        ['class' => 'form-control input-rounded text-center', 'id' => 'sex', 'required'])}}
+    </div>
+</div>
+
+{{-- User Type Details --}}
+@if($userType == "Student")
+    <br><i>{{Form::label('studentDetails', '~ Student Details ~')}}</i><br><br>
+    {{-- Course Code and Year Level --}}
+    <div class="row">
+        <div class="col-md-6 form-group">
             <b>{{Form::label('course_id', 'Course Code')}}</b>
             <select name="course_id" id="cid" class = "form-control input-rounded text-center">
                 @foreach ($courses as $course) 
@@ -107,22 +84,39 @@
                 @endforeach
             </select>
         </div>
-    
-        <div class="col-md-4 form-group">
+
+        <div class="col-md-6 form-group">
             <b>{{Form::label('yearLevel', 'Year Level')}}</b>
             {{Form::selectRange('yearLevel', 1, 5, null, ['class' => 'form-control input-rounded text-center',
-            'id' => 'year',  'placeholder' => 'Input Year Level', 'required'])}}
+            'id' => 'year',  'placeholder' => 'Input Year Level'])}}
         </div>
-    @else
+    </div>
+@elseif($userType == "Alumnus")
+    <br><i>{{Form::label('alumnusDetails', '~ Alumnus Details ~')}}</i><br><br>
+    <div class="row">
         <div class="col-md-6 form-group">
-            <b>{{Form::label('sex', 'Sex')}}</b>
-            <div class="input-group">
-                {{Form::select('sex', ['Male' => "Male", 'Female' => 'Female'], null, 
-                ['class' => 'form-control input-rounded text-center', 'id' => 'sex', 
-                'placeholder' => 'Input Sex', 'required'])}}
-            </div>
-        </div>
-    @endif
-</div>
+            <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                               ['class' => 'form-control input-rounded', 'id' => 'emply'])}}</div>
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('updateStatus', 'Update Status')}}</b>
+            {{Form::select('updateStatus', ['Updated'   => 'Updated',   'Outdated'      => 'Outdated',
+                                            'Recent'    => 'Recent'], null, 
+                                            ['class' => 'form-control input-rounded', 'id' => 'updt'])}}</div>
+    </div>
+@elseif($userType == "Teacher")
+    <br><i>{{Form::label('=Details', '~ Details ~')}}</i><br><br>
+    <div class="row">
+        {{-- Inputs --}}            
+        <div class="col-md-6 form-group">
 
+        </div>
+
+        <div class="col-md-6 form-group">
+            
+        </div>
+    </div>
+@endif
 </center>
