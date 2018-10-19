@@ -148,7 +148,7 @@
             --}}
             <li class="dropdown dropdown-user">
                 <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
-                    <img src="{{ asset(Auth::user()->picture) }}" height="30px"/>
+                    <img src="/storage/user_img/{{ Auth::user()->picture }}" height="30px"/>
                     <span></span>{{ Auth::user()->userType }}<i class="fa fa-angle-down m-l-5"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">

@@ -3,7 +3,7 @@
     <div id="sidebar-collapse">
         <div class="admin-block d-flex">
             <div>
-                <img src="{{ asset(Auth::user()->picture) }}" height="40px" style="border-radius:50%;"/>
+                <img src="/storage/user_img/{{ Auth::user()->picture }}" height="40px" style="border-radius:50%;"/>
             </div>
             <div class="admin-info">
                 <div class="font-strong">

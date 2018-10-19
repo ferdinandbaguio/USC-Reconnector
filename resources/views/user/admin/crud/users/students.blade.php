@@ -58,7 +58,7 @@
             @foreach ($users as $user)
             <tr>
                 <td><center>
-                    <img src="{{ asset($user->picture) }}" height="28" style="border-radius: 50%;" alt="User Default">
+                    <img src="/storage/user_img/{{ $user->picture }}" height="28" style="border-radius: 50%;" alt="User Default">
                 </center></td>
                 <td>{{ $user->idnumber }}</td>
                 <td>{{ $user->full_name }}</td>
