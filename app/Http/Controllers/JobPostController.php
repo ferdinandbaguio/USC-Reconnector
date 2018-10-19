@@ -14,9 +14,7 @@ class JobPostController extends Controller
      */
     public function index()
     {
-        // $users = JobPost::where('userStatus' , '=' , 'Pending')->get();
-		
-		// return view('test', compact('users')); 
+ 
     }
 
     /**

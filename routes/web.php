@@ -18,58 +18,60 @@ Route::group(['middleware' => 'guest'], function () {
         Route::post('logout', 'LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home','HomeController@latestPost')->name('home');  
-// Authentication =========================================================
 
-    // Route::get('/home', 'LoginController@index')->name('home');
-    
+    Route::group(['middleware' => 'home'], function () {
+        Route::get('/home','HomeController@latestPost')->name('home');   
+        Route::resource('jobPosts','JobPostController')->except('create');
+        Route::resource('announcements','AnnouncementController')->except('create');
+    });
 
-// Views ==================================================================
 
     // Student
     Route::group(['middleware' => 'student'], function () {  
-
-        Route::view('/studenthome', 'user.student.home')->name('students');
         Route::view('/student/class', 'user.student.class')->name('students');
+        Route::view('/student/profile', 'user.student.profile');
+
     });
     Route::group(['middleware' => 'guest'], function () {  
     });
     // Alumnus
-    // Route::group(['middleware' => 'alumnus'], function () {  
+    Route::group(['middleware' => 'alumnus'], function () {  
       
         Route::view('/alumnus/profile', 'user.alumnus.profile');
         Route::view('/alumnus/jobs', 'user.alumnus.jobs');
         Route::view('/alumnus/communicate', 'user.alumnus.communicate');
-        Route::view('/alumnus/form', 'user.alumnus.form');
+        Route::view('/alumnus/form', 'user.alumnus.form');       
 
-        //Alumnus 
-        Route::resource('jobPosts','JobPostController')->except('create');
-        Route::resource('announcements','AnnouncementController')->except('create');
-    // });
+    });
 
     
     // Teacher
-    // Route::group(['middleware' => 'teacher'], function () {
-        // 
-    // });
+    Route::group(['middleware' => 'teacher'], function () {
+
+        Route::view('/teacher/profile', 'user.teacher.profile');
+        
+    });
     
 
-    // Admin 
-    Route::view('/admin', 'user.admin.index')->name('admins');
+    // Admin
+    Route::group(['middleware' => 'admin'], function () { 
+        Route::view('/admin', 'user.admin.index')->name('admins');
 
-    Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
-    Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
-    Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
-    Route::get('/user/coordinators', 'Admin\UserController@coordinators')->name('ShowCoordinators');
-    Route::get('/user/chairs', 'Admin\UserController@chairs')->name('ShowChairs');
-    Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
-    Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
-    Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
-    Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
+        Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
+        Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
+        Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
+        Route::get('/user/coordinators', 'Admin\UserController@coordinators')->name('ShowCoordinators');
+        Route::get('/user/chairs', 'Admin\UserController@chairs')->name('ShowChairs');
+        Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
+        Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
+        Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
+        Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
 
-    Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
-    Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
-    Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
+        Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
+        Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
+        Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
+    });
+    
 
 // Resources ==============================================================
 

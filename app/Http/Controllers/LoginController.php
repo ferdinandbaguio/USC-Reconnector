@@ -19,12 +19,14 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            if(auth()->user()->userStatus == 'Approved'){
+            if(auth()->user()->userStatus == 'Approved' && auth()->user()->userType != 'Admin'){
                 return redirect(route('home'));
+            }else if(auth()->user()->userStatus == 'Approved' && auth()->user()->userType == 'Admin'){
+                return redirect(route('admins'));
+            }else{
+                return $this->logout();
             }
-   
-            return $this->logout();
-            
+
         }
         return redirect()->route('login');
     }

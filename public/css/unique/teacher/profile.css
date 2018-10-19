@@ -1,0 +1,38 @@
+
+body{
+  background-color: #B1B1B1
+}
+button:hover{
+	cursor: pointer;
+}
+
+.contentContainer{
+    padding-top:100px;
+
+}
+/*
+
+/* ------------------------- Page Contents --------------------------*/
+
+.addAchvBtn{
+	background-color: #DCD909;
+	color: white;
+	border-top-right-radius:50px;
+	border-bottom-right-radius:50px;
+}
+.addAchvBtn:hover{
+	padding-right: 20px;
+}
+
+
+
+
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 767.98px) { 
+    .contentContainer{
+        padding-top:80px;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}

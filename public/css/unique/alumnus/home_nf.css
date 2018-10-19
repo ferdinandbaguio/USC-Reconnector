@@ -4,10 +4,6 @@ body{
   background-color: #EFEFEF
 }
 
-.fontRoboto{
-  font-family: 'Roboto', sans-serif !important;
-  font-weight: 300 !important;
-}
 /* 
   Page Contents 
 */
@@ -17,10 +13,7 @@ body{
   padding-right: 60px;
   padding-bottom: 0px;
 }
-.fontRoboto{
-  font-family: 'Roboto', sans-serif !important;
-  font-weight: 300 !important;
-}
+
 .postBox{
   box-shadow:0 0 5px;
 } 
