@@ -2,9 +2,11 @@
 {{ Form::hidden('userStatus', 'Approved') }}
 {{ Form::hidden('employmentStatus', 'Unemployed') }}
 {{ Form::hidden('updateStatus', 'Outdated') }}
+{{ Form::hidden('department_id', Auth::user()->department_id ) }}
+{{ Form::hidden('course_id', null ) }}
 
 <center>
-<i>{{Form::label('jobDetails', '~ User Details ~')}}</i><br><br>
+<i>{{Form::label('userDetails', '~ User Details ~')}}</i><br><br>
 {{-- Profile Picture and ID Number --}}
 <div class="row">
     <div class="col-md-6 form-group">
@@ -70,13 +72,12 @@
 
 {{-- User Type Details --}}
 @if($userType == "Student")
-    {{ Form::hidden('department_id', 1) }}
     <br><i>{{Form::label('studentDetails', '~ Student Details ~')}}</i><br><br>
     <div class="row">
         {{-- Course Code and Year Level --}}            
         <div class="col-md-6 form-group">
             <b>{{Form::label('course_id', 'Course Code')}}</b>
-            <select name="course_id" class = "form-control input-rounded text-center">
+            <select name="course_id" class = "form-control input-rounded text-center" required>
                 <option value="" disabled selected>Choose Course</option>
                 @foreach ($courses as $course) 
                     <option value={{$course->id}}>{{$course->code}}</option>
@@ -91,16 +92,72 @@
         </div>
     </div>
 @elseif($userType == "Teacher")
-    <br><i>{{Form::label('=Details', '~ Details ~')}}</i><br><br>
+    <br><i>{{Form::label('teacherDetails', '~ Teacher Details ~')}}</i><br><br>
     <div class="row">
-        {{-- Inputs --}}            
         <div class="col-md-6 form-group">
-
+            <b>{{Form::label('position', 'Position')}}</b>
+            {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+            'placeholder' => 'Input Teacher Position', 'required'])}}
         </div>
 
         <div class="col-md-6 form-group">
-            
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
+                                                'required'])}}</div>
+    </div>
+@elseif($userType == "Admin")
+    <br><i>{{Form::label('adminDetails', '~ Admin Details ~')}}</i><br><br>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('position', 'Position')}}</b>
+            {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+            'placeholder' => 'Input Teacher Position', 'required'])}}
         </div>
+
+        <div class="col-md-6 form-group">
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
+                                                'required'])}}</div>
+    </div>
+@elseif($userType == "Coordinator")
+    <br><i>{{Form::label('coordinatorDetails', '~ Coordinator Details ~')}}</i><br><br>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('position', 'Position')}}</b>
+            {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+            'placeholder' => 'Input Teacher Position', 'required'])}}
+        </div>
+
+        <div class="col-md-6 form-group">
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
+                                                'required'])}}</div>
+    </div>
+@elseif($userType == "Chair")
+    <br><i>{{Form::label('chairDetails', '~ Chair Details ~')}}</i><br><br>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('position', 'Position')}}</b>
+            {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+            'placeholder' => 'Input Teacher Position', 'required'])}}
+        </div>
+
+        <div class="col-md-6 form-group">
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
+                                                'required'])}}</div>
     </div>
 @elseif($userType == "Alumnus")
     {{ Form::hidden('course_id', null) }}

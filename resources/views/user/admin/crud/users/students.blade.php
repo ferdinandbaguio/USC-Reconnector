@@ -98,16 +98,7 @@
                             data-ln="{{ $user->lastName }}"         data-type="{{ $user->userType }}"   
                             data-idnum="{{ $user->idnumber }}"      data-sex="{{ $user->sex }}"         
                             data-email="{{ $user->email }}"         data-desc="{{ $user->description }}"
-                            data-year="{{ $user->yearLevel }}"      data-cid="{{$user->course['id']}}"
-                            {{-- Course Data --}}
-                            @if(isset($user->course))
-                                data-cname="{{$user->course['name']}}"              data-ccode="{{ $user->course['code'] }}"
-                            @endif 
-                            {{-- Department and School Data --}}
-                            @if(isset($user->department))
-                                data-dname="{{$user->department['name']}}"          data-dcode="{{$user->department['code']}}"
-                                data-sname="{{$user->department->school['name']}}"  data-scode="{{$user->department->school['code']}}"
-                            @endif >
+                            data-year="{{ $user->yearLevel }}"      data-cid="{{$user->course['id']}}">
                         <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
                             <i class="ti-pencil"></i>                                
                         </button>

@@ -21,10 +21,13 @@ class Department extends Model
     {
         return $this->belongsTo('App\Models\School');
     }
-
     public function courses()
     {
         return $this->hasMany('App\Models\Course');
+    }
+    public function users()
+    {
+        return $this->hasMany('App\Models\User');
     }
     public function linkages()
     {

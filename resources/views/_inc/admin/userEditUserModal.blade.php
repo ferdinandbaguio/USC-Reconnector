@@ -107,16 +107,68 @@
                                             ['class' => 'form-control input-rounded', 'id' => 'updt'])}}</div>
     </div>
 @elseif($userType == "Teacher")
-    <br><i>{{Form::label('=Details', '~ Details ~')}}</i><br><br>
+    <br><i>{{Form::label('teacherDetails', '~ Teacher Details ~')}}</i><br><br>
     <div class="row">
-        {{-- Inputs --}}            
         <div class="col-md-6 form-group">
-
+            <b>{{Form::label('position', 'Position')}}</b>
+            {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+            'id' => 'pos', 'required'])}}
         </div>
 
         <div class="col-md-6 form-group">
-            
-        </div>
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                               ['class' => 'form-control input-rounded', 'id' => 'emply'])}}</div>
     </div>
+@elseif($userType == "Admin")
+    <br><i>{{Form::label('adminDetails', '~ Admin Details ~')}}</i><br><br>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('position', 'Position')}}</b>
+            {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+            'id' => 'pos', 'required'])}}
+        </div>
+
+        <div class="col-md-6 form-group">
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                                ['class' => 'form-control input-rounded', 'id' => 'emply'])}}</div>
+    </div>
+@elseif($userType == "Coordinator")
+    <br><i>{{Form::label('coordinatorrDetails', '~ Coordinator Details ~')}}</i><br><br>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('position', 'Position')}}</b>
+            {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+            'id' => 'pos', 'required'])}}
+        </div>
+
+        <div class="col-md-6 form-group">
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                               ['class' => 'form-control input-rounded', 'id' => 'emply'])}}</div>
+    </div>
+@elseif($userType == "Chair")
+    <br><i>{{Form::label('chairDetails', '~ Chair Details ~')}}</i><br><br>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('position', 'Position')}}</b>
+            {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+            'id' => 'pos', 'required'])}}
+        </div>
+
+        <div class="col-md-6 form-group">
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
+                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
+                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+                                               ['class' => 'form-control input-rounded', 'id' => 'emply'])}}</div>
+    </div>   
 @endif
 </center>

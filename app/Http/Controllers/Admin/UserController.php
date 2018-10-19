@@ -26,14 +26,27 @@ class UserController extends Controller
     }
     public function teachers()
     {
+        $departments = Department::all('id', 'code');
         $users = User::where('userType', '=', 'Teacher')->where('userStatus', '=', 'Approved')->get();
-        return view('user.admin.crud.users.teachers')->with('users',$users);
+        return view('user.admin.crud.users.teachers')->with('users',$users)->with('departments', $departments);
+    }
+    public function coordinators()
+    {
+        $departments = Department::all('id', 'code');
+        $users = User::where('userType', '=', 'Coordinator')->where('userStatus', '=', 'Approved')->get();
+        return view('user.admin.crud.users.coordinators')->with('users',$users)->with('departments', $departments);
+    }
+    public function chairs()
+    {
+        $departments = Department::all('id', 'code');
+        $users = User::where('userType', '=', 'Chair')->where('userStatus', '=', 'Approved')->get();
+        return view('user.admin.crud.users.chairs')->with('users',$users)->with('departments', $departments);
     }
     public function admins()
     {
-        $users = User::where('userType', '=', 'Admin')->where('userType', '=', 'Coordinator')
-                     ->where('userType', '=', 'Chair')->where('userStatus', '=', 'Approved')->get();
-        return view('user.admin.crud.users.admins')->with('users',$users);
+        $departments = Department::all('id', 'code');
+        $users = User::where('userType', '=', 'Admin')->where('userStatus', '=', 'Approved')->get();
+        return view('user.admin.crud.users.admins')->with('users',$users)->with('departments', $departments);
     }
     public function store(Request $request)
     {

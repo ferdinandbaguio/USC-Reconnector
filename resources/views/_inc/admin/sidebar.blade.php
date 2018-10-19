@@ -39,9 +39,19 @@
                     <li>
                         <a href="{{ route('ShowTeachers') }}">Teachers</a>
                     </li>
-                    <li>
-                        <a href="{{ route('ShowAdmins') }}">Admins</a>
-                    </li>
+                    @if(Auth::user()->userType != "Coordinator")
+                        <li>
+                            <a href="{{ route('ShowCoordinators') }}">Coordinators</a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->userType == "Admin")
+                        <li>
+                            <a href="{{ route('ShowChairs') }}">Chair</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('ShowAdmins') }}">Admins</a>
+                        </li>
+                    @endif
                 </ul>
             </li>
             <li>

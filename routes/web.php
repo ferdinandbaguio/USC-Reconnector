@@ -60,6 +60,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
     Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
     Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
+    Route::get('/user/coordinators', 'Admin\UserController@coordinators')->name('ShowCoordinators');
+    Route::get('/user/chairs', 'Admin\UserController@chairs')->name('ShowChairs');
     Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
     Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
     Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');

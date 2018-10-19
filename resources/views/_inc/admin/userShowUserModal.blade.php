@@ -60,10 +60,10 @@
 </div>
 
 {{-- User Type Details --}}
-@if($userType == "Teacher" || $userType == "Student")
+@if($userType != "Alumnus")
     @if($userType == "Student")
-        <br><i>{{Form::label('jobDetails', '~ Student Details ~')}}</i><br><br>
-        {{-- User Status, Course Code, and Year Level --}}
+        <br><i>{{Form::label('studentDetails', '~ Student Details ~')}}</i><br><br>
+        {{-- Course Code and Year Level --}}
         <div class="row">
             <div class="col-md-6 form-group">
                     <b>{{Form::label('course_code', 'Course Code')}}</b>
@@ -76,45 +76,59 @@
                 'id' => 'year', 'disabled'])}}
             </div> 
         </div>
-        {{-- Department Code and School Code --}}
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <b>{{Form::label('Dcode', 'Department Code')}}</b>
-                {{ Form::text('Dcode', '', ['class' => 'form-control input-rounded text-center', 
-                'id' => 'dcode', 'disabled']) }}</div>  
+    @endif
+
     
-            <div class="col-md-6 form-group">
-                <b>{{Form::label('Scode', 'School Code')}}</b>
-                {{ Form::text('Scode', '', ['class' => 'form-control input-rounded text-center', 
-                'id' => 'scode', 'disabled']) }}</div>  
-        </div>
-    @else
-        <br><i>{{Form::label('jobDetails', '~ Teacher Details ~')}}</i><br><br>
-        {{-- Department Code and School Code --}}
+    @if($userType == "Teacher")
+        <br><i>{{Form::label('teacherDetails', '~ Teacher Details ~')}}</i><br><br>
+    @elseif($userType == "Admin")
+        <br><i>{{Form::label('adminDetails', '~ Admin Details ~')}}</i><br><br>
+    @elseif($userType == "Coordinator")
+        <br><i>{{Form::label('coordinatorDetails', '~ Coordinator Details ~')}}</i><br><br>
+    @elseif($userType == "Chair")
+        <br><i>{{Form::label('chairDetails', '~ Chair Details ~')}}</i><br><br>
+    @endif
+
+    @if($userType != "Student")
+        {{-- Position and Employment Status --}}
         <div class="row">
-            <div class="col-md-4 form-group">
-                    <b>{{Form::label('userStatus', 'User Status')}}</b>
-                    {{ Form::text('userStatus', '', ['class' => 'form-control input-rounded text-center', 
-                    'id' => 'status', 'disabled']) }}</div>  
+            <div class="col-md-8 form-group">
+                <b>{{Form::label('position', 'Position')}}</b>
+                {{Form::text('position', '', ['class' => 'form-control input-rounded text-center', 
+                'id' => 'pos', 'disabled'])}}
+            </div>
 
             <div class="col-md-4 form-group">
-                <b>{{Form::label('Dcode', 'Department Code')}}</b>
-                {{ Form::text('Dcode', '', ['class' => 'form-control input-rounded text-center', 
-                'id' => 'dcode', 'disabled']) }}</div>  
-    
-            <div class="col-md-4 form-group">
-                <b>{{Form::label('Scode', 'School Code')}}</b>
-                {{ Form::text('Scode', '', ['class' => 'form-control input-rounded text-center', 
-                'id' => 'scode', 'disabled']) }}</div>  
+                <b>{{Form::label('emply', 'Status')}}</b>
+                <div class="input-group">
+                    {{Form::text('emply', '', ['class' => 'form-control input-rounded text-center',
+                    'id' => 'emply', 'disabled'])}}
+                </div>
+            </div>
         </div>
     @endif
 
-    {{-- Course Name --}}
-    <div class="form-group">
-        <b>{{Form::label('Cname', 'Course')}}</b>
-        {{ Form::text('Cname', '', ['class' => 'form-control input-rounded text-center', 
-        'id' => 'cname', 'disabled']) }}
-    </div> 
+    {{-- Department Code and School Code --}}
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('Dcode', 'Department Code')}}</b>
+            {{ Form::text('Dcode', '', ['class' => 'form-control input-rounded text-center', 
+            'id' => 'dcode', 'disabled']) }}</div>  
+
+        <div class="col-md-6 form-group">
+            <b>{{Form::label('Scode', 'School Code')}}</b>
+            {{ Form::text('Scode', '', ['class' => 'form-control input-rounded text-center', 
+            'id' => 'scode', 'disabled']) }}</div>  
+    </div>
+
+    @if($userType == "Student")
+        {{-- Course Name --}}
+        <div class="form-group">
+            <b>{{Form::label('Cname', 'Course')}}</b>
+            {{ Form::text('Cname', '', ['class' => 'form-control input-rounded text-center', 
+            'id' => 'cname', 'disabled']) }}
+        </div> 
+    @endif
 
     {{-- Department Name --}}
     <div class="form-group">
@@ -142,12 +156,12 @@
         </div>
 
         <div class="col-md-4 form-group">
-                <b>{{Form::label('emply', 'Status')}}</b>
-                <div class="input-group">
-                    {{Form::text('emply', '', ['class' => 'form-control input-rounded text-center',
-                    'id' => 'emply', 'disabled'])}}
-                </div>
+            <b>{{Form::label('emply', 'Status')}}</b>
+            <div class="input-group">
+                {{Form::text('emply', '', ['class' => 'form-control input-rounded text-center',
+                'id' => 'emply', 'disabled'])}}
             </div>
+        </div>
     </div>
 
     {{-- Address --}}

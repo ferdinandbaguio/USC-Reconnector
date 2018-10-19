@@ -10,9 +10,9 @@
 
 <div class="page-heading">
 
-<h1 class="page-title">Alumni</h1>
+<h1 class="page-title">Chairs</h1>
 
-<?php $userType="Alumnus"; ?>
+<?php $userType="Chair"; ?>
 
 @include('_inc.messages')
 
@@ -20,9 +20,9 @@
 <div class="ibox">
     <div class="ibox-head">
         <div class="ibox-title text-info">
-            Number of Alumni:<b><i> @if(isset($users)){{$users->count()}}@endif</i></b>
+            Number of Chairs:<b><i> @if(isset($users)){{$users->count()}}@endif</i></b>
         </div>
-        <span data-toggle="modal" data-target="#create" data-type="Alumnus">
+        <span data-toggle="modal" data-target="#create" data-type="Chair">
             <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New User">
                 Add <i class="ti-plus"></i>                            
             </button>
@@ -37,7 +37,7 @@
                 <th>Name</th>
                 <th>Sex</th>
                 <th>Email Address</th>
-                <th>Job Title</th>
+                <th>Position</th>
                 <th>Option</th>
             </tr>
         </thead>
@@ -48,7 +48,7 @@
                 <th>Name</th>
                 <th>Sex</th>
                 <th>Email Address</th>
-                <th>Job Title</th>
+                <th>Position</th>
                 <th>Option</th>
             </tr>
         </tfoot>
@@ -62,15 +62,7 @@
                 <td>{{ $user->full_name }}</td>
                 <td>{{ $user->sex }}</td>
                 <td>{{ $user->email }}</td>
-                <td>
-                    @if(count($user->occupations) > 0)
-                        {{-- LO short for Latest Occupation --}}
-                        <?php $LO=count($user->occupations)-1; ?>
-                        {{ $user->occupations[$LO]['title'] }}
-                    @else
-                        No occupation
-                    @endif
-                </td>
+                <td>{{ $user->position }}</td>
                 <td>
 
                     {{-- Show User --}}
@@ -80,15 +72,11 @@
                             data-n="{{ $user->full_name }}"     data-type="{{ $user->userType }}"
                             data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"
                             data-email="{{ $user->email }}"     data-desc="{{ $user->description }}"
-                            data-updt="{{$user->updateStatus}}" data-emply="{{ $user->employmentStatus }}"
-                            {{-- Occupation and Company  --}}
-                            @if(count($user->occupations) > 0)
-                                data-title="{{ $user->occupations[$LO]['title'] }}"                 data-addr="{{ $user->occupations[$LO]['address'] }}"
-                                data-salar1="{{ $user->occupations[$LO]['salaryRangeOne'] }}"       data-salar2="{{ $user->occupations[$LO]['salaryRangeTwo'] }}"
-                                data-jobstr="{{ $user->occupations[$LO]['jobStart'] }}"             data-jobend="{{ $user->occupations[$LO]['jobEnd'] }}"
-                                data-compname="{{ $user->occupations[$LO]->company['name'] }}"      data-compaddr="{{ $user->occupations[$LO]->company['address'] }}"
-                                data-compdesc="{{$user->occupations[$LO]->company['description']}}" data-linkage="{{ $user->occupations[$LO]->company->linkage['code'] }}" 
-                                data-country="{{$user->occupations[$LO]->company->country['name']}}"data-area="{{$user->occupations[$LO]->company->area['name']}}" 
+                            data-pos="{{ $user->position }}"    data-emply="{{ $user->employmentStatus }}"
+                            {{-- Department and School Data --}}
+                            @if(isset($user->department))
+                                data-dname="{{$user->department['name']}}"          data-dcode="{{$user->department['code']}}"
+                                data-sname="{{$user->department->school['name']}}"  data-scode="{{$user->department->school['code']}}"
                             @endif >
                         <button class="btn btn-xs" data-toggle="tooltip" data-original-title="Show">   
                             <i class="ti-eye"></i>                              
@@ -103,7 +91,7 @@
                             data-ln="{{ $user->lastName }}"     data-type="{{ $user->userType }}"   
                             data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"         
                             data-email="{{ $user->email }}"     data-desc="{{ $user->description }}"
-                            data-updt="{{$user->updateStatus}}" data-emply="{{ $user->employmentStatus }}">
+                            data-pos="{{ $user->position }}"    data-emply="{{ $user->employmentStatus }}">
                         <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
                             <i class="ti-pencil"></i>                                
                         </button>
@@ -134,7 +122,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Showing Alumnus</h4>
+        <h4 class="modal-title" id="myModalLabel">Showing Chair</h4>
     </div>
     <div class="modal-body">
         @include('_inc.admin.userShowUserModal')
@@ -154,7 +142,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Creating New Alumnus</h4>
+        <h4 class="modal-title" id="myModalLabel">Creating New Chair</h4>
     </div>
     {!! Form::open(['route' => 'StoreUser', 'method' => 'POST', 
                     'style' => 'display:inline-block;', 'files' => TRUE]) !!}
@@ -183,7 +171,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         {{ Form::file('picture') }}
-        <h4 class="modal-title" id="myModalLabel">Editing Alumnus</h4>
+        <h4 class="modal-title" id="myModalLabel">Editing Chair</h4>
     </div>
     <div class="modal-body">
         @include('_inc.admin.userEditUserModal')
@@ -205,7 +193,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title text-center" id="myModalLabel">Delete Alumnus Confirmation</h4>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Chair Confirmation</h4>
     </div>
     {!! Form::open(['route' => 'DeleteUser', 'method' => 'DELETE', 
                     'style' => 'display:inline-block;']) !!}
