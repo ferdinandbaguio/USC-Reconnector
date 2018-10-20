@@ -6,32 +6,34 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    protected $table = 'companies';
+    public $primaryKey = 'id';
+    public $timestamps = true;
 
     protected $fillable = [
         'name',
         'address',
         'description',
-        'service',
-        'industry_id'
+        'picture',
+        'linkage_id',
+        'country_id',
+        'area_id'
     ];
 
-    public function job()
+    public function occupations()
     {
-    	return $this->hasOne('App\Models\Job','company_id');
+    	return $this->hasOne('App\Models\Occupation');
     }
-
-    public function company()
+    public function country()
     {
-    	return $this->belongsTo('App\Models\Company','company_id');
+    	return $this->belongsTo('App\Models\Country');
     }
-
     public function area()
     {
-    	return $this->belongsTo('App\Models\Area','area_id');
+    	return $this->belongsTo('App\Models\Area');
     }
-
-    public function industry()
+    public function linkage()
     {
-    	return $this->belongsToMany('App\Models\Industry','industry_id');
+    	return $this->belongsTo('App\Models\Department');
     }
 }

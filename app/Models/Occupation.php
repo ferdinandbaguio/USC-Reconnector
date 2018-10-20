@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Occupation extends Model
 {	
+    protected $table = 'occupations';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+
 	protected $fillable = [
-        'name',
+        'title',
         'address',
+        'salaryRangeOne',
+        'salaryRangeTwo',
         'jobStart',
         'jobEnd',
         'company_id',
@@ -17,11 +23,11 @@ class Occupation extends Model
 
     public function alumni()
     {
-    	return $this->belongsTo('App\Models\User','user_id');
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function company()
     {
-    	return $this->belongsTo('App\Models\Company','company_id');
+    	return $this->belongsTo('App\Models\Company');
     }
 }

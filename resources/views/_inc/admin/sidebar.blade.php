@@ -3,7 +3,7 @@
     <div id="sidebar-collapse">
         <div class="admin-block d-flex">
             <div>
-                <img src="{{ asset(Auth::user()->picture) }}" width="50px" height="50px" style="border-radius:50%;"/>
+                <img src="/storage/user_img/{{ Auth::user()->picture }}" height="40px" style="border-radius:50%;"/>
             </div>
             <div class="admin-info">
                 <div class="font-strong">
@@ -39,9 +39,19 @@
                     <li>
                         <a href="{{ route('ShowTeachers') }}">Teachers</a>
                     </li>
-                    <li>
-                        <a href="{{ route('ShowAdmins') }}">Admins</a>
-                    </li>
+                    @if(Auth::user()->userType != "Coordinator")
+                        <li>
+                            <a href="{{ route('ShowCoordinators') }}">Coordinators</a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->userType == "Admin")
+                        <li>
+                            <a href="{{ route('ShowChairs') }}">Chair</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('ShowAdmins') }}">Admins</a>
+                        </li>
+                    @endif
                 </ul>
             </li>
             <li>
