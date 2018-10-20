@@ -49,12 +49,12 @@ class User extends Authenticatable
 
     public function course()
     {
-        return $this->belongsTo('App\Models\Course');
+        return $this->belongsTo('App\Models\Course', 'course_id');
     }
 
     public function department()
     {
-        return $this->belongsTo('App\Models\Department');
+        return $this->belongsTo('App\Models\Department','department_id');
     }
 
     public function getFullNameAttribute()
@@ -96,4 +96,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Announcement', 'user_id');
     }
+
+    
+    //GTS
+    public function graduateTracer()
+    {
+    	return $this->hasMany('App\GraduateTracerStudy','user_id');
+    }
+
 }

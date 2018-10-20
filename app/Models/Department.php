@@ -23,11 +23,11 @@ class Department extends Model
     }
     public function courses()
     {
-        return $this->hasMany('App\Models\Course');
+        return $this->hasMany('App\Models\Course','course_id');
     }
     public function users()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany('App\Models\User','department_id');
     }
     public function linkages()
     {

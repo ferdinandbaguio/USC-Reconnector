@@ -46,6 +46,21 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/alumnus/maptest', 'user.alumnus.map');        
 
     });
+   
+    // Alumnus
+    Route::group(['middleware' => 'alumnus'], function () {  
+      
+        Route::get('/alumnus/profile', 'AlumnusController@alumnusProfile')->name('alumnus.profile');
+        Route::get('/alumnus/jobs', 'AlumnusController@alumnusJobs')->name('alumnus.jobs');
+        Route::get('/alumnus/communicate', 'AlumnusController@alumnusCommunicate')->name('alumnus.communicate');
+        
+        //Alumnus Form Routes
+        Route::get('/alumnus/form', 'GTSController@alumnusForm')->name('alumnus.form');  
+        Route::get('/alumnus/form/{id}/edit','GTSController@edit')->name('alumnus.form.edit');
+        Route::post('/alumnus/form','GTSController@store')->name('alumnus.form.store');
+        Route::patch('/alumnus/form/{id}/update','GTSController@update')->name('alumnus.form.update');;
+
+    });
 
     
     // Teacher

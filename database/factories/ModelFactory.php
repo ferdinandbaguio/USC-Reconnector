@@ -22,7 +22,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         $updateStatusValues = ['Updated', 'Outdated', 'Recent'];
         $employmentStatusValues = ['Full-Time Job', 'Unemployed', 'Part-Time Job'];
         $roleValues= ['Student', 'Teacher', 'Alumnus', 'Admin', 'Coordinator', 'Chair'];
-
+        
         $sex = $faker->randomElement($sexValues);
         if($sex == 'Male'){
             $picture = $faker->randomElement($pictureMaleValues);

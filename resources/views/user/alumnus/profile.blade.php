@@ -8,7 +8,7 @@
 
 <div class="row">
   <div class="alert alert-danger" role="alert">
-  Setup your alumni details now to avoid feature restrictions in the website. <a href="/alumnus/form">Click here!</a>
+  Setup your alumni details now to avoid feature restrictions in the website. <a href="{{ route('alumnus.form') }}">Click here!</a>
   </div>
 </div>
 
