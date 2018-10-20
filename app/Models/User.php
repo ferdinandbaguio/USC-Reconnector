@@ -67,9 +67,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Message','sender_id');
     }
 
-    public function user_skills()
+    public function userskills()
     {
-        return $this->hasMany('App\Models\User_Skill','user_id');
+        return $this->hasMany('App\Models\UserSkill','user_id');
     }
 
     public function student_class()
