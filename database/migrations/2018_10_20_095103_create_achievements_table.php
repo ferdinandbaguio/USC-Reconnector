@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserSkillsTable extends Migration
+class CreateAchievementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateUserSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_skills', function (Blueprint $table) {
+        Schema::create('achievements', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('achTitle');
+            $table->string('achYear');
 
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedInteger('skill_id');
-            $table->foreign('skill_id')->references('id')->on('skills')
-            ->onUpdate('cascade')->onDelete('cascade');
-            
             $table->timestamps();
             $table->softDeletes();
         });
@@ -36,6 +35,6 @@ class CreateUserSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_skills');
+        Schema::dropIfExists('achievements');
     }
 }

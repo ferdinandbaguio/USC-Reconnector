@@ -6,7 +6,9 @@ use DB;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\UserSkill;
+use App\Models\Achievement;
+use Auth;
 class StudentController extends Controller
 {
     public function updateDesc(Request $request)
@@ -23,12 +25,36 @@ class StudentController extends Controller
 
     public function addSkill(Request $request)
     {
-    	$name = $request->input('skillName');
+    	
+        // dd($request->toArray());
+        $data = $this->validate($request,[
+            'user_id' => 'nullable',
+            'skillName' => 'nullable',
+            'skillPercent' => 'nullable'
+        ]);
 
-    	$data = array('name' =>$name);
+        $data['user_id'] = Auth::user()->id;
 
-    	DB::table('skills')->insert($data);  
+        UserSkill::create($data);
 
-    	return redirect()->back();
+        return redirect()->back();
+    }
+
+    public function addAch(Request $request)
+    {
+        
+        // dd($request->toArray());
+
+        $data = $this->validate($request,[
+            'user_id' => 'nullable',
+            'achTitle' => 'nullable',
+            'achYear' => 'nullable'
+        ]);
+
+        $data['user_id'] = Auth::user()->id;
+
+        Achievement::create($data);
+
+        return redirect()->back();
     }
 }
