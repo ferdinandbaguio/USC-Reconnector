@@ -19,7 +19,7 @@
 <!-- Highest Educational Attainment  -->
 {!! Form::label('highest_educational_attainment', '1. Highest Educational Attainment ') !!}
 @foreach( $highestEducationalAttainment as $data)
-<div>{!!	Form::radio('highest_educational_attainment', $data),old('highest_educational_attainment') !!} {{$data}}</div>
+<div>{!!	Form::radio('highest_educational_attainment', $data) !!} {{$data}}</div>
 @endforeach
 
 <!-- College Program Taken -->
@@ -62,7 +62,7 @@
 <!-- What made you pursue advance studies? * -->
 {!! Form::label('advance_studies', ' 9 What made you pursue advance studies?') !!}
 @foreach( $pursueAdvanceStudies as $data)
-<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm: null) !!} {{$data}}</div>
+<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
 @endforeach
 <!-- {!! Form::text('advance_studies', '', ['class' => 'form-control', 'placeholder' => '']) !!} -->
 
