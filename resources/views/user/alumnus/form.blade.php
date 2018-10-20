@@ -50,7 +50,7 @@
 			<div>{!!	Form::radio('highest_educational_attainment', $data,null,['id' => 'collegegraduate'] ) !!} {{$data}}</div>
 			@else
 			<div>{!!	Form::radio('highest_educational_attainment', $data,null,['class' => 'otherChoose']) !!} {{$data}}</div>
-			@endif	
+		@endif	
 		@endforeach	 
 
 		<button type="button" class="btn btn-warning text-white mt-3" id="next1">Next</button>
@@ -114,7 +114,7 @@
 		<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
 		@endforeach
 		
-
+		<button type="button" class="btn btn-danger text-white mt-3" id="prev2">Previous</button>
 		<button type="button" class="btn btn-warning text-white mt-3" id="next2">Next</button>
 	</div> 
 	</div>
@@ -136,6 +136,7 @@
 		<div>{!!	Form::radio('is_presently_employed', $data) !!} {{$data}}</div>
 		@endforeach
 
+		<button type="button" class="btn btn-danger text-white mt-3" id="prev3">Previous</button>
 		<button type="button" class="btn btn-warning text-white mt-3" id="next3">Next</button>
 	</div> 
 	</div>
@@ -193,7 +194,9 @@
 		<!--  Is the job you have now, your first job after college? -->
 		{!! Form::label('is_first_job', '18  Is the job you have now, your first job after college?') !!}
 		@foreach(  $isFirstJobAfterCollege as $data)
-		<div>{!!	Form::radio('is_first_job', $data) !!} {{$data}}</div>
+		<div>
+		{!!	Form::radio('is_first_job', $data) !!} {{$data}}
+		</div>
 		@endforeach
 
 
@@ -272,6 +275,7 @@
 		<div>{!! Form::checkbox('reasonUnemployedNever[]', $data,isset($reasonUnemployedNever_fm) ? $reasonUnemployedNever_fm: null) !!} {{$data}}</div>
 		@endforeach
 
+		<button type="button" class="btn btn-danger text-white mt-3" id="prev4">Previous</button>
 		<button type="button" class="btn btn-warning text-white mt-3" id="next4">Next</button>
 	</div> 
 	</div>
@@ -459,7 +463,8 @@
 		{!! Form::text('suggestions', null, ['class' => 'form-control']) !!}
 
 
-		<button class="btn btn-sm {{ $form->id ? 'btn-outline-info' : 'btn-outline-success' }}">
+		<button type="button" class="btn btn-sm btn-danger text-white mt-3" id="prev5">Previous</button>
+		<button class="btn btn-sm mt-3 {{ $form->id ? 'btn-outline-info' : 'btn-outline-success' }}">
                     {{ $form->id ? 'Update' : 'Submit' }}
 		</button>
 	</div> 
