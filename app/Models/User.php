@@ -91,6 +91,10 @@ class User extends Authenticatable
     }
 
     
-
+    //GTS
+    public function graduateTracer()
+    {
+    	return $this->hasMany('App\GraduateTracerStudy','user_id');
+    }
 
 }
