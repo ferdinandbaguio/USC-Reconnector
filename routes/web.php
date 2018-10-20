@@ -35,8 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/student/profileUpdate', 'StudentController@updateDesc')->name('UpdateDescription');
 
     });
-    Route::group(['middleware' => 'guest'], function () {  
-    });
     // Alumnus
     Route::group(['middleware' => 'alumnus'], function () {  
       
