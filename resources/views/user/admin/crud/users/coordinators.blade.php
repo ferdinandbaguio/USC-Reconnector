@@ -10,9 +10,9 @@
 
 <div class="page-heading">
 
-<h1 class="page-title">Teachers</h1>
+<h1 class="page-title">Coordinators</h1>
 
-<?php $userType="Teacher"; ?>
+<?php $userType="Coordinator"; ?>
 
 @include('_inc.messages')
 
@@ -20,9 +20,9 @@
 <div class="ibox">
     <div class="ibox-head">
         <div class="ibox-title text-info">
-            Number of Teachers:<b><i> @if(isset($users)){{$users->count()}}@endif</i></b>
+            Number of Coordinators:<b><i> @if(isset($users)){{$users->count()}}@endif</i></b>
         </div>
-        <span data-toggle="modal" data-target="#create" data-type="Teacher">
+        <span data-toggle="modal" data-target="#create" data-type="Coordinator">
             <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New User">
                 Add <i class="ti-plus"></i>                            
             </button>
@@ -122,7 +122,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Showing Teacher</h4>
+        <h4 class="modal-title" id="myModalLabel">Showing Coordinator</h4>
     </div>
     <div class="modal-body">
         @include('_inc.admin.userShowUserModal')
@@ -142,7 +142,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Creating New Teacher</h4>
+        <h4 class="modal-title" id="myModalLabel">Creating New Coordinator</h4>
     </div>
     {!! Form::open(['route' => 'StoreUser', 'method' => 'POST', 
                     'style' => 'display:inline-block;', 'files' => TRUE]) !!}
@@ -171,7 +171,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         {{ Form::file('picture') }}
-        <h4 class="modal-title" id="myModalLabel">Editing Teacher</h4>
+        <h4 class="modal-title" id="myModalLabel">Editing Coordinator</h4>
     </div>
     <div class="modal-body">
         @include('_inc.admin.userEditUserModal')
@@ -193,7 +193,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title text-center" id="myModalLabel">Delete Teacher Confirmation</h4>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Coordinator Confirmation</h4>
     </div>
     {!! Form::open(['route' => 'DeleteUser', 'method' => 'DELETE', 
                     'style' => 'display:inline-block;']) !!}

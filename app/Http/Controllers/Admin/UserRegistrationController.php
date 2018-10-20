@@ -6,12 +6,14 @@ use DB;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserRegistrationController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::where('userStatus', '=', 'Pending')->get();
+        $dept_id = Auth::user()->department_id;
+        $users = User::where('userStatus', '=', 'Pending')->where('department_id', '=', $dept_id)->get();
         if(isset($request->status)){
             $status = $request->status;
             if($status == 'Denied'){

@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
     protected $fillable = [
+        'country_id',
+        'code',
         'name',
-        'longitude',
-        'latitude'
+        'value'
     ];
 
-    public function area()
+    public function country()
     {
-    	return $this->hasMany('App\Models\Company','area_id');
+    	return $this->hasMany('App\Models\Company','country_id');
     }
-
 }

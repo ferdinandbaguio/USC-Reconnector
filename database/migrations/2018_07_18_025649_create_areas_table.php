@@ -16,9 +16,13 @@ class CreateAreasTable extends Migration
         Schema::create('areas', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->string('code');
             $table->string('name');
-            $table->smallInteger('longitude');
-            $table->smallInteger('latitude');
+            $table->string('value');
+
+            $table->unsignedInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries')
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

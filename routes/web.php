@@ -55,23 +55,25 @@ Route::group(['middleware' => 'auth'], function () {
     });
     
 
-    // Admin 
-    Route::group(['middleware' => 'admin'], function () {
+    // Admin
+    Route::group(['middleware' => 'admin'], function () { 
         Route::view('/admin', 'user.admin.index')->name('admins');
 
         Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
         Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
         Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
+        Route::get('/user/coordinators', 'Admin\UserController@coordinators')->name('ShowCoordinators');
+        Route::get('/user/chairs', 'Admin\UserController@chairs')->name('ShowChairs');
         Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
         Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
         Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
         Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
-    
+
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
-        Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');     
+        Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
     });
-
+    
 
 // Resources ==============================================================
 

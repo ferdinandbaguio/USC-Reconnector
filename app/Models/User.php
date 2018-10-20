@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    protected $table = 'users';
+    public $primaryKey = 'id';
+    public $timestamps = true;
 
     protected $fillable = [
         'userStatus',
@@ -25,6 +30,8 @@ class User extends Authenticatable
         'employmentStatus',
         'updateStatus',
         'position',
+        'course_id',
+        'department_id'
     ];
 
     protected $hidden = [
@@ -34,6 +41,21 @@ class User extends Authenticatable
     protected $appends = [
         'full_name'
     ];
+
+    public function occupations()
+    {
+        return $this->hasMany('App\Models\Occupation', 'alumni_id');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Models\Course');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Models\Department');
+    }
 
     public function getFullNameAttribute()
     {
@@ -60,24 +82,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Post', 'poster_id');
     }
 
-    public function occupations()
-    {
-        return $this->hasMany('App\Models\Occupation', 'alumni_id');
-    }
-
     public function graduates()
     {
         return $this->hasMany('App\Models\Graduate', 'alumni_id');
-    }
-
-    public function courses()
-    {
-        return $this->belongsTo('App\Models\Course','course_id');
-    }
-
-    public function departments()
-    {
-        return $this->belongsTo('App\Models\Department','department_id');
     }
 
     public function jobPosts()
@@ -89,8 +96,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Announcement', 'user_id');
     }
-
-    
-
-
 }

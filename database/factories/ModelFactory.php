@@ -14,11 +14,13 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
-        $pictureMaleValues = ['img/alt_imgs/default_male.png', 'img/alt_imgs/default_male1.png', 'img/alt_imgs/default_male2.png'];
-        $pictureFemaleValues = ['img/alt_imgs/default_female.png', 'img/alt_imgs/default_female1.png', 'img/alt_imgs/default_female2.png'];
+        $pictureMaleValues = ['default_male.png', 'default_male1.png', 'default_male2.png'];
+        $pictureFemaleValues = ['default_female.png', 'default_female1.png', 'default_female2.png'];
+        $employmentStatus = ['Male', 'Female'];
         $sexValues = ['Male', 'Female'];
         $statusValues = ['Approved', 'Pending','Denied'];               
         $updateStatusValues = ['Updated', 'Outdated', 'Recent'];
+        $employmentStatusValues = ['Full-Time Job', 'Unemployed', 'Part-Time Job'];
         $roleValues= ['Student', 'Teacher', 'Alumnus', 'Admin', 'Coordinator', 'Chair'];
 
         $sex = $faker->randomElement($sexValues);
@@ -45,7 +47,11 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
             'yearLevel'     => $faker->numberBetween($min = 1, $max = 5),    
             'userType'      => $faker->randomElement($roleValues),
             'userStatus'	=> $faker->randomElement($statusValues),
-	        'remember_token' => str_random(10),
+            'department_id'	=> 1,
+            'course_id'	    => rand(5, 7),
+            'remember_token'=> str_random(10),
+            'updateStatus'	=> $faker->randomElement($updateStatusValues),
+            'employmentStatus'	=> $faker->randomElement($employmentStatusValues),
 	    ];
 });
 

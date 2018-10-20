@@ -37,26 +37,20 @@
     <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
+                <th>ID Number</th>
+                <th>Name</th>
                 <th>Type</th>
                 <th>Sex</th>
-                <th>ID Number</th>
                 <th>Email Address</th>
                 <th>Option</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
+                <th>ID Number</th>
+                <th>Name</th>
                 <th>Type</th>
                 <th>Sex</th>
-                <th>ID Number</th>
                 <th>Email Address</th>
                 <th>Option</th>
             </tr>
@@ -64,63 +58,61 @@
         <tbody>
             @foreach ($users as $user)
             <tr>
-                <td>{{ $user->id}}</td>
-                <td>{{ $user->firstName }}</td>
-                <td>{{ $user->middleName }}</td>
-                <td>{{ $user->lastName }}</td>
-                <td>{{ $user->userType }}</td>
                 <td>{{ $user->idnumber }}</td>
+                <td>{{ $user->full_name }}</td>
+                <td>{{ $user->userType }}</td>
                 <td>{{ $user->sex }}</td>
                 <td>{{ $user->email }}</td>
+                {{-- OPTIONS --}}
                 <td>
-                {!! Form::open(['route' => ['registration.update','Changing'], 'method' => 'PATCH', 
-                                'style' => 'display:inline-block;']) !!}
-                @csrf
-                {{ Form::hidden('id', $user->id) }}
-                
-                @if($users[0]->userStatus == 'Denied')
-                    {{-- Pending Request --}}
-                    <button type="submit" name="action" value="Pending"
-                        class="btn btn-warning btn-xs" data-toggle="tooltip" data-original-title="Pending">
+                    {!! Form::open(['route' => ['registration.update','Changing'], 'method' => 'PATCH', 
+                                    'style' => 'display:inline-block;']) !!}
+                    @csrf
+                    {{ Form::hidden('id', $user->id) }}
+                    
+                    @if($users[0]->userStatus == 'Denied')
+                        {{-- Pending Request --}}
+                        <button type="submit" name="action" value="Pending"
+                            class="btn btn-warning btn-xs" data-toggle="tooltip" data-original-title="Pending">
 
-                        <i class="ti-minus"></i>
-                    </button>
-                @else
-                    {{-- Approve Request --}}
-                    <button type="submit" name="action" value="Approved"
-                        class="btn btn-success btn-xs" data-toggle="tooltip" data-original-title="Approve">
+                            <i class="ti-minus"></i>
+                        </button>
+                    @else
+                        {{-- Approve Request --}}
+                        <button type="submit" name="action" value="Approved"
+                            class="btn btn-success btn-xs" data-toggle="tooltip" data-original-title="Approve">
 
-                        <i class="ti-check"></i>
-                    </button>
+                            <i class="ti-check"></i>
+                        </button>
 
-                    {{-- Deny Request --}}
-                    <button type="submit" name="action" value="Denied"
-                        class="btn btn-muted btn-xs" data-toggle="tooltip" data-original-title="Deny">
-                        
-                        <i class="ti-close"></i>                                
-                    </button>
-                @endif
+                        {{-- Deny Request --}}
+                        <button type="submit" name="action" value="Denied"
+                            class="btn btn-muted btn-xs" data-toggle="tooltip" data-original-title="Deny">
+                            
+                            <i class="ti-close"></i>                                
+                        </button>
+                    @endif
 
-                {!! Form::close() !!}
+                    {!! Form::close() !!}
 
-                {{-- Edit Request --}}
-                <span   data-toggle="modal"                 data-target="#edit-request"           
-                        data-id="{{ $user->id }}"           data-status="{{ $user->userStatus}}"
-                        data-fn="{{ $user->firstName }}"    data-mn="{{ $user->middleName }}"   
-                        data-ln="{{ $user->lastName }}"     data-type="{{ $user->userType }}"   
-                        data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"         
-                        data-email="{{ $user->email }}">
-                    <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
-                        <i class="ti-pencil"></i>                                
-                    </button>
-                </span>
+                    {{-- Edit Request --}}
+                    <span   data-toggle="modal"                 data-target="#edit-request"           
+                            data-id="{{ $user->id }}"           data-status="{{ $user->userStatus}}"
+                            data-fn="{{ $user->firstName }}"    data-mn="{{ $user->middleName }}"   
+                            data-ln="{{ $user->lastName }}"     data-type="{{ $user->userType }}"   
+                            data-idnum="{{ $user->idnumber }}"  data-sex="{{ $user->sex }}"         
+                            data-email="{{ $user->email }}">
+                        <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
+                            <i class="ti-pencil"></i>                                
+                        </button>
+                    </span>
 
-                {{-- Delete Request --}}
-                <span data-toggle="modal" data-target="#delete" data-id="{{ $user->id }}">
-                    <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">   
-                        <i class="ti-trash"></i>                              
-                    </button>
-                </span>
+                    {{-- Delete Request --}}
+                    <span data-toggle="modal" data-target="#delete" data-id="{{ $user->id }}">
+                        <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">   
+                            <i class="ti-trash"></i>                              
+                        </button>
+                    </span>
                 </td>
             </tr>
             @endforeach
