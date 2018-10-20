@@ -31,6 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/student/class', 'user.student.class')->name('students');
         Route::view('/student/profile', 'user.student.profile');
 
+        Route::post('/addSkill', 'StudentController@addSkill')->name('addSkill');
+        Route::patch('/student/profileUpdate', 'StudentController@updateDesc')->name('UpdateDescription');
+
     });
     Route::group(['middleware' => 'guest'], function () {  
     });
