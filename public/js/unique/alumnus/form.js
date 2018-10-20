@@ -4,59 +4,45 @@
 // Buttons 
 $(document).ready(function(){
 
-	// FOR EMPLOYED NOW BUTTONS
-    $("#employedNowBtn").click(function(){
-    	$("#employmentChecker").fadeOut(400);
-
-    	setTimeout(function(){ 
-        $("#employedNow").fadeIn(400);
-        $("#employedNow").show();
+    //Testing Scripts
+    $("#next1").click(function(){ // This is a next button
+        $("#firstPage").fadeOut(400);
+        
+        setTimeout(function(){ 
+        $("#secondPage").fadeIn(400);
         }, 400);   
     });
+
+    $("#next2").click(function(){ // This is a next button
+        $("#secondPage").fadeOut(400);
+        
+        setTimeout(function(){ 
+        $("#thirdPage").fadeIn(400);
+        }, 400);   
+    });
+
+    $("#next3").click(function(){ // This is a next button
+        $("#thirdPage").fadeOut(400);
+        
+        setTimeout(function(){ 
+        $("#fourthPage").fadeIn(400);
+        }, 400);   
+    });
+
+    $("#next4").click(function(){ // This is a next button
+        $("#fourthPage").fadeOut(400);
+        
+        setTimeout(function(){ 
+        $("#aboutUnderProgram").fadeIn(400);
+        }, 400);   
+    });
+
     
-    $("#backToEmploymentChecker").click(function(){ // This is a previous button
-    	$("#employedNow").fadeOut(400);
-    	
-    	setTimeout(function(){ 
-        $("#employmentChecker").fadeIn(400);
-        }, 400);   
-    });
 
-    $("#toEnData").click(function(){
-    	$("#enGenInfo").fadeOut(400);
-
-    	setTimeout(function(){ 
-        $("#enData").fadeIn(400);
-        }, 400);
-    });
-    $("#backToEnGenInfo").click(function(){ // This is a previous button
-    	$("#enData").fadeOut(400);
-    	
-    	setTimeout(function(){ 
-        $("#enGenInfo").fadeIn(400);
-        }, 400);   
-    });
-
-    $("#toEnUnderGrad").click(function(){
-    	$("#enData").fadeOut(400);
-
-    	setTimeout(function(){ 
-        $("#enUnderGrad").fadeIn(400);
-        }, 400);
-    });
-    $("#backToEnData").click(function(){ // This is a previous button
-    	$("#enUnderGrad").fadeOut(400);
-    	
-    	setTimeout(function(){ 
-        $("#enData").fadeIn(400);
-        }, 400);   
-    });
-
-
-    $("#employedNow").hide();
-    $("#enData").hide();
-    $("#enUnderGrad").hide();
-
+    $("#secondPage").hide();
+    $("#thirdPage").hide();
+    $("#fourthPage").hide();
+    $("#aboutUnderProgram").hide();
 });
 
 

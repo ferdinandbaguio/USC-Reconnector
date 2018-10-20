@@ -98,7 +98,7 @@ class GTSController extends Controller
     public function store (Request $request) {
         
         $data = $this->validate($request, [
-        	'user_id'                               => 'required', 
+        	'user_id'                               => 'nullable', 
         	'highest_educational_attainment' 		=> 'required',
 	        'college_program_taken'			        => 'required', 
 	        'month_year_graduated' 			        => 'required', 
