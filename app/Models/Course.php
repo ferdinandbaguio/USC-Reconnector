@@ -24,7 +24,7 @@ class Course extends Model
 
     public function department()
     {
-        return $this->belongsTo('App\Models\Department');
+        return $this->belongsTo('App\Models\Department','department_id');
     }
 
     

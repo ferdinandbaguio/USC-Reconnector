@@ -49,12 +49,12 @@ class User extends Authenticatable
 
     public function course()
     {
-        return $this->belongsTo('App\Models\Course');
+        return $this->belongsTo('App\Models\Course', 'course_id');
     }
 
     public function department()
     {
-        return $this->belongsTo('App\Models\Department');
+        return $this->belongsTo('App\Models\Department','department_id');
     }
 
     public function getFullNameAttribute()
