@@ -111,7 +111,6 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Something went wrong: '.$e);
         }
     }
-
     public function destroy(Request $request)
     {
         try{

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupClassesTable extends Migration
+class CreateGroupSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class CreateGroupClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_classes', function (Blueprint $table) {
+        Schema::create('group_schedules', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->enum('status', ['Upcoming', 'Ongoing', 'Finished', 'Dissolved']);
-
-            $table->unsignedInteger('subject_id')->nullable();
-            $table->foreign('subject_id')->references('id')->on('subjects')
+            $table->unsignedInteger('group_class_id');
+            $table->foreign('group_class_id')->references('id')->on('group_classes')
             ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedInteger('teacher_id')->nullable();
-            $table->foreign('teacher_id')->references('id')->on('users')
+            $table->unsignedInteger('schedule_id');
+            $table->foreign('schedule_id')->references('id')->on('schedules')
             ->onUpdate('cascade')->onDelete('cascade');
-           
+
             $table->timestamps();
             $table->softDeletes();
         });
@@ -38,6 +36,6 @@ class CreateGroupClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_classes');
+        Schema::dropIfExists('group_schedules');
     }
 }

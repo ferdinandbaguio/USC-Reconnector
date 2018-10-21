@@ -42,6 +42,11 @@ class User extends Authenticatable
         'full_name'
     ];
 
+    public function group_classes()
+    {
+        return $this->hasMany('App\Models\Group_Class','teacher_id');
+    }
+
     public function occupations()
     {
         return $this->hasMany('App\Models\Occupation', 'alumni_id');
@@ -70,11 +75,6 @@ class User extends Authenticatable
     public function user_skills()
     {
         return $this->hasMany('App\Models\User_Skill','user_id');
-    }
-
-    public function student_class()
-    {
-        return $this->hasMany('App\Models\Student_Class','student_id');
     }
     
     public function posts()

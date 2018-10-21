@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
+    protected $table = 'subjects';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+
     protected $fillable = [
         'code',
         'title',
