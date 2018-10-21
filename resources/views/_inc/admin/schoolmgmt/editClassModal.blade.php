@@ -3,6 +3,7 @@
 
 {{-- Status and ID --}}
 <div class="row">
+    {{Form::hidden('id', null,['id' => 'id'])}}
     <div class="col-md-6 form-group">
         <b>{{Form::label('id', 'Class ID')}}</b>
         {{ Form::text('id', null, ['class' => 'form-control input-rounded text-center',
@@ -11,7 +12,7 @@
 
     <div class="col-md-6 form-group">
         <b>{{Form::label('status', 'Status')}}</b>
-        {{Form::select('userType', ['Upcoming'  => 'Upcoming', 'Ongoing'    => 'Ongoing',
+        {{Form::select('status', ['Upcoming'  => 'Upcoming', 'Ongoing'    => 'Ongoing',
                                     'Finished'  => 'Finished', 'Dissolved'  => 'Dissolved'], null, 
                                     ['class' => 'form-control input-rounded', 'id' => 'status', 'required'])}}
     </div>
@@ -21,7 +22,7 @@
 <div class="row">
     <div class="col-md-6 form-group">
         <b>{{Form::label('teacher', 'Teacher')}}</b>
-        <select class = "form-control input-rounded text-center" name="teacher_id" id="tid">
+        <select class = "form-control input-rounded text-center" name="teacher_id" id="tid" required>
             <option disabled selected hidden>Choose Teacher</option>
             @foreach ($teachers as $teacher) 
                 <option value={{$teacher->id}}>{{$teacher->full_name}}</option>
@@ -31,7 +32,7 @@
 
     <div class="col-md-6 form-group">
         <b>{{Form::label('subject', 'Subject')}}</b>
-        <select class = "form-control input-rounded text-center" name="subject_id" id="sid">
+        <select class = "form-control input-rounded text-center" name="subject_id" id="sid" required>
             <option disabled selected hidden>Choose Subject</option>
             @foreach ($subjects as $subject) 
                 <option value={{$subject->id}}>{{$subject->code}}: {{$subject->name}}</option>
@@ -42,13 +43,25 @@
 
 <br><i>{{Form::label('userDetails', '~ Schedule Details ~')}}</i><br><br>
 
-<br><i>{{Form::label('userDetails', 'Schedule 1')}}</i><br>
+{{-- Schedule 1 Header --}}
+<div class="row">
+    <div class="col-md-4 form-group">
+    </div>
+    <div class="col-md-4 form-group">
+        <i>{{Form::label('userDetails', 'Schedule 1')}}</i>
+    </div>
+    <div class="col-md-4 form-group pull-right">
+        {{Form::submit('Delete Schedule 1', ['class' => 'btn btn-danger pull-right', 'name' => "action"])}}
+    </div>
+</div>
+{{Form::hidden('gsid1', null, ['id' => 'gsid1'])}}
+
 {{-- 1 Semester and Day --}}
 <div class="row">
     <div class="col-md-6 form-group">
         <b>{{Form::label('subject', 'Semester')}}</b>
-        <select class = "form-control input-rounded text-center" name="semester_id" id="gssem1">
-            <option disabled selected hidden>Choose Semester</option>
+        <select class = "form-control input-rounded text-center" name="semester_id1" id="gssem1">
+            <option value="">Choose Semester</option>
             @foreach ($semesters as $semester) 
                 <option value={{$semester->id}}>{{$semester->name }}: {{$semester->year->name }}</option>
             @endforeach
@@ -56,9 +69,8 @@
     </div>
 
     <div class="col-md-6 form-group">
-        <b>{{Form::label('day', 'Day')}}</b>
-        <option disabled selected hidden>Choose Day</option>
-        {{Form::select('day', ['Monday' => 'Monday', 'Tuesday' => 'Tuesday', 'Wednesday' => 'Wednesday', 
+        <b>{{Form::label('day1', 'Day')}}</b>
+        {{Form::select('day1', ['Monday' => 'Monday', 'Tuesday' => 'Tuesday', 'Wednesday' => 'Wednesday', 
                                'Thursday' => 'Thursday','Friday' => 'Friday', 'Saturday' => 'Saturday'], null, 
                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Day', 'id' => 'gsday1'])}}
     </div>
@@ -67,8 +79,8 @@
 {{-- 1 Class Start and End --}}
 <div class="row">
     <div class="col-md-6 form-group">
-        <b>{{Form::label('class_start', 'Class Start')}}</b>
-        {{Form::select('class_start', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
+        <b>{{Form::label('class_start1', 'Class Start')}}</b>
+        {{Form::select('class_start1', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
                                         '10:30' => '10:30', '12:00' => '12:00', '1:30' => '1:30', 
                                         '3:00' => '3:00', '4:30' => '4:30'], null, 
                                         ['class' => 'form-control input-rounded', 'placeholder' => 'Choose', 'id' => 'gsstart1'])}}
@@ -76,20 +88,32 @@
 
     <div class="col-md-6 form-group">
         <b>{{Form::label('class_end', 'Class End')}}</b>
-        {{Form::select('class_end', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
+        {{Form::select('class_end1', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
                                         '10:30' => '10:30', '12:00' => '12:00', '1:30' => '1:30', 
                                         '3:00' => '3:00', '4:30' => '4:30'], null, 
                                         ['class' => 'form-control input-rounded', 'placeholder' => 'Choose', 'id' => 'gsend1'])}}
     </div>
 </div>
 
-<br><i>{{Form::label('userDetails', 'Schedule 2')}}</i><br>
+{{-- Schedule 2 Header --}}
+<div class="row">
+    <div class="col-md-4 form-group">
+    </div>
+    <div class="col-md-4 form-group">
+        <i>{{Form::label('userDetails', 'Schedule 2')}}</i>
+    </div>
+    <div class="col-md-4 form-group pull-right">
+        {{Form::submit('Delete Schedule 2', ['class' => 'btn btn-danger pull-right', 'name' => "action"])}}
+    </div>
+</div>
+{{Form::hidden('gsid2', null, ['id' => 'gsid2'])}}
+
 {{-- 2 Semester and Day --}}
 <div class="row">
     <div class="col-md-6 form-group">
         <b>{{Form::label('subject', 'Semester')}}</b>
-        <select class = "form-control input-rounded text-center" name="semester_id" id="gssem2">
-            <option disabled selected hidden>Choose Semester</option>
+        <select class = "form-control input-rounded text-center" name="semester_id2" id="gssem2">
+            <option value="">Choose Semester</option>
             @foreach ($semesters as $semester) 
                 <option value={{$semester->id}}>{{$semester->name }}: {{$semester->year->name }}</option>
             @endforeach
@@ -97,9 +121,8 @@
     </div>
 
     <div class="col-md-6 form-group">
-        <b>{{Form::label('day', 'Day')}}</b>
-        <option disabled selected hidden>Choose Day</option>
-        {{Form::select('day', ['Monday' => 'Monday', 'Tuesday' => 'Tuesday', 'Wednesday' => 'Wednesday', 
+        <b>{{Form::label('day2', 'Day')}}</b>
+        {{Form::select('day2', ['Monday' => 'Monday', 'Tuesday' => 'Tuesday', 'Wednesday' => 'Wednesday', 
                                'Thursday' => 'Thursday','Friday' => 'Friday', 'Saturday' => 'Saturday'], null, 
                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Day', 'id' => 'gsday2'])}}
     </div>
@@ -108,29 +131,41 @@
 {{-- 2 Class Start and End --}}
 <div class="row">
     <div class="col-md-6 form-group">
-        <b>{{Form::label('class_start', 'Class Start')}}</b>
-        {{Form::select('class_start', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
+        <b>{{Form::label('class_start2', 'Class Start')}}</b>
+        {{Form::select('class_start2', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
                                         '10:30' => '10:30', '12:00' => '12:00', '1:30' => '1:30', 
                                         '3:00' => '3:00', '4:30' => '4:30'], null, 
                                         ['class' => 'form-control input-rounded', 'placeholder' => 'Choose', 'id' => 'gsstart2'])}}
     </div>
 
     <div class="col-md-6 form-group">
-        <b>{{Form::label('class_end', 'Class End')}}</b>
-        {{Form::select('class_end', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
+        <b>{{Form::label('class_end2', 'Class End')}}</b>
+        {{Form::select('class_end2', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
                                         '10:30' => '10:30', '12:00' => '12:00', '1:30' => '1:30', 
                                         '3:00' => '3:00', '4:30' => '4:30'], null, 
                                         ['class' => 'form-control input-rounded', 'placeholder' => 'Choose', 'id' => 'gsend2'])}}
     </div>
 </div>
 
-<br><i>{{Form::label('userDetails', 'Schedule 3')}}</i><br>
+{{-- Schedule 3 Header --}}
+<div class="row">
+    <div class="col-md-4 form-group">
+    </div>
+    <div class="col-md-4 form-group">
+        <i>{{Form::label('userDetails', 'Schedule 1')}}</i>
+    </div>
+    <div class="col-md-4 form-group pull-right">
+        {{Form::submit('Delete Schedule 3', ['class' => 'btn btn-danger pull-right', 'name' => "action"])}}
+    </div>
+</div>
+{{Form::hidden('gsid3', null,['id' => 'gsid3'])}}
+
 {{-- 3 Semester and Day --}}
 <div class="row">
     <div class="col-md-6 form-group">
         <b>{{Form::label('subject', 'Semester')}}</b>
-        <select class = "form-control input-rounded text-center" name="semester_id" id="gssem3">
-            <option disabled selected hidden>Choose Semester</option>
+        <select class = "form-control input-rounded text-center" name="semester_id3" id="gssem3">
+            <option value="">Choose Semester</option>
             @foreach ($semesters as $semester) 
                 <option value={{$semester->id}}>{{$semester->name }}: {{$semester->year->name }}</option>
             @endforeach
@@ -138,9 +173,8 @@
     </div>
 
     <div class="col-md-6 form-group">
-        <b>{{Form::label('day', 'Day')}}</b>
-        <option disabled selected hidden>Choose Day</option>
-        {{Form::select('day', ['Monday' => 'Monday', 'Tuesday' => 'Tuesday', 'Wednesday' => 'Wednesday', 
+        <b>{{Form::label('day3', 'Day')}}</b>
+        {{Form::select('day3', ['Monday' => 'Monday', 'Tuesday' => 'Tuesday', 'Wednesday' => 'Wednesday', 
                                'Thursday' => 'Thursday','Friday' => 'Friday', 'Saturday' => 'Saturday'], null, 
                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Day', 'id' => 'gsday3'])}}
     </div>
@@ -149,16 +183,16 @@
 {{-- 3 Class Start and End --}}
 <div class="row">
     <div class="col-md-6 form-group">
-        <b>{{Form::label('class_start', 'Class Start')}}</b>
-        {{Form::select('class_start', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
+        <b>{{Form::label('class_start3', 'Class Start')}}</b>
+        {{Form::select('class_start3', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
                                         '10:30' => '10:30', '12:00' => '12:00', '1:30' => '1:30', 
                                         '3:00' => '3:00', '4:30' => '4:30'], null, 
                                         ['class' => 'form-control input-rounded', 'placeholder' => 'Choose', 'id' => 'gsstart3'])}}
     </div>
 
     <div class="col-md-6 form-group">
-        <b>{{Form::label('class_end', 'Class End')}}</b>
-        {{Form::select('class_end', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
+        <b>{{Form::label('class_end3', 'Class End')}}</b>
+        {{Form::select('class_end3', ['6:00' => '6:00', '7:30' => '7:30', '9:00' => '9:00', 
                                         '10:30' => '10:30', '12:00' => '12:00', '1:30' => '1:30', 
                                         '3:00' => '3:00', '4:30' => '4:30'], null, 
                                         ['class' => 'form-control input-rounded', 'placeholder' => 'Choose', 'id' => 'gsend3'])}}
