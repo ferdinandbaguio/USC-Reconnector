@@ -12,7 +12,7 @@ class GTSController extends Controller
     public function update (Request $request, $id) {
         
         $data = $this->validate($request, [
-        	'user_id'                               => 'required', 
+        	'user_id'                               => 'nullable', 
         	'highest_educational_attainment' 		=> 'required',
 	        'college_program_taken'			        => 'required', 
 	        'month_year_graduated' 			        => 'required', 
@@ -78,6 +78,8 @@ class GTSController extends Controller
             'social_and_community_involvement'=> 'required',
             //35. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
             'suggestions'=> 'required',
+            'reasonUnemployedNow'=> 'required',
+            'reasonUnemployedNever'=> 'required'
         ]);
         
         $data['user_id'] = Auth::user()->id;
@@ -163,7 +165,9 @@ class GTSController extends Controller
             'OJT'=> 'required',
             'social_and_community_involvement'=> 'required',
             //32. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
-            'suggestions'=> 'required'
+            'suggestions'=> 'required',
+            'reasonUnemployedNow'=> 'required',
+            'reasonUnemployedNever'=> 'required'
         ]);
         
         $data['user_id'] = Auth::user()->id;
@@ -181,7 +185,7 @@ class GTSController extends Controller
     }
     public function edit ($id) {
 
-        $form = GraduateTracerStudy::find($id)->first();
+        $form = GraduateTracerStudy::find($id);
 
         $advancestudies_fm = explode(', ', $form->advance_studies);
         $reasonsYes_fm = explode(', ', $form->reasonsYes);
@@ -192,7 +196,7 @@ class GTSController extends Controller
         $reasonUnemployedNow_fm = explode(', ', $form->reasonUnemployedNow);
         $reasonUnemployedNever_fm = explode(', ', $form->reasonUnemployedNever);
         
-        // dd($advance_studies,$reasonsYes,$reasonsNo,$jobRolesExperienced,$conceptsLearned,$reasonsUndergraduateCourse,$reasonUnemployedNow,$reasonUnemployedNever);
+        //  dd($advancestudies_fm,$reasonsYes_fm,$reasonsNo_fm);
         $highestEducationalAttainment = [
             'College Graduate',
             'MA/MS Graduate',

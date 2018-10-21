@@ -10,19 +10,6 @@
 <center><h1>Department of Computer and Information Sciences</h1></center>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="container-fluid p-0 mb-4">
 
 	<!-- FIRST PAGE -->

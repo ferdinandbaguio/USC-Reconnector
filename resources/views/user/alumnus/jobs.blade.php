@@ -112,7 +112,7 @@
         @foreach($jobs as $row)
             <tr>
             <th scope="row">{{$row->id}}</th>
-                <td>{{$row->highest_educational_attainment}}</td>
+                <td>{{$row->name_of_company}}</td>
                 <td>{{$row->highest_educational_attainment}}</td>
                 <td>{{$row->created_at->format('M d Y g:i A')}}</td>
                 <td><a href="{{ url('alumnus/form/'.$row->id.'/edit') }}">Edit</a></td>

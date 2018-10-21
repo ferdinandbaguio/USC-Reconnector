@@ -73,7 +73,9 @@ class GraduateTracerStudy extends Model
             'OJT',
             'social_and_community_involvement',
             //35. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
-            'suggestions'
+            'suggestions',
+            'reasonUnemployedNow',
+            'reasonUnemployedNever'
     ];
 
     public function graduateTracer()
