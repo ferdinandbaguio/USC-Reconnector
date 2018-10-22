@@ -113,22 +113,24 @@
 	    <div class="modal-content">
 
 	      <div class="modal-body mt-4">
-	        <form>
+	        <form method="POST" action="{{route('addAch')}}">
+	        	{{csrf_field()}}
 	        	<div class="form-group">
 	        		<label><i class="fas fa-trophy" style="color: #EEEB4D"></i> Title of Achievement</label>
-	        		<input type="text" class="form-control" placeholder="Achievement Title">
+	        		<input type="text" name="achTitle" class="form-control" placeholder="Achievement Title">
 	        	</div>
 	        	<div class="form-group">
 	        		<label>Date Acquired</label>
-	        		<input type="text" class="form-control" placeholder="Example: 2009">
+	        		<input type="text" name="achYear" class="form-control" placeholder="Example: 2009">
 	        	</div>
-	        </form>
+	        
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn addAchvBtn">
+	        <button type="submit" class="btn addAchvBtn">
 				<i class="fas fa-plus-circle"></i> Add achievement
 			</button>
+			</form>
 	      </div>
 	    </div>
 	  </div>
