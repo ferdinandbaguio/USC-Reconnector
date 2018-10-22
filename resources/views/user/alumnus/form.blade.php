@@ -104,11 +104,11 @@
 			{!! Form::text('address_of_graduate_school', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
 			<!-- What made you pursue advance studies? * -->
-			{!! Form::label('advance_studies', ' 1.4 What made you pursue advance studies?') !!}
+			{!! Form::label(null, ' 1.4 What made you pursue advance studies?') !!}
 			@foreach( $pursueAdvanceStudies as $data)
 			@if($data == 'Iba pa:')
 			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}
-			{!! Form::text('advance_studies',null, ['class' => 'form-control']) !!}</div>
+			{!! Form::text('advance_studies[]',isset(end(advancestudies_fm)) ? $advancestudies_fm : null, ['class' => 'form-control']) !!}</div>
 			@else
 			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
 			@endif
@@ -225,7 +225,7 @@
 			@foreach( $reasonYes as $data)
 			<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm: null) !!} {{$data}}</div>
 			@endforeach
-			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
+			{!! Form::text('reasonsYes',null, ['class' => 'form-control']) !!}
 			<!-- End of YES -->
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>

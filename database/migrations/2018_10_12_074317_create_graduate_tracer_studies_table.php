@@ -55,7 +55,7 @@ class CreateGraduateTracerStudiesTable extends Migration
             $table->string('reasonsNo')->nullable();
             $table->string('isFirstJobRelated')->nullable();
             $table->string('isJobpositionFirstworkAfterCollege')->nullable();
-            
+            $table->string('nameofCompanyfirstWorkedin')->nullable();
             //extends
             $table->string('monthsEmployedfirstjobAfterGraduate')->nullable();
             $table->longText('jobRolesExperienced')->nullable();
