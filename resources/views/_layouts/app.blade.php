@@ -58,10 +58,10 @@
       <a href="/alumnus/profile" class="text-white" id="hyperlink">
       @endif
       @if(Auth::user()->userType == "Student")
-      <a href="/student/profile" class="text-white" id="hyperlink">
+      <a href="{{route('student.profile')}}" class="text-white" id="hyperlink">
       @endif
       @if(Auth::user()->userType == "Teacher")
-      <a href="/teacher/profile" class="text-white" id="hyperlink">
+      <a href="{{route('teacher.profile')}}" class="text-white" id="hyperlink">
       @endif
         <div class="row mt-4 hyperlink rowSide">
           <div class="col-8 mt-3">

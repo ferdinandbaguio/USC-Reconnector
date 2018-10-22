@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
-use App\Models\UserSkill;
 use App\Models\Achievement;
-class StudentController extends Controller
+class AchievementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,11 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
-        $achievements = Achievement::where('user_id',Auth::user()->id)->get();   
-        $skills = UserSkill::where('user_id',Auth::user()->id)->get();
-        return view('user.student.profile', compact('skills','achievements')); 
+    {
+        $achievements = Achievement::where('id',Auth::user()->id)->get();
+        dd($achievements);
+        return view('user.teacher.profile', compact('achievements')); 
+
     }
 
     /**
@@ -39,7 +39,17 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate($request,[
+            'user_id' => 'nullable',
+            'achTitle' => 'nullable',
+            'achYear' => 'nullable'
+        ]);
+
+        $data['user_id'] = Auth::user()->id;
+
+        Achievement::create($data);
+
+        return redirect()->back();
     }
 
     /**

@@ -48,8 +48,9 @@
 		</div>
 		<div class="row mt-1">
 			<div class="col-md-12">
-				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> Best Teacher of 2012 </p>
-				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> Nominated as Teacher of the first semester </p>
+				@foreach($achievements as $row)
+				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ( {{$row->achYear}}) </p>
+				@endforeach
 			</div>
 			
 			<div class="col-md-12 mt-2">
@@ -86,7 +87,7 @@
 	    <div class="modal-content">
 
 	      <div class="modal-body mt-4">
-	      	{!! Form::open(['route' => 'UpdateDescription', 'method' => 'PATCH']) !!}
+	      	{!! Form::open(['route' => 'teacher.description.update', 'method' => 'PATCH']) !!}
 	      	@csrf	        
 	        	<div class="form-group">
 	        		<label> Description </label>
@@ -113,7 +114,7 @@
 	    <div class="modal-content">
 
 	      <div class="modal-body mt-4">
-	        <form method="POST" action="{{route('addAch')}}">
+	        <form method="POST" action="{{route('teacher.achievement.add')}}">
 	        	{{csrf_field()}}
 	        	<div class="form-group">
 	        		<label><i class="fas fa-trophy" style="color: #EEEB4D"></i> Title of Achievement</label>
@@ -121,7 +122,7 @@
 	        	</div>
 	        	<div class="form-group">
 	        		<label>Date Acquired</label>
-	        		<input type="text" name="achYear" class="form-control" placeholder="Example: 2009">
+	        		<input type="month" name="achYear" class="form-control" placeholder="Example: 2009">
 	        	</div>
 	        
 	      </div>

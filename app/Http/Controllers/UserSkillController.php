@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use App\Models\UserSkill;
-use App\Models\Achievement;
-class StudentController extends Controller
+class UserSkillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
-        $achievements = Achievement::where('user_id',Auth::user()->id)->get();   
-        $skills = UserSkill::where('user_id',Auth::user()->id)->get();
-        return view('user.student.profile', compact('skills','achievements')); 
+    {
+        //
     }
 
     /**
@@ -26,39 +23,23 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        // dd($request->toArray());
+        $data = $this->validate($request,[
+            'user_id' => 'nullable',
+            'skillName' => 'nullable',
+            'skillPercent' => 'nullable'
+        ]);
+
+        $data['user_id'] = Auth::user()->id;
+
+        UserSkill::create($data);
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //

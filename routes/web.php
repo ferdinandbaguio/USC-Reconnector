@@ -28,13 +28,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Student
     Route::group(['middleware' => 'student'], function () {  
+        Route::get('/student/profile', 'StudentController@index')->name('student.profile');
         Route::view('/student/class', 'user.student.class')->name('students');
-        Route::view('/student/profile', 'user.student.profile');
-
-        Route::patch('/student/profileUpdate', 'StudentController@updateDesc')->name('UpdateDescription');
-        Route::post('/addSkill', 'StudentController@addSkill')->name('addSkill');
-        
-        Route::post('/addAch', 'StudentController@addAch')->name('addAch');
+        Route::patch('/student/profileUpdate', 'DescriptionController@update')->name('student.description.update');
+        Route::post('/addSkill', 'UserSkillController@store')->name('student.skill.add');
+        Route::post('/addAch', 'AchievementController@store')->name('student.achievement.add');
         
 
     });
@@ -69,10 +67,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Teacher
     Route::group(['middleware' => 'teacher'], function () {
 
-        Route::view('/teacher/profile', 'user.teacher.profile');
-
-        Route::patch('/student/profileUpdate', 'StudentController@updateDesc')->name('UpdateDescription');
-        Route::post('/addAch', 'StudentController@addAch')->name('addAch');
+        Route::get('/teacher/profile', 'TeacherController@index')->name('teacher.profile');
+        Route::patch('/teacher/description', 'DescriptionController@update')->name('teacher.description.update');
+        Route::post('/teacher/achievement', 'AchievementController@store')->name('teacher.achievement.add');
         
     });
     
