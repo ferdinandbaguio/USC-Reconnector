@@ -12,130 +12,42 @@ class GTSController extends Controller
     public function update (Request $request, $id) {
         
         $data = $this->validate($request, [
-        	'user_id'                               => 'nullable', 
-        	'highest_educational_attainment' 		=> 'sometimes|required',
-	        'college_program_taken'			        => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]', 
-	        'month_year_graduated' 			        => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]', 
-	        'academic_awards_received' 		        => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
-            'other_awards'		                    => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
-            'professional_examinations_passed'	    => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'user_id'                               => 'nullable', 
+        	'highest_educational_attainment' 		=> 'required',
+	        'college_program_taken'			        => 'required', 
+	        'month_year_graduated' 			        => 'required', 
+	        'academic_awards_received' 		        => 'nullable',
+            'other_awards'		                    => 'nullable',
+            'professional_examinations_passed'	    => 'nullable',
             // Educational Background (Further Studies)
-            'program_pursued'		                => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
-            'name_of_graduate_school'	            => 'sometimes|required',
-            'address_of_graduate_school'	        => 'sometimes|required',
-            'advance_studies'                       => 'sometimes|required',
-            'is_presently_employed'                 => 'sometimes|required',
+            'program_pursued'		                => 'required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'name_of_graduate_school'	            => 'required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'address_of_graduate_school'	        => 'required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'advance_studies'                       => 'required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'is_presently_employed'                 => 'required',
             //Employment Data (Status: Employed)
-            'industry_currently_working'            => 'sometimes|required',
-            'job_level'                             => 'sometimes|required',
-            'present_job_position'                  => 'sometimes|required',
-            'job_not_related_to_degree'             => 'sometimes|required',
-            'months_employed'                       => 'sometimes|required',
-            'name_of_company'                       => 'sometimes|required',
-            'address_of_company'                    => 'sometimes|required',
+            'industry_currently_working'            => 'sometimes|required_if:is_presently_employed,Yes',
+            'job_level'                             => 'sometimes|required_if:is_presently_employed,Yes',
+            'present_job_position'                  => 'sometimes|required_if:is_presently_employed,Yes',
+            'job_not_related_to_degree'             => 'sometimes|required_if:is_presently_employed,Yes',
+            'months_employed'                       => 'sometimes|required_if:is_presently_employed,Yes',
+            'name_of_company'                       => 'sometimes|required_if:is_presently_employed,Yes',
+            'address_of_company'                    => 'sometimes|required_if:is_presently_employed,Yes',
             //YES
             'is_first_job'                          => 'sometimes|required',
 
             //Reason YES
-            'reasonsYes'                            => 'sometimes|required',
+            'reasonsYes'                            => 'sometimes|required_if:is_first_job,Yes',
             //Reason No
-            'reasonsNo'                             => 'sometimes|required',
-            'isFirstJobRelated'                     => 'sometimes|required',
-            'isJobpositionFirstworkAfterCollege'    => 'sometimes|required',
+            'reasonsNo'                             => 'sometimes|required_if:is_first_job,No',
+            'isFirstJobRelated'                     => 'sometimes|required_if:is_first_job,No',
+            'isJobpositionFirstworkAfterCollege'    => 'sometimes|required_if:is_first_job,No',
             
             //extends
             'monthsEmployedfirstjobAfterGraduate'   => 'sometimes|required',
             'jobRolesExperienced'                   => 'sometimes|required',
             'conceptsLearned'                       => 'sometimes|required',
-            'programmingLanguages'                  => 'sometimes|required',
-            //About the Undergraduate Program
-            //30. Please recall your reasons for choosing your undergraduate course. You may choose more than one answer. *
-            'reasonsUndergraduateCourse'            => 'sometimes|required',
-            //31. Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes: *
-            'knowledge_for_solving_computing_problems'=> 'sometimes|required',
-            'problem_analysis'                      => 'sometimes|required',
-            'development_of_solutions'              => 'sometimes|required',
-            'modern_tool_usage'                     => 'sometimes|required',
-            'individual_and_team_work'              => 'sometimes|required',
-            'communication'                         => 'sometimes|required',
-            'computing_professionalism_and_society' => 'sometimes|required',
-            'ethics'                                => 'sometimes|required',
-            'lifelong_learning'                     => 'sometimes|required',
-            //32. How relevant was your studying in USC in your current career in terms of: 
-            'knowledge_competencies'                => 'sometimes|required',
-            'personal_character_and_values'         => 'sometimes|required',
-            'community_involvement'                 => 'sometimes|required',
-            //33. How relevant is your undergraduate program/course to your current job? *
-            'relevant_undergraduate_program_course_to_current_job'=> 'sometimes|required',
-            //34. In retrospect during your time as a USC student, please rate the following facets in terms of its strength. *
-            'curriculum'                            => 'sometimes|required',
-            'workload'=> 'sometimes|required',
-            'facilities'=> 'sometimes|required',
-            'teaching'=> 'sometimes|required',
-            'research'=> 'sometimes|required',
-            'labor_market_relevance'=> 'sometimes|required',
-            'OJT'=> 'sometimes|required',
-            'social_and_community_involvement'=> 'sometimes|required',
-            //35. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
-            'suggestions'=> 'sometimes|required',
-            'reasonUnemployedNow'=> 'sometimes|required',
-            'reasonUnemployedNever'=> 'sometimes|required'
-        ]);
-        
-        $data['user_id'] = Auth::user()->id;
-        
-        $request->advance_studies ? $data['advance_studies'] = implode(', ', $request->advance_studies) : '';
-        $request->reasonsYes ? $data['reasonsYes'] = implode(', ', $request->reasonsYes)  : '';
-        $request->reasonsNo ? $data['reasonsNo'] = implode(', ', $request->reasonsNo) : '';
-        $request->jobRolesExperienced ? $data['jobRolesExperienced'] = implode(', ', $request->jobRolesExperienced) : '';
-        $request->conceptsLearned ? $data['conceptsLearned'] = implode(', ', $request->conceptsLearned) : '';
-        $request->reasonsUndergraduateCourse ? $data['reasonsUndergraduateCourse'] = implode(', ', $request->reasonsUndergraduateCourse) : ''; 
-        $request->reasonUnemployedNow ? $data['reasonUnemployedNow'] = implode(', ', $request->reasonUnemployedNow) : '';
-        $request->reasonUnemployedNever ? $data['reasonUnemployedNever'] = implode(', ', $request->reasonUnemployedNever) : '';
-
-    	GraduateTracerStudy::where('id', $id)->update($data);
-        return redirect()->back();
-    }
-    
-    public function store (Request $request) {
-        
-        $data = $this->validate($request, [
-        	'user_id'                               => 'nullable', 
-        	'highest_educational_attainment' 		=> 'sometimes|required',
-	        'college_program_taken'			        => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]', 
-	        'month_year_graduated' 			        => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]', 
-	        'academic_awards_received' 		        => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
-            'other_awards'		                    => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
-            'professional_examinations_passed'	    => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
-            // Educational Background (Further Studies)
-            'program_pursued'		                => 'sometimes|required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
-            'name_of_graduate_school'	            => 'sometimes|required',
-            'address_of_graduate_school'	        => 'sometimes|required',
-            'advance_studies'                       => 'sometimes|required',
-            'is_presently_employed'                 => 'sometimes|required',
-            //Employment Data (Status: Employed)
-            'industry_currently_working'            => 'sometimes|required',
-            'job_level'                             => 'sometimes|required',
-            'present_job_position'                  => 'sometimes|required',
-            'job_not_related_to_degree'             => 'sometimes|required',
-            'months_employed'                       => 'sometimes|required',
-            'name_of_company'                       => 'sometimes|required',
-            'address_of_company'                    => 'sometimes|required',
-            //YES
-            'is_first_job'                          => 'sometimes|required',
-
-            //Reason YES
-            'reasonsYes'                            => 'sometimes|required',
-            //Reason No
-            'reasonsNo'                             => 'sometimes|required',
-            'isFirstJobRelated'                     => 'sometimes|required',
-            'isJobpositionFirstworkAfterCollege'    => 'sometimes|required',
-            
-            //extends
-            'monthsEmployedfirstjobAfterGraduate'   => 'sometimes|required',
-            'jobRolesExperienced'                   => 'sometimes|required',
-            'conceptsLearned'                       => 'sometimes|required',
-            'programmingLanguages'                  => 'sometimes|required',
+            'programmingLanguages'                  => 'sometimes|required_if:is_presently_employed,[Yes,No, I\'m not employed now]',
             //About the Undergraduate Program
             //30. Please recall your reasons for choosing your undergraduate course. You may choose more than one answer. *
             'reasonsUndergraduateCourse'            => 'sometimes|required',
@@ -171,14 +83,102 @@ class GTSController extends Controller
         ]);
         
         $data['user_id'] = Auth::user()->id;
-        $request->advance_studies ? $data['advance_studies'] = implode(', ', $request->advance_studies) : '';
-        $request->reasonsYes ? $data['reasonsYes'] = implode(', ', $request->reasonsYes)  : '';
-        $request->reasonsNo ? $data['reasonsNo'] = implode(', ', $request->reasonsNo) : '';
-        $request->jobRolesExperienced ? $data['jobRolesExperienced'] = implode(', ', $request->jobRolesExperienced) : '';
-        $request->conceptsLearned ? $data['conceptsLearned'] = implode(', ', $request->conceptsLearned) : '';
-        $request->reasonsUndergraduateCourse ? $data['reasonsUndergraduateCourse'] = implode(', ', $request->reasonsUndergraduateCourse) : '';
-        $request->reasonUnemployedNow ? $data['reasonUnemployedNow'] = implode(', ', $request->reasonUnemployedNow) : '';
-        $request->reasonUnemployedNever ? $data['reasonUnemployedNever'] = implode(', ', $request->reasonUnemployedNever) : '';
+        
+        $request->advance_studies ? $data['advance_studies'] = json_encode($request->advance_studies) : '';
+        $request->reasonsYes ? $data['reasonsYes'] = json_encode($request->reasonsYes)  : '';
+        $request->reasonsNo ? $data['reasonsNo'] = json_encode($request->reasonsNo) : '';
+        $request->jobRolesExperienced ? $data['jobRolesExperienced'] = json_encode($request->jobRolesExperienced) : '';
+        $request->conceptsLearned ? $data['conceptsLearned'] = json_encode($request->conceptsLearned): '';
+        $request->reasonsUndergraduateCourse ? $data['reasonsUndergraduateCourse'] = json_encode($request->reasonsUndergraduateCourse) : '';
+        $request->reasonUnemployedNow ? $data['reasonUnemployedNow'] = json_encode($request->reasonUnemployedNow) : ''; 
+        $request->reasonUnemployedNever ? $data['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
+
+    	GraduateTracerStudy::where('id', $id)->update($data);
+        return redirect()->back();
+    }
+    
+    public function store (Request $request) {
+        
+        $data = $this->validate($request, [
+        	'user_id'                               => 'nullable', 
+        	'highest_educational_attainment' 		=> 'required',
+	        'college_program_taken'			        => 'required', 
+	        'month_year_graduated' 			        => 'required', 
+	        'academic_awards_received' 		        => 'nullable',
+            'other_awards'		                    => 'nullable',
+            'professional_examinations_passed'	    => 'nullable',
+            // Educational Background (Further Studies)
+            'program_pursued'		                => 'required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'name_of_graduate_school'	            => 'required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'address_of_graduate_school'	        => 'required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'advance_studies'                       => 'required_if:highest_educational_attainment,[MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)]',
+            'is_presently_employed'                 => 'required',
+            //Employment Data (Status: Employed)
+            'industry_currently_working'            => 'sometimes|required_if:is_presently_employed,Yes',
+            'job_level'                             => 'sometimes|required_if:is_presently_employed,Yes',
+            'present_job_position'                  => 'sometimes|required_if:is_presently_employed,Yes',
+            'job_not_related_to_degree'             => 'sometimes|required_if:is_presently_employed,Yes',
+            'months_employed'                       => 'sometimes|required_if:is_presently_employed,Yes',
+            'name_of_company'                       => 'sometimes|required_if:is_presently_employed,Yes',
+            'address_of_company'                    => 'sometimes|required_if:is_presently_employed,Yes',
+            //YES
+            'is_first_job'                          => 'sometimes|required',
+
+            //Reason YES
+            'reasonsYes'                            => 'sometimes|required_if:is_first_job,Yes',
+            //Reason No
+            'reasonsNo'                             => 'sometimes|required_if:is_first_job,No',
+            'isFirstJobRelated'                     => 'sometimes|required_if:is_first_job,No',
+            'isJobpositionFirstworkAfterCollege'    => 'sometimes|required_if:is_first_job,No',
+            
+            //extends
+            'monthsEmployedfirstjobAfterGraduate'   => 'sometimes|required',
+            'jobRolesExperienced'                   => 'sometimes|required',
+            'conceptsLearned'                       => 'sometimes|required',
+            'programmingLanguages'                  => 'sometimes|required_if:is_presently_employed,[Yes,No, I\'m not employed now]',
+            //About the Undergraduate Program
+            //30. Please recall your reasons for choosing your undergraduate course. You may choose more than one answer. *
+            'reasonsUndergraduateCourse'            => 'sometimes|required',
+            //31. Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes: *
+            'knowledge_for_solving_computing_problems'=> 'sometimes|required',
+            'problem_analysis'                      => 'sometimes|required',
+            'development_of_solutions'              => 'sometimes|required',
+            'modern_tool_usage'                     => 'sometimes|required',
+            'individual_and_team_work'              => 'sometimes|required',
+            'communication'                         => 'sometimes|required',
+            'computing_professionalism_and_society' => 'sometimes|required',
+            'ethics'                                => 'sometimes|required',
+            'lifelong_learning'                     => 'sometimes|required',
+            //32. How relevant was your studying in USC in your current career in terms of: 
+            'knowledge_competencies'                => 'sometimes|required',
+            'personal_character_and_values'         => 'sometimes|required',
+            'community_involvement'                 => 'sometimes|required',
+            //33. How relevant is your undergraduate program/course to your current job? *
+            'relevant_undergraduate_program_course_to_current_job'=> 'sometimes|required',
+            //34. In retrospect during your time as a USC student, please rate the following facets in terms of its strength. *
+            'curriculum'=> 'sometimes|required',
+            'workload'=> 'sometimes|required',
+            'facilities'=> 'sometimes|required',
+            'teaching'=> 'sometimes|required',
+            'research'=> 'sometimes|required',
+            'labor_market_relevance'=> 'sometimes|required',
+            'OJT'=> 'sometimes|required',
+            'social_and_community_involvement'=> 'sometimes|required',
+            //32. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
+            'suggestions'=> 'sometimes|required',
+            'reasonUnemployedNow'=> 'sometimes|required',
+            'reasonUnemployedNever'=> 'sometimes|required'
+        ]);
+        
+        $data['user_id'] = Auth::user()->id;
+        $request->advance_studies ? $data['advance_studies'] = json_encode($request->advance_studies) : '';
+        $request->reasonsYes ? $data['reasonsYes'] = json_encode($request->reasonsYes)  : '';
+        $request->reasonsNo ? $data['reasonsNo'] = json_encode($request->reasonsNo) : '';
+        $request->jobRolesExperienced ? $data['jobRolesExperienced'] = json_encode($request->jobRolesExperienced) : '';
+        $request->conceptsLearned ? $data['conceptsLearned'] = json_encode($request->conceptsLearned): '';
+        $request->reasonsUndergraduateCourse ? $data['reasonsUndergraduateCourse'] = json_encode($request->reasonsUndergraduateCourse) : '';
+        $request->reasonUnemployedNow ? $data['reasonUnemployedNow'] = json_encode($request->reasonUnemployedNow) : ''; 
+        $request->reasonUnemployedNever ? $data['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
         
     	GraduateTracerStudy::create($data);
         return redirect()->back();
@@ -187,14 +187,14 @@ class GTSController extends Controller
 
         $form = GraduateTracerStudy::find($id);
 
-        $advancestudies_fm = explode(', ', $form->advance_studies);
-        $reasonsYes_fm = explode(', ', $form->reasonsYes);
-        $reasonsNo_fm = explode(', ', $form->reasonsNo);
-        $jobRolesExperienced_fm = explode(', ', $form->jobRolesExperienced);
-        $conceptsLearned_fm = explode(', ', $form->conceptsLearned);
-        $reasonsUndergraduateCourse_fm = explode(', ', $form->reasonsUndergraduateCourse);
-        $reasonUnemployedNow_fm = explode(', ', $form->reasonUnemployedNow);
-        $reasonUnemployedNever_fm = explode(', ', $form->reasonUnemployedNever);
+        $advancestudies_fm = json_decode($form->advance_studies);
+        $reasonsYes_fm = json_decode($form->reasonsYes);
+        $reasonsNo_fm = json_decode($form->reasonsNo);
+        $jobRolesExperienced_fm = json_decode($form->jobRolesExperienced);
+        $conceptsLearned_fm = json_decode($form->conceptsLearned);
+        $reasonsUndergraduateCourse_fm = json_decode($form->reasonsUndergraduateCourse);
+        $reasonUnemployedNow_fm = json_decode($form->reasonUnemployedNow);
+        $reasonUnemployedNever_fm = json_decode($form->reasonUnemployedNever);
         
         //  dd($advancestudies_fm,$reasonsYes_fm,$reasonsNo_fm);
         $highestEducationalAttainment = [

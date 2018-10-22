@@ -98,9 +98,14 @@
 			<!-- What made you pursue advance studies? * -->
 			{!! Form::label('advance_studies', ' 1.4 What made you pursue advance studies?') !!}
 			@foreach( $pursueAdvanceStudies as $data)
+			@if($data == 'Iba pa:')
+			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}
+			{!! Form::text('advance_studies',null, ['class' => 'form-control']) !!}</div>
+			@else
 			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
+			@endif
 			@endforeach
-			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
+			
 			
 			<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 			<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(3)">Next</button>
