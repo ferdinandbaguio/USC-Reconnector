@@ -100,6 +100,7 @@
 			@foreach( $pursueAdvanceStudies as $data)
 			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
 			@endforeach
+			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 			
 			<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 			<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(3)">Next</button>
@@ -132,7 +133,7 @@
 			<h1>this is page Fourth</h1>	
 			<div class="row px-2">
 				<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-				<p class="m-auto text-white">Employment Data (Status: Employed) </p>
+				<p class="m-auto text-white">Employment Data<br>Status: Employed </p>
 				</div>
 				<div class="col-12" style="border-bottom: 1px solid gray;">
 				</div>
@@ -193,7 +194,7 @@
 			<h1>this is page five</h1>
 				<div class="row px-2">
 					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-					<p class="m-auto text-white"> Employment Data (Status: Unemployed) </p>
+					<p class="m-auto text-white"> Employment Data</p>
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -205,7 +206,7 @@
 			@foreach( $reasonYes as $data)
 			<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm: null) !!} {{$data}}</div>
 			@endforeach
-			<h2>End of YES</h2>
+			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 			<!-- End of YES -->
 
 				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
@@ -217,7 +218,7 @@
 			<h1>this is page SIX</h1>
 				<div class="row px-2">
 					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-					<p class="m-auto text-white"> Employment Data (Status: Unemployed) </p>
+					<p class="m-auto text-white"> Employment Data</p>
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -235,40 +236,11 @@
 		</div> 
 	<!-- END SIXTH PAGE -->
 	<!-- SEVENTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="x">
-			<h1>this is page SEVEN</h1>
-				<div class="row px-2">
-					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-					<p class="m-auto text-white"> Employment Data (Status: Unemployed) </p>
-					</div>
-					<div class="col-12" style="border-bottom: 1px solid gray;">
-					</div>
-				</div> 
-			<!--   Was your first job after college related to your course/program? -->
-			{!! Form::label('isFirstJobRelated', '21. Was your first job after college related to your course/program?') !!}
-			@foreach($isFirstJobRelated as $data)
-			<div>{!!	Form::radio('isFirstJobRelated', $data) !!} {{$data}}</div>
-			@endforeach
-
-			<!--  What was your job position in your first work after college?l -->
-			{!! Form::label('isJobpositionFirstworkAfterCollege', '22. What was your job position in your first work after college?') !!}
-			{!! Form::text('isJobpositionFirstworkAfterCollege',null, ['class' => 'form-control']) !!}
-
-			<!--  Name of the company / organization you first worked in -->
-			{!! Form::label('nameofCompanyfirstWorkedin', '23. Name of the company / organization you first worked in ') !!}
-			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
-			<h2>End of NO</h2>
-
-				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(4)">Next</button>
-		</div> 
-	<!-- END SEVENTH PAGE -->
-	<!-- SEVENTH PAGE -->
 	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="7">
 			<h1>this is page SEVEN</h1>
 				<div class="row px-2">
 					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-					<p class="m-auto text-white"> Employment Data (Status: Unemployed) </p>
+					<p class="m-auto text-white"> Employment Data<br>Status: Unemployed(Now) </p>
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -282,15 +254,15 @@
 				@endforeach
 
 				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(4)">Next</button>
+				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(9)">Next</button>
 		</div> 
 	<!-- END SEVENTH PAGE -->
 	<!-- EIGHTH PAGE -->
 		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="8">
-			<h1>this is page six</h1>
+			<h1>this is page Eight</h1>
 				<div class="row px-2">
 					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-					<p class="m-auto text-white"> Employment Data (Status: Unemployed) </p>
+					<p class="m-auto text-white"> Employment Data <br>Status: Unemployed(Never)</p>
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -312,7 +284,7 @@
 			<h1>this is page Nine</h1>
 				<div class="row px-2">
 					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-					<p class="m-auto text-white"> Employment Data (Status: Unemployed) </p>
+					<p class="m-auto text-white"> Employment Data (First Full-Time Job) </p>
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -341,7 +313,7 @@
 			<h1>this is page TEN</h1>
 				<div class="row px-2">
 					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-					<p class="m-auto text-white"> Employment Data (Status: Unemployed) </p>
+					<p class="m-auto text-white"> Employment Data</p>
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -357,13 +329,13 @@
 			@foreach( $jobRolesExperienced as $data)
 			<div>{!! Form::checkbox('jobRolesExperienced[]', $data,isset($jobRolesExperienced_fm) ? $jobRolesExperienced_fm: null) !!} {{$data}}</div>
 			@endforeach
-
+			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 			<!--  What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer. -->
 			{!! Form::label('conceptsLearned', '20.What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer.') !!}
 			@foreach( $conceptsLearned as $data)
 			<div>{!! Form::checkbox('conceptsLearned[]', $data, isset($conceptsLearned_fm) ? $conceptsLearned_fm: null) !!} {{$data}}</div>
 			@endforeach
-
+			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 			<!-- What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) . -->
 			{!! Form::label('programmingLanguages', '21.   What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) ') !!}
 			{!! Form::text('programmingLanguages', null, ['class' => 'form-control']) !!}
@@ -376,7 +348,7 @@
 	<!-- ELEVENTH PAGE -->
 	<!-- ABOUT THE UNDERGRADUATE PROGRAM PAGE -->
 	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="11">
-		<h1>this is page Fifth</h1>		
+		<h1>this is page Eleven</h1>		
 			<div class="row px-2">
 				<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white"> About the Undergraduate Program </p>
@@ -391,6 +363,7 @@
 			@foreach( $reasonsUndergraduateCourse as $data)
 			<div>{!! Form::checkbox('reasonsUndergraduateCourse[]',$data,isset($reasonsUndergraduateCourse_fm) ? $reasonsUndergraduateCourse_fm: null) !!} {{$data}}</div>
 			@endforeach
+			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 
 			<!-- Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes: -->
 			{!! Form::label('name', '23.  Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes ') !!}
