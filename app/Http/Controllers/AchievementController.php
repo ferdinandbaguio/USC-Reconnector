@@ -41,8 +41,8 @@ class AchievementController extends Controller
     {
         $data = $this->validate($request,[
             'user_id' => 'nullable',
-            'achTitle' => 'nullable',
-            'achYear' => 'nullable'
+            'achTitle' => 'required',
+            'achYear' => 'required'
         ]);
 
         $data['user_id'] = Auth::user()->id;
