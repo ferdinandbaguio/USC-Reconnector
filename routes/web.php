@@ -70,6 +70,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'teacher'], function () {
 
         Route::view('/teacher/profile', 'user.teacher.profile');
+
+        Route::patch('/student/profileUpdate', 'StudentController@updateDesc')->name('UpdateDescription');
+        Route::post('/addAch', 'StudentController@addAch')->name('addAch');
         
     });
     
