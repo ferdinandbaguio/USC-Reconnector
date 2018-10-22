@@ -30,9 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'student'], function () {  
         Route::get('/student/profile', 'StudentController@index')->name('student.profile');
         Route::view('/student/class', 'user.student.class')->name('students');
-        Route::patch('/student/profileUpdate', 'DescriptionController@update')->name('student.description.update');
-        Route::post('/addSkill', 'UserSkillController@store')->name('student.skill.add');
-        Route::post('/addAch', 'AchievementController@store')->name('student.achievement.add');
+        Route::patch('/student/description', 'DescriptionController@update')->name('student.description.update');
+        Route::post('student/skill', 'UserSkillController@store')->name('student.skill.add');
+        Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
         
 
     });
@@ -54,7 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/alumnus/profile', 'AlumnusController@alumnusProfile')->name('alumnus.profile');
         Route::get('/alumnus/jobs', 'AlumnusController@alumnusJobs')->name('alumnus.jobs');
         Route::get('/alumnus/communicate', 'AlumnusController@alumnusCommunicate')->name('alumnus.communicate');
-        
+        Route::patch('alumnus/description', 'DescriptionController@update')->name('alumnus.description.update');
+        Route::post('alumnus/skill', 'UserSkillController@store')->name('alumnus.skill.add');
+        Route::post('alumnus/achievement', 'AchievementController@store')->name('alumnus.achievement.add');
         //Alumnus Form Routes
         Route::get('/alumnus/form', 'GTSController@alumnusForm')->name('alumnus.form');  
         Route::get('/alumnus/form/{id}/edit','GTSController@edit')->name('alumnus.form.edit');
