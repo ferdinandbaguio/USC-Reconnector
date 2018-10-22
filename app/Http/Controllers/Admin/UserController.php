@@ -57,25 +57,40 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        $pictureMaleValues = ['default_male.png', 
-                              'default_male1.png', 
-                              'default_male2.png'];
-        $pictureFemaleValues = ['default_female.png', 
-                                'default_female1.png', 
-                                'default_female2.png'];
         $request = $request->all();
-        $random = rand(0, 2);
+        
+        if(!isset($request['picture'])){
+            $pictureMaleValues = ['default_male.png', 
+                                'default_male1.png', 
+                                'default_male2.png'];
+            $pictureFemaleValues = ['default_female.png', 
+                                    'default_female1.png', 
+                                    'default_female2.png'];
+            $random = rand(0, 2);
 
-        if($request['sex'] == 'Male'){
-            $request['picture'] = $pictureMaleValues[$random];
-        }
-        else if($request['sex'] == 'Female'){
-            $request['picture'] = $pictureFemaleValues[$random];
-        }
-        // Save Path of Image
-        $path = $request['picture']->storeAs('public/user_images', $filenameToStore);
+            if($request['sex'] == 'Male'){
+                $request['picture'] = $pictureMaleValues[$random];
+            }
+            else if($request['sex'] == 'Female'){
+                $request['picture'] = $pictureFemaleValues[$random];
+            }
 
-        $request['password'] = bcrypt($request['idnumber']);
+            $request['password'] = bcrypt($request['idnumber']);
+        }
+        else{
+            // Get Image
+            $filenameWithExt = $request['picture']->getClientOriginalName();
+            // Get Image Name
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get Image Extention
+            $extension = $request['picture']->getClientOriginalExtension();
+            // Rename Image
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // Save Path of Image
+            $path = $request['picture']->storeAs('public/user_img', $filenameToStore);
+            // Store Image to Database
+            $request['picture'] = $filenameToStore;
+        }
 
         try{
             User::create($request);
@@ -98,7 +113,7 @@ class UserController extends Controller
             // Rename Image
             $filenameToStore = $filename.'_'.time().'.'.$extension;
             // Save Path of Image
-            $path = $request['picture']->storeAs('public/user_images', $filenameToStore);
+            $path = $request['picture']->storeAs('public/user_img', $filenameToStore);
             // Store Image to Database
             $request['picture'] = $filenameToStore;
         }

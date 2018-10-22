@@ -28,7 +28,7 @@ class Group_Class extends Model
 
     public function student_class()
     {
-        return $this->hasMany('App\Models\Student_Class', 'student_class_id');
+        return $this->hasMany('App\Models\Student_Class', 'group_class_id');
     }
 
     public function schedules()

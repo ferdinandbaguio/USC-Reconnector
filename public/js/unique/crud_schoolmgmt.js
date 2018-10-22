@@ -136,10 +136,8 @@ $('#delete-class').on('show.bs.modal', function(event){
 
 //School >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 $('create-school').on('show.bs.modal', function(event) {
-
 })
 $('delete-school').on('show.bs.modal', function(event) {
-
 })
 $(function() {
     $('#example-table').DataTable({

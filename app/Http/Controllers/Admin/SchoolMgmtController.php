@@ -9,6 +9,7 @@ use App\Models\Schedule;
 use App\Models\Semester;
 use App\Models\Group_Class;
 use Illuminate\Http\Request;
+use App\Models\Student_Class;
 use App\Models\Group_Schedule;
 use App\Http\Controllers\Controller;
 
@@ -158,5 +159,31 @@ class SchoolMgmtController extends Controller
         catch(Exception $e){
             return redirect()->back()->with('error', 'Something went wrong: '.$e);
         }
+    }
+    public function studentClass(Request $request)
+    {
+        $students = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->get();
+        $stdclasses = Student_Class::where('group_class_id', '=', $request->id)->get();
+        return view('user.admin.crud.schoolmgmt.studentclass')->with('stdclasses', $stdclasses)->with('students', $students)->with('id', $request->id);
+    }
+    public function storeStudent(Request $request)
+    {
+        $addToSC['student_id'] = $request->student_id;
+        $addToSC['group_class_id'] = $request->group_class_id;
+        Student_Class::create($addToSC);
+        $students = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->get();
+        $stdclasses = Student_Class::where('group_class_id', '=', $request->group_class_id)->get();
+        return view('user.admin.crud.schoolmgmt.studentclass')->with('stdclasses', $stdclasses)
+                                                              ->with('students', $students)
+                                                              ->with('id', $request->group_class_id);
+    }
+    public function removeStudent(Request $request)
+    {
+        Student_Class::where('student_id', '=', $request->student_id)->where('group_class_id', '=', $request->group_class_id)->delete();
+        $students = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->get();
+        $stdclasses = Student_Class::where('group_class_id', '=', $request->group_class_id)->get();
+        return view('user.admin.crud.schoolmgmt.studentclass')->with('stdclasses', $stdclasses)
+                                                              ->with('students', $students)
+                                                              ->with('id', $request->group_class_id);
     }
 }

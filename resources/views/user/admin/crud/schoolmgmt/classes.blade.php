@@ -70,52 +70,60 @@
                 <td>
 
                     {{-- Show Button --}}
-                    <span data-toggle="modal" data-target="#show-class"
-                    data-id="{{ $gc->id }}"  data-status="{{ $gc->status }}" 
-                    data-tname="{{ $gc->teacher->full_name }}"  data-tidnum="{{ $gc->teacher->idnumber }}" 
-                    data-tsex="{{ $gc->teacher->sex }}"  data-temail="{{ $gc->teacher->email }}" 
-                    data-tpos="{{ $gc->teacher->position }}"  data-tdesc="{{ $gc->teacher->description }}"
-                    data-scode="{{ $gc->subject->code }}"  data-sname="{{ $gc->subject->name }}"
-                    data-sdesc="{{ $gc->subject->description }}" 
-                    <?php $i=1;?>
-                    @foreach($gc->schedules as $sched)
-                        data-year<?php echo $i; ?>="{{ $sched->schedule->semester->year['name'] }}"  
-                        data-sem<?php echo $i; ?>="{{ $sched->schedule->semester['name'] }}"
-                        data-cday<?php echo $i; ?>="{{ $sched->schedule['day'] }}"  
-                        data-cstart<?php echo $i; ?>="{{ $sched->schedule['class_start'] }}"
-                        data-cend<?php echo $i; ?>="{{ $sched->schedule['class_end'] }}"  <?php $i++;?>
-                    @endforeach
-                    >
-                        <button class="btn btn-xs" data-toggle="tooltip" data-original-title="Show">   
-                            <i class="ti-eye"></i>                              
-                        </button>
-                    </span>
+                        <span data-toggle="modal" data-target="#show-class"
+                        data-id="{{ $gc->id }}"  data-status="{{ $gc->status }}" 
+                        data-tname="{{ $gc->teacher->full_name }}"  data-tidnum="{{ $gc->teacher->idnumber }}" 
+                        data-tsex="{{ $gc->teacher->sex }}"  data-temail="{{ $gc->teacher->email }}" 
+                        data-tpos="{{ $gc->teacher->position }}"  data-tdesc="{{ $gc->teacher->description }}"
+                        data-scode="{{ $gc->subject->code }}"  data-sname="{{ $gc->subject->name }}"
+                        data-sdesc="{{ $gc->subject->description }}" 
+                        <?php $i=1;?>
+                        @foreach($gc->schedules as $sched)
+                            data-year<?php echo $i; ?>="{{ $sched->schedule->semester->year['name'] }}"  
+                            data-sem<?php echo $i; ?>="{{ $sched->schedule->semester['name'] }}"
+                            data-cday<?php echo $i; ?>="{{ $sched->schedule['day'] }}"  
+                            data-cstart<?php echo $i; ?>="{{ $sched->schedule['class_start'] }}"
+                            data-cend<?php echo $i; ?>="{{ $sched->schedule['class_end'] }}"  <?php $i++;?>
+                        @endforeach
+                        >
+                            <button class="btn btn-xs" data-toggle="tooltip" data-original-title="Show">   
+                                <i class="ti-eye"></i>                              
+                            </button>
+                        </span>
 
+                    {{-- Show Student Button --}}
+                        {!! Form::open(['route' => 'StudentClass', 'method' => 'POST', 'style' => 'display:inline-block;']) !!}
+                            @csrf
+                            {{Form::hidden('id', $gc->id)}}
+                            <button class="btn btn-primary btn-xs" data-toggle="tooltip" data-original-title="Show Student">
+                                <i class="ti-user"></i>        
+                            </button>
+                        {!! Form::close() !!}
                     {{-- Edit Button --}}
-                    <span data-toggle="modal" data-target="#edit-class"
-                    data-id="{{ $gc->id }}"  data-status="{{ $gc->status }}" 
-                    data-tid="{{ $gc->teacher->id }}" data-sid="{{ $gc->subject->id }}"
-                    <?php $i=1;?>
-                    @foreach($gc->schedules as $sched)
-                        data-gsid<?php echo $i; ?>="{{ $sched->schedule['id'] }}" 
-                        data-gsday<?php echo $i; ?>="{{ $sched->schedule['day'] }}" 
-                        data-gsstart<?php echo $i; ?>="{{ $sched->schedule['class_start'] }}" 
-                        data-gsend<?php echo $i; ?>="{{ $sched->schedule['class_end'] }}" 
-                        data-gssem<?php echo $i; ?>="{{ $sched->schedule['semester_id'] }}" 
-                        <?php $i++;?>
-                    @endforeach
-                    >
-                        <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
-                            <i class="ti-pencil"></i>                                
-                        </button>
-                    </span>
+                        <span data-toggle="modal" data-target="#edit-class"
+                        data-id="{{ $gc->id }}"  data-status="{{ $gc->status }}" 
+                        data-tid="{{ $gc->teacher->id }}" data-sid="{{ $gc->subject->id }}"
+                        <?php $i=1;?>
+                        @foreach($gc->schedules as $sched)
+                            data-gsid<?php echo $i; ?>="{{ $sched->schedule['id'] }}" 
+                            data-gsday<?php echo $i; ?>="{{ $sched->schedule['day'] }}" 
+                            data-gsstart<?php echo $i; ?>="{{ $sched->schedule['class_start'] }}" 
+                            data-gsend<?php echo $i; ?>="{{ $sched->schedule['class_end'] }}" 
+                            data-gssem<?php echo $i; ?>="{{ $sched->schedule['semester_id'] }}" 
+                            <?php $i++;?>
+                        @endforeach
+                        >
+                            <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
+                                <i class="ti-pencil"></i>                                
+                            </button>
+                        </span>
 
                     {{-- Delete Button --}}
-                    <span data-toggle="modal" data-target="#delete-class" data-id="{{ $gc->id }}">
-                        <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">   
-                            <i class="ti-trash"></i>                              
-                        </button>
-                    </span>
+                        <span data-toggle="modal" data-target="#delete-class" data-id="{{ $gc->id }}">
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">   
+                                <i class="ti-trash"></i>                              
+                            </button>
+                        </span>
                 </td>
             </tr>
             @endforeach

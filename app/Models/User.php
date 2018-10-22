@@ -42,6 +42,11 @@ class User extends Authenticatable
         'full_name'
     ];
 
+    public function student_classes()
+    {
+        return $this->hasMany('App\Models\Student_Class','student_id');
+    }
+
     public function group_classes()
     {
         return $this->hasMany('App\Models\Group_Class','teacher_id');

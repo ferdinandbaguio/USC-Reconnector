@@ -71,6 +71,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/SM/store', 'Admin\SchoolMgmtController@storeClass')->name('StoreClass');
         Route::patch('/SM/update', 'Admin\SchoolMgmtController@updateClass')->name('UpdateClass');
         Route::delete('/SM/destroy', 'Admin\SchoolMgmtController@destroyClass')->name('DeleteClass');
+        Route::post('/SM/students', 'Admin\SchoolMgmtController@studentClass')->name('StudentClass');
+        Route::post('/SM/store/student', 'Admin\SchoolMgmtController@storeStudent')->name('StoreStudent');
+        Route::delete('/SM/remove/student', 'Admin\SchoolMgmtController@removeStudent')->name('RemoveStudent');
+
         Route::get('/SM/school', 'Admin\SchoolMgmtController@school')->name('School');
 
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
