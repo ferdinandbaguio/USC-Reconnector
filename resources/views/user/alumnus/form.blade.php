@@ -107,8 +107,8 @@
 			{!! Form::label(null, ' 1.4 What made you pursue advance studies?') !!}
 			@foreach( $pursueAdvanceStudies as $data)
 			@if($data == 'Iba pa:')
-			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}
-			{!! Form::text('advance_studies[]',isset(end(advancestudies_fm)) ? $advancestudies_fm : null, ['class' => 'form-control']) !!}</div>
+			<div>{!! Form::checkbox(null, $data,isset($advancestudies_fm) ? $advancestudies_fm : '') !!} {{$data}}
+			{!! Form::text('advance_studies[]',null,null, ['class' => 'form-control']) !!}</div>
 			@else
 			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
 			@endif
