@@ -20,10 +20,12 @@
 	<div class="row">
 		<!-- FIRST PAGE -->
 		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="1">
-			<h1>this is page one</h1>
 			<div class="row px-2">
-				<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+				<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white"> Educational Background </p>
+				</div>
+				<div class="col-3 col-md-5 py-2">
+					Page 1
 				</div>
 				<div class="col-12" style="border-bottom: 1px solid gray;">
 				</div>
@@ -67,16 +69,18 @@
 					<p>(Please indicate the year the test was taken)</p>
 			{!! Form::text('professional_examinations_passed', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
-			<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)">Next</button>
 		</div> 
 		<!-- END FIRST PAGE -->
 
 		<!-- SECOND PAGE -->
 		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="2">
-		<h1>this is page two</h1>
 			<div class="row px-2">
-				<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+				<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white"> Educational Background </p>
+				</div>
+				<div class="col-3 col-md-5 py-2">
+					Page 2
 				</div>
 				<div class="col-12" style="border-bottom: 1px solid gray;">
 				</div>
@@ -111,17 +115,19 @@
 			@endforeach
 			
 			
-			<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(3)">Next</button>
+			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(3)">Next</button>
 		</div> 
 		<!-- END SECOND PAGE -->
 
 		<!-- THIRD PAGE -->
 		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="3">
-			<h1>this is page three</h1>
 				<div class="row px-2">
-					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data </p>
+					</div>
+					<div class="col-3 col-md-5 py-2">
+					Page 3
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -132,17 +138,19 @@
 				<div>{!!	Form::radio('is_presently_employed', $data,null,['class' => 'isEmployed']) !!} {{$data}}</div>
 				@endforeach
 
-				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(isEmployed())">Next</button>
+				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(isEmployed())">Next</button>
 		</div> 
 		<!-- END THIRD PAGE -->
 
 		<!-- FOURTH PAGE -->
 		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="4">
-			<h1>this is page Fourth</h1>	
 			<div class="row px-2">
-				<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+				<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white">Employment Data<br>Status: Employed </p>
+				</div>
+				<div class="col-3 col-md-5 py-2">
+					Page 4
 				</div>
 				<div class="col-12" style="border-bottom: 1px solid gray;">
 				</div>
@@ -192,18 +200,20 @@
 			</div>
 			@endforeach
 
-			<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(yesNo())">Next</button>
+			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(yesNo())">Next</button>
 	
 		</div>
 	<!-- END FOURTH PAGE -->
 	
 	<!-- FIFTH PAGE -->
 	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="5">
-			<h1>this is page five</h1>
 				<div class="row px-2">
-					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
+					</div>
+					<div class="col-3 col-md-5 py-2">
+					Page 5
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -218,16 +228,18 @@
 			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 			<!-- End of YES -->
 
-				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(10)">Next</button>
+				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(10)">Next</button>
 		</div> 
 	<!-- END FIFTH PAGE -->
 	<!-- SIXTH PAGE -->
 	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="6">
-			<h1>this is page SIX</h1>
 				<div class="row px-2">
-					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
+					</div>
+					<div class="col-3 col-md-5 py-2">
+					Page 6
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -240,16 +252,18 @@
 			<div>{!! Form::checkbox('reasonsNo[]', $data,isset($reasonsNo_fm) ? $reasonsNo_fm: null) !!} {{$data}}</div>
 			@endforeach
 
-				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(9)">Next</button>
+				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(9)">Next</button>
 		</div> 
 	<!-- END SIXTH PAGE -->
 	<!-- SEVENTH PAGE -->
 	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="7">
-			<h1>this is page SEVEN</h1>
 				<div class="row px-2">
-					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data<br>Status: Unemployed(Now) </p>
+					</div>
+					<div class="col-3 col-md-5 py-2">
+					Page 7
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -262,16 +276,18 @@
 				<div>{!! Form::checkbox('reasonUnemployedNow[]', $data,isset($reasonUnemployedNow_fm) ? $reasonUnemployedNow_fm: null) !!} {{$data}}</div>
 				@endforeach
 
-				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(9)">Next</button>
+				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(9)">Next</button>
 		</div> 
 	<!-- END SEVENTH PAGE -->
 	<!-- EIGHTH PAGE -->
 		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="8">
-			<h1>this is page Eight</h1>
 				<div class="row px-2">
-					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data <br>Status: Unemployed(Never)</p>
+					</div>
+					<div class="col-3 col-md-5 py-2">
+					Page 8
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -284,16 +300,18 @@
 				<div>{!! Form::checkbox('reasonUnemployedNever[]', $data,isset($reasonUnemployedNever_fm) ? $reasonUnemployedNever_fm: null) !!} {{$data}}</div>
 				@endforeach
 
-				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(11)">Next</button>
+				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(11)">Next</button>
 		</div> 
 	<!-- END EIGHTH PAGE -->
 	<!-- NINTH PAGE -->
 	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="9">
-			<h1>this is page Nine</h1>
 				<div class="row px-2">
-					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data (First Full-Time Job) </p>
+					</div>
+					<div class="col-3 col-md-5 py-2">
+					Page 9
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -313,16 +331,18 @@
 				{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 				<h2>End of NO</h2>
 
-				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(10)">Next</button>
+				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(10)">Next</button>
 		</div> 
 	<!-- END NINTH PAGE -->
 	<!-- TENTH PAGE -->
 			<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="10">
-			<h1>this is page TEN</h1>
 				<div class="row px-2">
-					<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+					<div class="col-8 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
+					</div>
+					<div class="col-4 col-md-5 py-2">
+					Page 10
 					</div>
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
@@ -349,18 +369,20 @@
 			{!! Form::label('programmingLanguages', '21.   What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) ') !!}
 			{!! Form::text('programmingLanguages', null, ['class' => 'form-control']) !!}
 
-				<button type="button" class="btn btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-warning text-white mt-3" onclick="showPage(11)">Next</button>
+				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(11)">Next</button>
 		</div> 
 	<!-- END TENTH PAGE -->
 
 	<!-- ELEVENTH PAGE -->
 	<!-- ABOUT THE UNDERGRADUATE PROGRAM PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="11">
-		<h1>this is page Eleven</h1>		
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="11">		
 			<div class="row px-2">
-				<div class="col-10 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+				<div class="col-8 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white"> About the Undergraduate Program </p>
+				</div>
+				<div class="col-4 col-md-5 py-2">
+					Page 11
 				</div>
 				<div class="col-12" style="border-bottom: 1px solid gray;">
 				</div>
@@ -372,68 +394,68 @@
 			@foreach( $reasonsUndergraduateCourse as $data)
 			<div>{!! Form::checkbox('reasonsUndergraduateCourse[]',$data,isset($reasonsUndergraduateCourse_fm) ? $reasonsUndergraduateCourse_fm: null) !!} {{$data}}</div>
 			@endforeach
-			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
+			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control mb-2']) !!}
 
 			<!-- Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes: -->
 			{!! Form::label('name', '23.  Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes ') !!}
 			<!-- Knowledge for Solving Computing Problems -->
-			<div><strong>Knowledge for Solving Computing Problems</strong></div>
+			<div><strong style="color:#3B666E;">Knowledge for Solving Computing Problems</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('knowledge_for_solving_computing_problems', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Problem Analysis -->
-			<div><strong>Problem Analysis</strong></div>
+			<div><strong style="color:#3B666E;">Problem Analysis</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('problem_analysis', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Design / Development of Solutions -->
-			<div><strong>Design / Development of Solutions</strong></div>
+			<div><strong style="color:#3B666E;">Design / Development of Solutions</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('development_of_solutions', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Modern Tool Usage -->
-			<div><strong>Modern Tool Usage</strong></div>
+			<div><strong style="color:#3B666E;">Modern Tool Usage</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('modern_tool_usage', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Individual and Team Work -->
-			<div><strong>Individual and Team Work</strong></div>
+			<div><strong style="color:#3B666E;">Individual and Team Work</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('individual_and_team_work', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Communication -->
-			<div><strong>Communication</strong></div>
+			<div><strong style="color:#3B666E;">Communication</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('communication', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Computing Professionalism and Society -->
-			<div><strong>Computing Professionalism and Society</strong></div>
+			<div><strong style="color:#3B666E;">Computing Professionalism and Society</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('computing_professionalism_and_society', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Ethics -->
-			<div><strong>Ethics</strong></div>
+			<div><strong style="color:#3B666E;">Ethics</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('ethics', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Life-long Learning -->
-			<div><strong>Life-long Learning</strong></div>
+			<div><strong style="color:#3B666E;">Life-long Learning</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('lifelong_learning', $data) !!} {{$data}}
@@ -444,21 +466,21 @@
 			<!-- How relevant was your studying in USC in your current career in terms of:-->
 			{!! Form::label('name', '24. How relevant was your studying in USC in your current career in terms of: ') !!}
 			<!-- Knowledge / Competencies -->
-			<div><strong>Knowledge / Competencies</strong></div>
+			<div><strong style="color:#3B666E;">Knowledge / Competencies</strong></div>
 			Not Relevant
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('knowledge_competencies', $data) !!} {{$data}}
 			@endforeach
 			Very Relevant
 			<!-- Personal Character and Values -->
-			<div><strong>Personal Character and Values</strong></div>
+			<div><strong style="color:#3B666E;">Personal Character and Values</strong></div>
 			Not Relevant
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('personal_character_and_values', $data) !!} {{$data}}
 			@endforeach
 			Very Relevant
 			<!-- Community Involvement -->
-			<div><strong>Community Involvement</strong></div>
+			<div><strong style="color:#3B666E;">Community Involvement</strong></div>
 			Not Relevant
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('community_involvement', $data) !!} {{$data}}
@@ -476,56 +498,56 @@
 			<!-- In retrospect during your time as a USC student, please rate the following facets in terms of its strength.  -->
 			{!! Form::label(null, '25. In retrospect during your time as a USC student, please rate the following facets in terms of its strength.  ') !!}
 			<!-- Undergraduate course / curriculum-->
-			<div><strong>Undergraduate course / curriculum</strong></div>
+			<div><strong style="color:#3B666E;">Undergraduate course / curriculum</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('curriculum', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Student Workload-->
-			<div><strong> Student Workload</strong></div>
+			<div><strong style="color:#3B666E;"> Student Workload</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('workload', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Facilities-->
-			<div><strong>Facilities</strong></div>
+			<div><strong style="color:#3B666E;">Facilities</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('facilities', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!--Teaching Quality-->
-			<div><strong>Teaching Quality</strong></div>
+			<div><strong style="color:#3B666E;">Teaching Quality</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('teaching', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Research Quality-->
-			<div><strong>Research Quality</strong></div>
+			<div><strong style="color:#3B666E;">Research Quality</strong></div>
 			Weak 
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('research', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Labor Market Relevance-->
-			<div><strong>Labor Market Relevance</strong></div>
+			<div><strong style="color:#3B666E;">Labor Market Relevance</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('labor_market_relevance', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- OJT or Internship Hands on Experience-->
-			<div><strong>OJT or Internship Hands on Experience</strong></div>
+			<div><strong style="color:#3B666E;">OJT or Internship Hands on Experience</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('OJT', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Social and Community Involvement-->
-			<div><strong>Social and Community Involvement</strong></div>
+			<div><strong style="color:#3B666E;">Social and Community Involvement</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('social_and_community_involvement', $data) !!} {{$data}}
@@ -534,10 +556,10 @@
 
 			<!--Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.. -->
 			{!! Form::label('suggestions', '26. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals..) ') !!}
-			{!! Form::text('suggestions', null, ['class' => 'form-control']) !!}
+			{!! Form::text('suggestions', null, ['class' => 'form-control mt-3']) !!}
 
 
-			<button type="button" class="btn btn-sm btn-danger text-white mt-3" onclick="showPage(getPreviousPage())">Previous</button>
+			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 			<button class="btn btn-sm mt-3 {{ $form->id ? 'btn-outline-info' : 'btn-outline-success' }}">
 						{{ $form->id ? 'Update' : 'Submit' }}
 			</button>
