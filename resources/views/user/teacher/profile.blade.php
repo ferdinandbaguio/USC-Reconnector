@@ -31,7 +31,7 @@
 	<div class="col-md-8 p-4 pt-5 align-self-start rounded-bottom" style="background-color: white;">
 		<div class="row">
 			<div class="col-md-5">
-				<h5 class="font-weight-bold text-muted"> Description <a href="#"> <i class="far fa-edit text-muted"></i> </a></h5>
+				<h5 class="font-weight-bold text-muted"> Description <a href="#descModal" data-toggle="modal"> <i class="far fa-edit text-muted"></i> </a></h5>
 			</div>
 		</div>
 		<div class="row mt-1">
@@ -79,6 +79,32 @@
 
 	</div>
 	<!-- RIGHT BOX END-->
+
+	<!-- EDIT DESCRIPTION MODAL -->
+	<div class="modal fade" id="descModal" tabindex="-1" role="dialog" aria-labelledby="descModal" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+
+	      <div class="modal-body mt-4">
+	      	{!! Form::open(['route' => 'UpdateDescription', 'method' => 'PATCH']) !!}
+	      	@csrf	        
+	        	<div class="form-group">
+	        		<label> Description </label>
+	        		<input type="text" name="id" value="{{Auth::user()->id}}" hidden="">
+	        		<textarea class="form-control" name="description" placeholder="Enter description. . .">{{Auth::user()->description}}</textarea>
+	        	</div>	        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        <button type="submit" value="submit" name="updateDesc" class="btn btn-secondary">
+				<i class="fas fa-sort-amount-up"></i> Update Description
+			</button>
+			{!! Form::close() !!}			
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- EDIT DESCRIPTION MODAL END -->
 
 
 	<!-- ADD ACHIEVEMENT MODAL -->

@@ -131,7 +131,6 @@
 	        		<label> Description </label>
 	        		<input type="text" name="id" value="{{Auth::user()->id}}" hidden="">
 	        		<textarea class="form-control" name="description" placeholder="Enter description. . .">{{Auth::user()->description}}</textarea>
-	        		<?php echo "Hello";?>
 	        	</div>	        
 	      </div>
 	      <div class="modal-footer">
