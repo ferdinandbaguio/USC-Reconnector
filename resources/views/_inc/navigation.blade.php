@@ -1,5 +1,5 @@
 <!-- New Top Navigation Bar start -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top w-100">
     <a class="navbar-brand py-0" href="#">
       <img src="{{ asset('img/logo/studrec2.png') }}" width="180" height="55" alt="Logo">
     </a>
@@ -9,14 +9,14 @@
     <div class="collapse navbar-collapse" id="topNavBarToggler">
       <ul class="navbar-nav mr-auto d-md-none d-lg-none">
         <li class="nav-item">
-          <a class="nav-link" href="home"> Home </a>
+          <a class="nav-link" href="{{ route('home') }}"> Home </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/alumnus/profile"> Profile </a>
         </li>
         @if(Auth::user()->userType == "Alumnus")
         <li class="nav-item">
-          <a class="nav-link" href="alumnus/jobs"> Jobs </a>
+          <a class="nav-link" href="{{ route('alumnus.jobs') }}"> Jobs </a>
         </li>
         @endif
         <li class="nav-item">

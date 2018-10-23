@@ -109,24 +109,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td>Globe</td>
-        <td>Flight Attendant</td>
-        <td>February 31, 1987</td>
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Globe</td>
-        <td>Flight Attendant</td>
-        <td>February 31, 1987</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Globe</td>
-        <td>Flight Attendant</td>
-        <td>February 31, 1987</td>
-        </tr>
+        @foreach($jobs as $row)
+            <tr>
+            <th scope="row">{{$row->id}}</th>
+                <td>{{$row->name_of_company}}</td>
+                <td>{{$row->highest_educational_attainment}}</td>
+                <td>{{$row->created_at->format('M d Y g:i A')}}</td>
+                <td><a href="{{ url('alumnus/form/'.$row->id.'/edit') }}">Edit</a></td>
+            </tr>
+        @endforeach
+        
     </tbody>
     </table>
 </div>

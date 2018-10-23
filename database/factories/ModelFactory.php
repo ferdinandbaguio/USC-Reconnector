@@ -22,7 +22,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         $updateStatusValues = ['Updated', 'Outdated', 'Recent'];
         $employmentStatusValues = ['Full-Time Job', 'Unemployed', 'Part-Time Job'];
         $roleValues= ['Student', 'Teacher', 'Alumnus', 'Admin', 'Coordinator', 'Chair'];
-
+        
         $sex = $faker->randomElement($sexValues);
         if($sex == 'Male'){
             $picture = $faker->randomElement($pictureMaleValues);
@@ -47,8 +47,8 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
             'yearLevel'     => $faker->numberBetween($min = 1, $max = 5),    
             'userType'      => $faker->randomElement($roleValues),
             'userStatus'	=> $faker->randomElement($statusValues),
-            'department_id'	=> 1,
-            'course_id'	    => rand(5, 7),
+            // 'department_id'	=> 1,
+            // 'course_id'	    => rand(5, 7),
             'remember_token'=> str_random(10),
             'updateStatus'	=> $faker->randomElement($updateStatusValues),
             'employmentStatus'	=> $faker->randomElement($employmentStatusValues),

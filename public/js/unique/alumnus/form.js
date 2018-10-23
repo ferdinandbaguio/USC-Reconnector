@@ -1,65 +1,40 @@
+var pageHistory = []
+
+function showPage (pageNumber){
+    $(".formPage").hide();
+    //show specific page
+    $(".formPage[page="+pageNumber+"]").show();
+    pageHistory.push(pageNumber);
+}
+function getPreviousPage(){
+    pageHistory.pop()
+    return pageHistory.pop()
+}
+function isEmployed (){
+    switch($(".isEmployed:checked").val()){
+        case "No, I'm not employed now":
+         return 7;
+        case "No, I was never employed":
+         return 8;
+        default:
+         return 4;
+    }
+}
+
+function yesNo(){
+    switch($(".yesNo:checked").val()){
+        case "Yes":
+         return 5;
+        default:
+         return 6;
+    }
+}
 
 
 
-// Buttons 
 $(document).ready(function(){
-
-	// FOR EMPLOYED NOW BUTTONS
-    $("#employedNowBtn").click(function(){
-    	$("#employmentChecker").fadeOut(400);
-
-    	setTimeout(function(){ 
-        $("#employedNow").fadeIn(400);
-        $("#employedNow").show();
-        }, 400);   
-    });
-    
-    $("#backToEmploymentChecker").click(function(){ // This is a previous button
-    	$("#employedNow").fadeOut(400);
-    	
-    	setTimeout(function(){ 
-        $("#employmentChecker").fadeIn(400);
-        }, 400);   
-    });
-
-    $("#toEnData").click(function(){
-    	$("#enGenInfo").fadeOut(400);
-
-    	setTimeout(function(){ 
-        $("#enData").fadeIn(400);
-        }, 400);
-    });
-    $("#backToEnGenInfo").click(function(){ // This is a previous button
-    	$("#enData").fadeOut(400);
-    	
-    	setTimeout(function(){ 
-        $("#enGenInfo").fadeIn(400);
-        }, 400);   
-    });
-
-    $("#toEnUnderGrad").click(function(){
-    	$("#enData").fadeOut(400);
-
-    	setTimeout(function(){ 
-        $("#enUnderGrad").fadeIn(400);
-        }, 400);
-    });
-    $("#backToEnData").click(function(){ // This is a previous button
-    	$("#enUnderGrad").fadeOut(400);
-    	
-    	setTimeout(function(){ 
-        $("#enData").fadeIn(400);
-        }, 400);   
-    });
-
-
-    $("#employedNow").hide();
-    $("#enData").hide();
-    $("#enUnderGrad").hide();
-
+    showPage(1)
 });
-
-
 
 
 
