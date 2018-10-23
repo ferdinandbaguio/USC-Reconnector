@@ -23,6 +23,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/home','HomeController@latestPost')->name('home');   
         Route::resource('jobPosts','JobPostController')->except('create');
         Route::resource('announcements','AnnouncementController')->except('create');
+
+        //View Profiles
+        Route::view('/student/viewprofile', 'user.student.viewprofile');
+        Route::view('/alumnus/viewprofile', 'user.alumnus.viewprofile');
+        Route::view('/teacher/viewprofile', 'user.teacher.viewprofile');
     }); 
 
 
@@ -33,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/student/description', 'DescriptionController@update')->name('student.description.update');
         Route::post('student/skill', 'UserSkillController@store')->name('student.skill.add');
         Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
+        
         
 
     });
@@ -63,6 +69,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/alumnus/form','GTSController@store')->name('alumnus.form.store');
         Route::patch('/alumnus/form/{id}/update','GTSController@update')->name('alumnus.form.update');;
 
+        
+
     });
 
     
@@ -72,6 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/teacher/profile', 'TeacherController@index')->name('teacher.profile');
         Route::patch('/teacher/description', 'DescriptionController@update')->name('teacher.description.update');
         Route::post('/teacher/achievement', 'AchievementController@store')->name('teacher.achievement.add');
+        
         
     });
     
