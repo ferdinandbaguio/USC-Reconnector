@@ -4,13 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use DB;
 use App\Models\User;
+use App\Models\School;
+use App\Models\Course;
 use App\Models\Subject;
 use App\Models\Schedule;
 use App\Models\Semester;
+use App\Models\Department;
 use App\Models\Group_Class;
 use Illuminate\Http\Request;
 use App\Models\Student_Class;
 use App\Models\Group_Schedule;
+
 use App\Http\Controllers\Controller;
 
 class SchoolMgmtController extends Controller
@@ -28,7 +32,12 @@ class SchoolMgmtController extends Controller
     }
     public function school()
     {
-        return view('user.admin.crud.schoolmgmt.school');
+        $schools = School::all();
+        $courses = Course::all();
+        $departments = Department::all();
+        return view('user.admin.crud.schoolmgmt.school')->with('schools', $schools)
+                                                        ->with('courses', $courses)
+                                                        ->with('departments', $departments);
     }
     public function storeClass(Request $request)
     {
@@ -185,5 +194,90 @@ class SchoolMgmtController extends Controller
         return view('user.admin.crud.schoolmgmt.studentclass')->with('stdclasses', $stdclasses)
                                                               ->with('students', $students)
                                                               ->with('id', $request->group_class_id);
+    }
+    public function storeSchool(Request $request)
+    {
+        $newSchoolInstance['code'] = $request['code'];
+        $newSchoolInstance['name'] = $request['name'];
+        $newSchoolInstance['description'] = $request['description'];
+        School::create($newSchoolInstance);
+        return redirect()->back()->with('success', 'Created School: Successful!');
+    }
+    public function storeDepartment(Request $request)
+    {
+        $newDepartmentInstance['school_id'] = $request['school_id'];
+        $newDepartmentInstance['code'] = $request['code'];
+        $newDepartmentInstance['name'] = $request['name'];
+        $newDepartmentInstance['description'] = $request['description'];
+        Department::create($newDepartmentInstance);
+        return redirect()->back()->with('success', 'Created Department: Successful!');
+    }
+    public function storeCourse(Request $request)
+    {
+        $newCourseInstance['department_id'] = $request['department_id'];
+        $newCourseInstance['code'] = $request['code'];
+        $newCourseInstance['name'] = $request['name'];
+        $newCourseInstance['description'] = $request['description'];
+        Course::create($newCourseInstance);
+        return redirect()->back()->with('success', 'Created Course: Successful!');
+    }
+    public function updateSchool(Request $request)
+    {
+        $updateSchool['id'] = $request['id'];
+        $updateSchool['code'] = $request['code'];
+        $updateSchool['name'] = $request['name'];
+        $updateSchool['description'] = $request['description'];
+        $schoolInstance = School::findOrFail($updateSchool['id']);
+        $schoolInstance->update($updateSchool);
+        return redirect()->back()->with('success', 'Edited School: Successful!');
+    }
+    public function updateDepartment(Request $request)
+    {
+        $updateDepartment['id'] = $request['id'];
+        $updateDepartment['code'] = $request['code'];
+        $updateDepartment['name'] = $request['name'];
+        $updateDepartment['description'] = $request['description'];
+        $updateDepartment['school_id'] = $request['school_id'];
+        $departmentInstance = Department::findOrFail($updateDepartment['id']);
+        $departmentInstance->update($updateDepartment);
+        return redirect()->back()->with('success', 'Edited Department: Successful!');
+    }
+    public function updateCourse(Request $request)
+    {
+        $updateCourse['id'] = $request['id'];
+        $updateCourse['code'] = $request['code'];
+        $updateCourse['name'] = $request['name'];
+        $updateCourse['description'] = $request['description'];
+        $updateCourse['department_id'] = $request['department_id'];
+        $courseInstance = Course::findOrFail($updateCourse['id']);
+        $courseInstance->update($updateCourse);
+        return redirect()->back()->with('success', 'Edited Course: Successful!');
+    }
+    public function destroySchool(Request $request)
+    {
+        $departments = Department::where('school_id', '=', $request->id)->get();
+        for($i = 0; $i < count($departments); $i++){
+            $courses = Course::where('department_id', '=', $departments[$i]->id)->get();
+            for($j = 0; $j < count($courses); $j++){
+                Course::destroy($courses[$j]->id);
+            }
+            Department::destroy($departments[$i]->id);
+        }
+        School::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted School: Successful!');
+    }
+    public function destroyDepartment(Request $request)
+    {
+        $courses = Course::where('department_id', '=', $request->id)->get();
+        for($i = 0; $i < count($courses); $i++){
+            Course::destroy($courses[$i]->id);
+        }
+        Department::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Department: Successful!');
+    }
+    public function destroyCourse(Request $request)
+    {
+        Course::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Course: Successful!');
     }
 }

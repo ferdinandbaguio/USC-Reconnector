@@ -103,7 +103,7 @@
 
 @section('scripts')
 
-<script type="text/javascript" src="{{ asset('js/unique/crud_schoolmgmt.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/unique/crud_class.js') }}"></script>
 <script type="text/javascript" src="{{ asset('css/extra/vendors/DataTables/datatables.min.js') }}"></script>
 
 @endsection
