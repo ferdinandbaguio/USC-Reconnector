@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('img/logo/LogoBlue.png') }}" type="image/gif" sizes="16x16">
 
     <!-- Main bootstrap Core files -->
@@ -16,11 +18,19 @@
     <style type="text/css">
       @font-face {font-family: 'Roboto';src: url('{{ asset('css/font/Roboto/Roboto-Light.ttf')}}');}
     </style>
+    
+  <!-- jQuery first, then Popper.js, then Bootstrap JS, then Customized JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
   </head>
 
 
   <body>
-
+<!-- @json($errors->all()) -->
     <div class="container-fluid FirstContainer p-0 ">
     </div>
 
@@ -36,7 +46,11 @@
             <a class="navbar-brand ml-auto" href="#loginModal" data-toggle="modal">
               <p class="mb-0 bellShake loginBtn"><i class="fas fa-feather-alt"></i> Login/Sign In </p>
             </a>
-
+           
+            <a class="navbar-brand ml-auto loginBtn" href="#registerModal" data-toggle="modal" >
+              <p class="mb-0 bellShake"><i class="fas fa-feather-alt"></i> Register </p>
+            </a>
+        
           </div>
         </nav>
 
@@ -48,10 +62,6 @@
           </div>
           <div class="row px-sm-2">
             <h1 class="display-4 text-white mx-auto text-center numCount">Welcome to Student-Reconnector!</h1>
-          </div>
-          <div class="row">
-            <button type="button" class="btn btn-outline-light ml-auto mr-2">Jonas Gwapo</button>
-            <button type="button" class="btn btn-outline-light mr-auto">Join us now!</button>
           </div>
         </div>
         
@@ -254,134 +264,9 @@
     
 
     <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content" style="background-color:#ECECEC">
-          <div class="modal-header" style="border:none !important;">
-            <button type="button" class="close ml-auto p-0" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
 
-          <div class="modal-body">
-            <div class="row pb-3">
-              <div class="col-12">
-                <img src="img/logo/studrec3.png" class="logoPic d-block mx-auto" alt="Logo">
-              </div>
-            </div>
-            <!-- FORM FOR SIGNING IN -->
-            <div class="container-fluid" id="loginForm">
-            <form action="{{route('login.submit')}}" method="POST">
-              {{ csrf_field() }}
-            <div class="row mt-4">
-              <div class="col-md-8 mx-auto">
-                <label class="m-0"> ID Number:</label>
-                <input type="text" class="form-control" name="idnumber" placeholder="I.D Number"> 
-              </div>
-            </div>
-            <div class="row mt-2">
-              <div class="col-md-8 mx-auto">
-                <label class="m-0"> Password:</label>
-                <input type="password" class="form-control" name="password" placeholder="Password"> 
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col-md-8 mx-auto">
-                <input type="submit" value="Login" class="btn w-100 text-white blueBtn">
-              </div>
-            </div>
-            <div class="row mt-2 mb-4">
-              <div class="col-md-8 mx-auto">
-                <a href="#" id="regClick"> Register Here</a> <label> to create an account</label> 
-              </div>
-            </div>
-            </form>
-            </div>
-            <!-- FORM FOR SIGNING IN END-->          
+          @include('authenticate.login')        
+          @include('authenticate.register')  
 
-            <!-- Choose to what register type -->
-            <div class="container-fluid" id="chooseReg">
-              <div class="row mt-4">
-                <label class="mx-auto"> Register as: </label>
-              </div>
-              <div class="row">
-                <div class="col-md-8 mx-auto mt-2">
-                  <input type="button" value="Teacher" id="tForm" class="btn w-100 text-white blueBtn">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-8 mx-auto mt-4">
-                  <input type="button" value="Student" id="sForm" class="btn w-100 text-white blueBtn">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-8 mx-auto mt-4">
-                  <input type="button" value="Alumni" id="aForm" class="btn w-100 text-white blueBtn">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-8 mx-auto mt-4 mb-3">
-                  <input type="button" value="Back to Login" class="btn btn-danger w-100" id="logClick">
-                </div>
-              </div>
-            </div>
-            <!-- Choose to what register type END-->
-
-
-            <!-- FORM FOR Registering -->
-            <div class="container-fluid" id="regForm">
-            <form action="" method="POST">
-              <div class="row mt-4">
-                <div class="col-md-8 mx-auto">
-                  <label class="m-0"> ID Number:</label>
-                  <input type="text" class="form-control" placeholder="I.D Number"> 
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-8 mx-auto">
-                  <label class="m-0"> Password:</label>
-                  <input type="password" class="form-control" placeholder="Password"> 
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-8 mx-auto">
-                  <label class="m-0"> Test INput:</label>
-                  <input type="text" class="form-control" placeholder="Testing Input only"> 
-                </div>
-              </div>
-              <div class="row mt-4 mb-2">
-                <div class="col-md-8 mx-auto">
-                  <input type="submit" value="Register" class="btn w-100 text-white blueBtn">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-8 mx-auto mt-2 mb-3">
-                  <input type="button" value="Back to Login" class="btn btn-danger w-100" id="logClick1">
-                </div>
-              </div>
-            </form>
-            </div>
-            <!-- FORM FOR Registering END-->
-          </div>
-
-        </div>
-      </div>
-    </div>
-  
-
-
-
-  
-
-
-  <!-- jQuery first, then Popper.js, then Bootstrap JS, then Customized JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-  <!-- Customized JavaScript MUST BE IN THE END-->
-  <script src="js/newhome.js"></script>
   </body>
   </html>

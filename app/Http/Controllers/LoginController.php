@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -13,7 +12,7 @@ class LoginController extends Controller
     public function index(){
         return view('authenticate.landingpage');
     }
-	public function login(Request $request)
+	public function doLogin(LoginRequest $request)
     {
         $credentials = $request->only('idnumber', 'password');
 
@@ -28,7 +27,7 @@ class LoginController extends Controller
             }
 
         }
-        return redirect()->route('login');
+        return redirect()->route('login')->withErrors(['password' => 'Incorrect Password']);
     }
 
     public function logout()

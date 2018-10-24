@@ -1,77 +1,141 @@
-@extends('_layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+ <!-- FORM FOR Registering -->
+<div class="modal fade" id="registerModal" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color:#ECECEC">
+            <!-- Modal Header -->
+            <div class="modal-header" style="border:none !important;">
+                <button type="button" class="close ml-auto p-0" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <!-- End of Modal Header -->
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="row pb-3">
+                    <div class="col-12">
+                    <img src="img/logo/studrec3.png" class="logoPic d-block mx-auto" alt="Logo">
+                    </div>
+                </div>
+            <!-- End of Modal Body -->
+
+            <div class="container-fluid" id="registerModal">
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+                                {!! Form::open(['url' => route('register.submit'), 'method'=>'POST']) !!}
+                                <div class="row mt-4">
+                                    <label class="mx-auto"> Register as: </label>
+                                    {!! Form::select('userType',[
+                                            'Student' => 'Student',
+                                            'Teacher' => 'Teacher',
+                                            'Alumnus' => 'Alumni',
+                                    ]) !!}
+                                    <small class="text-danger">{{ $errors->first('userType') }}</small>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, 'USC Student ID Number: ') !!}
+                                        {!! Form::text('registeridnumber',null, ['class' => 'form-control', 'placeholder' => 'I.D Number']) !!}
+                                        <small class="text-danger">{{ $errors->first('registeridnumber') }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, 'Last Name : ') !!}
+                                        {!! Form::text('lastName',null, ['class' => 'form-control', 'placeholder' => 'Last Name']) !!}
+                                        <small class="text-danger">{{ $errors->first('lastName') }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, 'First Name  : ') !!}
+                                        {!! Form::text('firstName',null, ['class' => 'form-control', 'placeholder' => 'First Name ']) !!}
+                                        <small class="text-danger">{{ $errors->first('firstName') }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, 'Middle Initial : ') !!}
+                                        {!! Form::text('middleName',null, ['class' => 'form-control', 'placeholder' => 'Middle Initial ']) !!}
+                                        <small class="text-danger">{{ $errors->first('middleName') }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                    {!! Form::label(null, 'Permanent Address : ') !!}
+                                        {!! Form::text('address',null, ['class' => 'form-control', 'placeholder' => 'Permanent Address']) !!}
+                                        <small class="text-danger">{{ $errors->first('address') }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, 'E-mail Address : ') !!}
+                                        {!! Form::text('email',null, ['class' => 'form-control', 'placeholder' => 'E-mail Address']) !!}
+                                        <small class="text-danger">{{ $errors->first('email') }}</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, 'Contact number 1 : ') !!}
+                                        {!! Form::text('contactNo',null, ['class' => 'form-control', 'placeholder' => 'Contact number 1',]) !!}
+                                        <small class="text-danger">{{ $errors->first('contactNo') }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, ' Sex  : ') !!}
+                                        <div>{!! Form::radio('sex[]', 'Single') !!} Male </div>
+                                        <div>{!! Form::radio('sex[]', 'Married') !!} Female </div>
+                                        <small class="text-danger">{{ $errors->first('sex') }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, 'Civil Status : ') !!}
+                                        <div>{!! Form::radio('civilstatus[]', 'Single') !!} Single </div>
+                                        <div>{!! Form::radio('civilstatus[]', 'Married') !!} Married </div>
+                                        <div>{!! Form::radio('civilstatus[]', 'Separated') !!} Separated </div>
+                                        <div>{!! Form::radio('civilstatus[]', 'Single Parent') !!} Single Parent </div>
+                                        <div>{!! Form::radio('civilstatus[]', 'Widow or Widower') !!} Widow or Widower </div>
+                                        <small class="text-danger">{{ $errors->first('civilstatus') }}</small>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-8 mx-auto">
+                                        {!! Form::label(null, 'Birthday : ') !!}
+                                        <div>{!! Form::date('birthdate') !!}</div>
+                                        <small class="text-danger">{{ $errors->first('birthdate') }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4 mb-2">
+                                    <div class="col-md-8 mx-auto">
+                                        <input type="submit" value="Register" class="btn w-100 text-white blueBtn">
+                                    </div>
+                                </div>
+                                
+                            {{ Form::close() }}
+            </div>
+                <!-- FORM FOR Registering END-->
         </div>
     </div>
 </div>
-@endsection
+<script>
+
+            var g_hasError = '{{count($errors->all())}}' * 1
+            $(document).ready(function(){
+                if(g_hasError) $("#registerModal").modal("show")
+            })
+</script>
