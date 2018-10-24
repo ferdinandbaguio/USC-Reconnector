@@ -15,7 +15,7 @@ class RegisterationController extends Controller
      */
     public function store(RegisterRequest $request)
     {  
-        $data = $request->except('_token');
+        $data = $request->only('idnumber','lastName','firstName','middleName','address','email','contactNo','sex','civilStatus','birthdate','userType');
         User::create($data);
         return redirect()->route('login')->with('message', 'Registeration successful!!');
     }

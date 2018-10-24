@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'registeridnumber' => 'required|numeric',
+            'idnumber' => 'required|numeric',
             'lastName' => 'required|alpha',
             'firstName' => 'required|alpha',
             'middleName' => 'sometimes|required|alpha',
@@ -34,14 +34,16 @@ class RegisterRequest extends FormRequest
             'sex' => 'required',
             'civilStatus' => 'required',
             'birthdate' => 'required',
-            'userType' => 'required'
+            'userType' => 'required',
+
+            'password' => 'nullable'
             
         ];
     }
     public function messages(){
         return [
-            'registeridnumber.required' => 'ID number is Required.',
-            'registeridnumber.numeric' => 'ID number must be digit.',
+            'idnumber.required' => 'ID number is Required.',
+            'idnumber.numeric' => 'ID number must be digit.',
             'lastName.required' => 'Lastname is Required.',
             'lastName.alpha' => 'Only accepts alphabets.',
             'firstName.required' => 'Firstname is Required.',

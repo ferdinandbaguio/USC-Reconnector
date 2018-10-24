@@ -40,8 +40,8 @@
                                 <div class="row mt-4">
                                     <div class="col-md-8 mx-auto">
                                         {!! Form::label(null, 'USC Student ID Number: ') !!}
-                                        {!! Form::text('registeridnumber',null, ['class' => 'form-control', 'placeholder' => 'I.D Number']) !!}
-                                        <small class="text-danger">{{ $errors->first('registeridnumber') }}</small>
+                                        {!! Form::text('idnumber',null, ['class' => 'form-control', 'placeholder' => 'I.D Number']) !!}
+                                        <small class="text-danger">{{ $errors->first('idnumber') }}</small>
                                     </div>
                                 </div>
 
@@ -96,8 +96,8 @@
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto">
                                         {!! Form::label(null, ' Sex  : ') !!}
-                                        <div>{!! Form::radio('sex[]', 'Single') !!} Male </div>
-                                        <div>{!! Form::radio('sex[]', 'Married') !!} Female </div>
+                                        <div>{!! Form::radio('sex', 'Male') !!} Male </div>
+                                        <div>{!! Form::radio('sex', 'Female') !!} Female </div>
                                         <small class="text-danger">{{ $errors->first('sex') }}</small>
                                     </div>
                                 </div>
@@ -105,11 +105,11 @@
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto">
                                         {!! Form::label(null, 'Civil Status : ') !!}
-                                        <div>{!! Form::radio('civilStatus[]', 'Single') !!} Single </div>
-                                        <div>{!! Form::radio('civilStatus[]', 'Married') !!} Married </div>
-                                        <div>{!! Form::radio('civilStatus[]', 'Separated') !!} Separated </div>
-                                        <div>{!! Form::radio('civilStatus[]', 'Single Parent') !!} Single Parent </div>
-                                        <div>{!! Form::radio('civilStatus[]', 'Widow or Widower') !!} Widow or Widower </div>
+                                        <div>{!! Form::radio('civilStatus', 'Single') !!} Single </div>
+                                        <div>{!! Form::radio('civilStatus', 'Married') !!} Married </div>
+                                        <div>{!! Form::radio('civilStatus', 'Separated') !!} Separated </div>
+                                        <div>{!! Form::radio('civilStatus', 'Single Parent') !!} Single Parent </div>
+                                        <div>{!! Form::radio('civilStatus', 'Widow or Widower') !!} Widow or Widower </div>
                                         <small class="text-danger">{{ $errors->first('civilStatus') }}</small>
                                     </div>
                                 </div>
