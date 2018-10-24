@@ -16,7 +16,7 @@ class RegisterationController extends Controller
     public function store(RegisterRequest $request)
     {  
         $data = $request->except('_token');
-        User::insert($data);
+        User::create($data);
         return redirect()->route('login')->with('message', 'Registeration successful!!');
     }
 
