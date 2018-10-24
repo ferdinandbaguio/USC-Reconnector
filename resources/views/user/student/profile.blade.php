@@ -53,7 +53,7 @@
 			<div class="col-md-12">
 				<p class="m-0">{{$row->skillName}}</p>
 				<div class="progress">
-				  <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 90%"> {{$row->skillPercent}} </div>
+				  <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="{{$row->skillPercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$row->skillPercent}}%"> {{$row->skillPercent}}% </div>
 				</div>
 			</div>
 		@endforeach
@@ -72,7 +72,7 @@
 		<div class="row mt-1">
 			<div class="col-md-12">
 				@foreach($achievements as $row)
-				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ( {{$row->achYear}}) </p>
+				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) </p>
 				@endforeach
 			</div>
 			<div class="col-md-12 mt-2">

@@ -17,6 +17,7 @@
                 </a>
             </li>
             <li class="heading">FEATURES</li>
+            {{-- Requests --}}
             <li>
                 <a href="javascript:;"><i class="sidebar-item-icon fa fa-plug"></i>
                     <span class="nav-label">Requests</span><i class="fa fa-angle-left arrow"></i></a>
@@ -26,6 +27,7 @@
                     </li>
                 </ul>
             </li>
+            {{-- Users --}}
             <li>
                 <a href="javascript:;"><i class="sidebar-item-icon fa fa-users"></i>
                     <span class="nav-label">Users</span><i class="fa fa-angle-left arrow"></i></a>
@@ -54,16 +56,26 @@
                     @endif
                 </ul>
             </li>
+            {{-- School Management --}}
             <li>
-                <a href="#"><i class="sidebar-item-icon fa fa-university"></i>
-                    <span class="nav-label">Classes</span><i class="fa fa-angle-left arrow"></i>
-                </a>
+                <a href="javascript:;"><i class="sidebar-item-icon fa fa-university"></i>
+                    <span class="nav-label">School Management</span><i class="fa fa-angle-left arrow"></i></a>
+                <ul class="nav-2-level collapse">
+                    <li>
+                        <a href="{{ route('Classes') }}">Classes</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('School') }}">S | D | C</a>
+                    </li>
+                </ul>
             </li>
+            {{-- Bulletin --}}
             <li>
                 <a href="#"><i class="sidebar-item-icon fa fa-bullhorn"></i>
                     <span class="nav-label">Bulletin</span><i class="fa fa-angle-left arrow"></i>
                 </a>
             </li>
+            {{-- Tracking --}}
             <li>
                 <a href="#"><i class="sidebar-item-icon fa fa-map"></i>
                     <span class="nav-label">Tracking</span><i class="fa fa-angle-left arrow"></i></a>
@@ -79,6 +91,7 @@
                     </li>
                 </ul>             
             </li>
+            {{-- Communicate --}}
             <li>
                 <a href="#"><i class="sidebar-item-icon fa fa-child"></i>
                     <span class="nav-label">Communicate</span><i class="fa fa-angle-right arrow"></i>

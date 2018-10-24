@@ -2,7 +2,10 @@
 body{
   background-color: #C8C4C4;
 }
-
+.fontRoboto{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
 button:hover{
     cursor: pointer;
 }

@@ -22,6 +22,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/home','HomeController@latestPost')->name('home');   
         Route::resource('jobPosts','JobPostController')->except('create');
         Route::resource('announcements','AnnouncementController')->except('create');
+
+        //View Profiles
+        Route::view('/student/viewprofile', 'user.student.viewprofile');
+        Route::view('/alumnus/viewprofile', 'user.alumnus.viewprofile');
+        Route::view('/teacher/viewprofile', 'user.teacher.viewprofile');
     }); 
 
 
@@ -32,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/student/description', 'DescriptionController@update')->name('student.description.update');
         Route::post('student/skill', 'UserSkillController@store')->name('student.skill.add');
         Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
+        
         
 
     });
@@ -62,6 +68,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/alumnus/form','GTSController@store')->name('alumnus.form.store');
         Route::patch('/alumnus/form/{id}/update','GTSController@update')->name('alumnus.form.update');;
 
+        
+
     });
 
     
@@ -71,6 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/teacher/profile', 'TeacherController@index')->name('teacher.profile');
         Route::patch('/teacher/description', 'DescriptionController@update')->name('teacher.description.update');
         Route::post('/teacher/achievement', 'AchievementController@store')->name('teacher.achievement.add');
+        
         
     });
     
@@ -87,7 +96,26 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
         Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
         Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
-        Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
+
+        Route::get('/SM/classes', 'Admin\SchoolMgmtController@classes')->name('Classes');
+        Route::post('/SM/store', 'Admin\SchoolMgmtController@storeClass')->name('StoreClass');
+        Route::patch('/SM/update', 'Admin\SchoolMgmtController@updateClass')->name('UpdateClass');
+        Route::delete('/SM/destroy', 'Admin\SchoolMgmtController@destroyClass')->name('DeleteClass');
+        Route::post('/SM/students', 'Admin\SchoolMgmtController@studentClass')->name('StudentClass');
+        Route::post('/SM/store/student', 'Admin\SchoolMgmtController@storeStudent')->name('StoreStudent');
+        Route::delete('/SM/remove/student', 'Admin\SchoolMgmtController@removeStudent')->name('RemoveStudent');
+
+        Route::get('/SM/school', 'Admin\SchoolMgmtController@school')->name('School');
+        Route::post('/SM/school/store', 'Admin\SchoolMgmtController@storeSchool')->name('StoreSchool');
+        Route::post('/SM/department/store', 'Admin\SchoolMgmtController@storeDepartment')->name('StoreDepartment');
+        Route::post('/SM/course/store', 'Admin\SchoolMgmtController@storeCourse')->name('StoreCourse');
+        Route::patch('/SM/school/update', 'Admin\SchoolMgmtController@updateSchool')->name('UpdateSchool');
+        Route::patch('/SM/department/update', 'Admin\SchoolMgmtController@updateDepartment')->name('UpdateDepartment');
+        Route::patch('/SM/course/update', 'Admin\SchoolMgmtController@updateCourse')->name('UpdateCourse');
+        Route::delete('/SM/school/delete', 'Admin\SchoolMgmtController@destroySchool')->name('DeleteSchool');
+        Route::delete('/SM/department/delete', 'Admin\SchoolMgmtController@destroyDepartment')->name('DeleteDepartment');
+        Route::delete('/SM/course/delete', 'Admin\SchoolMgmtController@destroyCourse')->name('DeleteCourse');
+
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');

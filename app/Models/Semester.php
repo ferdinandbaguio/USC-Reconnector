@@ -12,11 +12,11 @@ class Semester extends Model
 
      public function year()
     {
-        return $this->belongsTo('App\Models\Year','year_id');
+        return $this->belongsTo('App\Models\Year');
     }
 
     public function schedule()
     {
-        return $this->hasMany('App\Models\Schedule','semester_id');
+        return $this->hasMany('App\Models\Schedule');
     }
 }

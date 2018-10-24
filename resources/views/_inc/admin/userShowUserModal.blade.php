@@ -21,7 +21,7 @@
     </div>
 </div>
 
-{{-- First, Middle, and Last Name --}}
+{{-- Name and Sex --}}
 <div class="row">
     <div class="col-md-8 form-group">
         <b>{{Form::label('name', 'Name')}}</b>

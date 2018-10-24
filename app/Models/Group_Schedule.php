@@ -4,24 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Student_Class extends Model
+class Group_Schedule extends Model
 {
-    protected $table = 'student_classes';
+    protected $table = 'group_schedules';
     public $primaryKey = 'id';
     public $timestamps = true;
 
     protected $fillable = [
-        'student_id',
-        'group_class_id'
+        'group_class_id',
+        'schedule_id',
     ];
-
-    public function student()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
 
     public function group_class()
     {
         return $this->belongsTo('App\Models\Group_Class', 'group_class_id');
+    }
+    public function schedule()
+    {
+        return $this->belongsTo('App\Models\Schedule');
     }
 }
