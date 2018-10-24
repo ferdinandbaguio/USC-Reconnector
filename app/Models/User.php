@@ -31,7 +31,10 @@ class User extends Authenticatable
         'updateStatus',
         'position',
         'course_id',
-        'department_id'
+        'department_id',
+        'address',
+        'birthdate',
+    
     ];
 
     protected $hidden = [
