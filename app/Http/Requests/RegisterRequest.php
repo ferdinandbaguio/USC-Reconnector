@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             'firstName' => 'required|alpha',
             'middleName' => 'sometimes|required|alpha',
             'address' => 'required',
-            'email' => 'required|email|exists:users,email',
+            'email' => 'required|email',
             'contactNo' => 'required|numeric',
             'sex' => 'required',
             'civilStatus' => 'required',
@@ -48,7 +48,7 @@ class RegisterRequest extends FormRequest
             'firstName.alpha' => 'Only accepts alphabets.',
             'address.required' => 'Address is Required.',
             'email.required' => 'Email is Required.',
-            'email.exists' => 'Email already taken.',
+            
             'email.email' => 'Please use a valid e-mail.',
             'contactNo.required' => 'Contact Number is Required.',
             'sex.required' => 'Sex is Required.',

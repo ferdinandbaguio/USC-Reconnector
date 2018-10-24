@@ -26,6 +26,7 @@
                     </div>
                 @endif
                                 {!! Form::open(['url' => route('register.submit'), 'method'=>'POST']) !!}
+                                @json($errors->all())
                                 <div class="row mt-4">
                                     <label class="mx-auto"> Register as: </label>
                                     {!! Form::select('userType',[
@@ -104,12 +105,12 @@
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto">
                                         {!! Form::label(null, 'Civil Status : ') !!}
-                                        <div>{!! Form::radio('civilstatus[]', 'Single') !!} Single </div>
-                                        <div>{!! Form::radio('civilstatus[]', 'Married') !!} Married </div>
-                                        <div>{!! Form::radio('civilstatus[]', 'Separated') !!} Separated </div>
-                                        <div>{!! Form::radio('civilstatus[]', 'Single Parent') !!} Single Parent </div>
-                                        <div>{!! Form::radio('civilstatus[]', 'Widow or Widower') !!} Widow or Widower </div>
-                                        <small class="text-danger">{{ $errors->first('civilstatus') }}</small>
+                                        <div>{!! Form::radio('civilStatus[]', 'Single') !!} Single </div>
+                                        <div>{!! Form::radio('civilStatus[]', 'Married') !!} Married </div>
+                                        <div>{!! Form::radio('civilStatus[]', 'Separated') !!} Separated </div>
+                                        <div>{!! Form::radio('civilStatus[]', 'Single Parent') !!} Single Parent </div>
+                                        <div>{!! Form::radio('civilStatus[]', 'Widow or Widower') !!} Widow or Widower </div>
+                                        <small class="text-danger">{{ $errors->first('civilStatus') }}</small>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
