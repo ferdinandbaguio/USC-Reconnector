@@ -172,7 +172,6 @@
                                 
                             {{ Form::close() }}
             </div>
-                <!-- FORM FOR Registering END-->
         </div>
     </div>
 </div>

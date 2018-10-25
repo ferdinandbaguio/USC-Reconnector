@@ -57,5 +57,3 @@
         </div>
     </div>
 </div>
-
-           FORM FOR SIGNING IN END  
