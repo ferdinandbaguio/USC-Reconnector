@@ -78,8 +78,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin
     Route::group(['middleware' => 'admin'], function () { 
+        // Admin Index
         Route::view('/admin', 'user.admin.index')->name('admins');
-
+        // User Controller
         Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
         Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
         Route::get('/user/teachers', 'Admin\UserController@teachers')->name('ShowTeachers');
@@ -89,16 +90,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
         Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
         Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
-
-        Route::get('/SM/classes', 'Admin\SchoolMgmtController@classes')->name('Classes');
+        // School Management Controller
+        Route::get('/SM/classes', 'Admin\SchoolMgmtController@classes')->name('ShowClasses');
         Route::post('/SM/store', 'Admin\SchoolMgmtController@storeClass')->name('StoreClass');
         Route::patch('/SM/update', 'Admin\SchoolMgmtController@updateClass')->name('UpdateClass');
         Route::delete('/SM/destroy', 'Admin\SchoolMgmtController@destroyClass')->name('DeleteClass');
         Route::post('/SM/students', 'Admin\SchoolMgmtController@studentClass')->name('StudentClass');
         Route::post('/SM/store/student', 'Admin\SchoolMgmtController@storeStudent')->name('StoreStudent');
         Route::delete('/SM/remove/student', 'Admin\SchoolMgmtController@removeStudent')->name('RemoveStudent');
-
-        Route::get('/SM/school', 'Admin\SchoolMgmtController@school')->name('School');
+        Route::get('/SM/school', 'Admin\SchoolMgmtController@school')->name('ShowSchool');
         Route::post('/SM/school/store', 'Admin\SchoolMgmtController@storeSchool')->name('StoreSchool');
         Route::post('/SM/department/store', 'Admin\SchoolMgmtController@storeDepartment')->name('StoreDepartment');
         Route::post('/SM/course/store', 'Admin\SchoolMgmtController@storeCourse')->name('StoreCourse');
@@ -108,7 +108,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/SM/school/delete', 'Admin\SchoolMgmtController@destroySchool')->name('DeleteSchool');
         Route::delete('/SM/department/delete', 'Admin\SchoolMgmtController@destroyDepartment')->name('DeleteDepartment');
         Route::delete('/SM/course/delete', 'Admin\SchoolMgmtController@destroyCourse')->name('DeleteCourse');
-
+        // Bulletin Controller
+        Route::get('/bulletin', 'Admin\BulletinController@index')->name('ShowPosts');
+        Route::get('/bulletin/create', 'Admin\BulletinController@create')->name('CreatePost');
+        Route::post('/bulletin/store', 'Admin\BulletinController@store')->name('StorePost');
+        // Tracking Controller
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');

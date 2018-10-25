@@ -6,19 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $table = 'posts';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+
     protected $fillable = [
         'title',
         'announcement',
-        'picture'
+        'picture',
+        'poster_id'
     ];
        
     public function poster()
     {
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->belongsTo('App\Models\User','poster_id');
     }
 
     public function post_category()
     {
-        return $this->hasMany('App\Models\Post_Category','post_id');
+        return $this->hasMany('App\Models\Post_Category');
     }
 }

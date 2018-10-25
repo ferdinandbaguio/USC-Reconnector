@@ -6,15 +6,14 @@
 
 @endsection
 
+@section('title')
+
+School | Department | Course
+
+@endsection
+
 @section('content')
 
-<div class="page-heading">
-
-<h1 class="page-title">School | Department | Course</h1>
-
-@include('_inc.messages')
-
-<div class="page-content fade-in-up">
 <div class="row">
     {{-- Schools --}}
     <div class="col-lg-4">
@@ -219,9 +218,6 @@
         </div>
     </div>
     </div>
-</div>
-</div>
-
 </div>
 
 {{-- Modals --}}
