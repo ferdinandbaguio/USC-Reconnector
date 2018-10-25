@@ -10,11 +10,12 @@ class LoginController extends Controller
 {
 
     public function index(){
+       
         return view('authenticate.landingpage');
     }
 	public function doLogin(LoginRequest $request)
     {
-        $credentials = $request->only('idnumber', 'password');
+        $credentials = $request->validated();
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
@@ -27,6 +28,7 @@ class LoginController extends Controller
             }
 
         }
+
         return redirect()->route('login')->withErrors(['password' => 'Incorrect Password']);
     }
 

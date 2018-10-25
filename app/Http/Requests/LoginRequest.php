@@ -25,12 +25,15 @@ class LoginRequest extends FormRequest
     {
         return [
             'idnumber' => 'required|exists:users,idnumber',
-            'password' => 'required'
         ];
     }
     public function messages(){
         return [
-			'idnumber.exists' => 'idnumber not found.'
+            'idnumber.exists' => 'idnumber not found.',
+            'idnumber.required' => 'idnumber is required.',
         ];
     }
+
+
+    
 }

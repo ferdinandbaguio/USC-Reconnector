@@ -14,9 +14,11 @@ class RegisterationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(RegisterRequest $request)
-    {  
-        $data = $request->only('idnumber','lastName','firstName','middleName','address','email','contactNo','sex','civilStatus','birthdate','userType');
-        User::create($data);
+    { 
+        $validated = $request->validated();
+        $validated['idnumber'] = $validated['register_idnumber'];
+        $validated = array_except($validated, 'register_idnumber');
+        User::create($validated);
         return redirect()->route('login')->with('message', 'Registeration successful!!');
     }
 

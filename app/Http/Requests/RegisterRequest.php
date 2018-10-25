@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'idnumber' => 'required|numeric',
+            'register_idnumber' => 'required|numeric',
             'lastName' => 'required|alpha',
             'firstName' => 'required|alpha',
             'middleName' => 'sometimes|required|alpha',
@@ -35,15 +35,14 @@ class RegisterRequest extends FormRequest
             'civilStatus' => 'required',
             'birthdate' => 'required',
             'userType' => 'required',
-
             'password' => 'nullable'
             
         ];
     }
     public function messages(){
         return [
-            'idnumber.required' => 'ID number is Required.',
-            'idnumber.numeric' => 'ID number must be digit.',
+            'register_idnumber.required' => 'ID number is Required.',
+            'register_idnumber.numeric' => 'ID number must be digit.',
             'lastName.required' => 'Lastname is Required.',
             'lastName.alpha' => 'Only accepts alphabets.',
             'firstName.required' => 'Firstname is Required.',
@@ -59,4 +58,5 @@ class RegisterRequest extends FormRequest
             'userType.required' => 'Please choose what you are registering for (Student , Teacher or Alumni).',
         ];
     }
+
 }

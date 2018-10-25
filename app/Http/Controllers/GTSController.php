@@ -19,7 +19,9 @@ class GTSController extends Controller
         $request->reasonsUndergraduateCourse ? $request['reasonsUndergraduateCourse'] = json_encode($request->reasonsUndergraduateCourse) : '';
         $request->reasonUnemployedNow ? $request['reasonUnemployedNow'] = json_encode($request->reasonUnemployedNow) : ''; 
         $request->reasonUnemployedNever ? $request['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
-    	GraduateTracerStudy::where('id', $id)->update($request->except('_method','_token'));
+
+        $validated = $request->validated();
+    	GraduateTracerStudy::where('id', $id)->update($validated);
         return redirect()->back();
     }
     
@@ -34,8 +36,8 @@ class GTSController extends Controller
         $request->reasonsUndergraduateCourse ? $request['reasonsUndergraduateCourse'] = json_encode($request->reasonsUndergraduateCourse) : '';
         $request->reasonUnemployedNow ? $request['reasonUnemployedNow'] = json_encode($request->reasonUnemployedNow) : ''; 
         $request->reasonUnemployedNever ? $request['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
-        
-    	GraduateTracerStudy::create($request->all());
+        $validated = $request->validated();
+    	GraduateTracerStudy::create($validated);
         return redirect()->back();
     }
     public function edit ($id) {
