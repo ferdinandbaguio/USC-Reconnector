@@ -1,6 +1,6 @@
  <!-- FORM FOR Registering -->
 <div class="modal fade" id="registerModal" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content" style="background-color:#ECECEC">
             <!-- Modal Header -->
             <div class="modal-header" style="border:none !important;">
@@ -28,7 +28,7 @@
                                 {!! Form::open(['url' => route('register.submit'), 'method'=>'POST']) !!}
 
 
-                                @json($errors->all())
+                                @json($errors->all())   
                                 <div class="row mt-4">
                                     <label class="mx-auto {{ $errors->has('userType') ? 'is-invalid' : '' }}"> Register as: </label>
                                     {!! Form::select('userType',[
@@ -157,7 +157,7 @@
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto">
                                         {!! Form::label(null, 'Birthday : ') !!}
-                                        <div>{!! Form::date('birthdate') !!}</div>
+                                        <div>{!! Form::date('birthdate',null, ['class' => "form-control"]) !!}</div>
                                         @if($errors->has('birthdate'))
                                             <small class="invalid-feedback">{{$errors->first('birthdate')}}</small>
                                         @endif
@@ -177,7 +177,6 @@
 </div>
 
 <script>
-
 var error = $('.modal .invalid-feedback');
 console.log(error)
 error.closest('.modal').modal('show');
