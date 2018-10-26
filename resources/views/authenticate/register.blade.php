@@ -44,9 +44,7 @@
                                         @php  $attr = $errors->has('register_idnumber') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('register_idnumber',null, ['class' => "form-control {$attr}", 'placeholder' => 'I.D Number']) !!}
                                         @if($errors->has('register_idnumber'))
-                                            <div class="invalid-feedback">
-                                            {{ $errors->first('register_idnumber') }}
-                                            </div>
+                                            <small class="text-danger">{{ $errors->first('register_idnumber') }}</small>
                                         @endif
                                     </div>
                                 </div>
@@ -54,12 +52,10 @@
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto {{ $errors->has('lastName') ? 'is-invalid' : '' }}">
                                         {!! Form::label(null, 'Last Name : ') !!}
-                                        @php  $attr = $errors->has('register_idnumber') ? 'is-invalid' : '' @endphp
+                                        @php  $attr = $errors->has('lastName') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('lastName',null, ['class' => "form-control {$attr}", 'placeholder' => 'Last Name']) !!}
                                         @if($errors->has('lastName'))
-                                            <div class="invalid-feedback">
-                                            {{ $errors->first('lastName') }}
-                                            </div>
+                                             <small class="text-danger">{{ $errors->first('lastName') }}</small>
                                         @endif
                                     </div>
                                 </div>
@@ -67,12 +63,10 @@
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto {{ $errors->has('firstName') ? 'is-invalid' : '' }}">
                                         {!! Form::label(null, 'First Name  : ') !!}
-                                        @php  $attr = $errors->has('register_idnumber') ? 'is-invalid' : '' @endphp
+                                        @php  $attr = $errors->has('firstName') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('firstName',null, ['class' => "form-control {$attr}", 'placeholder' => 'First Name ']) !!}
                                         @if($errors->has('firstName'))
-                                            <div class="invalid-feedback">
-                                            {{ $errors->first('firstName') }}
-                                            </div>
+                                            <small class="text-danger">{{ $errors->first('middleName') }}</small>
                                         @endif
                                     </div>
                                 </div>
@@ -80,12 +74,10 @@
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto {{ $errors->has('middleName') ? 'is-invalid' : '' }}">
                                         {!! Form::label(null, 'Middle Initial : ') !!}
-                                        @php  $attr = $errors->has('register_idnumber') ? 'is-invalid' : '' @endphp
+                                        @php  $attr = $errors->has('middleName') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('middleName',null, ['class' => "form-control {$attr}", 'placeholder' => 'Middle Initial ']) !!}
                                         @if($errors->has('middleName'))
-                                            <div class="invalid-feedback">
-                                            {{ $errors->first('middleName') }}
-                                            </div>
+                                             <small class="text-danger">{{ $errors->first('middleName') }}</small>
                                         @endif
                                     </div>
                                 </div>
@@ -96,9 +88,7 @@
                                         @php  $attr = $errors->has('address') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('address',null, ['class' => "form-control {$attr}", 'placeholder' => 'Permanent Address']) !!}
                                         @if($errors->has('address'))
-                                            <div class="invalid-feedback">
-                                            {{ $errors->first('address') }}
-                                            </div>
+                                            <small class="text-danger">{{ $errors->first('address') }}</small>
                                         @endif
                                     </div>
                                 </div>
@@ -109,9 +99,7 @@
                                         @php  $attr = $errors->has('email') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('email',null, ['class' => "form-control {$attr}", 'placeholder' => 'E-mail Address']) !!}
                                         @if($errors->has('email'))
-                                            <div class="invalid-feedback">
-                                            {{ $errors->first('email') }}
-                                            </div>
+                                            <small class="text-danger">{{ $errors->first('email') }}</small>
                                         @endif
                                     </div>
                                 </div>
@@ -122,20 +110,19 @@
                                         @php  $attr = $errors->has('contactNo') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('contactNo',null, ['class' => "form-control {$attr}", 'placeholder' => 'Contact number',]) !!}
                                         @if($errors->has('contactNo'))
-                                            <div class="invalid-feedback">
-                                            {{ $errors->first('contactNo') }}
-                                            </div>
+                                            <small class="text-danger">{{ $errors->first('contactNo') }}</small>
                                         @endif
                                     </div>
                                 </div>
 
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto {{ $errors->has('sex') ? 'is-invalid' : '' }}">
+                                    @php  $attr = $errors->has('sex') ? 'is-invalid' : '' @endphp
                                         {!! Form::label(null, ' Sex  : ') !!}
                                         <div>{!! Form::radio('sex', 'Male') !!} Male </div>
                                         <div>{!! Form::radio('sex', 'Female') !!} Female </div>
-                                        @if($errors->has('sex'))
-                                            <small class="invalid-feedback">{{$errors->first('sex')}}</small>
+                                        @if($errors->has('sex'))                                         
+                                            <small class="text-danger">{{ $errors->first('sex') }}</small>
                                         @endif
                                        
                                     </div>
@@ -149,8 +136,8 @@
                                         <div>{!! Form::radio('civilStatus', 'Separated') !!} Separated </div>
                                         <div>{!! Form::radio('civilStatus', 'Single Parent') !!} Single Parent </div>
                                         <div>{!! Form::radio('civilStatus', 'Widow or Widower') !!} Widow or Widower </div>
-                                        @if($errors->has('civilStatus'))
-                                            <small class="invalid-feedback">{{$errors->first('civilStatus')}}</small>
+                                        @if($errors->has('civilStatus'))                                         
+                                            <small class="text-danger">{{ $errors->first('civilStatus') }}</small>
                                         @endif
                                     </div>
                                 </div>
@@ -159,7 +146,7 @@
                                         {!! Form::label(null, 'Birthday : ') !!}
                                         <div>{!! Form::date('birthdate',null, ['class' => "form-control"]) !!}</div>
                                         @if($errors->has('birthdate'))
-                                            <small class="invalid-feedback">{{$errors->first('birthdate')}}</small>
+                                            <small class="text-danger">{{ $errors->first('birthdate') }}</small>
                                         @endif
                                         </div>
                                 </div>
@@ -177,7 +164,7 @@
 </div>
 
 <script>
-var error = $('.modal .invalid-feedback');
+var error = $('.modal .text-danger');
 console.log(error)
 error.closest('.modal').modal('show');
 </script>

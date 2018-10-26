@@ -24,8 +24,11 @@ class LoginController extends Controller
             }else if(auth()->user()->userStatus == 'Approved' && auth()->user()->userType == 'Admin'){
                 return redirect(route('admins'));
             }else if(auth()->user()->userStatus == 'Pending'){
-                // dd("error Pending");
-                return $this->logout()->with('alert','Your access request is still Pending you will be notified via email');  
+                $email = auth()->user()->email;
+                $name = auth()->user()->full_name;
+
+              
+                return $this->logout()->with('alert',$name. ' your access request is still Pending you will be notified in your email '.$email);  
             }else if(auth()->user()->userStatus == 'Denied'){
                 // dd("error Denied");
                 return $this->logout()->with('alert','Your access request has been Denied');  

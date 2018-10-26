@@ -270,7 +270,11 @@
   <script>
   var msg = '{{Session::get('alert')}}';
   var exist = '{{Session::has('alert')}}';
+  var msg2 = '{{Session::get('message')}}';
+  var exist2 = '{{Session::has('message')}}';
   if(exist){
     alert(msg);
+  }else{
+    alert(msg2);
   }
 </script>
