@@ -33,7 +33,6 @@
 <!-- @json($errors->all()) -->
     <div class="container-fluid FirstContainer p-0 ">
     </div>
-
     <!-- NAVIGATION BAR AND WELCOMING -->
     <div class="container-fluid SecondContainer p-0">
       <div class="container p-0 mt-3">
@@ -270,3 +269,10 @@
 
   </body>
   </html>
+  <script>
+  var msg = '{{Session::get('alert')}}';
+  var exist = '{{Session::has('alert')}}';
+  if(exist){
+    alert(msg);
+  }
+</script>

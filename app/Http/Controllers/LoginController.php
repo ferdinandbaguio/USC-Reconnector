@@ -23,8 +23,15 @@ class LoginController extends Controller
                 return redirect(route('home'));
             }else if(auth()->user()->userStatus == 'Approved' && auth()->user()->userType == 'Admin'){
                 return redirect(route('admins'));
+            }else if(auth()->user()->userStatus == 'Pending'){
+                // dd("error Pending");
+                return $this->logout()->with('alert','Your access request is still Pending you will be notified via email');  
+            }else if(auth()->user()->userStatus == 'Denied'){
+                // dd("error Denied");
+                return $this->logout()->with('alert','Your access request has been Denied');  
             }else{
-                return $this->logout();
+                // dd("error uknown");
+                // return $this->logout()->with('success', ['your message,here']);  
             }
 
         }
