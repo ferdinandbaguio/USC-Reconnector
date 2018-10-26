@@ -19,10 +19,10 @@
                 </div> 
             
             <!-- End of Modal Body       -->
-                <div class="container-fluid">
+                <div class="container-fluid py-4">
                             <form action="{{route('login.submit')}}" id="loginForm" method="POST">
                             {{ csrf_field() }}
-                            <div class="row mt-4">
+                            <div class="row">
                                 <div class="col-md-8 mx-auto ">
                                 <label class="m-0"> ID Number:</label>
                                 <input type="text" class="form-control {{ $errors->has('idnumber') ? 'is-invalid' : '' }}" name="idnumber" placeholder="I.D Number" value="{{old('idnumber')}}"> 

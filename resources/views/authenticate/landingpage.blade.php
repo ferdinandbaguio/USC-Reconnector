@@ -38,16 +38,14 @@
       <div class="container p-0 mt-3">
         <nav class="navbar navbar-expand-md w-100">
           <div class="container">
-            <a class="navbar-brand mr-auto" href="/newhome">
-              <img src="img/logo/studrec2.png" class="logoPic" alt="Logo">
-            </a>
+              <img src="img/logo/studrec2.png" class="logoPic navbar-brand" alt="Logo">
             
-            <a class="navbar-brand ml-auto" href="#loginModal" data-toggle="modal">
-              <p class="mb-0 bellShake loginBtn"><i class="fas fa-feather-alt"></i> Login/Sign In </p>
+            <a class="navbar-brand ml-md-auto" href="#loginModal" data-toggle="modal">
+              <p class="mb-0 bellShake loginBtn"><i class="fas fa-feather-alt"></i> Login</p>
             </a>
            
-            <a class="navbar-brand ml-auto loginBtn" href="#registerModal" data-toggle="modal" >
-              <p class="mb-0 bellShake"><i class="fas fa-feather-alt"></i> Register </p>
+            <a class="navbar-brand  ml-auto ml-md-0" href="#registerModal" data-toggle="modal" >
+              <p class="mb-0 bellShake loginBtn"><i class="far fa-address-book"></i> Register</p>
             </a>
         
           </div>
