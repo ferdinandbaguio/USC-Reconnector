@@ -274,7 +274,7 @@
   var exist2 = '{{Session::has('message')}}';
   if(exist){
     alert(msg);
-  }else{
+  }if(exist2){
     alert(msg2);
   }
 </script>
