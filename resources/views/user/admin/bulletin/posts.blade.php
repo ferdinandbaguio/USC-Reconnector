@@ -1,10 +1,10 @@
 @extends('_layouts.admin')
 
-@section('styles') {{-- Styles Section Start --}}
+@section('styles')
 
+<link rel="stylesheet" href="{{ asset('css/unique/posts.css')}}" />
 
-
-@endsection {{-- Styles Section End --}}
+@endsection
 
 @section('title')
 
@@ -12,88 +12,126 @@ Posts
 
 @endsection
 
-@section('content') {{-- Content Section Start --}}
+@section('content')
 
 <div class="row">
-    <div class="col-sm-11">
+    <div class="col-sm-10">
+        <h5><i>Recent Posts</i></h5>
     </div>
-    <div class="col-sm-1">
+    <div class="col-sm-2">
         <a href="{{route('CreatePost')}}">
-            <button class="btn btn-info " data-toggle="tooltip" data-original-title="Create A New Post">
-                Add <i class="ti-plus"></i>                            
+            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Post" style="width:100%;">
+                Create New Post <i class="ti-plus"></i>                            
             </button>
-        <a href="">
+        </a>
     </div>
 </div>
 <br>
 <div class="row">
+    {{-- Main Content --}}
     <div class="col-lg-8">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="/img/post_img/Today's_Carolinian.jpg" alt="Post">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>
-                            Post 1
-                        </h5>
-                        <p>
-                            This is Post 1
-                        </p>
-                    </div>
+        {{-- Posts Carousel --}}
+        @if(count($posts) > 0)
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @for($i = 0; $i < count($posts);$i++)
+                        @if($i == 0)
+                            <div class="carousel-item active">
+                        @else
+                            <div class="carousel-item">
+                        @endif
+                                <img class="d-block w-100 blur-image" src="/storage/post_img/{{ $posts[$i]->picture }}" alt="Post">
+                                <div class="carousel-caption d-none d-md-block" id="carousel-layer">
+                                    <h3>
+                                        {{ $posts[$i]->title }}
+                                    </h3>
+                                    <span id="mytext">{!! $posts[$i]->announcement !!}</span>
+                                    Posted at: {{ $posts[$i]->created_at }}
+                                </div>
+                            </div>
+                    @endfor
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="/img/post_img/Today's_Carolinian1.jpg" alt="Post">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>
-                            Post 2
-                        </h5>
-                        <p>
-                            This is Post 2
-                        </p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="/img/post_img/Today's_Carolinian2.jpg" alt="Post">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>
-                            Post 3
-                        </h5>
-                        <p>
-                            This is Post 3
-                        </p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="/img/post_img/Today's_Carolinian3.jpg" alt="Post">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>
-                            Post 4
-                        </h5>
-                        <p>
-                            This is Post 4
-                        </p>
-                    </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        @endif
+    </div>
+    {{-- Side Content --}}
+    <div class="col-lg-4" style="max-height: 425px; overflow-y: scroll;">
+        @foreach($posts as $post)
+            <div class="card bg-dark text-white">
+                <img class="card-img" src="/storage/post_img/{{ $post->picture}}" alt="Card image">
+                <div class="card-img-overlay" id="card-layer">
+                    <center>
+                        <h4 id="inc-padding" class="card-title">{{ $post->title}}</h4>
+                        Posted at: {{ $post->created_at }}
+                        <div id="group-buttons">
+                            <a href="{{ route('EditPost', $post->id) }}" class="btn btn-warning"  id="card-button">
+                                Edit
+                            </a>
+                            <span data-toggle="modal" data-target="#delete" data-id="{{ $post->id }}">
+                                <button class="btn btn-danger" id="card-button">
+                                    Delete
+                                </button>
+                            </span>
+                        </div>
+                    </center>
                 </div>
             </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    <div class="col-lg-4" style="background:grey">
+            <br>
+        @endforeach
     </div>
 </div>
+<br><br>
+<hr>
 
-@endsection {{-- Content Section End --}}
+<!-- Delete Modal -->
+<div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Post Confirmation</h4>
+    </div>
+    {!! Form::open(['route' => 'DeletePost', 'method' => 'DELETE', 
+                    'style' => 'display:inline-block;']) !!}
+    @csrf
+    <div class="modal-body">
+        <p class="text-center">
+            Are you sure you want to delete this?
+        </p>
+        {{ Form::hidden('id', '', ['id' => 'id']) }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">No, Cancel</button>
+        {{Form::submit('Yes, Delete', ['class' => 'btn btn-warning'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+@endsection
 
 
-@section('scripts') {{-- Scripts Section Start --}}
+@section('scripts')
 
+<script>
+    $('#delete').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var modal = $(this)
 
+        modal.find('.modal-body #id').val(id);
+    })
+</script>
 
-@endsection {{-- Scripts Seciton End --}}
+@endsection

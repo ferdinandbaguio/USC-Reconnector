@@ -1,0 +1,55 @@
+#carouselExampleControls img {
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    height: 425px;
+}
+#carousel-layer{
+    padding: 15px;
+    overflow: auto;
+    max-height: 380px;
+    border-radius: 5px;
+    background: rgb(0, 0, 0, 0.6);
+}
+#card-layer{
+    padding: 15px;
+    border-radius: 5px;
+    background: rgb(0, 0, 0, 0.4);
+}
+#card-button {
+    width: 70px;
+    margin: 0 35px 0 35px;
+}
+#group-buttons {
+    bottom: 15px;
+    left: 5%;
+    right: 5%;
+    position: absolute;
+}
+#inc-padding {
+    padding: 15% 0 0 0;
+}
+#mytext {
+    text-align: justify;
+    color: white;
+}
+.card-img {
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    height: 200px;
+}
+.card-title {
+    overflow: hidden;
+    max-height: 95px;
+}
+h3 {
+    font-weight: bold;
+    color:rgb(206, 255, 153);
+    text-decoration: underline;
+    text-shadow: 3px 2px gray;
+}
+ol {
+    text-align: justify;
+}
+ul {
+    text-align: justify;
+}

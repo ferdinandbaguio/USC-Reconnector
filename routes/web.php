@@ -112,6 +112,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/bulletin', 'Admin\BulletinController@index')->name('ShowPosts');
         Route::get('/bulletin/create', 'Admin\BulletinController@create')->name('CreatePost');
         Route::post('/bulletin/store', 'Admin\BulletinController@store')->name('StorePost');
+        Route::get('/bulletin/edit/{id}', 'Admin\BulletinController@edit')->name('EditPost');
+        Route::patch('/bulletin/update', 'Admin\BulletinController@update')->name('UpdatePost');
+        Route::delete('/bulletin/destroy', 'Admin\BulletinController@destroy')->name('DeletePost');
         // Tracking Controller
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');

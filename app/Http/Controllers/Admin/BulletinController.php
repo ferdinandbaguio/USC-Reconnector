@@ -10,7 +10,8 @@ class BulletinController extends Controller
 {
     public function index()
     {
-        return view('user.admin.bulletin.posts');
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('user.admin.bulletin.posts')->with('posts', $posts);
     }
     public function create()
     {
@@ -43,20 +44,18 @@ class BulletinController extends Controller
         
         return redirect('/bulletin')->with('success', 'Created Post: Successful!');
     }
-    public function show($id)
-    {
-        //
-    }
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('user.admin.bulletin.edit')->with('post', $post);
     }
     public function update(Request $request, $id)
     {
         //
     }
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Post::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Post: Successfull');
     }
 }
