@@ -13,7 +13,9 @@ class Filter extends Model
     protected $fillable = [
         'message_id',
         'post_id',
+        'school_id',
         'department_id',
+        'course_id',
         'group_class_id'
     ];
 
@@ -27,9 +29,19 @@ class Filter extends Model
     	return $this->belongsTo('App\Models\Post');
     }
 
+    public function school()
+    {
+    	return $this->belongsTo('App\Models\School');
+    }
+
     public function department()
     {
     	return $this->belongsTo('App\Models\Department');
+    }
+
+    public function course()
+    {
+    	return $this->belongsTo('App\Models\Course');
     }
 
     public function group_class()

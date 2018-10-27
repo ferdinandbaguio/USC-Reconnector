@@ -14,7 +14,8 @@ Create New Post
 
 @section('content') {{-- Content Section Start --}}
 
-{!! Form::open(['route' => 'StorePost', 'method' => 'POST', 'files' => TRUE]) !!}
+{!! Form::open(['route' => 'UpdatePost', 'method' => 'PATCH', 'files' => TRUE]) !!}
+    {{Form::hidden('id', $post->id)}}
     {{Form::hidden('poster_id', Auth::user()->id)}}
     <img src="/storage/post_img/{{ $post->picture}}">
     <div class="form-group">

@@ -11,6 +11,7 @@ class Group_Class extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'room',
         'status',
         'subject_id',
         'teacher_id'

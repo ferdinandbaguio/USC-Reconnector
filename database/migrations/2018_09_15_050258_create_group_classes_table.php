@@ -16,6 +16,7 @@ class CreateGroupClassesTable extends Migration
         Schema::create('group_classes', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->string('room')->nullable();
             $table->enum('status', ['Upcoming', 'Ongoing', 'Finished', 'Dissolved']);
 
             $table->unsignedInteger('subject_id')->nullable();

@@ -4,13 +4,19 @@
 {{-- Status and ID --}}
 <div class="row">
     {{Form::hidden('id', null,['id' => 'id'])}}
-    <div class="col-md-6 form-group">
+    <div class="col-md-4 form-group">
         <b>{{Form::label('id', 'Class ID')}}</b>
         {{ Form::text('id', null, ['class' => 'form-control input-rounded text-center',
         'id' => 'id', 'disabled']) }}
     </div>
 
-    <div class="col-md-6 form-group">
+    <div class="col-md-4 form-group">
+        <b>{{Form::label('room', 'Room')}}</b>
+        {{ Form::text('room', '', ['class' => 'form-control input-rounded text-center',
+        'id' => 'room', 'requried']) }}
+    </div>
+
+    <div class="col-md-4 form-group">
         <b>{{Form::label('status', 'Status')}}</b>
         {{Form::select('status', ['Upcoming'  => 'Upcoming', 'Ongoing'    => 'Ongoing',
                                     'Finished'  => 'Finished', 'Dissolved'  => 'Dissolved'], null, 

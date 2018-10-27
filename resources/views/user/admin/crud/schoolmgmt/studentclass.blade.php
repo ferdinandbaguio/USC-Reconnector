@@ -8,7 +8,15 @@
 
 @section('title')
 
-Students @ Class
+<small>Students @ </small>
+@if($stdclasses->count() > 0)
+    {{$stdclasses[0]->group_class->room}}: {{$stdclasses[0]->group_class->subject->name}} 
+    <div class="pull-right">
+        <small>Handled By:</small>&nbsp;{{$stdclasses[0]->group_class->teacher->full_name}}
+    </div>
+@else
+<small>Class</small>
+@endif
 
 @endsection
 
@@ -20,7 +28,7 @@ Students @ Class
             Number of Students:<b><i> @if(isset($stdclasses)){{$stdclasses->count()}}@endif</i></b>
         </div>
         <span data-toggle="modal" data-target="#add-student">
-            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Class">
+            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Adding A New Student">
                 Add <i class="ti-plus"></i>                            
             </button>
         </span>

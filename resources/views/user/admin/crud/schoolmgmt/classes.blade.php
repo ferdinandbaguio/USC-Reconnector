@@ -33,6 +33,7 @@ Classes
                 <th>Subject</th>
                 <th>Schedule</th>
                 <th>Teacher</th>
+                <th>Room</th>
                 <th>Status</th>
                 <th>Option</th>
             </tr>
@@ -43,6 +44,7 @@ Classes
                 <th>Subject</th>
                 <th>Schedule</th>
                 <th>Teacher</th>
+                <th>Room</th>
                 <th>Status</th>
                 <th>Option</th>
             </tr>
@@ -65,6 +67,7 @@ Classes
                     <img src="/storage/user_img/{{ $gc->teacher->picture }}" height="28" style="border-radius: 50%;" alt="Class Default">
                     {{ $gc->teacher->full_name }}
                 </td>
+                <td>{{ $gc->room }}</td>
                 <td>{{ $gc->status }}</td>
                 <td>
 
@@ -75,7 +78,7 @@ Classes
                         data-tsex="{{ $gc->teacher->sex }}"  data-temail="{{ $gc->teacher->email }}" 
                         data-tpos="{{ $gc->teacher->position }}"  data-tdesc="{{ $gc->teacher->description }}"
                         data-scode="{{ $gc->subject->code }}"  data-sname="{{ $gc->subject->name }}"
-                        data-sdesc="{{ $gc->subject->description }}" 
+                        data-sdesc="{{ $gc->subject->description }}" data-room="{{ $gc->room }}" 
                         <?php $i=1;?>
                         @foreach($gc->schedules as $sched)
                             data-year<?php echo $i; ?>="{{ $sched->schedule->semester->year['name'] }}"  
@@ -94,13 +97,13 @@ Classes
                         {!! Form::open(['route' => 'StudentClass', 'method' => 'POST', 'style' => 'display:inline-block;']) !!}
                             @csrf
                             {{Form::hidden('id', $gc->id)}}
-                            <button class="btn btn-primary btn-xs" data-toggle="tooltip" data-original-title="Show Student">
+                            <button class="btn btn-primary btn-xs" data-toggle="tooltip" data-original-title="Show Students">
                                 <i class="ti-user"></i>        
                             </button>
                         {!! Form::close() !!}
                     {{-- Edit Button --}}
                         <span data-toggle="modal" data-target="#edit-class"
-                        data-id="{{ $gc->id }}"  data-status="{{ $gc->status }}" 
+                        data-id="{{ $gc->id }}"  data-status="{{ $gc->status }}" data-room="{{ $gc->room }}"
                         data-tid="{{ $gc->teacher->id }}" data-sid="{{ $gc->subject->id }}"
                         <?php $i=1;?>
                         @foreach($gc->schedules as $sched)

@@ -23,18 +23,8 @@ Posts
     <div class="col-sm-8">
         <h5><i>All Posts</i></h5>
     </div>
-    <div class="col-sm-2">
-        <span data-toggle="modal" data-target="#create">
-            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Filter" style="width:100%;">
-                Add Filter <i class="ti-plus"></i>
-            </button>
-        </span>
-    </div>
-    <div class="col-sm-2">
-        <select class="form-control input-rounded text-center pull-right" style="width:100%;">
-            <option value="">Filters</option>
-            <option>Hi</option>
-        </select>
+    <div class="col-sm-4">
+        <h5><i>Post Cards</i></h5>
     </div>
 </div>
 <br>
@@ -106,36 +96,6 @@ Posts
 <br><br>
 <hr>
 
-<!-- Create Filter Modal -->
-<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Creating New Filter</h4>
-    </div>
-    {!! Form::open(['route' => 'StoreFilter', 'method' => 'POST', 
-                    'style' => 'display:inline-block;', 'files' => TRUE]) !!}
-    @csrf
-    <div class="modal-body">
-        <center>
-            <div class="form-group">
-                <b>{{Form::label('filter', 'Filters')}}</b>
-                {{Form::text('filter', '', ['class' => 'form-control input-rounded'])}}
-            </div>
-        </center>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
-    </div>
-    {!! Form::close() !!}
-</div>
-</div>
-</div>
-
 <!-- Delete Post Modal -->
 <div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog" role="document">
@@ -176,10 +136,6 @@ Posts
         var modal = $(this)
 
         modal.find('.modal-body #id').val(id);
-    })
-    $('#create').on('show.bs.modal', function(event){
-        var button = $(event.relatedTarget)
-        var modal = $(this)
     })
 </script>
 

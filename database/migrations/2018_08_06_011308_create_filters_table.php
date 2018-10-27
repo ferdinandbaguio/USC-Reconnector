@@ -24,8 +24,16 @@ class CreateFiltersTable extends Migration
             $table->foreign('post_id')->references('id')->on('posts')
             ->onUpdate('cascade')->onDelete('cascade');
 
+            $table->unsignedInteger('school_id')->nullable();
+            $table->foreign('school_id')->references('id')->on('schools')
+            ->onUpdate('cascade')->onDelete('cascade');
+
             $table->unsignedInteger('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments')
+            ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unsignedInteger('course_id')->nullable();
+            $table->foreign('course_id')->references('id')->on('courses')
             ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedInteger('group_class_id')->nullable();
