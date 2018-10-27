@@ -25,13 +25,13 @@ Create New Post
         </div>
         <div class="col-md-5 form-group">
             {{Form::label('title', 'Choose Filter')}}<br>
-            <label class="checkbox-inline"><input type="checkbox" name="filter_option" value="university" id="u">University</label>&nbsp;&nbsp;
-            <label class="checkbox-inline"><input type="checkbox" name="filter_option" value="school" id="s">School</label>&nbsp;&nbsp;
-            <label class="checkbox-inline"><input type="checkbox" name="filter_option" value="department" id="d">Department</label>&nbsp;&nbsp;
-            <label class="checkbox-inline"><input type="checkbox" name="filter_option" value="course" id="cr">Course</label>&nbsp;&nbsp;
-            <label class="checkbox-inline"><input type="checkbox" name="filter_option" value="class" id="cl">Class</label>
+            <label class="checkbox-inline"><input type="checkbox" name="filter_option" id="u">University&nbsp;&nbsp;</label>
+            <label class="checkbox-inline" id="hideS"><input type="checkbox" name="filter_option1" id="s">School&nbsp;&nbsp;</label>
+            <label class="checkbox-inline" id="hideD"><input type="checkbox" name="filter_option2" id="d">Department&nbsp;&nbsp;</label>
+            <label class="checkbox-inline" id="hideCR"><input type="checkbox" name="filter_option3" id="cr">Course&nbsp;&nbsp;</label>
+            <label class="checkbox-inline" id="hideCL"><input type="checkbox" name="filter_option4" id="cl">Class</label>
         </div>
-        <div class="col-md-2 form-group" id="stoggle">
+        <div class="col-md-2 form-group" id="stoggle" style="display:none;">
             <b>{{Form::label('title', 'Choose School')}}</b>
             <select class = "form-control input-rounded text-center" name="school_id" required>
                 <option disabled selected hidden>Choose School</option>
@@ -40,7 +40,7 @@ Create New Post
                 @endforeach
             </select>
         </div>
-        <div class="col-md-2 form-group" id="dstoggle">
+        <div class="col-md-2 form-group" id="dtoggle" style="display:none;">
             <b>{{Form::label('title', 'Choose Department')}}</b>
             <select class = "form-control input-rounded text-center" name="department_id" required>
                 <option disabled selected hidden>Choose Department</option>
@@ -55,7 +55,7 @@ Create New Post
             {{Form::label('title', 'Title')}}
             {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Type in the Title', 'required'])}}
         </div>
-        <div class="col-md-2 form-group" id="crtoggle">
+        <div class="col-md-2 form-group" id="crtoggle" style="display:none;">
             <b>{{Form::label('title', 'Choose Course')}}</b>
             <select class = "form-control input-rounded text-center" name="course_id" required>
                 <option disabled selected hidden>Choose Course</option>
@@ -64,7 +64,7 @@ Create New Post
                 @endforeach
             </select>
         </div>
-        <div class="col-md-2 form-group" id="cltoggle">
+        <div class="col-md-2 form-group" id="cltoggle" style="display:none;">
             <b>{{Form::label('title', 'Choose Class')}}</b>
             <select class = "form-control input-rounded text-center" name="group_class_id" required>
                 <option disabled selected hidden>Choose Class</option>
@@ -92,7 +92,26 @@ Create New Post
     CKEDITOR.replace( 'article-ckeditor' );
     $(document).ready(function(){
         $("#u").click(function(){
-            $("p").toggle();
+            $("#hideS").toggle();
+            $("#hideD").toggle();
+            $("#hideCR").toggle();
+            $("#hideCL").toggle();
+            $("#stoggle").hide();
+            $("#dtoggle").hide();
+            $("#crtoggle").hide();
+            $("#cltoggle").hide();
+        });
+        $("#s").click(function(){
+            $("#stoggle").toggle();
+        });
+        $("#d").click(function(){
+            $("#dtoggle").toggle();
+        });
+        $("#cr").click(function(){
+            $("#crtoggle").toggle();
+        });
+        $("#cl").click(function(){
+            $("#cltoggle").toggle();
         });
     });
 </script>
