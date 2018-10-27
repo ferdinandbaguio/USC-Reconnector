@@ -11,16 +11,29 @@ class Filter extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'filter'
+        'message_id',
+        'post_id',
+        'department_id',
+        'group_class_id'
     ];
 
-    public function post_category()
+    public function message()
     {
-    	return $this->hasMany('App\Models\Post_Category');
+    	return $this->belongsTo('App\Models\Message');
     }
 
-    public function message_category()
+    public function post()
     {
-    	return $this->hasMany('App\Models\Message_Category');
+    	return $this->belongsTo('App\Models\Post');
+    }
+
+    public function department()
+    {
+    	return $this->belongsTo('App\Models\Department');
+    }
+
+    public function group_class()
+    {
+    	return $this->belongsTo('App\Models\Group_Class');
     }
 }

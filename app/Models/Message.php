@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+    protected $table = 'messages';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+
+    protected $fillable = [
+        'sender_id'
+    ];
+
     public function sender()
     {
         return $this->belongsTo('App\Models\User','user_id');
@@ -16,9 +24,9 @@ class Message extends Model
         return $this->hasMany('App\Models\User','message_id');
     }
 
-    public function message_category()
+    public function filter()
     {
-        return $this->hasMany('App\Models\Message_Category','message_id');
+        return $this->hasOne('App\Models\Filter');
     }
 
     public function message_thread()

@@ -8,22 +8,33 @@
 
 @section('title')
 
-Posts
+Posts 
+<a href="{{route('CreatePost')}}">
+    <button class="btn btn-primary pull-right" data-toggle="tooltip" data-original-title="Create A New Post">
+        Add Post <i class="ti-plus"></i>                            
+    </button>
+</a>
 
 @endsection
 
 @section('content')
 
 <div class="row">
-    <div class="col-sm-10">
-        <h5><i>Recent Posts</i></h5>
+    <div class="col-sm-8">
+        <h5><i>All Posts</i></h5>
     </div>
     <div class="col-sm-2">
-        <a href="{{route('CreatePost')}}">
-            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Post" style="width:100%;">
-                Create New Post <i class="ti-plus"></i>                            
+        <span data-toggle="modal" data-target="#create">
+            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Filter" style="width:100%;">
+                Add Filter <i class="ti-plus"></i>
             </button>
-        </a>
+        </span>
+    </div>
+    <div class="col-sm-2">
+        <select class="form-control input-rounded text-center pull-right" style="width:100%;">
+            <option value="">Filters</option>
+            <option>Hi</option>
+        </select>
     </div>
 </div>
 <br>
@@ -64,6 +75,7 @@ Posts
     </div>
     {{-- Side Content --}}
     <div class="col-lg-4" style="max-height: 425px; overflow-y: scroll;">
+        <?php $i=0;?>
         @foreach($posts as $post)
             <div class="card bg-dark text-white">
                 <img class="card-img" src="/storage/post_img/{{ $post->picture}}" alt="Card image">
@@ -84,14 +96,47 @@ Posts
                     </center>
                 </div>
             </div>
+            @if($i < count($posts)-1)
             <br>
+            @endif
+            <?php $i++;?>
         @endforeach
     </div>
 </div>
 <br><br>
 <hr>
 
-<!-- Delete Modal -->
+<!-- Create Filter Modal -->
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Creating New Filter</h4>
+    </div>
+    {!! Form::open(['route' => 'StoreFilter', 'method' => 'POST', 
+                    'style' => 'display:inline-block;', 'files' => TRUE]) !!}
+    @csrf
+    <div class="modal-body">
+        <center>
+            <div class="form-group">
+                <b>{{Form::label('filter', 'Filters')}}</b>
+                {{Form::text('filter', '', ['class' => 'form-control input-rounded'])}}
+            </div>
+        </center>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+<!-- Delete Post Modal -->
 <div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
@@ -131,6 +176,10 @@ Posts
         var modal = $(this)
 
         modal.find('.modal-body #id').val(id);
+    })
+    $('#create').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var modal = $(this)
     })
 </script>
 

@@ -115,6 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/bulletin/edit/{id}', 'Admin\BulletinController@edit')->name('EditPost');
         Route::patch('/bulletin/update', 'Admin\BulletinController@update')->name('UpdatePost');
         Route::delete('/bulletin/destroy', 'Admin\BulletinController@destroy')->name('DeletePost');
+        Route::post('/bulletin/store/filter', 'Admin\BulletinController@storeFilter')->name('StoreFilter');
         // Tracking Controller
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');

@@ -22,8 +22,8 @@ class Post extends Model
         return $this->belongsTo('App\Models\User','poster_id');
     }
 
-    public function post_category()
+    public function filter()
     {
-        return $this->hasMany('App\Models\Post_Category');
+        return $this->hasOne('App\Models\Filter');
     }
 }

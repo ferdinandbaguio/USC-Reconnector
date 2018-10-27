@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
+use App\Models\Filter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,8 +11,9 @@ class BulletinController extends Controller
 {
     public function index()
     {
+        $filters = Filter::all();
         $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('user.admin.bulletin.posts')->with('posts', $posts);
+        return view('user.admin.bulletin.posts')->with('posts', $posts)->with('filters', $filters);
     }
     public function create()
     {
@@ -39,9 +41,11 @@ class BulletinController extends Controller
 
         $postToStore['poster_id'] = $request->poster_id;
         $postToStore['title'] = $request->title;
-        $postToStore['announcement'] = $request->announcement;  
+        $postToStore['announcement'] = $request->announcement; 
         Post::create($postToStore);
         
+        // $postTofilter = DB::table('schedules')->orderBy('created_at', 'desc')->first();
+
         return redirect('/bulletin')->with('success', 'Created Post: Successful!');
     }
     public function edit($id)
@@ -57,5 +61,11 @@ class BulletinController extends Controller
     {
         Post::destroy($request->id);
         return redirect()->back()->with('success', 'Deleted Post: Successfull');
+    }
+    public function storeFilter(Request $request)
+    {
+        return $request;
+        Filter::create();
+        return redirect()->back()->with('success', 'Create Filter: Successfull');
     }
 }
