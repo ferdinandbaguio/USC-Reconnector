@@ -25,11 +25,11 @@ Create New Post
         </div>
         <div class="col-md-5 form-group">
             {{Form::label('title', 'Choose Filter')}}<br>
-            <label class="checkbox-inline"><input type="checkbox" name="filter_option" id="u">University&nbsp;&nbsp;</label>
-            <label class="checkbox-inline" id="hideS"><input type="checkbox" name="filter_option1" id="s">School&nbsp;&nbsp;</label>
-            <label class="checkbox-inline" id="hideD"><input type="checkbox" name="filter_option2" id="d">Department&nbsp;&nbsp;</label>
-            <label class="checkbox-inline" id="hideCR"><input type="checkbox" name="filter_option3" id="cr">Course&nbsp;&nbsp;</label>
-            <label class="checkbox-inline" id="hideCL"><input type="checkbox" name="filter_option4" id="cl">Class</label>
+            <label class="checkbox-inline"><input type="checkbox" name="filter_option" id="u"> University&nbsp;&nbsp;</label>
+            <label class="checkbox-inline" id="hideS"><input type="checkbox" name="filter_option1" id="s"> School&nbsp;&nbsp;</label>
+            <label class="checkbox-inline" id="hideD"><input type="checkbox" name="filter_option2" id="d"> Department&nbsp;&nbsp;</label>
+            <label class="checkbox-inline" id="hideCR"><input type="checkbox" name="filter_option3" id="cr"> Course&nbsp;&nbsp;</label>
+            <label class="checkbox-inline" id="hideCL"><input type="checkbox" name="filter_option4" id="cl"> Class</label>
         </div>
         <div class="col-md-2 form-group" id="stoggle" style="display:none;">
             <b>{{Form::label('title', 'Choose School')}}</b>
@@ -92,6 +92,11 @@ Create New Post
     CKEDITOR.replace( 'article-ckeditor' );
     $(document).ready(function(){
         $("#u").click(function(){
+            $('select').prop('selectedIndex',0);
+            $("#s").prop("checked", false);
+            $("#d").prop("checked", false);
+            $("#cr").prop("checked", false);
+            $("#cl").prop("checked", false);
             $("#hideS").toggle();
             $("#hideD").toggle();
             $("#hideCR").toggle();

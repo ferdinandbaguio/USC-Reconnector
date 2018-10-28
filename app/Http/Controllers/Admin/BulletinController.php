@@ -74,8 +74,15 @@ class BulletinController extends Controller
     }
     public function edit($id)
     {
+        $schools = School::all();
+        $courses = Course::all();
+        $departments = Department::all();
+        $group_classes = Group_Class::all();
+        $filters = Filter::where('post_id', '=', $id)->get();
+
         $post = Post::findOrFail($id);
-        return view('user.admin.bulletin.edit')->with('post', $post);
+        return view('user.admin.bulletin.edit')->with('post', $post)->with('schools', $schools)->with('departments', $departments)
+                                               ->with('courses', $courses)->with('group_classes', $group_classes)->with('filters', $filters);
     }
     public function update(Request $request)
     {
@@ -129,7 +136,41 @@ class BulletinController extends Controller
     public function storeFilter(Request $request)
     {
         return $request;
-        Filter::create();
-        return redirect()->back()->with('success', 'Create Filter: Successfull');
+        if(isset($request->school_id) || isset($request->department_id) || isset($request->course_id) || isset($request->group_class_id)){
+            if(isset($request->filter_option1))
+                $filter['school_id'] = $request->school_id;
+            if(isset($request->filter_option2))
+                $filter['department_id'] = $request->department_id;
+            if(isset($request->filter_option3))
+                $filter['course_id'] = $request->course_id;
+            if(isset($request->filter_option4))
+                $filter['group_class_id'] = $request->group_class_id;
+            return $request;
+            $postToFilter = DB::table('posts')->orderBy('updated_at', 'desc')->first();
+            $filter['post_id'] = $postToFilter->id;
+            Filter::create($filter);
+        }
+
+        return redirect()->back()->with('success', 'Added Filter: Successfull');
+    }
+    public function destroyFilter(Request $request)
+    {
+        return $request;
+        if(isset($request->school_id) || isset($request->department_id) || isset($request->course_id) || isset($request->group_class_id)){
+            if(isset($request->filter_option1))
+                $filter['school_id'] = $request->school_id;
+            if(isset($request->filter_option2))
+                $filter['department_id'] = $request->department_id;
+            if(isset($request->filter_option3))
+                $filter['course_id'] = $request->course_id;
+            if(isset($request->filter_option4))
+                $filter['group_class_id'] = $request->group_class_id;
+            return $request;
+            $postToFilter = DB::table('posts')->orderBy('updated_at', 'desc')->first();
+            $filter['post_id'] = $postToFilter->id;
+            Filter::create($filter);
+        }
+
+        return redirect()->back()->with('success', 'Added Filter: Successfull');
     }
 }
