@@ -38,11 +38,11 @@
 			@endif
 
 			<!-- HIGHEST EDUCATIONAL ATTAINMENT -->
-			{!! Form::label('highest_educational_attainment', '1. Highest Educational Attainment',['class' => 'mt-4']) !!}
+			{!! Form::label(null, '1. Highest Educational Attainment',['class' => 'mt-4']) !!}
 			@foreach( $highestEducationalAttainment as $data)
 			@if($data == 'College Graduate')
 				<div>{!!	Form::radio('highest_educational_attainment', $data,null,['id' => 'collegegraduate']) !!} {{$data}}</div>
-				@else
+			@else
 				<div>{!!	Form::radio('highest_educational_attainment', $data) !!} {{$data}}</div>
 			@endif	
 			@endforeach	 
@@ -54,13 +54,12 @@
 
 
 			<!-- Month and Year Graduated in College -->
-			{!! Form::label('month_year_graduated', '3.  Month and Year Graduated in College') !!}
-			<div>{!! Form::select('month_year_graduated', $monthYearGraduated) !!}</div>
+			{!! Form::label(null, '3.  Month and Year Graduated in College') !!}
+			<div>{!! Form::select('month_year_graduated', $monthYearGraduated,null,['class' => 'selectClass']) !!}</div>
 
 			<!-- Academic Awards received in College. -->
-			{!! Form::label('academic_awards_received', '4.  Academic Awards received in College') !!}
+			{!! Form::label(null, '4.  Academic Awards received in College') !!}
 			<div>{!! Form::select('academic_awards_received', $academicAwardsreceived) !!}</div>
-
 			<!-- Other Awards received in College. -->
 			{!! Form::label('other_awards', '4.1  Other Awards received in College.') !!}
 			{!! Form::text('other_awards', null, ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -69,7 +68,7 @@
 					<p>(Please indicate the year the test was taken)</p>
 			{!! Form::text('professional_examinations_passed', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButton" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)" disabled="disabled">Next</button>
 		</div> 
 		<!-- END FIRST PAGE -->
 
@@ -115,8 +114,8 @@
 			@endforeach
 			
 			
-			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(3)">Next</button>
+			<button type="button" class="btn btn-sm btn-outline-danger mt-3 " onclick="showPage(getPreviousPage())">Previous</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButton" onclick="showPage(3)">Next</button>
 		</div> 
 		<!-- END SECOND PAGE -->
 

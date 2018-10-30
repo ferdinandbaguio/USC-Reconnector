@@ -30,9 +30,40 @@ function yesNo(){
     }
 }
 
-
+// function checkbox() {
+//     var checkBox = document.getElementById("myCheck");
+//     var text = document.getElementById("text");
+//     if (checkBox.checked == true){
+//         text.style.display = "block";
+//     } else {
+//        text.style.display = "none";
+//     }
+// }
 
 $(document).ready(function(){
+
+    var q01 = $('input[name=highest_educational_attainment]');
+    var q02 = $('input[name=college_program_taken]');
+    var q03 = $('input[name=month_year_graduated]');
+
+    var pageOne = q01.add(q02);
+    console.log(q02)
+    validate();
+
+    pageOne.change(validate);
+    
+    function validate() {
+        if ($(q01).is(':checked') && $(q02).is(':checked') ) {
+             $(".nextButton").removeAttr("disabled", false);
+        } else {
+             $(".nextButton").attr("disabled", true);
+        }
+     
+    }
+});  
+
+$(document).ready(function(){
+    $('select.selectClass option:first').attr('disabled', true);
     showPage(1)
 });
 
