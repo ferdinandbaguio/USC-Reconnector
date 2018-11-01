@@ -86,17 +86,19 @@
       @endif
 
       @if(Auth::user()->userType == "Student" || Auth::user()->userType == "Teacher")
-      <a class="text-white" id="classCollapse" data-toggle="collapse" href="#classDropdown" aria-expanded="false">
+      <a class="text-white" href="/student/class" id="hyperlink">
         <div class="row mt-4 hyperlink test rowSide">
             <div class="col-8 mt-3">
-              <h6 class="fontRoboto">Class <i class="fas fa-caret-down"></i></h6>
+              <h6 class="fontRoboto">Class</h6>
             </div>
             <div class="col-4 mt-2">
               <i class="fas fa-boxes text-white" style="font-size:33px;"></i>
             </div>
         </div>
       </a>
-      <div class="col-12 collapse p-0" id="classDropdown">
+
+
+      <!-- <div class="col-12 collapse p-0" id="classDropdown">
         <div class="container-fluid">
           <ul class="list-unstyled text-white fontRoboto">
             <a href="/student/class" class="text-white"><li>ENG 21</li></a>
@@ -106,7 +108,7 @@
             <a href="#addClassModal" class="text-white" data-toggle="modal"><li><i class="fas fa-plus"></i> Add a class</li></a>
           </ul>
         </div>
-      </div>
+      </div> -->
       @endif
 
       <a href="{{ route('alumnus.communicate') }}" class="text-white" id="hyperlink">
@@ -124,50 +126,6 @@
   </div>
   {{-- End Side Navigation --}}
   
-
-
-  @if(Auth::user()->userType == "Student" || Auth::user()->userType == "Teacher") 
-  <!-- ADD A CLASS MODAL -->
-  <div class="modal fade" id="addClassModal" tabindex="-1" role="dialog" aria-labelledby="addClassModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title"> Add a class </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                <form method="POST" action="" >
-                  <div class="form-group">
-                    <label> Group #</label>
-                    <input type="text" class="form-control" placeholder="Enter group number">
-                    <label> Course Code </label>
-                    <input type="text" class="form-control" placeholder="Example: ICT 110">
-                    <label> Schedule </label>
-                    <input type="text" class="form-control" placeholder="Example: TTH 10:30 - 12:00">
-                    <label> Units </label>
-                    <input type="text" class="form-control" placeholder="Example: 3.00">
-                  </div>
-                </div>
-                <div class="modal-footer p-0">
-                    <div class="row w-100 m-0">
-                            <div class="col-6 p-0 m-0 border-primary" style="border-right:1px solid;border-bottom:1px solid;">
-                            <button type="submit" class="btn text-primary btn-light w-100">Add Class</button>
-                            </div>
-
-                            <div class="col-6 p-0 m-0 border-danger" style="border-left:1px solid;border-bottom:1px solid;">
-                            <button type="button" class="btn text-danger btn-light w-100" data-dismiss="modal">Close</button>
-                            </div>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-  </div>
-  <!-- ADD A CLASS MODAL END-->
-  @endif
-
 
 
   {{-- Scripts --}}
