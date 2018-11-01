@@ -193,9 +193,9 @@ function pageElevenValidate(){
     var q22 = $("input[name=social_and_community_involvement]");
     var q23 = $("input[name=suggestions]");
 
-    var pageEleven = q01.add(q02).add(q03).add(q04);
+    var pageEleven = q01.add(q02).add(q03).add(q04).add(q05).add(q06).add(q07).add(q08).add(q09).add(q10).add(q11).add(q12).add(q13).add(q14).add(q15).add(q16).add(q17).add(q184).add(q19).add(q20).add(q21).add(q22).add(q23);
     pageEleven.change(pageElevenValidate);
-    if ($(q01).is(':checked') && $(q02).is(':checked') && $(q03).is(':checked')  && $(q04).val() != 0) {
+    if ($(q01).is(':checked') && $(q02).is(':checked') && $(q03).is(':checked') && $(q04).is(':checked') && $(q05).is(':checked') && $(q06).is(':checked') && $(q07).is(':checked') && $(q08).is(':checked') && $(q09).is(':checked') && $(q10).is(':checked') && $(q11).is(':checked') && $(q12).is(':checked') && $(q13).is(':checked') && $(q14).is(':checked') && $(q15).is(':checked') && $(q16).is(':checked') && $(q17).is(':checked') && $(q18).is(':checked') && $(q19).is(':checked') && $(q20).is(':checked') && $(q21).is(':checked') && $(q22).is(':checked')  && $(q23).val() != 0) {
          $(".nextButtonEleven").removeAttr("disabled", false);
     } else {
          $(".nextButtonEleven").attr("disabled", true);
