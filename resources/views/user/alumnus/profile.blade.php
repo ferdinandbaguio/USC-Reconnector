@@ -6,12 +6,6 @@
 
 @section('content')
 
-<div class="row">
-  <div class="alert alert-danger" role="alert">
-  Setup your alumni details now to avoid feature restrictions in the website. <a href="{{ route('alumnus.form') }}">Click here!</a>
-  </div>
-</div>
-
 <!-- NEW -->
 <div class="row fontRoboto mb-5">
 
@@ -241,4 +235,46 @@
 
 </div>
 <!-- NEW -->
+
+
 @endsection
+<div class="container-fluid warningAlumnus">
+  <div class="container fontRoboto">
+    <div class="row">
+      <div class="col-12 py-5">
+        <center>
+        <label>Setup your alumni details now to avoid feature restrictions in the website.</label>
+        <a class="btn clickHereBtn align-baseline p-3 px-4" href="{{ route('alumnus.form') }}">Click here!</a>
+        </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+.warningAlumnus{
+  background-color: #FCE6E6;
+  box-shadow: 0 0 3px #DC2525;
+
+  position: fixed; 
+  bottom: 0px; 
+  z-index: 5;
+}
+.clickHereBtn{
+  background-color: #4E7FC7;
+  color: white;
+}
+.clickHereBtn:hover{
+  text-decoration: none;
+  color: white;
+}
+
+.closeHereBtn{
+  background-color: #E94343;
+  color: white;
+  outline: none;
+  border:none;
+}
+
+</style>
