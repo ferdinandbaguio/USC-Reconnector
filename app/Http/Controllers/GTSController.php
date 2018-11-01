@@ -37,9 +37,78 @@ class GTSController extends Controller
         $request->reasonUnemployedNow ? $request['reasonUnemployedNow'] = json_encode($request->reasonUnemployedNow) : ''; 
         $request->reasonUnemployedNever ? $request['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
         $validated = $request->validated();
+        
+        $validated = $this->removeData($validated);
     	GraduateTracerStudy::create($validated);
         return redirect()->back();
     }
+
+    public function removeData($request)
+    {
+        $validated = $request;
+        if($validated['highest_educational_attainment'] == 'College Graduate'){
+            $validated['program_pursued'] = null;
+            $validated['name_of_graduate_school'] = null;
+            $validated['address_of_graduate_school'] = null;
+            $validated['advance_studies'] = null;
+            //.....
+        }
+
+        if($validated['is_presently_employed'] == 'Yes'){
+            $validated['reasonUnemployedNow'] = null;
+            $validated['reasonUnemployedNever'] = null;
+            if($validated['is_first_job'] == 'Yes'){
+                $validated['reasonsNo'] = null;
+                $validated['isFirstJobRelated'] = null;
+                $validated['isJobpositionFirstworkAfterCollege'] = null;
+                $validated['nameofCompanyfirstWorkedin'] = null;
+                //.....
+            }else{
+                $validated['reasonsYes'] = null;
+            }
+        }
+        else if($validated['is_presently_employed'] == 'No, I\'m not employed now'){
+            $validated['industry_currently_working'] = null;
+            $validated['job_level'] = null;
+            $validated['present_job_position'] = null;
+            $validated['job_not_related_to_degree'] = null;
+            $validated['months_employed'] = null;
+            $validated['name_of_company'] = null;
+            $validated['address_of_company'] = null;
+            $validated['is_first_job'] = null;
+            $validated['reasonsYes'] = null;
+            $validated['reasonsNo'] = null;
+            $validated['reasonUnemployedNever'] = null;
+            //.....
+        }
+        else if ($validated['is_presently_employed'] == 'No, I was never employed'){
+            $validated['industry_currently_working'] = null;
+            $validated['job_level'] = null;
+            $validated['present_job_position'] = null;
+            $validated['job_not_related_to_degree'] = null;
+            $validated['months_employed'] = null;
+            $validated['name_of_company'] = null;
+            $validated['address_of_company'] = null;
+            $validated['is_first_job'] = null;
+            $validated['reasonsYes'] = null;
+            $validated['reasonsNo'] = null;
+            $validated['isFirstJobRelated'] = null;
+            $validated['isJobpositionFirstworkAfterCollege'] = null;
+            $validated['nameofCompanyfirstWorkedin'] = null;
+            $validated['monthsEmployedfirstjobAfterGraduate'] = null;
+            $validated['jobRolesExperienced'] = null;
+            $validated['conceptsLearned'] = null;
+            $validated['programmingLanguages'] = null;
+            $validated['reasonUnemployedNow'] = null;
+
+        }
+        
+        
+
+        return $validated;
+       
+    }
+
     public function edit ($id) {
 
         $form = GraduateTracerStudy::find($id);
