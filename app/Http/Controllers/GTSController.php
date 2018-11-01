@@ -21,6 +21,7 @@ class GTSController extends Controller
         $request->reasonUnemployedNever ? $request['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
 
         $validated = $request->validated();
+        $validated = $this->removeData($validated);
     	GraduateTracerStudy::where('id', $id)->update($validated);
         return redirect()->back();
     }
