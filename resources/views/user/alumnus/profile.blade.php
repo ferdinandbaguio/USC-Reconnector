@@ -37,7 +37,7 @@
   <div class="col-md-8 p-4 pt-5 align-self-start" style="background-color: white;">
     <div class="row">
       <div class="col-md-5">
-        <h5 class="text-muted"> Description <a href="#descModal" data-toggle="modal"> <i class="far fa-edit text-muted"></i> </a></h5>
+        <h5 class="text-muted" style="font-weight: ;"> Description <a href="#descModal" data-toggle="modal"> <i class="far fa-edit text-muted"></i> </a></h5>
       </div>
     </div>
     <div class="row mt-1">
@@ -251,30 +251,3 @@
     </div>
   </div>
 </div>
-
-<style type="text/css">
-.warningAlumnus{
-  background-color: #FCE6E6;
-  box-shadow: 0 0 3px #DC2525;
-
-  position: fixed; 
-  bottom: 0px; 
-  z-index: 5;
-}
-.clickHereBtn{
-  background-color: #4E7FC7;
-  color: white;
-}
-.clickHereBtn:hover{
-  text-decoration: none;
-  color: white;
-}
-
-.closeHereBtn{
-  background-color: #E94343;
-  color: white;
-  outline: none;
-  border:none;
-}
-
-</style>
