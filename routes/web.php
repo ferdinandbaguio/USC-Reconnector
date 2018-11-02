@@ -116,11 +116,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/bulletin/update', 'Admin\BulletinController@update')->name('UpdatePost');
         Route::delete('/bulletin/delete', 'Admin\BulletinController@destroy')->name('DeletePost');
         Route::post('/bulletin/store/filter', 'Admin\BulletinController@storeFilter')->name('StoreFilter');
-        Route::post('/bulletin/delete/filter', 'Admin\BulletinController@destroyFilter')->name('DeleteFilter');
+        Route::get('/bulletin/delete/filter/{id}', 'Admin\BulletinController@destroyFilter')->name('DeleteFilter');
         // Tracking Controller
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
+        Route::post('/track/load', 'Admin\TrackController@loadCountry')->name('LoadCountry');
     });
     
 

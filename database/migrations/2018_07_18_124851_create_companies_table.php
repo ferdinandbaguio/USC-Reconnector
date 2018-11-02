@@ -27,11 +27,11 @@ class CreateCompaniesTable extends Migration
 
             $table->unsignedInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries')
-            ->onUpdate('cascade')->onDelete('cascade');
+            ->onUpdate('cascade')->onDelete('no action');
 
             $table->unsignedInteger('area_id')->nullable();
             $table->foreign('area_id')->references('id')->on('areas')
-            ->onUpdate('cascade')->onDelete('cascade');
+            ->onUpdate('cascade')->onDelete('no action');
          
             $table->timestamps();
             $table->softDeletes();

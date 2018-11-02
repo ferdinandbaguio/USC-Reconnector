@@ -13,9 +13,12 @@ class Country extends Model
         'value'
     ];
 
-    public function country()
+    public function companies()
     {
-    	return $this->hasMany('App\Models\Company','country_id');
+    	return $this->hasMany('App\Models\Company');
     }
-
+    public function jobs()
+    {
+    	return $this->hasMany('App\Models\Job');
+    }
 }
