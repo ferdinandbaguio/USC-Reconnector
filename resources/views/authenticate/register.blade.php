@@ -42,9 +42,9 @@
                                     <div class="col-md-8 mx-auto {{ $errors->has('register_idnumber') ? 'is-invalid' : '' }}">
                                         {!! Form::label(null, 'USC Student ID Number: ') !!}
                                         @php  $attr = $errors->has('register_idnumber') ? 'is-invalid' : '' @endphp
-                                        {!! Form::text('register_idnumber',null, ['class' => "form-control {$attr}", 'placeholder' => 'I.D Number']) !!}
-                                        @if($errors->has('register_idnumber'))
-                                            <small class="text-danger">{{ $errors->first('register_idnumber') }}</small>
+                                        {!! Form::text('registeredIdnumber',null, ['class' => "form-control {$attr}", 'placeholder' => 'I.D Number']) !!}
+                                        @if($errors->has('registeredIdnumber'))
+                                            <small class="text-danger">{{ $errors->first('registeredIdnumber') }}</small>
                                         @endif
                                     </div>
                                 </div>
