@@ -8,10 +8,9 @@ Route::group(['middleware' => 'guest'], function () {
 
         // Login
         Route::get('/', 'LoginController@index')->name('login');
-        Route::post('/login','LoginController@login')->name('login.submit');
-        
-        Route::view('request', 'authenticate.register')->name('showRegister');
-        Route::post('request', 'RequestController@store')->name('request.submit');
+        Route::post('/login','LoginController@doLogin')->name('login.submit');
+        Route::post('/register', 'RegisterationController@store')->name('register.submit');
+
         
 });
         // Logout
@@ -23,6 +22,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/home','HomeController@latestPost')->name('home');   
         Route::resource('jobPosts','JobPostController')->except('create');
         Route::resource('announcements','AnnouncementController')->except('create');
+
+        //View Profiles
+        Route::view('/student/viewprofile', 'user.student.viewprofile');
+        Route::view('/alumnus/viewprofile', 'user.alumnus.viewprofile');
+        Route::view('/teacher/viewprofile', 'user.teacher.viewprofile');
     }); 
 
 
@@ -33,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/student/description', 'DescriptionController@update')->name('student.description.update');
         Route::post('student/skill', 'UserSkillController@store')->name('student.skill.add');
         Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
+        
         
 
     });
@@ -63,6 +68,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/alumnus/form','GTSController@store')->name('alumnus.form.store');
         Route::patch('/alumnus/form/{id}/update','GTSController@update')->name('alumnus.form.update');;
 
+        
+
     });
 
     
@@ -72,6 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/teacher/profile', 'TeacherController@index')->name('teacher.profile');
         Route::patch('/teacher/description', 'DescriptionController@update')->name('teacher.description.update');
         Route::post('/teacher/achievement', 'AchievementController@store')->name('teacher.achievement.add');
+        
         
     });
     
@@ -87,7 +95,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/user/coordinators', 'Admin\UserController@coordinators')->name('ShowCoordinators');
         Route::get('/user/chairs', 'Admin\UserController@chairs')->name('ShowChairs');
         Route::get('/user/admins', 'Admin\UserController@admins')->name('ShowAdmins');
-        Route::post('/user/store', 'Admin\UserController@store')->name('StoreUser');
         Route::patch('/user/update', 'Admin\UserController@update')->name('UpdateUser');
         Route::delete('/user/delete', 'Admin\UserController@destroy')->name('DeleteUser');
         // School Management Controller
@@ -116,11 +123,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/bulletin/update', 'Admin\BulletinController@update')->name('UpdatePost');
         Route::delete('/bulletin/delete', 'Admin\BulletinController@destroy')->name('DeletePost');
         Route::post('/bulletin/store/filter', 'Admin\BulletinController@storeFilter')->name('StoreFilter');
-        Route::post('/bulletin/delete/filter', 'Admin\BulletinController@destroyFilter')->name('DeleteFilter');
+        Route::get('/bulletin/delete/filter/{id}', 'Admin\BulletinController@destroyFilter')->name('DeleteFilter');
         // Tracking Controller
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
+        Route::post('/track/load', 'Admin\TrackController@loadCountry')->name('LoadCountry');
     });
     
 

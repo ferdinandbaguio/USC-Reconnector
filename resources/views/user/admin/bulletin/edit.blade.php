@@ -18,10 +18,12 @@ Edit Post
     {{Form::hidden('id', $post->id)}}
     {{Form::hidden('poster_id', Auth::user()->id)}}
     <div class="row">
+        {{-- Show Current Post Picture --}}
         <div class="col-md-8">
             <img src="/storage/post_img/{{ $post->picture}}">
         </div>
         <div class="col-md-4">
+            {{-- Post Picture and Title --}}
             <div class="form-group">
                 <b>{{Form::label('picture', 'Post Picture')}}:</b>
                 {{Form::file('picture')}}<br><hr>
@@ -30,6 +32,7 @@ Edit Post
                 'required', 'rows' => 3])}}
             </div>
             <hr>
+            {{-- Add Filter Form --}}
             <div class="form-group">
                 <b>{{Form::label('title', 'Add Filter')}}:</b>&nbsp;&nbsp;
                 <label class="checkbox-inline"><input type="checkbox" name="filter_option" id="u"> University&nbsp;&nbsp;</label>
@@ -117,13 +120,74 @@ Edit Post
         <h4 class="modal-title" id="myModalLabel">Showing Filter</h4>
     </div>
     <div class="modal-body">
-        <div class="row">
-            <div class="col-md-12 form-group">
-                <b>{{Form::label('idnumber', 'ID Number')}}</b>
-                {{Form::text('idnumber', '', ['class' => 'form-control input-rounded text-center', 
-                'id' => 'tidnum', 'disabled'])}}
-            </div>
-        </div>
+        <center>
+        <?php $i=1;?>
+        @foreach($filters as $filter)
+            <b>{{Form::label('details', 'Filter '.$i, ['class' => 'pull-left'])}}</b>
+            <a href="/bulletin/delete/filter/{{$filter->id}}" class="btn btn-danger pull-right">
+                Delete
+            </a>
+            <br><br>
+            <?php $i++;?>
+            @if(isset($filter->school_id))
+                <i>{{Form::label('details', '~ School Details ~')}}</i><br><br>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        {{Form::label('details', 'Code')}}
+                        {{Form::text('code', $filter->school->code, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                    <div class="col-md-9 form-group">
+                        {{Form::label('details', 'Name')}}
+                        {{Form::text('code', $filter->school->name, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                </div>
+            @endif
+            @if(isset($filter->department_id))
+                <i>{{Form::label('details', '~ Department Details ~')}}</i><br><br>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        {{Form::label('details', 'Code')}}
+                        {{Form::text('code', $filter->department->code, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                    <div class="col-md-9 form-group">
+                        {{Form::label('details', 'Name')}}
+                        {{Form::text('code', $filter->department->name, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                </div>
+            @endif
+            @if(isset($filter->course_id))
+                <i>{{Form::label('details', '~ Course Details ~')}}</i><br><br>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        {{Form::label('details', 'Code')}}
+                        {{Form::text('code', $filter->course->code, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                    <div class="col-md-9 form-group">
+                        {{Form::label('details', 'Name')}}
+                        {{Form::text('code', $filter->course->name, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                </div>
+            @endif
+            @if(isset($filter->group_class_id))
+                <i>{{Form::label('details', '~ Class Details ~')}}</i><br><br>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        {{Form::label('details', 'Room')}}
+                        {{Form::text('code', $filter->group_class->room, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                    <div class="col-md-3 form-group">
+                        {{Form::label('details', 'Subject')}}
+                        {{Form::text('code', $filter->group_class->subject->code, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                    <div class="col-md-6 form-group">
+                        {{Form::label('details', 'Teacher')}}
+                        {{Form::text('code', $filter->group_class->teacher->full_name, ['class' => 'form-control input-rounded text-center', 'disabled'])}}
+                    </div>
+                </div>
+            @endif
+            <hr>
+        @endforeach
+        <center>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

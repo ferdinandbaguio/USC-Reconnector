@@ -24,6 +24,7 @@ class ApplicationConstantController extends Controller
         ];
     
         $monthYearGraduated = [
+            '1' =>'Please Choose' ,
             //2012
             'October 2012' =>  'October 2012',
             //2013
@@ -53,6 +54,7 @@ class ApplicationConstantController extends Controller
     
         
         $academicAwardsreceived= [
+            'None' =>'None' ,
             'Summa Cum Laude' => 'Summa Cum Laude',
             'Magna Cum Laude' => 'Magna Cum Laude',
             'Cum Laude' => 'Cum Laude'

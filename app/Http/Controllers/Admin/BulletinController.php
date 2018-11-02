@@ -153,24 +153,10 @@ class BulletinController extends Controller
 
         return redirect()->back()->with('success', 'Added Filter: Successfull');
     }
-    public function destroyFilter(Request $request)
+    public function destroyFilter($id)
     {
-        return $request;
-        if(isset($request->school_id) || isset($request->department_id) || isset($request->course_id) || isset($request->group_class_id)){
-            if(isset($request->filter_option1))
-                $filter['school_id'] = $request->school_id;
-            if(isset($request->filter_option2))
-                $filter['department_id'] = $request->department_id;
-            if(isset($request->filter_option3))
-                $filter['course_id'] = $request->course_id;
-            if(isset($request->filter_option4))
-                $filter['group_class_id'] = $request->group_class_id;
-            return $request;
-            $postToFilter = DB::table('posts')->orderBy('updated_at', 'desc')->first();
-            $filter['post_id'] = $postToFilter->id;
-            Filter::create($filter);
-        }
+        Filter::destroy($id);
 
-        return redirect()->back()->with('success', 'Added Filter: Successfull');
+        return redirect()->back()->with('success', 'Deleted Filter: Successfull');
     }
 }

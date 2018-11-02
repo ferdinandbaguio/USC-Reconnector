@@ -26,19 +26,26 @@
 				<p class="m-0"> Sex: {{Auth::user()->sex}} </p>
 			</div>
 		</div>
+
+		<div class="row mt-3">
+			<button class="btn mx-auto" id="editProfBtn">Edit Profile</button>
+		</div>
 	</div>
 	<!-- LEFT BOX END -->
 
 	<!-- RIGHT BOX -->
-	<div class="col-md-8 p-4 pt-5 align-self-start" style="background-color: white;">
+	<div class="col-md-8 p-4 pt-5" style="background-color: white;">
 		<div class="row">
 			<div class="col-md-5">
-				<h5 class="font-weight-bold text-muted"> Description <a href="#descModal" data-toggle="modal"> <i class="far fa-edit text-muted"></i> </a></h5>
+				<h5 class="font-weight-bold text-muted"> Description</h5>
 			</div>
 		</div>
 		<div class="row mt-1">
 			<div class="col-md-12">
-				<p> {{Auth::user()->description}} </p>
+				<p> {{Auth::user()->description}} </p> 
+				<div class="editDescHolder">
+				<a href="#descModal" data-toggle="modal" class="editDescBtn"> Edit <i class="far fa-edit"></i> </a>
+				</div>
 			</div>
 		</div>
 
@@ -53,12 +60,12 @@
 			<div class="col-md-12">
 				<p class="m-0">{{$row->skillName}}</p>
 				<div class="progress">
-				  <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 90%"> {{$row->skillPercent}} </div>
+				  <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="{{$row->skillPercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$row->skillPercent}}%"> {{$row->skillPercent}}% </div>
 				</div>
 			</div>
 		@endforeach
-			<div class="col-md-12 mt-4">
-				<button type="button" class="btn addSkillBtn" data-toggle="modal" data-target="#addSkillModal">
+			<div class="col-md-12 mt-4 skillBtnHolder">
+				<button class="btn addSkillBtn" data-toggle="modal" data-target="#addSkillModal">
 					<i class="fas fa-plus-circle"></i> Add a Skill
 				</button>
 			</div>
@@ -72,10 +79,10 @@
 		<div class="row mt-1">
 			<div class="col-md-12">
 				@foreach($achievements as $row)
-				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ( {{$row->achYear}}) </p>
+				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) </p>
 				@endforeach
 			</div>
-			<div class="col-md-12 mt-2">
+			<div class="col-md-12 mt-2 achvBtnHolder">
 				<button type="button" class="btn addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
 					<i class="fas fa-plus-circle"></i> Add an achievement
 				</button>
@@ -193,4 +200,11 @@
 	<!-- ADD ACHIEVEMENT MODAL END -->
 
 </div>
+
+<!-- jQuery script -->
+<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
+
+<!-- Custom scripts  -->
+<script src="/js/unique/student/slideToggle.js"></script>
+
 @endsection

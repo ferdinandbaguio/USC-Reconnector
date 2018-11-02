@@ -16,13 +16,20 @@ class CreateOccupationsTable extends Migration
         Schema::create('occupations', function (Blueprint $table) {
             $table->increments('id');
 
-
             $table->string('title');
             $table->string('address');
             $table->float('salaryRangeOne', 9, 2);
             $table->float('salaryRangeTwo', 9, 2);
             $table->date('jobStart');
             $table->date('jobEnd')->nullable();
+
+            $table->unsignedInteger('area_id')->nullable();
+            $table->foreign('area_id')->references('id')->on('areas')
+            ->onUpdate('cascade')->onDelete('no action');
+
+            $table->unsignedInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries')
+            ->onUpdate('cascade')->onDelete('no action');
 
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')

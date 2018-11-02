@@ -5,107 +5,220 @@
 @endsection
 
 @section('content')
+<!-- TOP BUTTONS  -->
+<div class="row mb-3 fontRoboto">
+  <button class="btn btn-secondary mr-2" data-toggle="modal" data-target="#addClassModal">
+      <i class="fas fa-plus-circle align-baseline"></i> Add new class 
+  </button>
 
-<!-- Teacher and Course Subject -->
-<div class="row">
-  <div class="col-md-4 align-items-end">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="showClasses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Choose a class
+    </button>
+    <div class="dropdown-menu" aria-labelledby="showClasses">
+      <a class="dropdown-item" href="#">POLSC 12</a>
+      <a class="dropdown-item" href="#">FIL 1</a>
+      <a class="dropdown-item" href="#">SPAN 2</a>
+    </div>
   </div>
+</div>
+<!-- TOP BUTTONS END -->
 
-  <div class="col-md-4">
-    <div class="card mb-4" style="box-shadow: 2px 2px 8px;">
-      <div class="container-fluid p-3 teacherCard">
-        <img src="/img/homepage_images/Girl.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 2px;">
+<div class="row fontRoboto mb-3">
+
+  <!-- LEFT BOX -->
+  <div class="col-12 col-md-4">
+    <div class="row bg-light rounded">
+      <div class="col-12 mt-3 pb-2">
+        <h3 class="text-center" style="color:#077325"> ENG 21 </h3>
+        <p class="text-center mb-0">TTH 7:30 - 5:30</p>
+        <p class="text-center my-0">3.00 Units</p>
+        <p class="text-center my-0">Room LB445</p>
       </div>
-      <div class="card-body">
-        <p class="card-text text-center"> Professor X </p>
-        <p class="card-text text-center">Linguistics Teacher</p>
-        <div class="d-flex justify-content-between align-items-center">      
-            <a href="/studenthome" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> Teacher Profile</a>      
+    </div>
+
+    <div class="row bg-light rounded mt-3">
+      <div class="col-12 mt-3">
+        <h3 class="text-center" style="color:#077325"> Teacher </h3>
+        <p class="text-center"><img src="/img/homepage_images/Boy2.jpg" class="align-middle rounded-circle" width="40px" style="box-shadow: 2px 2px 8px;"><a href="#teacherModal" class="align-middle ml-2" data-toggle="modal">Teacher Alyana</a></p>
+      </div>
+    </div>
+
+    <div class="row bg-light rounded mt-3">
+      <div class="col-12 mt-3">
+        <h3 class="text-center" style="color:#077325"> Students </h3>
+
+        <div class="row">
+          <div class="col-6">
+          <p class=""><img src="/img/homepage_images/Girl2.jpg" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal" class="align-middle ml-2" data-toggle="modal">Bryle Baguio</a></p>
+          </div>
+
+          <div class="col-6">
+          <p class=""><img src="/img/homepage_images/Boy2.jpg" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal" class="align-middle ml-2" data-toggle="modal">Jonas Gwapo</a></p>
+          </div>
+
+          <div class="col-6">
+          <p class=""><img src="/img/homepage_images/Girl2.jpg" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal" class="align-middle ml-2" data-toggle="modal">Bryle Baguio</a></p>
+          </div>
+
+          <div class="col-6">
+          <p class=""><img src="/img/homepage_images/Boy2.jpg" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal" class="align-middle ml-2" data-toggle="modal">Jonas Gwapo</a></p>
+          </div>
+          
         </div>
       </div>
     </div>
+
   </div>
+  <!-- LEFT BOX END-->
 
-</div><!-- Teacher and Course Subject END-->
+  <!-- RIGHT BOX -->
+  <div class="col-12 col-md-7 ml-md-3">
+    <div class="row mt-3 mt-md-0"><!-- School Ann Header -->
+    <div class="col-10 col-md-5 py-2 rounded-top" style="background-image: linear-gradient(#32C275, #1CBB66);">
+      <p class="m-auto text-white"> Class Announcements </p>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12" style="border-bottom: 1px solid white;">
+    </div>
+    </div>
 
-<!-- Student members  -->
-<h1 class="fontRoboto mt-3 text-center"> Students </h1>
-<div class="row">
-  <div class="col-md-3">
-    <div class="card mb-4" style="box-shadow: 2px 2px 8px;">
-      <div class="container-fluid p-3 studentCards">
-        <img src="/img/homepage_images/Boy.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 2px;">
+    <!-- POST AN ANNOUNCEMENT FORM -->
+    <div class="row">
+      <div class="col-12 col-md-12 mt-3 pb-2 rounded-top bg-light py-3">
+        <form>
+          <textarea class="form-control" placeholder="Hello teacher, post some announcements. . ."></textarea>
+
+          <input type="submit" class="btn btn-primary mt-2 ml-auto d-block" value="Post">
+        </form>
       </div>
-      <div class="card-body">
-        <p class="card-text text-center"> Romeo X. Yapzor </p>
-        <p class="card-text text-center">Bachelor of Science in Information Communication Technology</p>
-        <div class="d-flex justify-content-between align-items-center">      
-            <a href="/studenthome" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Profile</a>      
+    </div>
+    <!-- POST AN ANNOUNCEMENT FORM END-->
+
+    <!-- ANNOUNCEMENTs -->
+    <div class="row">
+      <div class="col-12 col-md-12 mt-3 pb-2 rounded-top bg-light">
+        <div class="row">
+        <div class="col-2 col-md-1 mt-2">
+          <img src="/img/homepage_images/Boy2.jpg" class="rounded-circle postByImg" width="50px" style="box-shadow: 0px 0px 5px;" /> 
         </div>
+        <div class="col-10 col-md-11 mt-2">
+          <p class="m-0 text-muted"> Posted by:  Teacher Alyana </p>
+          <p class="m-0 text-muted"> October 31, 2018 9:00AM </p>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-12 mt-4">
+          <h5>Title of Announcement</h5>
+          <p class="preserveLineBreaks"> Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- ANNOUNCEMENTs -->
+      <center> <p class="mt-5" style="color:#676767"> You have seen all the posts! </p></center>
+
+  </div>
+  <!-- RIGHT BOX END-->
+</div>
+
+
+<!-- VIEW TEACHER MODAL -->
+<div class="modal fade" id="teacherModal" tabindex="-1" role="dialog" aria-labelledby="teacherModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modalTeacher" role="document">
+      <div class="modal-content rounded-0">
+
+        <div class="row">
+          <div class="col-12">
+            <img src="/img/homepage_images/Boy2.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 8px; margin-top: -70px;">
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-12">
+            <p class="text-center"> Teacher Alyana</p>    
+            <p class="text-center"> Contact No.: +6392828177</p>
+            <p class="text-center"> Email: teach@gmail.com</p>
+
+            <p class="text-center"> <a href="/home" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+<!-- VIEW TEACHER MODAL END-->
 
-  <div class="col-md-3">
-    <div class="card mb-4" style="box-shadow: 2px 2px 8px;">
-      <div class="container-fluid p-3 studentCards">
-        <img src="/img/homepage_images/Girl.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 2px;">
-      </div>
-      <div class="card-body">
-        <p class="card-text text-center"> Romeo X. Yapzor </p>
-        <p class="card-text text-center">Bachelor of Science in Information Communication Technology</p>
-        <div class="d-flex justify-content-between align-items-center">      
-            <a href="/studenthome" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Profile</a>      
+<!-- VIEW TEACHER MODAL -->
+<div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modalViewProfile" role="document">
+      <div class="modal-content rounded-0">
+
+        <div class="row">
+          <div class="col-12">
+            <img src="/img/homepage_images/Girl2.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 8px; margin-top: -70px;">
+          </div>
         </div>
+
+        <div class="row mt-2">
+          <div class="col-12">
+            <p class="text-center"> Student Name</p>    
+            <p class="text-center"> Contact No.: +6392828177</p>
+            <p class="text-center"> Email: teach@gmail.com</p>
+
+            <p class="text-center"> <a href="/home" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+<!-- VIEW TEACHER MODAL END-->
 
-  <div class="col-md-3">
-    <div class="card mb-4" style="box-shadow: 2px 2px 8px;">
-      <div class="container-fluid p-3 studentCards">
-        <img src="/img/homepage_images/Boy2.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 2px;">
-      </div>
-      <div class="card-body">
-        <p class="card-text text-center"> Jonax Z. Wat </p>
-        <p class="card-text text-center">Bachelor of Science in Information Communication Technology</p>
-        <div class="d-flex justify-content-between align-items-center">      
-            <a href="/studenthome" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Profile</a>      
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-md-3">
-    <div class="card mb-4" style="box-shadow: 2px 2px 8px;">
-      <div class="container-fluid p-3 studentCards">
-        <img src="/img/homepage_images/Boy2.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 2px;">
-      </div>
-      <div class="card-body">
-        <p class="card-text text-center"> Jonax Z. Wat </p>
-        <p class="card-text text-center">Bachelor of Science in Information Communication Technology</p>
-        <div class="d-flex justify-content-between align-items-center">      
-            <a href="/studenthome" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Profile</a>      
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- ADD A CLASS MODAL -->
+  <div class="modal fade" id="addClassModal" tabindex="-1" role="dialog" aria-labelledby="addClassModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title"> Add a class </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <form method="POST" action="" >
+                  <div class="form-group">
+                    <label> Group #</label>
+                    <input type="text" class="form-control" placeholder="Enter group number">
+                    <label> Course Code </label>
+                    <input type="text" class="form-control" placeholder="Example: ICT 110">
+                    <label> Schedule </label>
+                    <input type="text" class="form-control" placeholder="Example: TTH 10:30 - 12:00">
+                    <label> Units </label>
+                    <input type="text" class="form-control" placeholder="Example: 3.00">
+                  </div>
+                </div>
+                <div class="modal-footer p-0">
+                    <div class="row w-100 m-0">
+                            <div class="col-6 p-0 m-0 border-primary" style="border-right:1px solid;border-bottom:1px solid;">
+                            <button type="submit" class="btn text-primary btn-light w-100">Add Class</button>
+                            </div>
 
-  <div class="col-md-3">
-    <div class="card mb-4" style="box-shadow: 2px 2px 8px;">
-      <div class="container-fluid p-3 studentCards">
-        <img src="/img/homepage_images/Boy2.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 2px;">
-      </div>
-      <div class="card-body">
-        <p class="card-text text-center"> Jonax Z. Wat </p>
-        <p class="card-text text-center">Bachelor of Science in Information Communication Technology</p>
-        <div class="d-flex justify-content-between align-items-center">      
-            <a href="/studenthome" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Profile</a>      
+                            <div class="col-6 p-0 m-0 border-danger" style="border-left:1px solid;border-bottom:1px solid;">
+                            <button type="button" class="btn text-danger btn-light w-100" data-dismiss="modal">Close</button>
+                            </div>
+                    </div>
+                </div>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
   </div>
-</div> <!-- Student members END -->
+<!-- ADD A CLASS MODAL END-->
+
 
 
 @endsection

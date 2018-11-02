@@ -38,29 +38,31 @@
 			@endif
 
 			<!-- HIGHEST EDUCATIONAL ATTAINMENT -->
-			{!! Form::label('highest_educational_attainment', '1. Highest Educational Attainment',['class' => 'mt-4']) !!}
+			{!! Form::label(null, '1. Highest Educational Attainment') !!}
+			<small class="text-danger">*Required</small>
 			@foreach( $highestEducationalAttainment as $data)
 			@if($data == 'College Graduate')
 				<div>{!!	Form::radio('highest_educational_attainment', $data,null,['id' => 'collegegraduate']) !!} {{$data}}</div>
-				@else
+			@else
 				<div>{!!	Form::radio('highest_educational_attainment', $data) !!} {{$data}}</div>
 			@endif	
 			@endforeach	 
 			<!-- College Program Taken -->
-			{!! Form::label('college_program_taken', '2. College Program Taken') !!}
+			{!! Form::label(null, '2. College Program Taken') !!}
+			<small class="text-danger">*Required</small>
 			@foreach( $collegeProgramTaken as $data)
 			<div>{!!	Form::radio('college_program_taken', $data) !!} {{$data}}</div>
 			@endforeach
 
 
 			<!-- Month and Year Graduated in College -->
-			{!! Form::label('month_year_graduated', '3.  Month and Year Graduated in College') !!}
-			<div>{!! Form::select('month_year_graduated', $monthYearGraduated) !!}</div>
+			{!! Form::label(null, '3.  Month and Year Graduated in College') !!}
+			<small class="text-danger">*Required</small>
+			<div>{!! Form::select('month_year_graduated', $monthYearGraduated,null,['class' => 'selectClass']) !!}</div>
 
 			<!-- Academic Awards received in College. -->
-			{!! Form::label('academic_awards_received', '4.  Academic Awards received in College') !!}
+			{!! Form::label(null, '4.  Academic Awards received in College') !!}
 			<div>{!! Form::select('academic_awards_received', $academicAwardsreceived) !!}</div>
-
 			<!-- Other Awards received in College. -->
 			{!! Form::label('other_awards', '4.1  Other Awards received in College.') !!}
 			{!! Form::text('other_awards', null, ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -69,7 +71,7 @@
 					<p>(Please indicate the year the test was taken)</p>
 			{!! Form::text('professional_examinations_passed', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonOne" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)" disabled="disabled">Next</button>
 		</div> 
 		<!-- END FIRST PAGE -->
 
@@ -86,37 +88,39 @@
 				</div>
 			</div> 
 			
-
-
 														<!-- Educational Background (Further Studies) -->
 			<h4>Educational Background (Further Studies)</h4>
 
 			<!-- MA/MS/PhD program pursued/finished * -->
-			{!! Form::label('program_pursued', '1.1  MA/MS/PhD program pursued/finished *.') !!}
+			{!! Form::label(null, '1.1  MA/MS/PhD program pursued/finished') !!}
+			<small class="text-danger">*Required</small>
 			{!! Form::text('program_pursued', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
 			<!--  Name of Graduate School -->
-			{!! Form::label('name_of_graduate_school', '1.2  Name of Graduate School *') !!}
+			{!! Form::label(null, '1.2  Name of Graduate School') !!}
+			<small class="text-danger">*Required</small>
 			{!! Form::text('name_of_graduate_school', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
 			<!-- Address of Graduate School *. -->
-			{!! Form::label('address_of_graduate_school', '1.3  Address of Graduate School *') !!}
+			{!! Form::label(null, '1.3  Address of Graduate School') !!}
+			<small class="text-danger">*Required</small>
 			{!! Form::text('address_of_graduate_school', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
 			<!-- What made you pursue advance studies? * -->
 			{!! Form::label(null, ' 1.4 What made you pursue advance studies?') !!}
+			<small class="text-danger">*Required</small>
 			@foreach( $pursueAdvanceStudies as $data)
-			@if($data == 'Iba pa:')
-			<div>{!! Form::checkbox(null, $data,isset($advancestudies_fm) ? $advancestudies_fm : '') !!} {{$data}}
+			<!-- @if($data == 'Iba pa:')
+			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : '') !!} {{$data}}
 			{!! Form::text('advance_studies[]',null,null, ['class' => 'form-control']) !!}</div>
-			@else
+			@else -->
 			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
-			@endif
-			@endforeach
+			<!-- @endif
+			@endforeach -->
 			
 			
-			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(3)">Next</button>
+			<button type="button" class="btn btn-sm btn-outline-danger mt-3 " onclick="showPage(getPreviousPage())">Previous</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTwo" onclick="showPage(3)" disabled="disabled">Next</button>
 		</div> 
 		<!-- END SECOND PAGE -->
 
@@ -134,12 +138,13 @@
 				</div> 
 				<!--  Are you presently employed? * -->
 				{!! Form::label(null, '6. Are you presently employed?') !!}
+				<small class="text-danger">*Required</small>
 				@foreach(  $presentlyEmployed as $data)
 				<div>{!!	Form::radio('is_presently_employed', $data,null,['class' => 'isEmployed']) !!} {{$data}}</div>
 				@endforeach
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(isEmployed())">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonThree" onclick="showPage(isEmployed())">Next</button>
 		</div> 
 		<!-- END THIRD PAGE -->
 
@@ -159,41 +164,48 @@
 
 										<!-- YES EMPLOYED DATA -->
 			<!--   In what industry are you currently working? * -->
-			{!! Form::label('industry_currently_working', '7.  In what industry are you currently working? ') !!}
+			{!! Form::label(null, '7.  In what industry are you currently working? ') !!}
+			<small class="text-danger">*Required</small>
 			@foreach(  $industryCurrentlyWorking as $data)
 			<div>{!!	Form::radio('industry_currently_working', $data) !!} {{$data}}</div>
 			@endforeach
 
 			<!--   Please indicate your job level. * -->
-			{!! Form::label('job_level', '8. Please indicate your job level. ') !!}
+			{!! Form::label('job_level', '8. Please indicate your job level') !!}
+			<small class="text-danger">*Required</small>
 			@foreach(  $jobLevel as $data)
 			<div>{!!	Form::radio('job_level', $data) !!} {{$data}}</div>
 			@endforeach
 
 			<!-- What is your present job position?. -->
-			{!! Form::label('present_job_position', '9.  What is your present job position?') !!}
+			{!! Form::label(null, '9.  What is your present job position?') !!}
+			<small class="text-danger">*Required</small>
 			{!! Form::text('present_job_position', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
 			<!-- If your current job is NOT related to your degree, please explain why. -->
-			{!! Form::label('job_not_related_to_degree', '10.  If your current job is NOT related to your degree, please explain why.') !!}
+			{!! Form::label(null, '10.  If your current job is NOT related to your degree, please explain why') !!}
 			{!! Form::text('job_not_related_to_degree', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
 			<!--  How many months have you been employed in your present job?  -->
-			{!! Form::label('months_employed', '11.  How many months have you been employed in your present job?  ') !!}
+			{!! Form::label(null, '11.  How many months have you been employed in your present job?') !!}
+			<small class="text-danger">*Required</small>
 			@foreach(  $monthsEmployed as $data)
 			<div>{!!	Form::radio('months_employed', $data) !!} {{$data}}</div>
 			@endforeach
 
 			<!-- Name of your Present Company or Organization  -->
-			{!! Form::label('name_of_company', '12.  Name of your Present Company or Organization ') !!}
+			{!! Form::label(null, '12.  Name of your Present Company or Organization ') !!}
+			<small class="text-danger">*Required</small>
 			{!! Form::text('name_of_company', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
 			<!-- Address of your Present Company or Organization *. -->
-			{!! Form::label('address_of_company', '12.1  Address of your Present Company or Organization') !!}
+			{!! Form::label(null, '12.1  Address of your Present Company or Organization') !!}
+			<small class="text-danger">*Required</small>
 			{!! Form::text('address_of_company', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
 			<!--  Is the job you have now, your first job after college? -->
-			{!! Form::label('is_first_job', '13.  Is the job you have now, your first job after college?') !!}
+			{!! Form::label(null, '13.  Is the job you have now, your first job after college?') !!}
+			<small class="text-danger">*Required</small>
 			@foreach(  $isFirstJobAfterCollege as $data)
 			<div>
 			{!!	Form::radio('is_first_job', $data,null,['class' => 'yesNo']) !!} {{$data}}
@@ -201,7 +213,7 @@
 			@endforeach
 
 			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(yesNo())">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFour" onclick="showPage(yesNo())">Next</button>
 	
 		</div>
 	<!-- END FOURTH PAGE -->
@@ -221,7 +233,8 @@
 			<!-- YES -->
 			<h2>YES</h2>
 			<!-- 23. What are your reason(s) for staying on the job? You may choose more than one answer. * -->
-			{!! Form::label('reasonsYes', '14. What are your reason(s) for staying on the job? You may choose more than one answer. *') !!}
+			{!! Form::label(null, '14. What are your reason(s) for staying on the job? You may choose more than one answer') !!}
+			<small class="text-danger">*Required</small>
 			@foreach( $reasonYes as $data)
 			<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm: null) !!} {{$data}}</div>
 			@endforeach
@@ -229,7 +242,7 @@
 			<!-- End of YES -->
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(10)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFive" onclick="showPage(10)">Next</button>
 		</div> 
 	<!-- END FIFTH PAGE -->
 	<!-- SIXTH PAGE -->
@@ -253,7 +266,7 @@
 			@endforeach
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(9)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
 		</div> 
 	<!-- END SIXTH PAGE -->
 	<!-- SEVENTH PAGE -->
@@ -277,7 +290,7 @@
 				@endforeach
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(9)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)">Next</button>
 		</div> 
 	<!-- END SEVENTH PAGE -->
 	<!-- EIGHTH PAGE -->
@@ -301,7 +314,7 @@
 				@endforeach
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(11)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonEight" onclick="showPage(11)">Next</button>
 		</div> 
 	<!-- END EIGHTH PAGE -->
 	<!-- NINTH PAGE -->
@@ -332,7 +345,7 @@
 				<h2>End of NO</h2>
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(10)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonNine" onclick="showPage(10)">Next</button>
 		</div> 
 	<!-- END NINTH PAGE -->
 	<!-- TENTH PAGE -->
@@ -348,29 +361,33 @@
 					</div>
 				</div> 
 					<!--  How long did it take you to land on your first job after graduating from college?  -->
-			{!! Form::label('monthsEmployedfirstjobAfterGraduate', '18. How long did it take you to land on your first job after graduating from college? ') !!}
+			{!! Form::label(null, '18. How long did it take you to land on your first job after graduating from college? ') !!}
+			<small class="text-danger">*Required</small>
 			@foreach(  $monthsEmployedfirstjobAfterGraduate as $data)
 			<div>{!!	Form::radio('monthsEmployedfirstjobAfterGraduate', $data) !!} {{$data}}</div>
 			@endforeach
 
 			<!-- What type of job roles have you experienced since you graduated from college? You may choose more than one answer. * -->
-			{!! Form::label('jobRolesExperienced', '19. What type of job roles have you experienced since you graduated from college? You may choose more than one answer. *') !!}
+			{!! Form::label(null, '19. What type of job roles have you experienced since you graduated from college? You may choose more than one answer') !!}
+			<small class="text-danger">*Required</small>
 			@foreach( $jobRolesExperienced as $data)
 			<div>{!! Form::checkbox('jobRolesExperienced[]', $data,isset($jobRolesExperienced_fm) ? $jobRolesExperienced_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 			<!--  What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer. -->
-			{!! Form::label('conceptsLearned', '20.What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer.') !!}
+			{!! Form::label('conceptsLearned', '20.What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer') !!}
+			<small class="text-danger">*Required</small>
 			@foreach( $conceptsLearned as $data)
 			<div>{!! Form::checkbox('conceptsLearned[]', $data, isset($conceptsLearned_fm) ? $conceptsLearned_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 			<!-- What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) . -->
-			{!! Form::label('programmingLanguages', '21.   What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) ') !!}
+			{!! Form::label('programmingLanguages', '21.   What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc) ') !!}
+			<small class="text-danger">*Required</small>
 			{!! Form::text('programmingLanguages', null, ['class' => 'form-control']) !!}
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3" onclick="showPage(11)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTen" onclick="showPage(11)">Next</button>
 		</div> 
 	<!-- END TENTH PAGE -->
 
@@ -391,6 +408,7 @@
 
 			<!-- Please recall your reasons for choosing your undergraduate course. You may choose more than one answer.  -->
 			{!! Form::label('reasonsUndergraduateCourse', '22. Please recall your reasons for choosing your undergraduate course. You may choose more than one answer. ') !!}
+			<small class="text-danger">*Required</small>
 			@foreach( $reasonsUndergraduateCourse as $data)
 			<div>{!! Form::checkbox('reasonsUndergraduateCourse[]',$data,isset($reasonsUndergraduateCourse_fm) ? $reasonsUndergraduateCourse_fm: null) !!} {{$data}}</div>
 			@endforeach
@@ -398,169 +416,173 @@
 
 			<!-- Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes: -->
 			{!! Form::label('name', '23.  Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes ') !!}
+			<small class="text-danger">*Required</small>
 			<!-- Knowledge for Solving Computing Problems -->
-			<div><strong style="color:#3B666E;">Knowledge for Solving Computing Problems</strong></div>
+			<div><strong style="color:#3B666E;">Knowledge for Solving Computing Problems</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('knowledge_for_solving_computing_problems', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Problem Analysis -->
-			<div><strong style="color:#3B666E;">Problem Analysis</strong></div>
+			<div><strong style="color:#3B666E;">Problem Analysis</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('problem_analysis', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Design / Development of Solutions -->
-			<div><strong style="color:#3B666E;">Design / Development of Solutions</strong></div>
+			<div><strong style="color:#3B666E;">Design / Development of Solutions</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('development_of_solutions', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Modern Tool Usage -->
-			<div><strong style="color:#3B666E;">Modern Tool Usage</strong></div>
+			<div><strong style="color:#3B666E;">Modern Tool Usage</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('modern_tool_usage', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Individual and Team Work -->
-			<div><strong style="color:#3B666E;">Individual and Team Work</strong></div>
+			<div><strong style="color:#3B666E;">Individual and Team Work</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('individual_and_team_work', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Communication -->
-			<div><strong style="color:#3B666E;">Communication</strong></div>
+			<div><strong style="color:#3B666E;">Communication</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('communication', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Computing Professionalism and Society -->
-			<div><strong style="color:#3B666E;">Computing Professionalism and Society</strong></div>
+			<div><strong style="color:#3B666E;">Computing Professionalism and Society</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('computing_professionalism_and_society', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Ethics -->
-			<div><strong style="color:#3B666E;">Ethics</strong></div>
+			<div><strong style="color:#3B666E;">Ethics</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('ethics', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 			<!-- Life-long Learning -->
-			<div><strong style="color:#3B666E;">Life-long Learning</strong></div>
+			<div><strong style="color:#3B666E;">Life-long Learning</strong><strong class="text-danger"> *</strong></div>
 			Unacceptable
 			@foreach(  $rate as $data)
 			{!!	Form::radio('lifelong_learning', $data) !!} {{$data}}
 			@endforeach
 			Outstanding
 
-			<br>
+			<br><br>
 			<!-- How relevant was your studying in USC in your current career in terms of:-->
-			{!! Form::label('name', '24. How relevant was your studying in USC in your current career in terms of: ') !!}
+			{!! Form::label(null, '24. How relevant was your studying in USC in your current career in terms of: ') !!}
+			<small class="text-danger">*Required</small>
 			<!-- Knowledge / Competencies -->
-			<div><strong style="color:#3B666E;">Knowledge / Competencies</strong></div>
+			<div><strong style="color:#3B666E;">Knowledge / Competencies</strong><strong class="text-danger"> *</strong></div>
 			Not Relevant
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('knowledge_competencies', $data) !!} {{$data}}
 			@endforeach
 			Very Relevant
 			<!-- Personal Character and Values -->
-			<div><strong style="color:#3B666E;">Personal Character and Values</strong></div>
+			<div><strong style="color:#3B666E;">Personal Character and Values</strong><strong class="text-danger"> *</strong></div>
 			Not Relevant
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('personal_character_and_values', $data) !!} {{$data}}
 			@endforeach
 			Very Relevant
 			<!-- Community Involvement -->
-			<div><strong style="color:#3B666E;">Community Involvement</strong></div>
+			<div><strong style="color:#3B666E;">Community Involvement</strong><strong class="text-danger"> *</strong></div>
 			Not Relevant
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('community_involvement', $data) !!} {{$data}}
 			@endforeach
 			Very Relevant
-			<br>
+			<br><br>	
 			<!-- How relevant is your undergraduate program/course to your current job? -->
-			{!! Form::label('relevant_undergraduate_program_course_to_current_job', '11.1  How relevant is your undergraduate program/course to your current job? ') !!}
+			{!! Form::label(null, '25.  How relevant is your undergraduate program/course to your current job? ') !!}
+			<small class="text-danger">*Required</small>
 			<br>	Not Relevant
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('relevant_undergraduate_program_course_to_current_job', $data) !!} {{$data}}
 			@endforeach
 			Very Relevant
-
+			<br><br>
 			<!-- In retrospect during your time as a USC student, please rate the following facets in terms of its strength.  -->
-			{!! Form::label(null, '25. In retrospect during your time as a USC student, please rate the following facets in terms of its strength.  ') !!}
+			{!! Form::label(null, '26. In retrospect during your time as a USC student, please rate the following facets in terms of its strength.  ') !!}
 			<!-- Undergraduate course / curriculum-->
-			<div><strong style="color:#3B666E;">Undergraduate course / curriculum</strong></div>
+			<div><strong style="color:#3B666E;">Undergraduate course / curriculum</strong><strong class="text-danger"> *</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('curriculum', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Student Workload-->
-			<div><strong style="color:#3B666E;"> Student Workload</strong></div>
+			<div><strong style="color:#3B666E;"> Student Workload</strong><strong class="text-danger"> *</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('workload', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Facilities-->
-			<div><strong style="color:#3B666E;">Facilities</strong></div>
+			<div><strong style="color:#3B666E;">Facilities</strong><strong class="text-danger"> *</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('facilities', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!--Teaching Quality-->
-			<div><strong style="color:#3B666E;">Teaching Quality</strong></div>
+			<div><strong style="color:#3B666E;">Teaching Quality</strong><strong class="text-danger"> *</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('teaching', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Research Quality-->
-			<div><strong style="color:#3B666E;">Research Quality</strong></div>
+			<div><strong style="color:#3B666E;">Research Quality</strong><strong class="text-danger"> *</strong></div>
 			Weak 
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('research', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Labor Market Relevance-->
-			<div><strong style="color:#3B666E;">Labor Market Relevance</strong></div>
+			<div><strong style="color:#3B666E;">Labor Market Relevance</strong><strong class="text-danger"> *</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('labor_market_relevance', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- OJT or Internship Hands on Experience-->
-			<div><strong style="color:#3B666E;">OJT or Internship Hands on Experience</strong></div>
+			<div><strong style="color:#3B666E;">OJT or Internship Hands on Experience</strong><strong class="text-danger"> *</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('OJT', $data) !!} {{$data}}
 			@endforeach
 			Strong
 			<!-- Social and Community Involvement-->
-			<div><strong style="color:#3B666E;">Social and Community Involvement</strong></div>
+			<div><strong style="color:#3B666E;">Social and Community Involvement</strong><strong class="text-danger"> *</strong></div>
 			Weak
 			@foreach(  $ratev2 as $data)
 			{!!	Form::radio('social_and_community_involvement', $data) !!} {{$data}}
 			@endforeach
 			Strong
-
+			<br><br>
 			<!--Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.. -->
-			{!! Form::label('suggestions', '26. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals..) ') !!}
+			{!! Form::label(null, '27. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals..) ') !!}
+			<small class="text-danger">*Required</small>
 			{!! Form::text('suggestions', null, ['class' => 'form-control mt-3']) !!}
 
 
-			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-			<button class="btn btn-sm mt-3 {{ $form->id ? 'btn-outline-info' : 'btn-outline-success' }}">
+			<button type="button" class="btn btn-sm btn-outline-danger mt-3 " onclick="showPage(getPreviousPage())">Previous</button>
+			<button class="btn btn-sm mt-3 {{ $form->id ? 'btn-outline-info' : 'btn-outline-success' }} nextButtonEleven">
 						{{ $form->id ? 'Update' : 'Submit' }}
 			</button>
 	</div> 
