@@ -6,12 +6,6 @@
 
 @section('content')
 
-<div class="row">
-  <div class="alert alert-danger" role="alert">
-  Setup your alumni details now to avoid feature restrictions in the website. <a href="{{ route('alumnus.form') }}">Click here!</a>
-  </div>
-</div>
-
 <!-- NEW -->
 <div class="row fontRoboto mb-5">
 
@@ -43,7 +37,7 @@
   <div class="col-md-8 p-4 pt-5 align-self-start" style="background-color: white;">
     <div class="row">
       <div class="col-md-5">
-        <h5 class="text-muted"> Description <a href="#descModal" data-toggle="modal"> <i class="far fa-edit text-muted"></i> </a></h5>
+        <h5 class="text-muted" style="font-weight: ;"> Description <a href="#descModal" data-toggle="modal"> <i class="far fa-edit text-muted"></i> </a></h5>
       </div>
     </div>
     <div class="row mt-1">
@@ -241,4 +235,19 @@
 
 </div>
 <!-- NEW -->
+
+
 @endsection
+<div class="container-fluid warningAlumnus">
+  <div class="container fontRoboto">
+    <div class="row">
+      <div class="col-12 py-5">
+        <center>
+        <label>Setup your alumni details now to avoid feature restrictions in the website.</label>
+        <a class="btn clickHereBtn align-baseline p-3 px-4" href="{{ route('alumnus.form') }}">Click here!</a>
+        </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,24 @@
 @endsection
 
 @section('content')
+<!-- TOP BUTTONS  -->
+<div class="row mb-3 fontRoboto">
+  <button class="btn btn-secondary mr-2" data-toggle="modal" data-target="#addClassModal">
+      <i class="fas fa-plus-circle align-baseline"></i> Add new class 
+  </button>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="showClasses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Choose a class
+    </button>
+    <div class="dropdown-menu" aria-labelledby="showClasses">
+      <a class="dropdown-item" href="#">POLSC 12</a>
+      <a class="dropdown-item" href="#">FIL 1</a>
+      <a class="dropdown-item" href="#">SPAN 2</a>
+    </div>
+  </div>
+</div>
+<!-- TOP BUTTONS END -->
 
 <div class="row fontRoboto mb-3">
 
@@ -99,9 +117,10 @@
         </div>
 
       </div>
-      </div>
-      <!-- ANNOUNCEMENTs -->
+    </div>
+    <!-- ANNOUNCEMENTs -->
       <center> <p class="mt-5" style="color:#676767"> You have seen all the posts! </p></center>
+
   </div>
   <!-- RIGHT BOX END-->
 </div>
@@ -158,5 +177,48 @@
     </div>
   </div>
 <!-- VIEW TEACHER MODAL END-->
+
+
+<!-- ADD A CLASS MODAL -->
+  <div class="modal fade" id="addClassModal" tabindex="-1" role="dialog" aria-labelledby="addClassModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title"> Add a class </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <form method="POST" action="" >
+                  <div class="form-group">
+                    <label> Group #</label>
+                    <input type="text" class="form-control" placeholder="Enter group number">
+                    <label> Course Code </label>
+                    <input type="text" class="form-control" placeholder="Example: ICT 110">
+                    <label> Schedule </label>
+                    <input type="text" class="form-control" placeholder="Example: TTH 10:30 - 12:00">
+                    <label> Units </label>
+                    <input type="text" class="form-control" placeholder="Example: 3.00">
+                  </div>
+                </div>
+                <div class="modal-footer p-0">
+                    <div class="row w-100 m-0">
+                            <div class="col-6 p-0 m-0 border-primary" style="border-right:1px solid;border-bottom:1px solid;">
+                            <button type="submit" class="btn text-primary btn-light w-100">Add Class</button>
+                            </div>
+
+                            <div class="col-6 p-0 m-0 border-danger" style="border-left:1px solid;border-bottom:1px solid;">
+                            <button type="button" class="btn text-danger btn-light w-100" data-dismiss="modal">Close</button>
+                            </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+  </div>
+<!-- ADD A CLASS MODAL END-->
+
+
 
 @endsection
