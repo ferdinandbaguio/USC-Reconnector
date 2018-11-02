@@ -28,8 +28,8 @@ class RegisterRequest extends FormRequest
             'lastName' => 'required|alpha_spaces',
             'firstName' => 'required|alpha_spaces',
             'middleName' => 'sometimes|alpha_spaces',
-            'address' => 'required|alpha_spaces',
-            'email' => 'required|email',
+            'address' => 'required',
+            'email' => 'required|email|unique:users,email',
             'contactNo' => 'required|numeric',
             'sex' => 'required',
             'civilStatus' => 'required',
@@ -53,6 +53,7 @@ class RegisterRequest extends FormRequest
             'email.required' => 'Email is Required.',
             
             'email.email' => 'Please use a valid e-mail.',
+            'email.unique' => 'Email already used',
             'contactNo.required' => 'Contact Number is Required.',
             'sex.required' => 'Sex is Required.',
             'civilStatus.required' => 'Civil Status is Required.',

@@ -28,7 +28,7 @@
                                 {!! Form::open(['url' => route('register.submit'), 'method'=>'POST']) !!}
 
 
-                                @json($errors->all())   
+                                <!-- @json($errors->all())    -->
                                 <div class="row mt-4">
                                     <label class="mx-auto {{ $errors->has('userType') ? 'is-invalid' : '' }}"> Register as: </label>
                                     {!! Form::select('userType',[
