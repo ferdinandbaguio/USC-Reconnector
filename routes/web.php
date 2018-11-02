@@ -39,7 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
         
         
-
+        Route::get('/deleteSkill/{id}','StudentController@destroySkill');
+        Route::get('/deleteAchv/{id}','StudentController@destroyAchv');
     });
     // Alumnus
     Route::group(['middleware' => 'alumnus'], function () {  
