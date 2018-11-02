@@ -29,7 +29,7 @@ $(function() {
         stroke: '#333'
       }
     },
-    markers: [
+    /* markers: [
       {
         latLng: [1.3, 103.8],
         name: 'Singapore : 12 Alumni'
@@ -58,7 +58,7 @@ $(function() {
         latLng: [25.00, 54.00],
         name: 'UAE : 9 Alumni',
       }
-    ]
+    ] */
   });
 
   $(function() {
