@@ -19,7 +19,7 @@ class CreateCountriesTable extends Migration
             $table->string('code');
             $table->string('flag')->nullable();
             $table->string('name');
-            $table->string('value');
+            $table->integer('value')->default(0);
 
             $table->timestamps();
             $table->softDeletes();

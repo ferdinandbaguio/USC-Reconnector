@@ -94,6 +94,7 @@ class SchoolMgmtController extends Controller
         $request = $request->all();
         // Update Group Class
             $gc['id'] = $request['id'];
+            $gc['room'] = $request['room'];
             $gc['status'] = $request['status'];
             $gc['subject_id'] = $request['subject_id'];
             $gc['teacher_id'] = $request['teacher_id'];

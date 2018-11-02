@@ -1,39 +1,13 @@
-$(document).ready( function() {
+$(document).ready(function() {
+  var obj = {
+    flag: country_flag,
+    ctry: country_name,
+    code: country_code,
+  };
+  $('#countryField').val(JSON.stringify(obj));
+});
 
-  function isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
-}
-  // Dynamic Data
-  var obj = {"o1": country_flag,"o2": country_name,"o3": code_value};
-  console.log(obj);
-
-  var n = 1;
-  var percentage = 0;
-
-  $("button#load").click(function(){
-    for(var i = n;n <= i+4;n++){
-      if(isEmpty(obj)) {
-          i=0;
-        }
-      else{
-        percentage = Math.floor((Math.random() * 100) + 1);
-        $('tbody').append("<tr><td><img class='m-r-10' src="+obj["o1"][n]+" />"+obj["o2"][n]+"</td><td>"+obj["o3"][country_code[n]]+"</td><td><div class='progress'><div class='progress-bar progress-bar-success' role='progressbar' style='width:"+percentage+"%; height:5px;' aria-valuenow='52' aria-valuemin='0' aria-valuemax='100'></div></div>"+percentage+"%</td></tr>");
-      }
-    }
-  });
-
-  for(var ii = 1;ii <= 175;ii++){
-    percentage = Math.floor((Math.random() * 27) + 1);
-    $('tbody').append("<tr><td><img class='m-r-10' src="+obj["o1"][ii]+" />"+obj["o2"][ii]+"</td><td>"+obj["o3"][country_code[ii]]+"</td><td><div class='progress'><div class='progress-bar progress-bar-success' role='progressbar' style='width:"+percentage+"%; height:5px;' aria-valuenow='52' aria-valuemin='0' aria-valuemax='100'></div></div>"+percentage+"%</td></tr>");
-  }
- 
-}); 
 $(function() {
-
   $('#world-map').vectorMap({
     map: 'world_mill_en',
     backgroundColor: 'SkyBlue',
@@ -55,7 +29,7 @@ $(function() {
         stroke: '#333'
       }
     },
-    markers: [
+    /* markers: [
       {
         latLng: [1.3, 103.8],
         name: 'Singapore : 12 Alumni'
@@ -84,7 +58,7 @@ $(function() {
         latLng: [25.00, 54.00],
         name: 'UAE : 9 Alumni',
       }
-    ]
+    ] */
   });
 
   $(function() {

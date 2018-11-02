@@ -12,7 +12,8 @@ class Occupation extends Model
 
 	protected $fillable = [
         'title',
-        'address',
+        'area_id',
+        'country_id',
         'salaryRangeOne',
         'salaryRangeTwo',
         'jobStart',
@@ -29,5 +30,15 @@ class Occupation extends Model
     public function company()
     {
     	return $this->belongsTo('App\Models\Company');
+    }
+
+    public function area()
+    {
+    	return $this->belongsTo('App\Models\Area');
+    }
+
+    public function country()
+    {
+    	return $this->belongsTo('App\Models\Country');
     }
 }

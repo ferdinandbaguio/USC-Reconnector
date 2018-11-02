@@ -57,8 +57,11 @@
 		<div class="row mt-1">
 			
 		@foreach($skills as $row)	
-			<div class="col-md-12">
-				<p class="m-0">{{$row->skillName}}</p>
+			<div class="col-md-12 mt-2">					
+				<p class="m-0">{{$row->skillName}}
+					<a href="{{URL::to('/deleteSkill/'.$row->id) }}" class="text-danger deleteSkillHolder" onclick="return confirm('Are you sure you want to delete {{$row->skillName}}?');"><i class="far fa-times-circle"></i></a>
+				</p>											
+								
 				<div class="progress">
 				  <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="{{$row->skillPercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$row->skillPercent}}%"> {{$row->skillPercent}}% </div>
 				</div>
@@ -79,7 +82,11 @@
 		<div class="row mt-1">
 			<div class="col-md-12">
 				@foreach($achievements as $row)
-				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) </p>
+				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) 
+
+					<a href="{{URL::to('/deleteAchv/'.$row->id) }}" class="text-danger deleteAchvHolder" onclick="return confirm('Are you sure you want to delete {{$row->achTitle}}?');"><i class="far fa-times-circle"></i></a>
+				</p>
+				
 				@endforeach
 			</div>
 			<div class="col-md-12 mt-2 achvBtnHolder">
@@ -89,22 +96,6 @@
 			</div>
 
 			
-		</div>
-
-		<div class="row mt-5">
-			<div class="col-md-5">
-				<h5 class="font-weight-bold text-muted"> Most recent courses taken </h5>
-			</div>
-		</div>
-		<div class="row mt-1">
-			<div class="col-md-5">
-				<ul class="list-group list-group-flush">
-				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
-				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
-				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
-				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
-				</ul>
-			</div>
 		</div>
 
 	</div>
@@ -142,23 +133,22 @@
 	    <div class="modal-content">
 
 	      <div class="modal-body mt-4">
-	        <form method="POST" action="{{route('student.skill.add')}}">
+	        <form method="POST" action="{{route('student.skill.add')}}" id="addSkillForm">
 	        	{{csrf_field()}}
 	        	<div class="form-group">
 	        		<label><i class="fas fa-football-ball" style="color: #3CAEC1"></i> Title of Skill</label>
-	        		<input type="text" name="id" value="{{Auth::user()->id}}" hidden="">
-	        		<input type="text" name="skillName" class="form-control" placeholder="Skill Title">
+	        		<input type="text" name="skillName" class="form-control" placeholder="Skill Title" onkeyup="valCheck()" required>
 	        	</div>
 	        	<div class="form-group">
 	        		<label>Rate your skill</label>
 	        		<center><output id="rangeValue">50</output>%</center>
-	        		<input type="range" name="skillPercent" min="1" max="100" id="range" value="50" oninput="rangeValue.value = range.value">	        	
+	        		<input type="range" name="skillPercent" min="1" max="100" id="range" value="50" oninput="rangeValue.value = range.value" required>	        	
 	        	</div>
 	        
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn addSkillBtn">
+	        <button type="submit" class="btn addSkillBtn" id="addSkillBtnF">
 				<i class="fas fa-plus-circle"></i> Add Skill
 			</button>
 			</form>
@@ -175,21 +165,21 @@
 	    <div class="modal-content">
 
 	      <div class="modal-body mt-4">
-	        <form method="POST" action="{{route('student.achievement.add')}}">
+	        <form method="POST" action="{{route('student.achievement.add')}}" id="addAchvForm">
 	        	{{csrf_field()}}
 	        	<div class="form-group">
 	        		<label><i class="fas fa-trophy" style="color: #EEEB4D"></i> Title of Achievement</label>
-	        		<input type="text" name="achTitle" class="form-control" placeholder="Achievement Title">
+	        		<input type="text" name="achTitle" class="form-control" placeholder="Achievement Title" required>
 	        	</div>
 	        	<div class="form-group">
 	        		<label>Date Acquired</label>
-	        		<input type="text" name="achYear" class="form-control" placeholder="Example: 2009">
+	        		<input type="text" name="achYear" class="form-control" placeholder="Example: 2009" required>
 	        	</div>
 	        
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn addAchvBtn">
+	        <button type="submit" class="btn addAchvBtn" id="addAchvBtnF">
 				<i class="fas fa-plus-circle"></i> Add achievement
 			</button>
 			</form>

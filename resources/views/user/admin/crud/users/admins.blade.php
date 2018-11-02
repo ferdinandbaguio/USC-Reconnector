@@ -6,17 +6,16 @@
 
 @endsection
 
+@section('title')
+
+Admins
+
+@endsection
+
 @section('content')
-
-<div class="page-heading">
-
-<h1 class="page-title">Admins</h1>
 
 <?php $userType="Admin"; ?>
 
-@include('_inc.messages')
-
-<div class="page-content fade-in-up">
 <div class="ibox">
     <div class="ibox-head">
         <div class="ibox-title text-info">
@@ -109,9 +108,6 @@
         </tbody>
     </table>
     </div>
-</div>
-</div>
-
 </div>
 
 <!-- Show Modal -->

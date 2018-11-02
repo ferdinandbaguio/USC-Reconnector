@@ -1,15 +1,21 @@
 <center>
 <i>{{Form::label('userDetails', '~ Class Details ~')}}</i><br><br>
 
-{{-- Status and ID --}}
+{{-- Status, ID and Room --}}
 <div class="row">
-    <div class="col-md-6 form-group">
+    <div class="col-md-4 form-group">
         <b>{{Form::label('id', 'Class ID')}}</b>
         {{ Form::text('id', null, ['class' => 'form-control input-rounded text-center',
         'id' => 'id', 'disabled']) }}
     </div>
 
-    <div class="col-md-6 form-group">
+    <div class="col-md-4 form-group">
+        <b>{{Form::label('room', 'Room')}}</b>
+        {{ Form::text('room', null, ['class' => 'form-control input-rounded text-center',
+        'id' => 'room', 'disabled']) }}
+    </div>
+
+    <div class="col-md-4 form-group">
         <b>{{Form::label('status', 'Status')}}</b>
         {{ Form::text('status', null, ['class' => 'form-control input-rounded text-center',
         'id' => 'status', 'disabled']) }}

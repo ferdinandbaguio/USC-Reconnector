@@ -6,22 +6,29 @@
 
 @endsection
 
+@section('title')
+
+<small>Students @ </small>
+@if($stdclasses->count() > 0)
+    {{$stdclasses[0]->group_class->room}}: {{$stdclasses[0]->group_class->subject->name}} 
+    <div class="pull-right">
+        <small>Handled By:</small>&nbsp;{{$stdclasses[0]->group_class->teacher->full_name}}
+    </div>
+@else
+<small>Class</small>
+@endif
+
+@endsection
+
 @section('content')
 
-<div class="page-heading">
-
-<h1 class="page-title">Students @ Class</h1>
-
-@include('_inc.messages')
-
-<div class="page-content fade-in-up">
 <div class="ibox">
     <div class="ibox-head">
         <div class="ibox-title text-info">
             Number of Students:<b><i> @if(isset($stdclasses)){{$stdclasses->count()}}@endif</i></b>
         </div>
         <span data-toggle="modal" data-target="#add-student">
-            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Class">
+            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Adding A New Student">
                 Add <i class="ti-plus"></i>                            
             </button>
         </span>
@@ -69,9 +76,6 @@
         </tbody>
     </table>
     </div>
-</div>
-</div>
-
 </div>
 
 <!-- Add Student -->

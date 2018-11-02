@@ -23,7 +23,7 @@
                     <span class="nav-label">Requests</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="/registration">Users</a>
+                        <a href="/registration">Registration</a>
                     </li>
                 </ul>
             </li>
@@ -62,17 +62,17 @@
                     <span class="nav-label">School Management</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="{{ route('Classes') }}">Classes</a>
+                        <a href="{{ route('ShowClasses') }}">Classes</a>
                     </li>
                     <li>
-                        <a href="{{ route('School') }}">S | D | C</a>
+                        <a href="{{ route('ShowSchool') }}">S | D | C</a>
                     </li>
                 </ul>
             </li>
             {{-- Bulletin --}}
             <li>
-                <a href="#"><i class="sidebar-item-icon fa fa-bullhorn"></i>
-                    <span class="nav-label">Bulletin</span><i class="fa fa-angle-left arrow"></i>
+                <a href="{{ route('ShowPosts') }}"><i class="sidebar-item-icon fa fa-bullhorn"></i>
+                    <span class="nav-label">Bulletin</span><i class="fa fa-angle-right arrow"></i>
                 </a>
             </li>
             {{-- Tracking --}}
@@ -83,12 +83,12 @@
                     <li>
                         <a href="{{route('ShowWorld')}}">Worldwide</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{route('ShowUS')}}">United States</a>
                     </li>
                     <li>
                         <a href="{{route('ShowNation')}}">Nationwide</a>
-                    </li>
+                    </li> --}}
                 </ul>             
             </li>
             {{-- Communicate --}}

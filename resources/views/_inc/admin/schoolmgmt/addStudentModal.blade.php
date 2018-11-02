@@ -3,7 +3,7 @@
 <center>
 {{-- List of Students --}}
 <div class="form-group">
-    <b>{{Form::label('teacher', 'Add New Student')}}</b>
+    <b>{{Form::label('teacher', 'Students')}}</b>
     <select class = "form-control input-rounded text-center" name="student_id" required>
         <option disabled selected hidden>Choose Student</option>
         @foreach ($students as $student) 

@@ -6,15 +6,14 @@
 
 @endsection
 
+@section('title')
+
+User Registration
+
+@endsection
+
 @section('content')
 
-<div class="page-heading">
-
-<h1 class="page-title">User Registration</h1>
-
-@include('_inc.messages')
-
-<div class="page-content fade-in-up">
 <div class="ibox">
     <div class="ibox-head">
         @if($users[0]->userStatus == 'Denied')
@@ -119,9 +118,6 @@
         </tbody>
     </table>
     </div>
-</div>
-</div>
-
 </div>
 
 <!-- Edit Modal -->

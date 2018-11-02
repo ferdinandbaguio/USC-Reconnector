@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/extra/main.min.css') }}" />
 </head>
 
-<body class="fixed-navbar">
+<body class="fixed-navbar fixed-layout">
     
     <div class="page-wrapper">
 
@@ -32,7 +32,14 @@
 
         {{-- Content --}}
         <div class="content-wrapper">
+            <div class="page-heading">
+                <h1 class="page-title">
+                    @yield('title')
+                </h1>
+                <hr>
+            </div>
             <div class="page-content fade-in-up">
+                @include('_inc.messages')
                 @yield('content')
             </div>
             <footer class="page-footer">
@@ -45,7 +52,7 @@
     </div>
 
     {{-- Config Panel --}}
-    @include('_inc/admin/config_panel')
+    {{-- @include('_inc/admin/config_panel') --}}
 
     <!-- BEGIN PAGA BACKDROPS-->
     <div class="sidenav-backdrop backdrop"></div>

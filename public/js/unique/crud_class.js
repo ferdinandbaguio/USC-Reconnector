@@ -1,6 +1,7 @@
 $('#show-class').on('show.bs.modal', function(event) {
     var button      = $(event.relatedTarget)
     var id          = button.data('id')
+    var room      = button.data('room')
     var status      = button.data('status')
     var tname       = button.data('tname')
     var tidnum      = button.data('tidnum')
@@ -34,6 +35,7 @@ $('#show-class').on('show.bs.modal', function(event) {
     var modal   = $(this)
 
     modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #room').val(room);
     modal.find('.modal-body #status').val(status);
     modal.find('.modal-body #tname').val(tname);
     modal.find('.modal-body #tidnum').val(tidnum);
@@ -67,6 +69,7 @@ $('#show-class').on('show.bs.modal', function(event) {
 $('#edit-class').on('show.bs.modal', function(event) {
     var button      = $(event.relatedTarget)
     var id          = button.data('id')
+    var room      = button.data('room')
     var status      = button.data('status')
     var tid         = button.data('tid')
     var sid         = button.data('sid')
@@ -92,6 +95,7 @@ $('#edit-class').on('show.bs.modal', function(event) {
     var modal   = $(this)
 
     modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #room').val(room);
     modal.find('.modal-body #status').val(status);
     modal.find('.modal-body #tid').val(tid);
     modal.find('.modal-body #sid').val(sid);
