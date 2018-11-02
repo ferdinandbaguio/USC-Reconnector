@@ -83,12 +83,12 @@
                     <li>
                         <a href="{{route('ShowWorld')}}">Worldwide</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{route('ShowUS')}}">United States</a>
                     </li>
                     <li>
                         <a href="{{route('ShowNation')}}">Nationwide</a>
-                    </li>
+                    </li> --}}
                 </ul>             
             </li>
             {{-- Communicate --}}
