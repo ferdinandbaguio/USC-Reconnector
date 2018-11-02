@@ -272,10 +272,15 @@
   var exist = '{{Session::has('alert')}}';
   var msg2 = '{{Session::get('message')}}';
   var exist2 = '{{Session::has('message')}}';
+  var msg3 = '{{Session::get('changepassword_success')}}';
+  var exist3 = '{{Session::has('changepassword_success')}}'; 
   if(exist){
     alert(msg);
   }else
   if(exist2){
     alert(msg2);
+  }
+  if(exist3){
+    alert(msg3);
   }
 </script>

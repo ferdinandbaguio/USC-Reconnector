@@ -2,6 +2,7 @@
 
 @section('header')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/unique/alumnus/form.css') }}">
+
 @endsection
 <!-- in_array('highest_educational_attainment',$)?'checked':'' ) -->
 @section('content')
@@ -16,7 +17,7 @@
 
 <div class="container-fluid p-0 mb-4">
 
-	
+	@include('_inc.messages')
 	<div class="row">
 		<!-- FIRST PAGE -->
 		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="1">

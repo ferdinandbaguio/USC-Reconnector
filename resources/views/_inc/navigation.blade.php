@@ -32,6 +32,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-left" style="left:0" aria-labelledby="ownerLinkDropdown">
               <a class="dropdown-item" href="/login"><i class="fas fa-cog"></i> Settings </a>
+              <a class="dropdown-item" href="{{ url('authenticate/passwords/changepassword/'.Auth::user()->id) }}"><i class="fas fa-bug"></i> Change Password </a>
               <a class="dropdown-item" href="/login"><i class="fas fa-bug"></i> Report Bugs </a>
           </div>
         </li>

@@ -119,6 +119,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
+
     });
     
 
@@ -133,6 +134,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('registration', 'Admin\UserRegistrationController', 
     ['only' => ['index', 'edit', 'update', 'destroy']]);
 
-   
+
 
 });
+
+Route::get('authenticate/passwords/changepassword/{id}', 'ChangePasswordController@showChangePass')->name('showchangepass');
+Route::patch('authenticate/passwords/changepassword/{id}', 'ChangePasswordController@changePassword')->name('dochangepassword');

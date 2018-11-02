@@ -17,7 +17,7 @@ class RegisterationController extends Controller
     { 
         $validated = $request->validated();
         $validated['idnumber'] = $validated['registeredIdnumber'];
-        $validated['password'] = bcrypt($validated['registeredIdnumber']);
+        $validated['password'] = $validated['registeredIdnumber'];
         $validated['userStatus'] = 'Pending';
         // $validated = array_except($validated, 'register_idnumber');
         User::create($validated);

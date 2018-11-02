@@ -36,7 +36,7 @@
   
   <div class="container-fluid contentContainer">
   <div class="container">
-      @include('_inc.messages')
+      
       @yield('content')
   </div>
   </div>

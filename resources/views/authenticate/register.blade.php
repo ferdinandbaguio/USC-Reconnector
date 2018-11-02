@@ -165,6 +165,5 @@
 
 <script>
 var error = $('.modal .text-danger');
-console.log(error)
 error.closest('.modal').modal('show');
 </script>
