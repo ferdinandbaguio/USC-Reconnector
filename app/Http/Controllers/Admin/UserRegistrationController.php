@@ -24,10 +24,7 @@ class UserRegistrationController extends Controller
         return view('user.admin.requests.registration')->with('users', $users);
     }
 
-    public function edit($id)
-    {
-        //
-    }
+
 
     public function update(Request $request)
     {  

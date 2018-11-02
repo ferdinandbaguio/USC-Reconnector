@@ -49,7 +49,7 @@
 		<div class="row mt-1">
 			<div class="col-md-12">
 				@foreach($achievements as $row)
-				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ( {{$row->achYear}}) </p>
+				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) </p>
 				@endforeach
 			</div>
 			

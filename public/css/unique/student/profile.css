@@ -8,7 +8,6 @@ button:hover{
 
 .contentContainer{
     padding-top:100px;
-
 }
 
 /*
@@ -23,15 +22,18 @@ button:hover{
 .addAchvBtn:hover{
 	padding-right: 20px;
 }
-
 .addSkillBtn{
-    background-color: #3CAEC1;
-    color: white;
-    border-top-right-radius:50px;
-    border-bottom-right-radius:50px;
+  background-color: #3CAEC1;
+  color: white;
+  border-top-right-radius:50px;
+  border-bottom-right-radius:50px;
 }
 .addSkillBtn:hover{
-    padding-right: 20px;
+  padding-right: 20px;
+}
+
+.editDescHolder,.skillBtnHolder,.achvBtnHolder{
+  display: none;
 }
 
 
