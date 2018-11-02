@@ -25,10 +25,10 @@ class RegisterRequest extends FormRequest
     {
         return [
             'register_idnumber' => 'required|numeric',
-            'lastName' => 'required|alpha',
-            'firstName' => 'required|alpha',
-            'middleName' => 'sometimes|required|alpha',
-            'address' => 'required',
+            'lastName' => 'required|alpha_spaces',
+            'firstName' => 'required|alpha_spaces',
+            'middleName' => 'sometimes|alpha_spaces',
+            'address' => 'required|alpha_spaces',
             'email' => 'required|email',
             'contactNo' => 'required|numeric',
             'sex' => 'required',
