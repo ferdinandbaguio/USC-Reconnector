@@ -28,7 +28,6 @@ class UserSkillController extends Controller
     {
         // dd($request->toArray());
         $data = $this->validate($request,[
-            'user_id' => 'nullable',
             'skillName' => 'required',
             'skillPercent' => 'required'
         ]);

@@ -82,8 +82,17 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroySkill($id)
     {
-        //
+        UserSkill::find($id)->delete();
+
+        return redirect()->back();   
+    }
+
+    public function destroyAchv($id)
+    {
+        Achievement::find($id)->delete();
+
+        return redirect()->back();   
     }
 }
