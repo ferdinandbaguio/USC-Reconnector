@@ -58,7 +58,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request = $request->all();
-        
         if(!isset($request['picture'])){
             $pictureMaleValues = ['default_male.png', 
                                 'default_male1.png', 
