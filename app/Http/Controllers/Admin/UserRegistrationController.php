@@ -14,14 +14,13 @@ class UserRegistrationController extends Controller
     {
         $dept_id = Auth::user()->department_id;
         $users = User::where('userStatus', '=', 'Pending')->where('department_id', '=', $dept_id)->get();
-        if(isset($request->status)){
-            $status = $request->status;
-            if($status == 'Denied'){
+        if(isset($request->currentStatus)){
+            if($request->currentStatus == 'Denied'){
                 $users = User::where('userStatus', '=', 'Denied')->get();
-                return view('user.admin.requests.registration')->with('users', $users);
+                return view('user.admin.requests.registration')->with('users', $users)->with('currentStatus', 'Denied');
             }
         }
-        return view('user.admin.requests.registration')->with('users', $users);
+        return view('user.admin.requests.registration')->with('users', $users)->with('currentStatus', 'Pending');
     }
 
 

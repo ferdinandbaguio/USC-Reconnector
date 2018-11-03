@@ -23,7 +23,7 @@
                                     'id' => 'type', 'required'])}}</div>
 
     <div class="col-md-3 form-group">
-        <b>{{ $users[0]->userType }} ID</b>
+        <b>{{ $currentStatus }} ID</b>
         {{ Form::text('id', null, ['class' => 'form-control input-rounded text-center',
         'id' => 'id', 'disabled']) }}
     </div>

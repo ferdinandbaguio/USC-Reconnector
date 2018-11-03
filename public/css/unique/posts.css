@@ -6,6 +6,7 @@
 #carousel-layer{
     padding: 15px;
     overflow: auto;
+    overflow-wrap: normal;
     max-height: 380px;
     border-radius: 5px;
     background: rgb(0, 0, 0, 0.6);
@@ -29,8 +30,8 @@
     padding: 15% 0 0 0;
 }
 #mytext {
-    text-align: justify;
     color: white;
+    text-align: justify;
 }
 .card-img {
     filter: blur(3px);

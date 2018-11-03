@@ -19,8 +19,13 @@ class TrackController extends Controller
         $getCountryValue = Country::select('value')->get();
         $overall = DB::table('countries')->sum('value');
         $topctry = Country::orderBy('value', 'desc')->take(3)->get();
+        if(count($topctry) == 3)
+            $isTop3 = 'Present';
+        else
+            $isTop3 = 'Absent';
         return view('user.admin.tracking.worldwide')->with('countries', $countries)->with('overall', $overall)
-                                                    ->with('topctry', $topctry)->with('getCountryValue', $getCountryValue);
+                                                    ->with('topctry', $topctry)->with('getCountryValue', $getCountryValue)
+                                                    ->with('isTop3', $isTop3);
     } 
     public function loadCountry(Request $request)
     {
