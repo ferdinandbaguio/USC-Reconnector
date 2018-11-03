@@ -15,11 +15,12 @@ class RegisterationController extends Controller
      */
     public function store(RegisterRequest $request)
     { 
+ 
         $validated = $request->validated();
         $validated['idnumber'] = $validated['registeredIdnumber'];
         $validated['password'] = $validated['registeredIdnumber'];
         $validated['userStatus'] = 'Pending';
-        // $validated = array_except($validated, 'register_idnumber');
+        $validated = array_except($validated, 'register_idnumber');
         User::create($validated);
         return redirect()->route('login')->with('message', 'Registeration successful!!');
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
-use App\Models\UserSkill;
+use App\Models\User_Skill;
 use App\Models\Achievement;
 use App\GraduateTracerStudy;
 class AlumnusController extends Controller
@@ -13,7 +13,7 @@ class AlumnusController extends Controller
     public function alumnusProfile()
     {
         $achievements = Achievement::where('user_id',Auth::user()->id)->get();   
-        $skills = UserSkill::where('user_id',Auth::user()->id)->get();
+        $skills = User_Skill::where('user_id',Auth::user()->id)->get();
         return view('user.alumnus.profile', compact('skills','achievements')); 
     }
 

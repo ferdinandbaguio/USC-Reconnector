@@ -22,8 +22,8 @@ class GTSController extends Controller
 
         $validated = $request->validated();
         $validated = $this->removeData($validated);
-    	GraduateTracerStudy::where('id', $id)->update($validated);
-        return redirect()->back();
+        GraduateTracerStudy::where('id', $id)->update($validated);
+       
     }
     
     public function store (GTSRequest $request) {
@@ -40,7 +40,13 @@ class GTSController extends Controller
         $validated = $request->validated();
         
         $validated = $this->removeData($validated);
-    	GraduateTracerStudy::create($validated);
+        GraduateTracerStudy::create($validated);
+        // if($validated[]){
+        //     User::where('id',Auth::user()->id)->update([
+        //         'userStatus'
+        //     ])
+        // }
+        
         return redirect()->back();
     }
 

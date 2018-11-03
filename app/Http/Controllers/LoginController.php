@@ -16,9 +16,10 @@ class LoginController extends Controller
 	public function doLogin(LoginRequest $request)
     {
         $credentials = $request->validated();
-
-        if (Auth::attempt($credentials)) {
+        $auth = Auth::attempt($credentials);
+        if ($auth) {
             // Authentication passed...
+
             if(auth()->user()->userStatus == 'Approved' && auth()->user()->userType != 'Admin'){
                 return redirect(route('home'));
             }else if(auth()->user()->userStatus == 'Approved' && auth()->user()->userType == 'Admin'){
@@ -33,13 +34,15 @@ class LoginController extends Controller
                 // dd("error Denied");
                 return $this->logout()->with('alert','Your access request has been Denied');  
             }else{
-                // dd("error uknown");
-                // return $this->logout()->with('success', ['your message,here']);  
+                dd('uknown');
             }
+
+        }else{
+            dd('Error', $credentials,$auth);
 
         }
 
-        return redirect()->route('login')->withErrors(['password' => 'Incorrect Password']);
+        // return redirect()->route('login')->withErrors(['password' => 'Incorrect Password']);
     }
 
     public function logout()

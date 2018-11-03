@@ -28,20 +28,23 @@
                                 {!! Form::open(['url' => route('register.submit'), 'method'=>'POST']) !!}
 
 
-                                <!-- @json($errors->all())    -->
+                                {{-- <!-- @json($errors->all())    --> --}}
                                 <div class="row mt-4">
-                                    <label class="mx-auto {{ $errors->has('userType') ? 'is-invalid' : '' }}"> Register as: </label>
-                                    {!! Form::select('userType',[
+                                    <label class="mx-auto {{ $errors->has('userType') ? 'is-invalid' : '' }}">
+                                    
+                                    <h5>Register as {!! Form::select('userType',[
                                             'Student' => 'Student',
                                             'Teacher' => 'Teacher',
                                             'Alumnus' => 'Alumni',
                                     ]) !!}
+                                    </h5>
+                                     </label>
                                 </div>
 
                                 <div class="row mt-4">
-                                    <div class="col-md-8 mx-auto {{ $errors->has('register_idnumber') ? 'is-invalid' : '' }}">
+                                    <div class="col-md-8 mx-auto {{ $errors->has('registeredIdnumber') ? 'is-invalid' : '' }}">
                                         {!! Form::label(null, 'USC Student ID Number: ') !!}
-                                        @php  $attr = $errors->has('register_idnumber') ? 'is-invalid' : '' @endphp
+                                        @php  $attr = $errors->has('registeredIdnumber') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('registeredIdnumber',null, ['class' => "form-control {$attr}", 'placeholder' => 'I.D Number']) !!}
                                         @if($errors->has('registeredIdnumber'))
                                             <small class="text-danger">{{ $errors->first('registeredIdnumber') }}</small>
@@ -141,10 +144,11 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="row mt-2">
-                                    <div class="col-md-8 mx-auto">
+                                <div class="row mt-2 {{ $errors->has('birthdate') ? 'is-invalid' : '' }}">
+                                    <div class="col-md-8 mx-auto ">
                                         {!! Form::label(null, 'Birthday : ') !!}
-                                        <div>{!! Form::date('birthdate',null, ['class' => "form-control"]) !!}</div>
+                                        @php  $attr = $errors->has('birthdate') ? 'is-invalid' : '' @endphp
+                                        <div>{!! Form::date('birthdate',null, ['class' => "form-control {$attr}"]) !!}</div>
                                         @if($errors->has('birthdate'))
                                             <small class="text-danger">{{ $errors->first('birthdate') }}</small>
                                         @endif
