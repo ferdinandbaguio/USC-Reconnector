@@ -119,7 +119,7 @@
         <div class="col-md-3">
           <div class="row">
             
-            <label class="display-3 text-white mx-auto counter"><span class="count numCount"> </span></label>
+            <label class="display-3 text-white mx-auto counter"><span class="count numCount"> {{$counter}} </span></label>
           </div>
           <div class="row">
             <div class="col-4 mx-auto pt-3 borderBelowCount">

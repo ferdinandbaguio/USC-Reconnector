@@ -10,7 +10,12 @@ class LoginController extends Controller
 {
 
     public function index(){
-       
+        $user = User::where('userStatus', '=', 'Approved')->get();
+
+        $counter = count($user);
+
+        return view('authenticate.landingpage')->with('counter', $counter)->with('user', $user);
+
         return view('authenticate.landingpage');
     }
 	public function doLogin(LoginRequest $request)
@@ -50,14 +55,6 @@ class LoginController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
     
-
-    public function testing()
-    {
-        $user = DB::table('users')->where('userStatus', 'Approved')->get();
-
-        $counter = count($user);
-
-        return view('/')->with('counter', $counter);
-    }
 }
