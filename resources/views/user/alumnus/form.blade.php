@@ -239,7 +239,7 @@
 			@foreach( $reasonYes as $data)
 			<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm: null) !!} {{$data}}</div>
 			@endforeach
-			{!! Form::text('reasonsYes',null, ['class' => 'form-control']) !!}
+			{!! Form::text('reasonsYes[]',null, ['class' => 'form-control']) !!}
 			<!-- End of YES -->
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
@@ -265,7 +265,7 @@
 			@foreach( $reasonNo as $data)
 			<div>{!! Form::checkbox('reasonsNo[]', $data,isset($reasonsNo_fm) ? $reasonsNo_fm: null) !!} {{$data}}</div>
 			@endforeach
-
+			{!! Form::text('reasonsNo[]',null, ['class' => 'form-control']) !!}	
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
 		</div> 
@@ -341,8 +341,8 @@
 				{!! Form::text('isJobpositionFirstworkAfterCollege',null, ['class' => 'form-control']) !!}
 
 				<!--  Name of the company / organization you first worked in -->
-				{!! Form::label('nameOfCompanyfirstWorkedin', '17. Name of the company / organization you first worked in ') !!}
-				{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
+				{!! Form::label(null, '17. Name of the company / organization you first worked in ') !!}
+				{!! Form::text('firstCompanyworked',null, ['class' => 'form-control']) !!}
 				<h2>End of NO</h2>
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>

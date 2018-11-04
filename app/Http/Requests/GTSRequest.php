@@ -41,7 +41,6 @@ class GTSRequest extends FormRequest
             'industry_currently_working'            => 'required_if:is_presently_employed,Yes',
             'job_level'                             => 'required_if:is_presently_employed,Yes',
             'present_job_position'                  => 'required_if:is_presently_employed,Yes',
-            'job_not_related_to_degree'             => 'required_if:is_presently_employed,Yes',
             'months_employed'                       => 'required_if:is_presently_employed,Yes',
             'name_of_company'                       => 'required_if:is_presently_employed,Yes',
             'address_of_company'                    => 'required_if:is_presently_employed,Yes',
@@ -49,7 +48,7 @@ class GTSRequest extends FormRequest
             'is_first_job'                          => 'required_if:is_presently_employed,Yes',
 
             //Reason YES
-            'reasonsYes'                            => 'required_if:is_first_job,Yes',
+            'reasonsYes'                            => 'sometimes|required_if:is_first_job,Yes',
             //Reason No
             'reasonsNo'                             => 'required_if:is_first_job,No',
             'isFirstJobRelated'                     => 'required_if:is_first_job,No',
@@ -119,7 +118,7 @@ class GTSRequest extends FormRequest
             'is_first_job.required_if'                          => '13. Is the job you have now, your first job after college? is required',
 
             //Reason YES
-            'reasonsYes.required_if'                            => '14. What are your reason(s) for staying on the job? You may choose more than one answer. is required',
+            'reasonsYes.required_if'                            => '14. What are your reason(s) for staying on the job? You may choose more than one answer. (is required)',
             //Reason No
             'reasonsNo.required_if'                             => '14. What were your reason(s) for changing jobs? You may choose more than one answer.  is required',
             'isFirstJobRelated.required_if'                     => '15. Was your first job after college related to your course/program? is required',

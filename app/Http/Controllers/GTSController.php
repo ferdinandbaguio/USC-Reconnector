@@ -39,7 +39,7 @@ class GTSController extends Controller
         $request->reasonUnemployedNow ? $request['reasonUnemployedNow'] = json_encode($request->reasonUnemployedNow) : ''; 
         $request->reasonUnemployedNever ? $request['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
         $validated = $request->validated();
-        dd($validated['nameofCompanyfirstWorkedin']);
+        dd($validated['reasonsYes']);
         $validated = $this->removeData($validated);
         GraduateTracerStudy::create($validated);
         // if($validated[is_presently_employed]){
