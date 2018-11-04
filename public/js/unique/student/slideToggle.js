@@ -54,7 +54,6 @@ $(document).ready(function(){
 		});
 	});
 	
-
 	$('#addAchvBtnF').prop("disabled", true);
 
 
