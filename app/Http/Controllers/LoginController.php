@@ -51,4 +51,13 @@ class LoginController extends Controller
         return redirect()->route('login');
     }
     
+
+    public function testing()
+    {
+        $user = DB::table('users')->where('userStatus', 'Approved')->get();
+
+        $counter = count($user);
+
+        return view('/')->with('counter', $counter);
+    }
 }

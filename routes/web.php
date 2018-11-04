@@ -11,10 +11,10 @@ Route::group(['middleware' => 'guest'], function () {
         Route::post('/login','LoginController@doLogin')->name('login.submit');
         Route::post('/register', 'RegisterationController@store')->name('register.submit');
 
-        
+        Route::get('/', 'LoginController@index')->name('jonas');
 });
         // Logout
-        Route::post('logout', 'LoginController@logout')->name('logout');
+        Route::post('logout', 'LoginController@testing')->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
 

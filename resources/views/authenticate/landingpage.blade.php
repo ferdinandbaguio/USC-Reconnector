@@ -118,7 +118,8 @@
       <div class="row py-5">
         <div class="col-md-3">
           <div class="row">
-            <label class="display-3 text-white mx-auto counter"> <span class="count numCount">1029 </span></label>
+            
+            <label class="display-3 text-white mx-auto counter"><span class="count numCount"> </span></label>
           </div>
           <div class="row">
             <div class="col-4 mx-auto pt-3 borderBelowCount">
