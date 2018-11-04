@@ -251,7 +251,7 @@
 <script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
 
 <!-- Custom scripts  -->
-<script src="/js/unique/student/slideToggle.js"></script>
+<script src="/js/unique/alumnus/slideToggle.js"></script>
 @endsection
 
 <div class="container-fluid warningAlumnus">

@@ -50,7 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/alumnus/communicate', 'user.alumnus.communicate');
         Route::view('/alumnus/form', 'user.alumnus.form');  
 
-        Route::view('/alumnus/maptest', 'user.alumnus.map');        
+        Route::view('/alumnus/maptest', 'user.alumnus.map'); 
+
+        Route::get('/deleteSkill/{id}','AlumnusController@destroySkill');
+        Route::get('/deleteAchv/{id}','AlumnusController@destroyAchv');       
 
     });
    
