@@ -341,7 +341,7 @@
 				{!! Form::text('isJobpositionFirstworkAfterCollege',null, ['class' => 'form-control']) !!}
 
 				<!--  Name of the company / organization you first worked in -->
-				{!! Form::label('nameofCompanyfirstWorkedin', '17. Name of the company / organization you first worked in ') !!}
+				{!! Form::label('nameOfCompanyfirstWorkedin', '17. Name of the company / organization you first worked in ') !!}
 				{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
 				<h2>End of NO</h2>
 
