@@ -72,7 +72,7 @@
 					<p>(Please indicate the year the test was taken)</p>
 			{!! Form::text('professional_examinations_passed', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonOne" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)" >Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonOne" onclick="showPage($('#collegegraduate').is(':checked') ? 3 : 2)" >Next</button>
 		</div> 
 		<!-- END FIRST PAGE -->
 
