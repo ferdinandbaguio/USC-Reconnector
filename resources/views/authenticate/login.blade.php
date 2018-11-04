@@ -22,8 +22,9 @@
                 <div class="container-fluid py-4">
                             <form action="{{route('login.submit')}}" id="loginForm" method="POST">
                             {{ csrf_field() }}
+                            @json($errors->all())
                             <div class="row">
-                                <div class="col-md-8 mx-auto ">
+                                <div class="col-md-8 mx-auto {{ $errors->has('idnumber') ? 'is-invalid' : '' }}">
                                 <label class="m-0"> ID Number:</label>
                                 <input type="text" class="form-control {{ $errors->has('idnumber') ? 'is-invalid' : '' }}" name="idnumber" placeholder="I.D Number" value="{{old('idnumber')}}"> 
                                 @if($errors->has('idnumber'))
@@ -37,10 +38,9 @@
                                 <div class="col-md-8 mx-auto {{ $errors->has('password') ? 'is-invalid' : '' }}">
                                 <label class="m-0"> Password:</label>
                                 <input type="password" class="form-control " name="password" placeholder="Password"> 
+                              
                                 @if($errors->has('password'))
-                                    <div class="invalid-feedback">
-                                    <small class="text-danger">{{ $errors->first('password') }}</small>
-                                    </div>
+                                     <small class="text-danger"> {{$errors->first('password')}} </small>
                                 @endif
                                 </div>
                             </div>

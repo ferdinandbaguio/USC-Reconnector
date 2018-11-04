@@ -22,8 +22,9 @@ class GTSController extends Controller
 
         $validated = $request->validated();
         $validated = $this->removeData($validated);
-    	GraduateTracerStudy::where('id', $id)->update($validated);
-        return redirect()->back();
+        $validated = $this->employementStatus($validated);
+        GraduateTracerStudy::where('id', $id)->update($validated);
+
     }
     
     public function store (GTSRequest $request) {
@@ -38,12 +39,44 @@ class GTSController extends Controller
         $request->reasonUnemployedNow ? $request['reasonUnemployedNow'] = json_encode($request->reasonUnemployedNow) : ''; 
         $request->reasonUnemployedNever ? $request['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
         $validated = $request->validated();
-        
+        dd($validated['nameofCompanyfirstWorkedin']);
         $validated = $this->removeData($validated);
-    	GraduateTracerStudy::create($validated);
+        GraduateTracerStudy::create($validated);
+        // if($validated[is_presently_employed]){
+        //     User::where('id',Auth::user()->id)->update([
+        //         'userStatus'
+        //     ])
+        // }
+        
         return redirect()->back();
     }
+    public function employementStatus($request){
+        $validated = $request;
+        if($validated['is_presently_employed'] == "Yes"){
+            dd("Yes");
+            // User::where('id',Auth::user()->id)->update([
+            //     'employmentStatus' => 'Employed',
+            // ]);
+        }
+                
+        else if($validated['is_presently_employed'] == "No, I'm not employed now"){
+            dd("No, I'm not employed now");
+            // User::where('id',Auth::user()->id)->update([
+            //     'employmentStatus' => 'Unemployed',
+            // ]);
+        }
 
+        else if($validated['is_presently_employed'] == "No, I was never employed"){
+            dd("No, I was never employed");
+            // User::where('id',Auth::user()->id)->update([
+            //     'employmentStatus' => 'Unemployed',
+            // ]);
+        }
+        
+
+
+        return $validated;
+    }
     public function removeData($request)
     {
         $validated = $request;

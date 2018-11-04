@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'registeredIdnumber' =>'required|unique:users,registeredIdnumber',
+            'registeredIdnumber' =>'required|unique:users,idnumber',
             'lastName' => 'required|alpha_spaces',
             'firstName' => 'required|alpha_spaces',
             'middleName' => 'sometimes|alpha_spaces',

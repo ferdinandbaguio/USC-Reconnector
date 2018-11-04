@@ -15,6 +15,7 @@ class RegisterationController extends Controller
      */
     public function store(RegisterRequest $request)
     { 
+ 
         $validated = $request->validated();
         $validated['idnumber'] = $validated['registeredIdnumber'];
         $validated['password'] = $validated['registeredIdnumber'];
