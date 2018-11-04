@@ -131,6 +131,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
         Route::post('/track/load', 'Admin\TrackController@loadCountry')->name('LoadCountry');
+        //Communication
+        Route::view('/admin/chat', 'user.admin.chat')->name('Communication');
+        Route::get('/contacts', 'ContactsController@get');
+        Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+        Route::post('/conversation/send', 'ContactsController@send');
     });
     
 

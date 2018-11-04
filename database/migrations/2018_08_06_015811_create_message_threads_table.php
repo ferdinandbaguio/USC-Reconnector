@@ -17,7 +17,7 @@ class CreateMessageThreadsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('message');
-            $table->boolean('is_seen');
+            $table->boolean('is_seen')->after('to')->default(false);
 
             $table->unsignedInteger('message_id');
             $table->foreign('message_id')->references('id')->on('messages')
