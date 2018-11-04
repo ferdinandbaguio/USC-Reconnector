@@ -257,7 +257,7 @@
 					</div>
 				</div> 
 				<!-- NO -->
-	
+			<h2>NO</h2>
 			<!-- 23.  What were your reason(s) for changing jobs? You may choose more than one answer. -->
 			{!! Form::label('reasonsNo', '14. What were your reason(s) for changing jobs? You may choose more than one answer. ') !!}
 			@foreach( $reasonNo as $data)
@@ -283,7 +283,7 @@
 				</div> 
 												<!-- NOT EMPLOYED NOW DATA -->
 				<!--  Please state the reason(s) why you are not employed now. You may choose more than one answer.  -->
-			
+				<h2>NOT EMPLOYED NOW</h2>
 				{!! Form::label('reasonUnemployedNow', '7. Please state the reason(s) why you are not employed now. You may choose more than one answer. ') !!}
 				@foreach( $reasonUnemployedNow as $data)
 				<div>{!! Form::checkbox('reasonUnemployedNow[]', $data,isset($reasonUnemployedNow_fm) ? $reasonUnemployedNow_fm: null) !!} {{$data}}</div>

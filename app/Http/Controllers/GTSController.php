@@ -50,19 +50,22 @@ class GTSController extends Controller
         $validated = $request;
         if($validated['is_presently_employed'] == 'Yes'){
             User::where('id',Auth::user()->id)->update([
-                'employmentStatus' => 'Employeed'
+                'employmentStatus' => 'Employeed',
+                'updateStatus' => 'Recent'
             ]);
         }
 
         if($validated['is_presently_employed'] == 'No, I\'m not employed now'){
             User::where('id',Auth::user()->id)->update([
-                'employmentStatus' => 'Unemployed(Now)'
+                'employmentStatus' => 'Unemployed(Now)',
+                'updateStatus' => 'Recent'
             ]);
         }
 
         if($validated['is_presently_employed'] == 'No, I was never employed'){
             User::where('id',Auth::user()->id)->update([
-                'employmentStatus' => 'Unemployed(Never)'
+                'employmentStatus' => 'Unemployed(Never)',
+                'updateStatus' => 'Recent'
             ]);
         }
         return ;
