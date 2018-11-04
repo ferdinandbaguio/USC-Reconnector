@@ -6,11 +6,11 @@
 @endsection
 <!-- in_array('highest_educational_attainment',$)?'checked':'' ) -->
 @section('content')
-<style type="text/css">
+{{-- <style type="text/css">
 	.page2onwards{
 		display: none;
 	}
-</style>
+</style> --}}
 <div class="container">
 <center><h1>Department of Computer and Information Sciences</h1></center>
 </div>
@@ -77,7 +77,7 @@
 		<!-- END FIRST PAGE -->
 
 		<!-- SECOND PAGE -->
-		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="2">
+		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="2">
 			<div class="row px-2">
 				<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white"> Educational Background </p>
@@ -123,7 +123,7 @@
 		<!-- END SECOND PAGE -->
 
 		<!-- THIRD PAGE -->
-		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="3">
+		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="3">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data </p>
@@ -147,7 +147,7 @@
 		<!-- END THIRD PAGE -->
 
 		<!-- FOURTH PAGE -->
-		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="4">
+		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="4">
 			<div class="row px-2">
 				<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white">Employment Data<br>Status: Employed </p>
@@ -217,7 +217,7 @@
 	<!-- END FOURTH PAGE -->
 	
 	<!-- FIFTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="5">
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="5">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
@@ -245,7 +245,7 @@
 		</div> 
 	<!-- END FIFTH PAGE -->
 	<!-- SIXTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="6">
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="6">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
@@ -270,7 +270,7 @@
 		</div> 
 	<!-- END SIXTH PAGE -->
 	<!-- SEVENTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="7">
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="7">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data<br>Status: Unemployed(Now) </p>
@@ -295,7 +295,7 @@
 		</div> 
 	<!-- END SEVENTH PAGE -->
 	<!-- EIGHTH PAGE -->
-		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="8">
+		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="8">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data <br>Status: Unemployed(Never)</p>
@@ -320,7 +320,7 @@
 		</div> 
 	<!-- END EIGHTH PAGE -->
 	<!-- NINTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="9">
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="9">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data (First Full-Time Job) </p>
@@ -351,7 +351,7 @@
 		</div> 
 	<!-- END NINTH PAGE -->
 	<!-- TENTH PAGE -->
-			<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="10">
+			<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="10">
 				<div class="row px-2">
 					<div class="col-8 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
@@ -397,7 +397,7 @@
 
 	<!-- ELEVENTH PAGE -->
 	<!-- ABOUT THE UNDERGRADUATE PROGRAM PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="11">		
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="11">		
 			<div class="row px-2">
 				<div class="col-8 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white"> About the Undergraduate Program </p>
