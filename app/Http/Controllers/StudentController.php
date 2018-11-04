@@ -84,7 +84,7 @@ class StudentController extends Controller
      */
     public function destroySkill($id)
     {
-        UserSkill::find($id)->delete();
+        User_Skill::find($id)->delete();
 
         return redirect()->back();   
     }
