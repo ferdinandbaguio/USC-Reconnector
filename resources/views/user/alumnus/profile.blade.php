@@ -32,7 +32,7 @@
     </div>
 
     <div class="row mt-3">
-      <button class="btn mx-auto" id="editProfBtn">Edit Profile</button>
+      <button class="btn btn-sm mx-auto editProfBtn text-white" id="editProfBtn">Edit Profile <i class="far fa-edit"></i></button>
     </div>
   </div>
   <!-- LEFT BOX END -->
