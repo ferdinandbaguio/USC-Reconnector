@@ -33,4 +33,18 @@ class AlumnusController extends Controller
         return view('user.alumnus.form'); 
     }
 
+    public function destroySkill($id)
+    {
+        User_Skill::find($id)->delete();
+
+        return redirect()->back();   
+    }
+
+    public function destroyAchv($id)
+    {
+        Achievement::find($id)->delete();
+
+        return redirect()->back();   
+    }
+
 }

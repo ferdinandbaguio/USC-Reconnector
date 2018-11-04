@@ -5,38 +5,8 @@ $(document).ready(function(){
     $("#editProfBtn").click(function(){
         $(".editDescHolder").slideToggle("slow");
         $(".achvBtnHolder").slideToggle("slow");
-        $(".skillBtnHolder").slideToggle("slow");
-        $(".deleteSkillHolder").slideToggle("slow");
         $(".deleteAchvHolder").slideToggle("slow");
     });
-
-
-    // FOR ADD SKILL
-    // VALUE CHECKER IF INPUTS IS NULL, SUBMIT BUTTON DISABLER
-	$("#addSkillForm :input").each(function(){
-		var input = $(this); 
-
-		$(input).keyup(function(){
-			if(input.val() == 0){
-				$('#addSkillBtnF').prop("disabled", true);
-			}
-			else{
-				$('#addSkillBtnF').prop("disabled", false);
-			}
-		});
-	});
-	
-	$('#addSkillBtnF').prop("disabled", true);
-
-
-	// DISABLE SUBMIT AFTER CLICK
-	$('#addSkillBtnF').on('click', function() {
-    $(this).prop('disabled', true);
-    $("#addSkillForm").submit();
-	});
-
-
-
 
 
 	// FOR ADD ACHIEVEMENT
@@ -62,6 +32,7 @@ $(document).ready(function(){
 	    $(this).html('Please wait');
 	    $('#addAchvForm').submit();
 	 });
+
 });
 
 

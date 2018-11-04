@@ -84,4 +84,11 @@ class TeacherController extends Controller
     {
         //
     }
+    
+    public function destroyAchv($id)
+    {
+        Achievement::find($id)->delete();
+
+        return redirect()->back();   
+    }
 }
