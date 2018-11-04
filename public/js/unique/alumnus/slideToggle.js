@@ -62,6 +62,16 @@ $(document).ready(function(){
     $(this).prop('disabled', true);
     $("#addAchvForm").submit();
 	});
+
+
+
+
+	// CLOSE WARNING SIGN FOR ALUMNUS DETAILS
+	$(document).ready(function(){
+    $("#closeHereBtn").click(function(){
+        $(".warningAlumnus").animate({bottom: '-200px'}, 700);
+    });
+});
 });
 
 

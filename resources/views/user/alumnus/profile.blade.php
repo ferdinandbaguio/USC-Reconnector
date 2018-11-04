@@ -247,13 +247,6 @@
 </div>
 <!-- NEW -->
 
-<!-- jQuery script -->
-<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
-
-<!-- Custom scripts  -->
-<script src="/js/unique/alumnus/slideToggle.js"></script>
-@endsection
-
 <div class="container-fluid warningAlumnus">
   <div class="container fontRoboto">
     <div class="row">
@@ -261,9 +254,20 @@
         <center>
         <label>Setup your alumni details now to avoid feature restrictions in the website.</label>
         <a class="btn clickHereBtn p-2 px-4" href="{{ route('alumnus.form') }}">Click here!</a>
+        <button class="btn closeHereBtn" id="closeHereBtn">Close</button>
         </center>
         </div>
       </div>
     </div>
 </div>
+
+<!-- jQuery script -->
+<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
+
+<!-- Custom scripts  -->
+<script src="/js/unique/alumnus/slideToggle.js"></script>
+
+@endsection
+
+
 
