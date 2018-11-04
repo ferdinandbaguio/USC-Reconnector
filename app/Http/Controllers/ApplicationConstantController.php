@@ -64,7 +64,6 @@ class ApplicationConstantController extends Controller
         $pursueAdvanceStudies = [
             'For promotion' => 'For promotion',
             'For professional development' => 'For professional development',
-            'Iba pa:' => 'Iba pa:'
         ];
         $presentlyEmployed = [
             'Yes',
@@ -105,7 +104,7 @@ class ApplicationConstantController extends Controller
             'Proximity to residence' => 'Proximity to residence',
             'Peer influence' => 'Peer influence',
             'Family influence' => 'Family influence',
-            'Iba pa:' => 'Iba pa:'
+
         ];
     
         $reasonNo= [
@@ -113,7 +112,7 @@ class ApplicationConstantController extends Controller
             'Career challenge' => 'Career challenge',
             'Related to my special skil' => 'Related to my special skil',
             'Proximity to residence' => 'Proximity to residence',
-            'Iba pa:' => 'Iba pa:'
+
         ];
     
         $monthsEmployedfirstjobAfterGraduate = [
@@ -146,7 +145,7 @@ class ApplicationConstantController extends Controller
             'Computer Technician' => 'Computer Technician',
             'Technopreneur' => 'Technopreneur',
             'Creative Director' => 'Creative Director',
-            'Iba pa:' => 'Iba pa:'
+
         ];
         $conceptsLearned = [
             'Data Structures',
@@ -164,7 +163,7 @@ class ApplicationConstantController extends Controller
             'Information and Systems Management',
             'Presentation Skill',
             'Research Methods',
-            'Iba pa:',
+
     
         ];
         $reasonsUndergraduateCourse = [
@@ -185,7 +184,7 @@ class ApplicationConstantController extends Controller
             'Vocation',
             'Examination results',
             'No particular choice or no better idea on what course to take',
-            'Iba pa:'
+   
         ];
         $rate = [
             '1',
@@ -217,7 +216,7 @@ class ApplicationConstantController extends Controller
             'Starting pay is too low',
             'Waiting for companies to call back',
             'Have plans to seek job out of the country',
-            'Iba pa:'
+
         ];
         $reasonUnemployedNever = [
             'No job opportunity',
@@ -229,7 +228,7 @@ class ApplicationConstantController extends Controller
             'Lack of professional eligibility requirements',
             'Starting pay is too low',
             'Have plans to seek job out of the country',
-            'Iba pa:'
+
         ];
 
         return compact(
