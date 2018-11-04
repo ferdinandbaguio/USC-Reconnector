@@ -77,7 +77,6 @@
             </div> 
         </div>
     @endif
-
     
     @if($userType == "Teacher")
         <br><i>{{Form::label('teacherDetails', '~ Teacher Details ~')}}</i><br><br>

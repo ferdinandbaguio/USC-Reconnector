@@ -16,7 +16,7 @@ User Registration
 
 <div class="ibox">
     <div class="ibox-head">
-        @if($users[0]->userStatus == 'Denied')
+        @if($currentStatus == 'Denied')
             <div class="ibox-title text-muted">
                 Denied Requests
             </div>
@@ -26,7 +26,7 @@ User Registration
             </div>
         @endif
         {!! Form::open(['route' => ['registration.index','Filtering'], 'method' => 'GET', 'class' => 'form-inline']) !!} 
-            {{ Form::select('status', ['Pending' => 'Pending', 'Denied' => 'Denied'], $users[0]->userStatus, 
+            {{ Form::select('currentStatus', ['Pending' => 'Pending', 'Denied' => 'Denied'], $currentStatus, 
             ['class' => 'form-control', 'style' => 'height: 30px;padding-top: 2px;']) }}
             &nbsp;
             {{ Form::submit('Change', ['class' => 'btn btn-primary', 'style' => 'display:inline-block;']) }}
