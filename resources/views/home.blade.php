@@ -23,7 +23,7 @@
 
 
   <div class="row"><!-- School Ann Header -->
-    <div class="col-10 col-md-5 py-2 rounded-top" style="background-image: linear-gradient(#32C275, #1CBB66);">
+    <div class="col-10 col-md-5 py-2 rounded-top greenLayer">
       <p class="m-auto text-white"> Latest School Announcement </p>
     </div>
   </div>  
@@ -48,7 +48,7 @@
 
     <div class="row">
       <div class="col-12 col-md-12 mt-4">
-      <strong> Title of Announcement </strong>
+      <strong class="titleColor"> {{$latestannouncement->title}} </strong>
       <p class="preserveLineBreaks"> {{$latestannouncement->announcement}} </p>
       </div>
     </div>
@@ -60,7 +60,7 @@
 
  
   <div class="row mt-5"><!-- Alumni Job Header -->
-    <div class="col-8 col-md-5 py-2 rounded-top" style="background-image: linear-gradient(#1C72BB, #0A5492)">
+    <div class="col-8 col-md-5 py-2 rounded-top blueLayer">
       <p class="m-auto text-white"> Latest Alumni Job Post </p>
     </div>
   </div>  
@@ -104,10 +104,10 @@
 
 
   <div class="row mt-5"><!-- Recent Posts Header -->
-    <div class="col-7 col-md-4 py-2 rounded-top annBtn" onclick="hideJob()">
+    <div class="col-7 col-md-4 py-2 rounded-top annBtn greenLayer" onclick="hideJob()">
       <p class="m-auto text-white d-inline"> Announcements </p> <i class="fas fa-arrow-down text-white" id="annI"></i>
     </div>
-    <div class="col-5 col-md-4 py-2 ml-md-1 rounded-top jobBtn" onclick="hideAnn()">
+    <div class="col-5 col-md-4 py-2 ml-md-1 rounded-top jobBtn blueLayer" onclick="hideAnn()">
       <p class="m-auto text-white"> Job Posts <i class="fas fa-arrow-down text-white" id="jobI"></i></p>
     </div>
   </div>  
@@ -133,7 +133,7 @@
 
         <div class="row">
         <div class="col-12 col-md-12 mt-4">
-        <strong> Title of Announcement </strong>
+        <strong class="titleColor"> {{$row->title}} </strong>
         <p class="preserveLineBreaks"> {{$row->announcement}} </p>
         </div>
         </div>

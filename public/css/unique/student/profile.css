@@ -36,6 +36,10 @@ button:hover{
   display: none;
 }
 
+.editProfBtn{
+  background: linear-gradient(90deg, #030216,#3E3C56);
+}
+
 
 
 

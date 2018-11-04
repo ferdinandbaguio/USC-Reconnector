@@ -19,6 +19,10 @@ Page Contents
   padding-bottom: 0px;
 }
 
+.editProfBtn{
+  background: linear-gradient(90deg, #030216,#3E3C56);
+}
+
 
 /*IMPORTED CSS*/
 .addAchvBtn{
@@ -44,8 +48,8 @@ Page Contents
 
 
 .warningAlumnus{
-  background-color: #FFDCDC;
-  box-shadow: 0 0 3px #DC2525;
+  background-color: #FFE9E9;
+  box-shadow: 0 0 3px #DC4343;
 
   position: fixed; 
   bottom: 0px;

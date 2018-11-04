@@ -41,18 +41,26 @@ body{
   white-space: pre-wrap;
 }
 
-.annBtn, .annBtn:hover{
-  background-color: #1CBB66;
+.annBtn:hover{
   cursor: pointer;
 }
-.jobBtn, .jobBtn:hover{
-  background-color: #0A5492;
+.jobBtn:hover{
   cursor: pointer;
 }
 .jobHolder, #jobI{
   display: none;
 }
 
+.titleColor{
+  color: #033A52;
+}
+
+.greenLayer{
+  background: linear-gradient(#059C4C, #24C26E);
+}
+.blueLayer{
+  background-image: linear-gradient(#0A5492,#1C72BB)
+}
 /* 
   MEDIA QUERIES 
 */
