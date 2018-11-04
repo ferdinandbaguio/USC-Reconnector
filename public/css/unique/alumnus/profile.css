@@ -66,6 +66,10 @@ Page Contents
   outline: none;
   border:none;
 }
+
+.editDescHolder,.achvBtnHolder,.skillBtnHolder,.deleteSkillHolder,.deleteAchvHolder{
+  display: none;
+}
 /* 
 MEDIA QUERIES 
 */
