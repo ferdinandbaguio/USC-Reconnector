@@ -41,41 +41,31 @@ class GTSController extends Controller
         $validated = $request->validated();
         // dd($validated['firstCompanyworked']);
         $validated = $this->removeData($validated);
+        $this->employementStatus($validated);
         GraduateTracerStudy::create($validated);
-        // if($validated[is_presently_employed]){
-        //     User::where('id',Auth::user()->id)->update([
-        //         'userStatus'
-        //     ])
-        // }
-        
+
         return redirect()->back();
     }
     public function employementStatus($request){
         $validated = $request;
-        if($validated['is_presently_employed'] == "Yes"){
-            dd("Yes");
-            // User::where('id',Auth::user()->id)->update([
-            //     'employmentStatus' => 'Employed',
-            // ]);
-        }
-                
-        else if($validated['is_presently_employed'] == "No, I'm not employed now"){
-            dd("No, I'm not employed now");
-            // User::where('id',Auth::user()->id)->update([
-            //     'employmentStatus' => 'Unemployed',
-            // ]);
+        if($validated['is_presently_employed'] == 'Yes'){
+            User::where('id',Auth::user()->id)->update([
+                'employmentStatus' => 'Employeed'
+            ]);
         }
 
-        else if($validated['is_presently_employed'] == "No, I was never employed"){
-            dd("No, I was never employed");
-            // User::where('id',Auth::user()->id)->update([
-            //     'employmentStatus' => 'Unemployed',
-            // ]);
+        if($validated['is_presently_employed'] == 'No, I\'m not employed now'){
+            User::where('id',Auth::user()->id)->update([
+                'employmentStatus' => 'Unemployed(Now)'
+            ]);
         }
-        
 
-
-        return $validated;
+        if($validated['is_presently_employed'] == 'No, I was never employed'){
+            User::where('id',Auth::user()->id)->update([
+                'employmentStatus' => 'Unemployed(Never)'
+            ]);
+        }
+        return ;
     }
     public function removeData($request)
     {
