@@ -1,10 +1,11 @@
 <template>
     <div class="feed" ref="feed">
         <ul v-if="contact">
-            <li v-for="message in messages" :class="`message${message.to == contact.id ? ' sent' : ' received'}`" :key="message.id">
+            <li v-for="message in messages" :class="`message${message.from_id == message.myID ? ' sent' : ' received'}`" :key="message.id">
                 <div class="text">
-                    {{ message.text }}
-                </div>
+                    {{ message.message }}
+                </div><br>
+                <small>{{ message.name }}</small>
             </li>
         </ul>
     </div>

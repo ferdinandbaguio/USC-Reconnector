@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} | {{Auth::user()->userType}}</title>
+
     <!-- GLOBAL MAINLY STYLES-->
     <link rel="stylesheet" href="{{ asset('css/extra/vendors/themify-icons/css/themify-icons.css')}}" />
     <link rel="stylesheet" href="{{ asset('css/extra/vendors/font-awesome/css/font-awesome.min.css') }}" />
@@ -67,6 +68,7 @@
     <script type="text/javascript" src="{{ asset('js/extra/vendors/jquery/dist/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/extra/vendors/popper.js/dist/umd/popper.min.js') }}"></script>
 
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/extra/vendors/metisMenu/dist/metisMenu.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/extra/vendors/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
@@ -75,7 +77,7 @@
     @yield('scripts')
 
     <!-- CORE SCRIPTS-->
-    <script type="text/javascript" src="{{ asset('js/extra/app.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/extra/admin_app.js') }}"></script>
 </body>
 
 </html>

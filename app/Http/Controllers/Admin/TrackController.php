@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
-use Cookie;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\Company;

@@ -15,12 +15,15 @@ class CreateMessageThreadsTable extends Migration
     {
         Schema::create('message_threads', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            
             $table->text('message');
-            $table->boolean('is_seen')->after('to')->default(false);
 
             $table->unsignedInteger('message_id');
             $table->foreign('message_id')->references('id')->on('messages')
+            ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unsignedInteger('from_id');
+            $table->foreign('from_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
             
             $table->timestamps();
@@ -35,6 +38,6 @@ class CreateMessageThreadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message__threads');
+        Schema::dropIfExists('message_threads');
     }
 }

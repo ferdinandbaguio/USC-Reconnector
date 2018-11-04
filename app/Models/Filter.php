@@ -11,18 +11,12 @@ class Filter extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'message_id',
         'post_id',
         'school_id',
         'department_id',
         'course_id',
         'group_class_id'
     ];
-
-    public function message()
-    {
-    	return $this->belongsTo('App\Models\Message');
-    }
 
     public function post()
     {

@@ -24,7 +24,7 @@
             };
         },
         mounted() {
-            Echo.private(`messages.${this.user.id}`)
+            Echo.private(`messages`)
                 .listen('NewMessage', (e) => {
                     this.hanleIncoming(e.message);
                 });
@@ -48,12 +48,12 @@
                 this.messages.push(message);
             },
             hanleIncoming(message) {
-                if (this.selectedContact && message.from == this.selectedContact.id) {
+                // if (this.selectedContact && message.message_id == this.selectedContact.id) {
                     this.saveNewMessage(message);
                     return;
-                }
+                // }
 
-                this.updateUnreadCount(message.from_contact, false);
+                // this.updateUnreadCount(message.from_contact, false);
             },
             updateUnreadCount(contact, reset) {
                 this.contacts = this.contacts.map((single) => {

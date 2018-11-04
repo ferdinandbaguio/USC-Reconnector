@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Message;
+use App\Models\Message_Thread;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -22,7 +22,7 @@ class NewMessage implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct(Message_Thread $message)
     {
         $this->message = $message;
     }
@@ -34,12 +34,12 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('messages.' . $this->message->to);
+        return new PrivateChannel('messages.' . $this->message->message_id);
     }
 
     public function broadcastWith()
     {
-        $this->message->load('fromContact');
+        $this->message->load('from');
 
         return ["message" => $this->message];
     }

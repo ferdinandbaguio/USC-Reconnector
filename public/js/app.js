@@ -57551,7 +57551,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        Echo.private('messages.' + this.user.id).listen('NewMessage', function (e) {
+        Echo.private('messages').listen('NewMessage', function (e) {
             _this.hanleIncoming(e.message);
         });
 
@@ -57575,12 +57575,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.messages.push(message);
         },
         hanleIncoming: function hanleIncoming(message) {
-            if (this.selectedContact && message.from == this.selectedContact.id) {
-                this.saveNewMessage(message);
-                return;
-            }
+            // if (this.selectedContact && message.message_id == this.selectedContact.id) {
+            this.saveNewMessage(message);
+            return;
+            // }
 
-            this.updateUnreadCount(message.from_contact, false);
+            // this.updateUnreadCount(message.from_contact, false);
         },
         updateUnreadCount: function updateUnreadCount(contact, reset) {
             this.contacts = this.contacts.map(function (single) {
@@ -57849,6 +57849,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -57898,16 +57899,19 @@ var render = function() {
                 key: message.id,
                 class:
                   "message" +
-                  (message.to == _vm.contact.id ? " sent" : " received")
+                  (message.from_id == message.myID ? " sent" : " received")
               },
               [
                 _c("div", { staticClass: "text" }, [
                   _vm._v(
                     "\n                " +
-                      _vm._s(message.text) +
+                      _vm._s(message.message) +
                       "\n            "
                   )
-                ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("small", [_vm._v(_vm._s(message.name))])
               ]
             )
           })
@@ -58221,7 +58225,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.contacts-list[data-v-76ff04c8] {\n  -webkit-box-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n  max-height: 600px;\n  overflow: scroll;\n  border-left: 1px solid #a6a6a6;\n}\n.contacts-list ul[data-v-76ff04c8] {\n    list-style-type: none;\n    padding-left: 0;\n}\n.contacts-list ul li[data-v-76ff04c8] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      padding: 2px;\n      border-bottom: 1px solid #aaaaaa;\n      height: 80px;\n      position: relative;\n      cursor: pointer;\n}\n.contacts-list ul li.selected[data-v-76ff04c8] {\n        background: #dfdfdf;\n}\n.contacts-list ul li span.unread[data-v-76ff04c8] {\n        background: #82e0a8;\n        color: #fff;\n        position: absolute;\n        right: 11px;\n        top: 20px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        font-weight: 700;\n        min-width: 20px;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        line-height: 20px;\n        font-size: 12px;\n        padding: 0 4px;\n        border-radius: 3px;\n}\n.contacts-list ul li .avatar[data-v-76ff04c8] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n}\n.contacts-list ul li .avatar img[data-v-76ff04c8] {\n          width: 35px;\n          border-radius: 50%;\n          margin: 0 auto;\n}\n.contacts-list ul li .contact[data-v-76ff04c8] {\n        -webkit-box-flex: 3;\n            -ms-flex: 3;\n                flex: 3;\n        font-size: 10px;\n        overflow: hidden;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n}\n.contacts-list ul li .contact p[data-v-76ff04c8] {\n          margin: 0;\n}\n.contacts-list ul li .contact p.name[data-v-76ff04c8] {\n            font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.contacts-list[data-v-76ff04c8] {\n  -webkit-box-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n  max-height: 600px;\n  overflow: scroll;\n  border-left: 1px solid #a6a6a6;\n}\n.contacts-list ul[data-v-76ff04c8] {\n    list-style-type: none;\n    padding-left: 0;\n}\n.contacts-list ul li[data-v-76ff04c8] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      padding: 2px;\n      border-bottom: 1px solid #aaaaaa;\n      height: 80px;\n      position: relative;\n      cursor: pointer;\n}\n.contacts-list ul li.selected[data-v-76ff04c8] {\n        background: #dfdfdf;\n}\n.contacts-list ul li span.unread[data-v-76ff04c8] {\n        background: #82e0a8;\n        color: #fff;\n        position: absolute;\n        right: 11px;\n        top: 20px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        font-weight: 700;\n        min-width: 20px;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        line-height: 20px;\n        font-size: 12px;\n        padding: 0 4px;\n        border-radius: 3px;\n}\n.contacts-list ul li .avatar[data-v-76ff04c8] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n}\n.contacts-list ul li .avatar img[data-v-76ff04c8] {\n          width: 35px;\n          border-radius: 50%;\n          margin: 0 auto;\n}\n.contacts-list ul li .contact[data-v-76ff04c8] {\n        -webkit-box-flex: 3;\n            -ms-flex: 3;\n                flex: 3;\n        font-size: 13px;\n        overflow: hidden;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n}\n.contacts-list ul li .contact p[data-v-76ff04c8] {\n          margin: 0;\n}\n.contacts-list ul li .contact p.name[data-v-76ff04c8] {\n            font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -58310,15 +58314,15 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "avatar" }, [
-              _c("img", {
-                attrs: { src: contact.profile_image, alt: contact.name }
-              })
+              _c("img", { attrs: { src: contact.picture, alt: contact.title } })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "contact" }, [
-              _c("p", { staticClass: "name" }, [_vm._v(_vm._s(contact.name))]),
+              _c("p", { staticClass: "name" }, [_vm._v(_vm._s(contact.title))]),
               _vm._v(" "),
-              _c("p", { staticClass: "email" }, [_vm._v(_vm._s(contact.email))])
+              _c("p", { staticClass: "email" }, [
+                _vm._v(_vm._s(contact.sender))
+              ])
             ]),
             _vm._v(" "),
             contact.unread

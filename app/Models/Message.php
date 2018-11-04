@@ -6,22 +6,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+    // protected $guarded = [];
+
+    // public function fromContact()
+    // {
+    //     return $this->hasOne(User::class, 'id', 'from');
+    // }
+
     protected $table = 'messages';
     public $primaryKey = 'id';
     public $timestamps = true;
 
     protected $fillable = [
-        'sender_id'
+        'picture',
+        'title',
+        'sender'
     ];
 
-    public function sender()
+    public function message_thread()
     {
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->hasMany('App\Models\Message_Thread','message_thread_id');
     }
 
-    public function receiver()
+    public function receivers()
     {
-        return $this->hasMany('App\Models\User','message_id');
+        return $this->hasMany('App\Models\Receiver');
     }
 
     public function filter()
@@ -29,8 +38,4 @@ class Message extends Model
         return $this->hasOne('App\Models\Filter');
     }
 
-    public function message_thread()
-    {
-        return $this->hasMany('App\Models\Message_Thread','message_id');
-    }
 }
