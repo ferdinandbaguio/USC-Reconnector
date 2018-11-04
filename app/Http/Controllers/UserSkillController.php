@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
-use App\Models\UserSkill;
+use App\Models\User_Skill;
 class UserSkillController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class UserSkillController extends Controller
 
         $data['user_id'] = Auth::user()->id;
 
-        UserSkill::create($data);
+        User_Skill::create($data);
 
         return redirect()->back();
     }
