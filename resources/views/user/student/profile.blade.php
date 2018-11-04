@@ -59,7 +59,7 @@
 		@foreach($skills as $row)	
 			<div class="col-md-12 mt-2">					
 				<p class="m-0">{{$row->skillName}}
-					<a href="{{URL::to('/deleteSkill/'.$row->id) }}" class="text-danger deleteSkillHolder" onclick="return confirm('Are you sure you want to delete {{$row->skillName}}?');"><i class="far fa-times-circle"></i></a>
+					<a href="{{URL::to('/deleteSSkill/'.$row->id) }}" class="text-danger deleteSkillHolder" onclick="return confirm('Are you sure you want to delete {{$row->skillName}}?');"><i class="far fa-times-circle"></i></a>
 				</p>											
 								
 				<div class="progress">
@@ -83,7 +83,7 @@
 			<div class="col-md-12">
 				@foreach($achievements as $row)
 				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) 
-					<a href="{{URL::to('/deleteAchv/'.$row->id) }}" class="text-danger deleteAchvHolder" onclick="return confirm('Are you sure you want to delete {{$row->achTitle}}?');"><i class="far fa-times-circle"></i></a>
+					<a href="{{URL::to('/deleteSAchv/'.$row->id) }}" class="text-danger deleteAchvHolder" onclick="return confirm('Are you sure you want to delete {{$row->achTitle}}?');"><i class="far fa-times-circle"></i></a>
 				</p>
 				
 				@endforeach

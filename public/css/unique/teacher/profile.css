@@ -25,7 +25,9 @@ button:hover{
 }
 
 
-
+.editDescHolder,.achvBtnHolder,.skillBtnHolder,.deleteSkillHolder,.deleteAchvHolder{
+  display: none;
+}
 
 
 /* MEDIA QUERIES */

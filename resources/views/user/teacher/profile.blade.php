@@ -24,11 +24,15 @@
 				<p class="mb-0"> 5 years of service </p>
 			</div>
 		</div>
+
+		<div class="row mt-3">
+      <button class="btn mx-auto" id="editProfBtn">Edit Profile</button>
+    </div>
 	</div>
 	<!-- LEFT BOX END-->
 
 	<!-- RIGHT BOX -->
-	<div class="col-md-8 p-4 pt-5 align-self-start rounded-bottom" style="background-color: white;">
+	<div class="col-md-8 p-4 pt-5" style="background-color: white;">
 		<div class="row">
 			<div class="col-md-5">
 				<h5 class="font-weight-bold text-muted"> Description <a href="#descModal" data-toggle="modal"> <i class="far fa-edit text-muted"></i> </a></h5>
@@ -37,6 +41,9 @@
 		<div class="row mt-1">
 			<div class="col-md-12">
 				<p> {{Auth::user()->description}} </p>
+				<div class="editDescHolder">
+		        <a href="#descModal" data-toggle="modal" class="editDescBtn"> Edit <i class="far fa-edit"></i> </a>
+		        </div>
 			</div>
 		</div>
 
@@ -49,12 +56,14 @@
 		<div class="row mt-1">
 			<div class="col-md-12">
 				@foreach($achievements as $row)
-				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) </p>
+				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) 
+					<a href="{{URL::to('/deleteTAchv/'.$row->id) }}" class="text-danger deleteAchvHolder" onclick="return confirm('Are you sure you want to delete {{$row->achTitle}}?');"><i class="far fa-times-circle"></i></a>
+				</p>
 				@endforeach
 			</div>
 			
-			<div class="col-md-12 mt-2">
-				<button type="button" class="btn addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
+			<div class="col-md-12 mt-2 achvBtnHolder">
+				<button type="button" class="btn btn-sm addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
 					<i class="fas fa-plus-circle"></i> Add an achievement
 				</button>
 			</div>
@@ -62,7 +71,7 @@
 			
 		</div>
 
-		<div class="row mt-5">
+		<!-- <div class="row mt-5">
 			<div class="col-md-5">
 				<h5 class="font-weight-bold text-muted"> Most recent classes handled </h5>
 			</div>
@@ -76,7 +85,7 @@
 				  <li class="list-group-item"><i class="fas fa-book" style="color: #574B14"></i> ENG 21</li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 
 	</div>
 	<!-- RIGHT BOX END-->
@@ -114,7 +123,7 @@
 	    <div class="modal-content">
 
 	      <div class="modal-body mt-4">
-	        <form method="POST" action="{{route('teacher.achievement.add')}}">
+	        <form method="POST" action="{{route('teacher.achievement.add')}}" id="addAchvForm">
 	        	{{csrf_field()}}
 	        	<div class="form-group">
 	        		<label><i class="fas fa-trophy" style="color: #EEEB4D"></i> Title of Achievement</label>
@@ -122,13 +131,13 @@
 	        	</div>
 	        	<div class="form-group">
 	        		<label>Date Acquired</label>
-	        		<input type="month" name="achYear" class="form-control" placeholder="Example: 2009">
+	        		<input type="text" name="achYear" class="form-control" placeholder="Example: 2009">
 	        	</div>
 	        
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn addAchvBtn">
+	        <button type="submit" class="btn addAchvBtn" id="addAchvBtnF">
 				<i class="fas fa-plus-circle"></i> Add achievement
 			</button>
 			</form>
@@ -139,7 +148,11 @@
 	<!-- ADD ACHIEVEMENT MODAL END -->
 
 
+<!-- jQuery script -->
+<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
 
+<!-- Custom scripts  -->
+<script src="/js/unique/teacher/slideToggle.js"></script>
 
 </div>
 @endsection
