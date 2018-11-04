@@ -38,7 +38,7 @@ class GraduateTracerStudy extends Model
             'reasonsNo',                             
             'isFirstJobRelated',                    
             'isJobpositionFirstworkAfterCollege',
-            'nameofCompanyfirstWorkedin',    
+            'firstCompanyworked',    
             
             //extends
             'monthsEmployedfirstjobAfterGraduate',   

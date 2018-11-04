@@ -53,7 +53,7 @@ class GTSRequest extends FormRequest
             'reasonsNo'                             => 'required_if:is_first_job,No',
             'isFirstJobRelated'                     => 'required_if:is_first_job,No',
             'isJobpositionFirstworkAfterCollege'    => 'required_if:is_first_job,No',
-            'nameofCompanyfirstWorkedin'            => 'required_if:is_first_job,No',
+            'firstCompanyworked'            => 'required_if:is_first_job,No',
             //extends
             'monthsEmployedfirstjobAfterGraduate'   => 'required_if:is_presently_employed,Yes,No, I\'m not employed now',
             'jobRolesExperienced'                   => 'required_if:is_presently_employed,Yes,No, I\'m not employed now',

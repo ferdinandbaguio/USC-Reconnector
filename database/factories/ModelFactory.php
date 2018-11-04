@@ -21,7 +21,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     $sexValues = ['Male', 'Female'];
     $statusValues = ['Approved', 'Pending','Denied'];               
     $updateStatusValues = ['Updated', 'Outdated', 'Recent'];
-    $employmentStatusValues = ['Full-Time Job', 'Unemployed', 'Part-Time Job'];
+    $employmentStatusValues = ['Employeed', 'Unemployed(Now)', 'Unemployed(Never)'];
     $roleValues= ['Student', 'Teacher', 'Alumnus', 'Admin', 'Coordinator', 'Chair'];
     
     $sex = $faker->randomElement($sexValues);
