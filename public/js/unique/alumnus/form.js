@@ -287,7 +287,7 @@ function pageElevenValidate(){
 
 $(document).ready(function(){
     $('select.selectClass option:first').attr('disabled', true);
-    showPage(1);
+    
     pageOneValidate();
     pageTwoValidate();
     pageThreeValidate();

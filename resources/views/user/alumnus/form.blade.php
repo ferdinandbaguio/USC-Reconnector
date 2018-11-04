@@ -6,11 +6,11 @@
 @endsection
 <!-- in_array('highest_educational_attainment',$)?'checked':'' ) -->
 @section('content')
-{{-- <style type="text/css">
+<style type="text/css">
 	.page2onwards{
 		display: none;
 	}
-</style> --}}
+</style>
 <div class="container">
 <center><h1>Department of Computer and Information Sciences</h1></center>
 </div>
@@ -77,7 +77,7 @@
 		<!-- END FIRST PAGE -->
 
 		<!-- SECOND PAGE -->
-		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="2">
+		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="2">
 			<div class="row px-2">
 				<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white"> Educational Background </p>
@@ -123,7 +123,7 @@
 		<!-- END SECOND PAGE -->
 
 		<!-- THIRD PAGE -->
-		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="3">
+		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="3">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data </p>
@@ -147,7 +147,7 @@
 		<!-- END THIRD PAGE -->
 
 		<!-- FOURTH PAGE -->
-		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="4">
+		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="4">
 			<div class="row px-2">
 				<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white">Employment Data<br>Status: Employed </p>
@@ -217,7 +217,7 @@
 	<!-- END FOURTH PAGE -->
 	
 	<!-- FIFTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="5">
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="5">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
@@ -237,7 +237,7 @@
 			<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('reasonsYes[]',null,['class' => 'form-control reasonsYes']) !!}
+			{!! Form::text('reasonsYes[]',null,['class' => 'form-control']) !!}
 			<!-- End of YES -->
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
@@ -245,7 +245,7 @@
 		</div> 
 	<!-- END FIFTH PAGE -->
 	<!-- SIXTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="6">
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="6">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
@@ -257,20 +257,20 @@
 					</div>
 				</div> 
 				<!-- NO -->
-	
+			<h2>NO</h2>
 			<!-- 23.  What were your reason(s) for changing jobs? You may choose more than one answer. -->
 			{!! Form::label('reasonsNo', '14. What were your reason(s) for changing jobs? You may choose more than one answer. ') !!}
 			@foreach( $reasonNo as $data)
 			<div>{!! Form::checkbox('reasonsNo[]', $data,isset($reasonsNo_fm) ? $reasonsNo_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('reasonsNo[]',null,['class' => 'form-control reasonsNo']) !!}
+			{!! Form::text('reasonsNo[]',null,['class' => 'form-control']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
 		</div> 
 	<!-- END SIXTH PAGE -->
 	<!-- SEVENTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="7">
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="7">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data<br>Status: Unemployed(Now) </p>
@@ -283,19 +283,19 @@
 				</div> 
 												<!-- NOT EMPLOYED NOW DATA -->
 				<!--  Please state the reason(s) why you are not employed now. You may choose more than one answer.  -->
-			
+				<h2>NOT EMPLOYED NOW</h2>
 				{!! Form::label('reasonUnemployedNow', '7. Please state the reason(s) why you are not employed now. You may choose more than one answer. ') !!}
 				@foreach( $reasonUnemployedNow as $data)
 				<div>{!! Form::checkbox('reasonUnemployedNow[]', $data,isset($reasonUnemployedNow_fm) ? $reasonUnemployedNow_fm: null) !!} {{$data}}</div>
 				@endforeach
 				{!! Form::label(null, 'If other, please specifiy') !!}<br>
-				{!! Form::text('reasonUnemployedNow[]',null,['class' => 'form-control reasonUnemployedNow']) !!}
+				{!! Form::text('reasonUnemployedNow[]',null,['class' => 'form-control']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)">Next</button>
 		</div> 
 	<!-- END SEVENTH PAGE -->
 	<!-- EIGHTH PAGE -->
-		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="8">
+		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="8">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data <br>Status: Unemployed(Never)</p>
@@ -320,7 +320,7 @@
 		</div> 
 	<!-- END EIGHTH PAGE -->
 	<!-- NINTH PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="9">
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="9">
 				<div class="row px-2">
 					<div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data (First Full-Time Job) </p>
@@ -351,7 +351,7 @@
 		</div> 
 	<!-- END NINTH PAGE -->
 	<!-- TENTH PAGE -->
-			<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="10">
+			<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="10">
 				<div class="row px-2">
 					<div class="col-8 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 					<p class="m-auto text-white"> Employment Data</p>
@@ -376,7 +376,7 @@
 			<div>{!! Form::checkbox('jobRolesExperienced[]', $data,isset($jobRolesExperienced_fm) ? $jobRolesExperienced_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('jobRolesExperienced[]',null,['class' => 'form-control jobRolesExperienced']) !!}
+			{!! Form::text('jobRolesExperienced[]',null,['class' => 'form-control']) !!}
 			<!--  What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer. -->
 			{!! Form::label('conceptsLearned', '20.What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer') !!}
 			<small class="text-danger">*Required</small>
@@ -384,7 +384,7 @@
 			<div>{!! Form::checkbox('conceptsLearned[]', $data, isset($conceptsLearned_fm) ? $conceptsLearned_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('conceptsLearned[]',null,['class' => 'form-control conceptsLearned']) !!}
+			{!! Form::text('conceptsLearned[]',null,['class' => 'form-control']) !!}
 			<!-- What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) . -->
 			{!! Form::label('programmingLanguages', '21.   What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc) ') !!}
 			<small class="text-danger">*Required</small>
@@ -397,7 +397,7 @@
 
 	<!-- ELEVENTH PAGE -->
 	<!-- ABOUT THE UNDERGRADUATE PROGRAM PAGE -->
-	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="11">		
+	<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="11">		
 			<div class="row px-2">
 				<div class="col-8 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
 				<p class="m-auto text-white"> About the Undergraduate Program </p>

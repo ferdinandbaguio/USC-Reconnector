@@ -42,20 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
         Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
     });
-    // Alumnus
-    Route::group(['middleware' => 'alumnus'], function () {  
-      
-        Route::view('/alumnus/profile', 'user.alumnus.profile');
-        Route::view('/alumnus/jobs', 'user.alumnus.jobs');
-        Route::view('/alumnus/communicate', 'user.alumnus.communicate');
-        Route::view('/alumnus/form', 'user.alumnus.form');  
 
-        Route::view('/alumnus/maptest', 'user.alumnus.map'); 
-
-        Route::get('/deleteASkill/{id}','AlumnusController@destroySkill');  
-        Route::get('/deleteAAchv/{id}','AlumnusController@destroyAchv'); 
-    });
-   
     // Alumnus
     Route::group(['middleware' => 'alumnus'], function () {  
       
@@ -71,8 +58,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/alumnus/form','GTSController@store')->name('alumnus.form.store');
         Route::patch('/alumnus/form/{id}/update','GTSController@update')->name('alumnus.form.update');;
 
-        
-
+        Route::view('/alumnus/maptest', 'user.alumnus.map');
+        Route::get('/deleteASkill/{id}','AlumnusController@destroySkill');  
+        Route::get('/deleteAAchv/{id}','AlumnusController@destroyAchv'); 
 
     });
 
