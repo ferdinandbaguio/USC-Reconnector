@@ -20,9 +20,9 @@
 				<h5 class="font-weight-bold"> {{Auth::user()->full_name}} </h5>
 				<h6 class="text-muted"> {{Auth::user()->idnumber}} </h6>
 
-				<p class="mt-3 mb-0"> Bachelor of Science in Information in Communication Technology </p>
+				<p class="mt-3 mb-0"> INSERT COURSE HERE </p>
 				<p class="m-0"> Year level: {{Auth::user()->yearLevel}}  </p>
-				<p class="m-0"> Birthday: February 31, 2018 </p>
+				<p class="m-0"> Birthday: {{Auth::user()->birthdate}} </p>
 				<p class="m-0"> Sex: {{Auth::user()->sex}} </p>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 		@foreach($skills as $row)	
 			<div class="col-md-12 mt-2">					
 				<p class="m-0">{{$row->skillName}}
-					<a href="{{URL::to('/deleteSkill/'.$row->id) }}" class="text-danger deleteSkillHolder" onclick="return confirm('Are you sure you want to delete {{$row->skillName}}?');"><i class="far fa-times-circle"></i></a>
+					<a href="{{URL::to('/deleteSSkill/'.$row->id) }}" class="text-danger deleteSkillHolder" onclick="return confirm('Are you sure you want to delete {{$row->skillName}}?');"><i class="far fa-times-circle"></i></a>
 				</p>											
 								
 				<div class="progress">
@@ -68,7 +68,7 @@
 			</div>
 		@endforeach
 			<div class="col-md-12 mt-4 skillBtnHolder">
-				<button class="btn addSkillBtn" data-toggle="modal" data-target="#addSkillModal">
+				<button class="btn btn-sm addSkillBtn" data-toggle="modal" data-target="#addSkillModal">
 					<i class="fas fa-plus-circle"></i> Add a Skill
 				</button>
 			</div>
@@ -83,14 +83,13 @@
 			<div class="col-md-12">
 				@foreach($achievements as $row)
 				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) 
-
-					<a href="{{URL::to('/deleteAchv/'.$row->id) }}" class="text-danger deleteAchvHolder" onclick="return confirm('Are you sure you want to delete {{$row->achTitle}}?');"><i class="far fa-times-circle"></i></a>
+					<a href="{{URL::to('/deleteSAchv/'.$row->id) }}" class="text-danger deleteAchvHolder" onclick="return confirm('Are you sure you want to delete {{$row->achTitle}}?');"><i class="far fa-times-circle"></i></a>
 				</p>
 				
 				@endforeach
 			</div>
 			<div class="col-md-12 mt-2 achvBtnHolder">
-				<button type="button" class="btn addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
+				<button type="button" class="btn btn-sm addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
 					<i class="fas fa-plus-circle"></i> Add an achievement
 				</button>
 			</div>

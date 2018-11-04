@@ -237,7 +237,7 @@
 			<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('reasonsYes[]',null,['class' => 'form-control']) !!}
+			{!! Form::text('reasonsYes[]',null,['class' => 'form-control reasonsYes']) !!}
 			<!-- End of YES -->
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
@@ -257,14 +257,14 @@
 					</div>
 				</div> 
 				<!-- NO -->
-			<h2>NO</h2>
+	
 			<!-- 23.  What were your reason(s) for changing jobs? You may choose more than one answer. -->
 			{!! Form::label('reasonsNo', '14. What were your reason(s) for changing jobs? You may choose more than one answer. ') !!}
 			@foreach( $reasonNo as $data)
 			<div>{!! Form::checkbox('reasonsNo[]', $data,isset($reasonsNo_fm) ? $reasonsNo_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('reasonsNo[]',null,['class' => 'form-control']) !!}
+			{!! Form::text('reasonsNo[]',null,['class' => 'form-control reasonsNo']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
 		</div> 
@@ -283,13 +283,13 @@
 				</div> 
 												<!-- NOT EMPLOYED NOW DATA -->
 				<!--  Please state the reason(s) why you are not employed now. You may choose more than one answer.  -->
-				<h2>NOT EMPLOYED NOW</h2>
+			
 				{!! Form::label('reasonUnemployedNow', '7. Please state the reason(s) why you are not employed now. You may choose more than one answer. ') !!}
 				@foreach( $reasonUnemployedNow as $data)
 				<div>{!! Form::checkbox('reasonUnemployedNow[]', $data,isset($reasonUnemployedNow_fm) ? $reasonUnemployedNow_fm: null) !!} {{$data}}</div>
 				@endforeach
 				{!! Form::label(null, 'If other, please specifiy') !!}<br>
-				{!! Form::text('reasonUnemployedNow[]',null,['class' => 'form-control']) !!}
+				{!! Form::text('reasonUnemployedNow[]',null,['class' => 'form-control reasonUnemployedNow']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)">Next</button>
 		</div> 
@@ -376,7 +376,7 @@
 			<div>{!! Form::checkbox('jobRolesExperienced[]', $data,isset($jobRolesExperienced_fm) ? $jobRolesExperienced_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('jobRolesExperienced[]',null,['class' => 'form-control']) !!}
+			{!! Form::text('jobRolesExperienced[]',null,['class' => 'form-control jobRolesExperienced']) !!}
 			<!--  What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer. -->
 			{!! Form::label('conceptsLearned', '20.What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer') !!}
 			<small class="text-danger">*Required</small>
@@ -384,7 +384,7 @@
 			<div>{!! Form::checkbox('conceptsLearned[]', $data, isset($conceptsLearned_fm) ? $conceptsLearned_fm: null) !!} {{$data}}</div>
 			@endforeach
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('conceptsLearned[]',null,['class' => 'form-control']) !!}
+			{!! Form::text('conceptsLearned[]',null,['class' => 'form-control conceptsLearned']) !!}
 			<!-- What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) . -->
 			{!! Form::label('programmingLanguages', '21.   What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc) ') !!}
 			<small class="text-danger">*Required</small>
