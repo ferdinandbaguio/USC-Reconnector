@@ -22,8 +22,9 @@ class GTSController extends Controller
 
         $validated = $request->validated();
         $validated = $this->removeData($validated);
-    	GraduateTracerStudy::where('id', $id)->update($validated);
-        return redirect()->back();
+        $validated = $this->employementStatus($validated);
+        GraduateTracerStudy::where('id', $id)->update($validated);
+
     }
     
     public function store (GTSRequest $request) {
@@ -38,12 +39,37 @@ class GTSController extends Controller
         $request->reasonUnemployedNow ? $request['reasonUnemployedNow'] = json_encode($request->reasonUnemployedNow) : ''; 
         $request->reasonUnemployedNever ? $request['reasonUnemployedNever'] = json_encode($request->reasonUnemployedNever) : '';
         $validated = $request->validated();
-        
+        // dd($validated['firstCompanyworked']);
         $validated = $this->removeData($validated);
-    	GraduateTracerStudy::create($validated);
+        $this->employementStatus($validated);
+        GraduateTracerStudy::create($validated);
+
         return redirect()->back();
     }
+    public function employementStatus($request){
+        $validated = $request;
+        if($validated['is_presently_employed'] == 'Yes'){
+            User::where('id',Auth::user()->id)->update([
+                'employmentStatus' => 'Employeed',
+                'updateStatus' => 'Recent'
+            ]);
+        }
 
+        if($validated['is_presently_employed'] == 'No, I\'m not employed now'){
+            User::where('id',Auth::user()->id)->update([
+                'employmentStatus' => 'Unemployed(Now)',
+                'updateStatus' => 'Recent'
+            ]);
+        }
+
+        if($validated['is_presently_employed'] == 'No, I was never employed'){
+            User::where('id',Auth::user()->id)->update([
+                'employmentStatus' => 'Unemployed(Never)',
+                'updateStatus' => 'Recent'
+            ]);
+        }
+        return ;
+    }
     public function removeData($request)
     {
         $validated = $request;

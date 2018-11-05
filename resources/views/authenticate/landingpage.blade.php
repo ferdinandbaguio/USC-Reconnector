@@ -118,7 +118,8 @@
       <div class="row py-5">
         <div class="col-md-3">
           <div class="row">
-            <label class="display-3 text-white mx-auto counter"> <span class="count numCount">1029 </span></label>
+            
+            <label class="display-3 text-white mx-auto counter"><span class="count numCount"> {{$counter1}} </span></label>
           </div>
           <div class="row">
             <div class="col-4 mx-auto pt-3 borderBelowCount">
@@ -129,7 +130,7 @@
 
         <div class="col-md-3">
           <div class="row">
-            <label class="display-3 text-white mx-auto counter"> <span class="count numCount">800 </span></label>
+            <label class="display-3 text-white mx-auto counter"> <span class="count numCount"> {{$counter2}} </span></label>
           </div>
           <div class="row">
             <div class="col-4 mx-auto pt-3 borderBelowCount">
@@ -140,7 +141,7 @@
 
         <div class="col-md-3">
           <div class="row">
-            <label class="display-3 text-white mx-auto counter"> <span class="count numCount">3029 </span></label>
+            <label class="display-3 text-white mx-auto counter"> <span class="count numCount"> {{$counter3}} </span></label>
           </div>
           <div class="row">
             <div class="col-4 mx-auto pt-3 borderBelowCount">
@@ -151,7 +152,7 @@
 
         <div class="col-md-3">
           <div class="row">
-            <label class="display-3 text-white mx-auto counter"> <span class="count numCount">329 </span></label>
+            <label class="display-3 text-white mx-auto counter"> <span class="count numCount"> {{$counter4}} </span></label>
           </div>
           <div class="row">
             <div class="col-4 mx-auto pt-3 borderBelowCount">
@@ -175,27 +176,27 @@
           <div class="col-6 col-md-3">
             <h3 class="footTxtColor mb-3"> About </h3>
             <ul class="list-unstyled">
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Profiling Modules </a> </li>
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Web Application </a> </li>
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Alumni Tracking </a> </li>
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> The University </a> </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Profiling Modules </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Web Application </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Alumni Tracking </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> The University </li>
             </ul>
           </div>
           <div class="col-6 col-md-3">
             <h3 class="footTxtColor"> Tools </h3>
             <ul class="list-unstyled">
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Laravel </a> </li>
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> JavaScript </a> </li>
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Bootstrap 4 </a> </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Laravel </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> JavaScript </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Bootstrap 4 </li>
             </ul>
           </div>
           <div class="col-6 col-md-3">
             <h3 class="footTxtColor"> Developers </h3>
             <ul class="list-unstyled">
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Jonas Paquibot </a> </li>
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Bryle Baguio </a> </li>
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Lecarre Gavini </a> </li>
-              <li> <a href="" class="footTxtColor"> <i class="fas fa-angle-right"></i> Melody Cuenco </a> </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Jonas Paquibot </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Bryle Baguio </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Lecarre Gavini </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Melody Cuenco </li>
             </ul>
           </div>
         </div>
@@ -206,7 +207,7 @@
                 <i class="fab fa-facebook-square ml-md-auto ml-3 socialLogoSize"></i>
                 <i class="fab fa-twitter socialLogoSize"></i>
                 <i class="fab fa-instagram socialLogoSize"></i>
-                <label class="mr-md-auto ml-3 mt-1"> <i class="far fa-copyright"></i>Copyright by Jonas The Maker 2018 </label>
+                <label class="mr-md-auto ml-3 mt-1"> <i class="far fa-copyright"></i>Copyright by the Stud-Rec Team 2018 </label>
             </div>
           </div>
         </div>

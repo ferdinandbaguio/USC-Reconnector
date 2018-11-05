@@ -16,7 +16,6 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('idnumber')->unique();
-            $table->string('registeredIdnumber')->unique();
             $table->string('password')->nullable();
             $table->enum('sex', ['Male', 'Female']);
             $table->string('firstName')->nullable();
@@ -33,9 +32,8 @@ class CreateUsersTable extends Migration
             $table->enum('userStatus', ['Pending', 'Approved', 'Denied']);
             $table->enum('userType', ['Student', 'Teacher', 'Alumnus', 
                                         'Admin', 'Coordinator', 'Chair']);
-            $table->enum('employmentStatus', ['Full-Time Job', 'Unemployed', 
-                                              'Part-Time Job', 'Summer Job', 
-                                              'On-the-Job Training']); 
+            $table->enum('employmentStatus', ['Employeed', 'Unemployed(Now)', 
+                                                            'Unemployed(Never)']); 
             $table->enum('updateStatus', ['Updated', 'Outdated', 
                                           'Recent'])->nullable();
             $table->string('position')->nullable();

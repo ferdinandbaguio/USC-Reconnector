@@ -41,7 +41,6 @@ class GTSRequest extends FormRequest
             'industry_currently_working'            => 'required_if:is_presently_employed,Yes',
             'job_level'                             => 'required_if:is_presently_employed,Yes',
             'present_job_position'                  => 'required_if:is_presently_employed,Yes',
-            'job_not_related_to_degree'             => 'required_if:is_presently_employed,Yes',
             'months_employed'                       => 'required_if:is_presently_employed,Yes',
             'name_of_company'                       => 'required_if:is_presently_employed,Yes',
             'address_of_company'                    => 'required_if:is_presently_employed,Yes',
@@ -49,12 +48,12 @@ class GTSRequest extends FormRequest
             'is_first_job'                          => 'required_if:is_presently_employed,Yes',
 
             //Reason YES
-            'reasonsYes'                            => 'required_if:is_first_job,Yes',
+            'reasonsYes'                            => 'sometimes|required_if:is_first_job,Yes',
             //Reason No
             'reasonsNo'                             => 'required_if:is_first_job,No',
             'isFirstJobRelated'                     => 'required_if:is_first_job,No',
             'isJobpositionFirstworkAfterCollege'    => 'required_if:is_first_job,No',
-            'nameofCompanyfirstWorkedin'            => 'required_if:is_first_job,No',
+            'firstCompanyworked'                    => 'required_if:is_first_job,No',
             //extends
             'monthsEmployedfirstjobAfterGraduate'   => 'required_if:is_presently_employed,Yes,No, I\'m not employed now',
             'jobRolesExperienced'                   => 'required_if:is_presently_employed,Yes,No, I\'m not employed now',
@@ -89,7 +88,7 @@ class GTSRequest extends FormRequest
             'OJT'                                   => 'required',
             'social_and_community_involvement'      => 'required',
             //32. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
-            'suggestions'                           => 'required',
+          
             'reasonUnemployedNow'                   => 'required_if:is_presently_employed,No,I\'m not employed now',
             'reasonUnemployedNever'                 => 'required_if:is_presently_employed,No, I was never employed'
         ];
@@ -119,7 +118,7 @@ class GTSRequest extends FormRequest
             'is_first_job.required_if'                          => '13. Is the job you have now, your first job after college? is required',
 
             //Reason YES
-            'reasonsYes.required_if'                            => '14. What are your reason(s) for staying on the job? You may choose more than one answer. is required',
+            'reasonsYes.required_if'                            => '14. What are your reason(s) for staying on the job? You may choose more than one answer. (is required)',
             //Reason No
             'reasonsNo.required_if'                             => '14. What were your reason(s) for changing jobs? You may choose more than one answer.  is required',
             'isFirstJobRelated.required_if'                     => '15. Was your first job after college related to your course/program? is required',
@@ -159,7 +158,7 @@ class GTSRequest extends FormRequest
             'OJT.required'                                   => '26. OJT or Internship Hands on Experience is required',
             'social_and_community_involvement.required'      => '26. Social and Community Involvement is required',
             //32. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
-            'suggestions.required'                           => '27. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals..)  is required',
+          
             'reasonUnemployedNow.required_if'                   => '7. Please state the reason(s) why you are not employed now. You may choose more than one answer.  is required',
             'reasonUnemployedNever.required_if'                 => '7. Please state the reason(s) why you are not employed now. You may choose more than one answer.  is required'
         ];

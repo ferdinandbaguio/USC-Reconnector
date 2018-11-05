@@ -22,31 +22,38 @@
         <h5> {{Auth::user()->full_name}} </h5>
         <h6 class="text-muted"> {{Auth::user()->idnumber}} </h6>
 
-        <p class="mt-3 mb-0"> Bachelor of Science in Information in Communication Technology </p>
+        <p class="mt-3 mb-0"> INSERT BACKEND: COURSE TAKEN </p>
         <p class="m-0"> Year level: {{Auth::user()->yearLevel}}  </p>
-        <p class="m-0"> Birthday: February 31, 2018 </p>
+        <p class="m-0"> Birthday: {{Auth::user()->birthdate}} </p>
         <p class="m-0"> Sex: {{Auth::user()->sex}} </p>
-        <p class="m-0"> Batch Graduated: March 2018 </p>
+        <p class="m-0"> Batch Graduated: INSERT BACKEND </p>
 
       </div>
+    </div>
+
+    <div class="row mt-3">
+      <button class="btn btn-sm mx-auto editProfBtn text-white" id="editProfBtn">Edit Profile <i class="far fa-edit"></i></button>
     </div>
   </div>
   <!-- LEFT BOX END -->
 
   <!-- RIGHT BOX -->
-  <div class="col-md-8 p-4 pt-5 align-self-start" style="background-color: white;">
+  <div class="col-md-8 p-4 pt-5" style="background-color: white;">
     <div class="row">
       <div class="col-md-5">
-        <h5 class="text-muted" style="font-weight: ;"> Description <a href="#descModal" data-toggle="modal"> <i class="far fa-edit text-muted"></i> </a></h5>
+        <h5 class="text-muted" style="font-weight: ;"> Description </h5>
       </div>
     </div>
     <div class="row mt-1">
       <div class="col-md-12">
-        <p> {{Auth::user()->description}} </p>
+        <p class="m-0"> {{Auth::user()->description}} </p>
+        <div class="editDescHolder">
+        <a href="#descModal" data-toggle="modal" class="editDescBtn"> Edit <i class="far fa-edit"></i> </a>
+        </div>
       </div>
     </div>
 
-    <div class="row mt-2">
+    <div class="row mt-3">
       <div class="col-12">
         <h5 class="text-muted"> Location <i class="fas fa-search-location"></i></h5> 
         <small>IT.Park Qualfon Building Telstra Pizza Resto Bar</small>
@@ -83,14 +90,16 @@
     <div class="row mt-1">
     @foreach($skills as $row)	
 			<div class="col-md-12">
-				<p class="m-0">{{$row->skillName}}</p>
+				<p class="m-0">{{$row->skillName}}
+          <a href="{{URL::to('/deleteASkill/'.$row->id) }}" class="text-danger deleteSkillHolder" onclick="return confirm('Are you sure you want to delete {{$row->skillName}}?');"><i class="far fa-times-circle"></i></a>
+        </p>
 				<div class="progress">
 				  <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="{{$row->skillPercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$row->skillPercent}}%"> {{$row->skillPercent}}% </div>
 				</div>
 			</div>
 		@endforeach
-      <div class="col-md-12 mt-4">
-        <button type="button" class="btn addSkillBtn" data-toggle="modal" data-target="#addSkillModal">
+      <div class="col-md-12 mt-4 skillBtnHolder">
+        <button type="button" class="btn btn-sm addSkillBtn" data-toggle="modal" data-target="#addSkillModal">
           <i class="fas fa-plus-circle"></i> Add a Skill
         </button>
       </div>
@@ -104,11 +113,13 @@
     <div class="row mt-1">
       <div class="col-md-12">
         @foreach($achievements as $row)
-				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) </p>
+				<p><i class="fas fa-trophy" style="color: #EEEB4D"></i> {{$row->achTitle}} ({{$row->achYear}}) 
+          <a href="{{URL::to('/deleteAAchv/'.$row->id) }}" class="text-danger deleteSkillHolder" onclick="return confirm('Are you sure you want to delete {{$row->achTitle}}?');"><i class="far fa-times-circle"></i></a>
+        </p>
 				@endforeach
       </div>
-      <div class="col-md-12 mt-2">
-        <button type="button" class="btn addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
+      <div class="col-md-12 mt-2 achvBtnHolder">
+        <button type="button" class="btn btn-sm addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
           <i class="fas fa-plus-circle"></i> Add an achievement
         </button>
       </div>
@@ -176,7 +187,7 @@
 	    <div class="modal-content">
 
 	      <div class="modal-body mt-4">
-	        <form method="POST" action="{{route('alumnus.skill.add')}}">
+	        <form method="POST" action="{{route('alumnus.skill.add')}}" id="addSkillForm">
 	        	{{csrf_field()}}
 	        	<div class="form-group">
 	        		<label><i class="fas fa-football-ball" style="color: #3CAEC1"></i> Title of Skill</label>
@@ -192,7 +203,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn addSkillBtn">
+	        <button type="submit" class="btn addSkillBtn" id="addSkillBtnF">
 				<i class="fas fa-plus-circle"></i> Add Skill
 			</button>
 			</form>
@@ -209,7 +220,7 @@
 	    <div class="modal-content">
 
 	      <div class="modal-body mt-4">
-	        <form method="POST" action="{{route('alumnus.achievement.add')}}">
+	        <form method="POST" action="{{route('alumnus.achievement.add')}}" id="addAchvForm">
 	        	{{csrf_field()}}
 	        	<div class="form-group">
 	        		<label><i class="fas fa-trophy" style="color: #EEEB4D"></i> Title of Achievement</label>
@@ -223,7 +234,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn addAchvBtn">
+	        <button type="submit" class="btn addAchvBtn" id="addAchvBtnF">
 				<i class="fas fa-plus-circle"></i> Add achievement
 			</button>
 			</form>
@@ -236,18 +247,27 @@
 </div>
 <!-- NEW -->
 
-
-@endsection
 <div class="container-fluid warningAlumnus">
   <div class="container fontRoboto">
     <div class="row">
       <div class="col-12 py-5">
         <center>
         <label>Setup your alumni details now to avoid feature restrictions in the website.</label>
-        <a class="btn clickHereBtn align-baseline p-3 px-4" href="{{ route('alumnus.form') }}">Click here!</a>
+        <a class="btn clickHereBtn p-2 px-4" href="{{ route('alumnus.form') }}">Click here!</a>
+        <button class="btn closeHereBtn" id="closeHereBtn">Close</button>
         </center>
         </div>
       </div>
     </div>
-  </div>
 </div>
+
+<!-- jQuery script -->
+<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
+
+<!-- Custom scripts  -->
+<script src="/js/unique/alumnus/slideToggle.js"></script>
+
+@endsection
+
+
+

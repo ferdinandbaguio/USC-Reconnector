@@ -72,7 +72,7 @@
 					<p>(Please indicate the year the test was taken)</p>
 			{!! Form::text('professional_examinations_passed', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonOne" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)" disabled="disabled">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonOne" onclick="showPage($('#collegegraduate').is(':checked') ? 3 : 2)" >Next</button>
 		</div> 
 		<!-- END FIRST PAGE -->
 
@@ -111,13 +111,10 @@
 			{!! Form::label(null, ' 1.4 What made you pursue advance studies?') !!}
 			<small class="text-danger">*Required</small>
 			@foreach( $pursueAdvanceStudies as $data)
-			<!-- @if($data == 'Iba pa:')
-			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : '') !!} {{$data}}
-			{!! Form::text('advance_studies[]',null,null, ['class' => 'form-control']) !!}</div>
-			@else -->
-			<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
-			<!-- @endif
-			@endforeach -->
+				<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
+			@endforeach
+			{!! Form::label(null, 'If other, please specifiy') !!}<br>
+			{!! Form::text('advance_studies[]',null,['class' => 'form-control advance_studies']) !!}
 			
 			
 			<button type="button" class="btn btn-sm btn-outline-danger mt-3 " onclick="showPage(getPreviousPage())">Previous</button>
@@ -232,14 +229,15 @@
 					</div>
 				</div> 
 			<!-- YES -->
-			<h2>YES</h2>
+		
 			<!-- 23. What are your reason(s) for staying on the job? You may choose more than one answer. * -->
 			{!! Form::label(null, '14. What are your reason(s) for staying on the job? You may choose more than one answer') !!}
 			<small class="text-danger">*Required</small>
 			@foreach( $reasonYes as $data)
 			<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm: null) !!} {{$data}}</div>
 			@endforeach
-			{!! Form::text('reasonsYes',null, ['class' => 'form-control']) !!}
+			{!! Form::label(null, 'If other, please specifiy') !!}<br>
+			{!! Form::text('reasonsYes[]',null,['class' => 'form-control reasonsYes']) !!}
 			<!-- End of YES -->
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
@@ -265,7 +263,8 @@
 			@foreach( $reasonNo as $data)
 			<div>{!! Form::checkbox('reasonsNo[]', $data,isset($reasonsNo_fm) ? $reasonsNo_fm: null) !!} {{$data}}</div>
 			@endforeach
-
+			{!! Form::label(null, 'If other, please specifiy') !!}<br>
+			{!! Form::text('reasonsNo[]',null,['class' => 'form-control reasonsNo']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
 		</div> 
@@ -289,7 +288,8 @@
 				@foreach( $reasonUnemployedNow as $data)
 				<div>{!! Form::checkbox('reasonUnemployedNow[]', $data,isset($reasonUnemployedNow_fm) ? $reasonUnemployedNow_fm: null) !!} {{$data}}</div>
 				@endforeach
-
+				{!! Form::label(null, 'If other, please specifiy') !!}<br>
+				{!! Form::text('reasonUnemployedNow[]',null,['class' => 'form-control reasonUnemployedNow']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)">Next</button>
 		</div> 
@@ -308,12 +308,13 @@
 				</div> 
 												<!-- NEVER EMPLOYED DATA -->
 				<!--  Please state the reason(s) why you are not employed now. You may choose more than one answer.  -->
-				<h2>NEVER EMPLOYED</h2>
+			
 				{!! Form::label('reasonUnemployedNever', '7. Please state the reason(s) why you are not employed now. You may choose more than one answer. ') !!}
 				@foreach( $reasonUnemployedNever as $data)
 				<div>{!! Form::checkbox('reasonUnemployedNever[]', $data,isset($reasonUnemployedNever_fm) ? $reasonUnemployedNever_fm: null) !!} {{$data}}</div>
 				@endforeach
-
+				{!! Form::label(null, 'If other, please specifiy') !!}<br>
+				{!! Form::text('reasonUnemployedNever[]',null,['class' => 'form-control reasonUnemployedNever']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonEight" onclick="showPage(11)">Next</button>
 		</div> 
@@ -341,9 +342,9 @@
 				{!! Form::text('isJobpositionFirstworkAfterCollege',null, ['class' => 'form-control']) !!}
 
 				<!--  Name of the company / organization you first worked in -->
-				{!! Form::label('nameofCompanyfirstWorkedin', '17. Name of the company / organization you first worked in ') !!}
-				{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
-				<h2>End of NO</h2>
+				{!! Form::label(null, '17. Name of the company / organization you first worked in ') !!}
+				{!! Form::text('firstCompanyworked',null, ['class' => 'form-control']) !!}
+
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonNine" onclick="showPage(10)">Next</button>
@@ -374,14 +375,16 @@
 			@foreach( $jobRolesExperienced as $data)
 			<div>{!! Form::checkbox('jobRolesExperienced[]', $data,isset($jobRolesExperienced_fm) ? $jobRolesExperienced_fm: null) !!} {{$data}}</div>
 			@endforeach
-			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
+			{!! Form::label(null, 'If other, please specifiy') !!}<br>
+			{!! Form::text('jobRolesExperienced[]',null,['class' => 'form-control jobRolesExperienced']) !!}
 			<!--  What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer. -->
 			{!! Form::label('conceptsLearned', '20.What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer') !!}
 			<small class="text-danger">*Required</small>
 			@foreach( $conceptsLearned as $data)
 			<div>{!! Form::checkbox('conceptsLearned[]', $data, isset($conceptsLearned_fm) ? $conceptsLearned_fm: null) !!} {{$data}}</div>
 			@endforeach
-			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control']) !!}
+			{!! Form::label(null, 'If other, please specifiy') !!}<br>
+			{!! Form::text('conceptsLearned[]',null,['class' => 'form-control conceptsLearned']) !!}
 			<!-- What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) . -->
 			{!! Form::label('programmingLanguages', '21.   What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc) ') !!}
 			<small class="text-danger">*Required</small>
@@ -413,10 +416,11 @@
 			@foreach( $reasonsUndergraduateCourse as $data)
 			<div>{!! Form::checkbox('reasonsUndergraduateCourse[]',$data,isset($reasonsUndergraduateCourse_fm) ? $reasonsUndergraduateCourse_fm: null) !!} {{$data}}</div>
 			@endforeach
-			{!! Form::text('nameofCompanyfirstWorkedin',null, ['class' => 'form-control mb-2']) !!}
+			{!! Form::label(null, 'If other, please specifiy') !!}<br>
+			{!! Form::text('reasonsUndergraduateCourse[]',null,['class' => 'form-control reasonsUndergraduateCourse']) !!}
 
 			<!-- Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes: -->
-			{!! Form::label('name', '23.  Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes ') !!}
+			{!! Form::label(null, '23.  Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes ') !!}
 			<small class="text-danger">*Required</small>
 			<!-- Knowledge for Solving Computing Problems -->
 			<div><strong style="color:#3B666E;">Knowledge for Solving Computing Problems</strong><strong class="text-danger"> *</strong></div>
@@ -578,7 +582,7 @@
 			<br><br>
 			<!--Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.. -->
 			{!! Form::label(null, '27. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals..) ') !!}
-			<small class="text-danger">*Required</small>
+	
 			{!! Form::text('suggestions', null, ['class' => 'form-control mt-3']) !!}
 
 

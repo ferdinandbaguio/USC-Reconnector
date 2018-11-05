@@ -19,6 +19,10 @@ Page Contents
   padding-bottom: 0px;
 }
 
+.editProfBtn{
+  background: linear-gradient(90deg, #030216,#3E3C56);
+}
+
 
 /*IMPORTED CSS*/
 .addAchvBtn{
@@ -44,11 +48,12 @@ Page Contents
 
 
 .warningAlumnus{
-  background-color: #FCE6E6;
-  box-shadow: 0 0 3px #DC2525;
+  background-color: #FFE9E9;
+  box-shadow: 0 0 3px #DC4343;
 
   position: fixed; 
-  bottom: 0px; 
+  bottom: 0px;
+  left: 0px; 
   z-index: 5;
 }
 .clickHereBtn{
@@ -65,6 +70,10 @@ Page Contents
   color: white;
   outline: none;
   border:none;
+}
+
+.editDescHolder,.achvBtnHolder,.skillBtnHolder,.deleteSkillHolder,.deleteAchvHolder{
+  display: none;
 }
 /* 
 MEDIA QUERIES 

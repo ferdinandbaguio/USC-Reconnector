@@ -17,37 +17,39 @@ Worldwide
 
 <div class="row">
     <div class="col-lg-2">
-        <div class="card text-white bg-success mb-3"  width="100%">
-            <div class="card-header">
-                #1
-                <b><i>{{$topctry[0]->name}}</i></b>&nbsp;
-                <img class="m-r-10" src="/storage/flag_img/{{$topctry[0]->flag}}" alt="{{$topctry[0]->code}}"> 
+        @if($isTop3 == "Present")
+            <div class="card text-white bg-success mb-3"  width="100%">
+                <div class="card-header">
+                    #1
+                    <b><i>{{$topctry[0]->name}}</i></b>&nbsp;
+                    <img class="m-r-10" src="/storage/flag_img/{{$topctry[0]->flag}}" alt="{{$topctry[0]->code}}"> 
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Alumni: {{$topctry[0]->value}}</h5>
+                <p class="card-text">{{$topctry[0]->name}} has the highest number of Alumni amongst all 176 countries</p>
+                </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title">Alumni: {{$topctry[0]->value}}</h5>
-              <p class="card-text">{{$topctry[0]->name}} has the highest number of Alumni amongst all 176 countries</p>
+            <div class="card text-white bg-info mb-3" width="100%">
+                <div class="card-header">
+                    #2&nbsp;
+                    <b><i>{{$topctry[1]->name}}</i></b>&nbsp;
+                    <img class="m-r-10" src="/storage/flag_img/{{$topctry[1]->flag}}" alt="{{$topctry[1]->code}}"> 
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Alumni: {{$topctry[1]->value}}</h5>
+                </div>
             </div>
-        </div>
-        <div class="card text-white bg-info mb-3" width="100%">
-            <div class="card-header">
-                #2&nbsp;
-                <b><i>{{$topctry[1]->name}}</i></b>&nbsp;
-                <img class="m-r-10" src="/storage/flag_img/{{$topctry[1]->flag}}" alt="{{$topctry[1]->code}}"> 
+            <div class="card text-white bg-warning mb-3" width="100%">
+                <div class="card-header">
+                    #3&nbsp;
+                    <b><i>{{$topctry[2]->name}}</i></b>&nbsp;s
+                    <img class="m-r-10" src="/storage/flag_img/{{$topctry[2]->flag}}" alt="{{$topctry[2]->code}}"> 
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Alumni: {{$topctry[2]->value}}</h5>
+                </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title">Alumni: {{$topctry[1]->value}}</h5>
-            </div>
-        </div>
-        <div class="card text-white bg-warning mb-3" width="100%">
-            <div class="card-header">
-                #3&nbsp;
-                <b><i>{{$topctry[2]->name}}</i></b>&nbsp;s
-                <img class="m-r-10" src="/storage/flag_img/{{$topctry[2]->flag}}" alt="{{$topctry[2]->code}}"> 
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Alumni: {{$topctry[2]->value}}</h5>
-            </div>
-        </div>
+        @endif
     </div>
     <div class="col-lg-10">
         <div id="world-map" style="height: 500px;"></div>

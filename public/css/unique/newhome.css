@@ -60,7 +60,7 @@ body{
   font-size: 17px;
 }
 .blueBtn, .blueBtn:hover{
-  background-color:#4E9DA6;
+  background:linear-gradient(#15626B,#4E9DA6);
   cursor: pointer;
 }
 #regForm{

@@ -33,8 +33,7 @@ class User extends Authenticatable
         'course_id',
         'department_id',
         'address',
-        'birthdate',
-        'registeredIdnumber'
+        'birthdate'
     
     ];
 

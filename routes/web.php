@@ -10,7 +10,6 @@ Route::group(['middleware' => 'guest'], function () {
         Route::get('/', 'LoginController@index')->name('login');
         Route::post('/login','LoginController@doLogin')->name('login.submit');
         Route::post('/register', 'RegisterationController@store')->name('register.submit');
-
         
 });
         // Logout
@@ -39,21 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
         
         
-        Route::get('/deleteSkill/{id}','StudentController@destroySkill');
-        Route::get('/deleteAchv/{id}','StudentController@destroyAchv');
+        Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
+        Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
     });
-    // Alumnus
-    Route::group(['middleware' => 'alumnus'], function () {  
-      
-        Route::view('/alumnus/profile', 'user.alumnus.profile');
-        Route::view('/alumnus/jobs', 'user.alumnus.jobs');
-        Route::view('/alumnus/communicate', 'user.alumnus.communicate');
-        Route::view('/alumnus/form', 'user.alumnus.form');  
 
-        Route::view('/alumnus/maptest', 'user.alumnus.map');        
-
-    });
-   
     // Alumnus
     Route::group(['middleware' => 'alumnus'], function () {  
       
@@ -69,7 +57,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/alumnus/form','GTSController@store')->name('alumnus.form.store');
         Route::patch('/alumnus/form/{id}/update','GTSController@update')->name('alumnus.form.update');;
 
-        
+        Route::view('/alumnus/maptest', 'user.alumnus.map');
+        Route::get('/deleteASkill/{id}','AlumnusController@destroySkill');  
+        Route::get('/deleteAAchv/{id}','AlumnusController@destroyAchv'); 
 
     });
 
@@ -81,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/teacher/description', 'DescriptionController@update')->name('teacher.description.update');
         Route::post('/teacher/achievement', 'AchievementController@store')->name('teacher.achievement.add');
         
-        
+        Route::get('/deleteTAchv/{id}','TeacherController@destroyAchv');   
     });
     
 

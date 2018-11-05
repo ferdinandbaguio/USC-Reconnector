@@ -5,9 +5,12 @@
   Top Navigation Bar
 */
 .navbar{
-    background: linear-gradient(#6D6D71, #161619);
+    background: linear-gradient(#032C41,#02948B);
     z-index: 999.1;
-    box-shadow: 0 0 3px 0;
+    box-shadow: 0 0 2px 0;
+
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 .ownerLink, .ownerLink:focus{
   background: none;
@@ -34,7 +37,7 @@
   Side Navigation Bar
 */
 .sideDiv{
-  background:#39393F;
+  background:linear-gradient(#02948B,#02948B,#032C41);
   position:fixed;
   width:210px;
   left:-140px;

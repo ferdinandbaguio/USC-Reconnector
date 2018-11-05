@@ -41,28 +41,27 @@ $(document).ready(function(){
 
 	// FOR ADD ACHIEVEMENT
 	// VALUE CHECKER IF INPUTS IS NULL, SUBMIT BUTTON DISABLER
-	$("#addAchvForm").keyup(function(){
-	    $("#addAchvForm :input").each(function(){
-		 	var input = $(this); 
-
-			 	if(input.val() == 0){
-					$('#addAchvBtnF').prop("disabled", true);
-				}
-				else{
-					$('#addAchvBtnF').prop("disabled", false);
-				}
-		});
-	});
+	$('input[name="achTitle"],input[name="achYear"]').keyup(function(){
+		var i1 = $('input[name="achTitle"]');
+		var i2 = $('input[name="achYear"]');
+		if (i1.val() == 0 || i2.val() == 0) {
+			$('#addAchvBtnF').prop("disabled", true);
+		}
+		else{
+			$('#addAchvBtnF').prop("disabled", false);
+		}
+	})
 	
-
 	$('#addAchvBtnF').prop("disabled", true);
 
 
 	// DISABLE SUBMIT AFTER CLICK
-	$('#addAchvBtnF').on('click', function() {
-    $(this).prop('disabled', true);
-    $("#addAchvForm").submit();
-	});
+	$('#addAchvBtnF').on('click',function()
+	  {
+	  	$(this).attr('disabled','disabled');
+	    $(this).html('Please wait');
+	    $('#addAchvForm').submit();
+	 });
 });
 
 
