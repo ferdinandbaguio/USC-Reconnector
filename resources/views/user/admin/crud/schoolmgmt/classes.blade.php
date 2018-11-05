@@ -19,9 +19,14 @@ Classes
         <div class="ibox-title text-info">
             Number of Classes:<b><i> @if(isset($grpclasses)){{$grpclasses->count()}}@endif</i></b>
         </div>
+        <span data-toggle="modal" data-target="#create-subject">
+            <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Subject">
+                Add Subject <i class="ti-plus"></i>                            
+            </button>
+        </span>
         <span data-toggle="modal" data-target="#create-class">
             <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Class">
-                Add <i class="ti-plus"></i>                            
+                Add Class <i class="ti-plus"></i>                            
             </button>
         </span>
     </div>
@@ -169,6 +174,51 @@ Classes
     @csrf
     <div class="modal-body">
             @include('_inc.admin.schoolmgmt.createClassModal')
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+<!-- Create Subject Modal -->
+<div class="modal fade" id="create-subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Creating New Subject</h4>
+    </div>
+    {!! Form::open(['route' => 'StoreSubject', 'method' => 'POST', 
+                    'style' => 'display:inline-block;', 'files' => TRUE]) !!}
+    @csrf
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <b>{{Form::label('pic', 'Subject Picture')}}</b>
+                {{ Form::file('picture') }}
+            </div>
+        
+            <div class="col-md-4 form-group">
+                <b>{{Form::label('code', 'Code')}}</b>
+                {{Form::text('code', '', ['class' => 'form-control input-rounded', 
+                'placeholder' => 'Subject Code'])}}
+            </div>
+        
+            <div class="col-md-4 form-group">
+                <b>{{Form::label('name', 'Name')}}</b>
+                {{Form::text('name', '', ['class' => 'form-control input-rounded', 
+                'placeholder' => 'Subject Name', 'required'])}}
+            </div>
+        </div>
+        <b>{{Form::label('description', 'Description')}}</b>
+        {{Form::textarea('description', '', ['class' => 'form-control input-rounded', 
+        'placeholder' => 'Type Subject Description', 'required', 'rows' => 3])}}
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

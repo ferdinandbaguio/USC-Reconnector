@@ -13,6 +13,55 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
 {
+    public function index()
+    {
+        $students = User::where('userType', '=', 'Student')->get();
+        $teachers = User::where('userType', '=', 'Teacher')->get();
+        $alumni = User::where('userType', '=', 'Alumnus')->get();
+        $admins = User::where('userType', '=', 'Admins')->get();
+
+        return view('user.admin.chat')
+        ->with('students', $students)
+        ->with('teachers', $teachers)
+        ->with('alumni', $alumni)
+        ->with('admins', $admins);
+    }
+    public function store(Request $request)
+    {
+        $request = $request->all();
+        $message['title'] = $request['title'];
+        $message['sender'] = $request['sender'];
+        Message::create($message);
+        $message_id = Message::select('id')->orderBy('created_at', 'desc')->first();
+        $r['message_id'] = $message_id['id'];
+        $r['recipient_id'] = Auth::user()->id;
+        Receiver::create($r);
+        if(isset($request['rID1'])){
+            $r['message_id'] = $message_id['id'];
+            $r['recipient_id'] = $request['rID1'];
+            Receiver::create($r);
+        }
+        if(isset($request['rID2'])){
+            $r['message_id'] = $message_id['id'];
+            $r['recipient_id'] = $request['rID2'];
+            Receiver::create($r);
+        }
+        if(isset($request['rID3'])){
+            $r['message_id'] = $message_id['id'];
+            $r['recipient_id'] = $request['rID3'];
+            Receiver::create($r);
+        }
+        if(isset($request['rID4'])){
+            $r['message_id'] = $message_id['id'];
+            $r['recipient_id'] = $request['rID4'];
+            Receiver::create($r);
+        }
+        return redirect()->back()->with('success', 'Created New Chat');
+    }
+    public function update(Request $request)
+    {
+        return $request;
+    }
     public function get()
     {
         $message = Receiver::where('recipient_id', '=', Auth::user()->id)->get();

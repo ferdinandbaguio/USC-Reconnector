@@ -9,7 +9,24 @@
 
 @section('content')
     
-<div class="page-content fade-in-up">
+<h1><center>
+    Welcome {{Auth::user()->full_name}}
+</center></h1><br><br>
+<h2><center>
+    Here at the Admin Page, you can create, read, update, or delete data.<br><br>
+</center></h2>
+<h4>
+    <b>These are your capabilities</b><br><br>
+    <ul>
+        <li>Manage incoming user request</li><br>
+        <li>Manage all user types</li><br>
+        <li>Manage classes and school data</li><br>
+        <li>Post announcements</li><br>
+        <li>Keep track of Alumni</li><br>
+        <li>Communicate with the chat system</li><br>
+    </ul>
+</h4>
+{{-- <div class="page-content fade-in-up">
     <div class="row">
         <div class="col-lg-3 col-md-6">
             <div class="ibox bg-success color-white widget-stat">
@@ -502,7 +519,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
     
 @endsection
 

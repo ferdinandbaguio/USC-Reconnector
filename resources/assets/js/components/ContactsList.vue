@@ -2,9 +2,6 @@
     <div class="contacts-list">
         <ul>
             <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected': contact == selected }">
-                <div class="avatar">
-                    <img :src="contact.picture" :alt="contact.title">
-                </div>
                 <div class="contact">
                     <p class="name">{{ contact.title }}</p>
                     <p class="email">{{ contact.sender }}</p>

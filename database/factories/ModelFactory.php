@@ -35,6 +35,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         
 	    return [
             'idnumber'      => $idnumber,
+            'registeredIdnumber'      => $idnumber,
             'picture'       => $picture,
             'email'         => $faker->email,
             'password'      => bcrypt($idnumber),
