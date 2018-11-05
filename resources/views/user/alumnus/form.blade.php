@@ -11,6 +11,11 @@
 		display: none;
 	}
 </style>
+  @if(session('success'))
+	<div class="alert alert-success">
+		 {{session('success')}}
+	</div>
+  @endif
 <div class="container">
 <center><h1>Department of Computer and Information Sciences</h1></center>
 </div>

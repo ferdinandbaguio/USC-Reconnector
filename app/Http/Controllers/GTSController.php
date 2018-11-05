@@ -22,9 +22,9 @@ class GTSController extends Controller
 
         $validated = $request->validated();
         $validated = $this->removeData($validated);
-        $validated = $this->employementStatus($validated);
+        $this->employementStatus($validated);
         GraduateTracerStudy::where('id', $id)->update($validated);
-
+        return redirect()->back();
     }
     
     public function store (GTSRequest $request) {
@@ -44,7 +44,7 @@ class GTSController extends Controller
         $this->employementStatus($validated);
         GraduateTracerStudy::create($validated);
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Thank you for answering!');
     }
     public function employementStatus($request){
         $validated = $request;
