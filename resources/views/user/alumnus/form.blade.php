@@ -72,7 +72,7 @@
 					<p>(Please indicate the year the test was taken)</p>
 			{!! Form::text('professional_examinations_passed', null, ['class' => 'form-control', 'placeholder' => '']) !!}
 
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonOne" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)" >Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonOne" onclick="showPage($('#collegegraduate').is(':checked') ? 	3 : 2)" disabled="disabled">Next</button>
 		</div> 
 		<!-- END FIRST PAGE -->
 
@@ -142,7 +142,7 @@
 				@endforeach
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonThree" onclick="showPage(isEmployed())">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonThree" onclick="showPage(isEmployed())" disabled="disabled">Next</button>
 		</div> 
 		<!-- END THIRD PAGE -->
 
@@ -211,7 +211,7 @@
 			@endforeach
 
 			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFour" onclick="showPage(yesNo())">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFour" onclick="showPage(yesNo())" disabled="disabled">Next</button>
 	
 		</div>
 	<!-- END FOURTH PAGE -->
@@ -241,7 +241,7 @@
 			<!-- End of YES -->
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFive" onclick="showPage(10)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFive" onclick="showPage(10)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END FIFTH PAGE -->
 	<!-- SIXTH PAGE -->
@@ -266,7 +266,7 @@
 			{!! Form::label(null, 'If other, please specifiy') !!}<br>
 			{!! Form::text('reasonsNo[]',null,['class' => 'form-control reasonsNo']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END SIXTH PAGE -->
 	<!-- SEVENTH PAGE -->
@@ -291,7 +291,7 @@
 				{!! Form::label(null, 'If other, please specifiy') !!}<br>
 				{!! Form::text('reasonUnemployedNow[]',null,['class' => 'form-control reasonUnemployedNow']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END SEVENTH PAGE -->
 	<!-- EIGHTH PAGE -->
@@ -316,7 +316,7 @@
 				{!! Form::label(null, 'If other, please specifiy') !!}<br>
 				{!! Form::text('reasonUnemployedNever[]',null,['class' => 'form-control reasonUnemployedNever']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonEight" onclick="showPage(11)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonEight" onclick="showPage(11)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END EIGHTH PAGE -->
 	<!-- NINTH PAGE -->
@@ -347,7 +347,7 @@
 
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonNine" onclick="showPage(10)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonNine" onclick="showPage(10)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END NINTH PAGE -->
 	<!-- TENTH PAGE -->
@@ -391,7 +391,7 @@
 			{!! Form::text('programmingLanguages', null, ['class' => 'form-control']) !!}
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTen" onclick="showPage(11)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTen" onclick="showPage(11)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END TENTH PAGE -->
 
