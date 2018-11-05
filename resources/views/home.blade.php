@@ -95,6 +95,8 @@
         <p class="m-0"> Email: {{$latestjobpost->email}} </p>
 
         <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px">
+        <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px">
+        <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px">
         </div>
       </div>
     </div>
