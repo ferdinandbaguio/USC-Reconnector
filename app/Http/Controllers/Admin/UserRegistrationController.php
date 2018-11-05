@@ -13,7 +13,8 @@ class UserRegistrationController extends Controller
     public function index(Request $request)
     {
         $dept_id = Auth::user()->department_id;
-        $users = User::where('userStatus', '=', 'Pending')->where('department_id', '=', $dept_id)->get();
+        // $users = User::where('userStatus', '=', 'Pending')->where('department_id', '=', $dept_id)->get();
+        $users = User::where('userStatus', '=', 'Pending')->get();
         if(isset($request->currentStatus)){
             if($request->currentStatus == 'Denied'){
                 $users = User::where('userStatus', '=', 'Denied')->get();

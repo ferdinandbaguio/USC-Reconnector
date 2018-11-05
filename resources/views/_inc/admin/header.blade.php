@@ -152,10 +152,10 @@
                     <span></span>{{ Auth::user()->userType }}<i class="fa fa-angle-down m-l-5"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="/admin"><i class="fa fa-user"></i>Profile</a>
+                    {{-- <a class="dropdown-item" href="/admin"><i class="fa fa-user"></i>Profile</a>
                     <a class="dropdown-item" href="/admin"><i class="fa fa-building"></i>Job Profile</a>
                     <a class="dropdown-item" href="/admin"><i class="fa fa-support"></i>Support</a>
-                    <li class="dropdown-divider"></li>
+                    <li class="dropdown-divider"></li> --}}
                     {!! Form::open(['url' => route('logout'), 'method' => 'POST', 'class' => 'logout', 'id' => 'logout']) !!}
                         <a class="dropdown-item" href="#" onclick="event.preventDefault();
                             document.getElementById('logout').submit();">

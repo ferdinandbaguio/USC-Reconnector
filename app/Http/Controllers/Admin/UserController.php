@@ -17,42 +17,48 @@ class UserController extends Controller
         $dept_id = Auth::user()->department_id;
         $courses = Course::all('id', 'code');
         $departments = Department::all('id', 'code');
-        $users = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        // $users = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        $users = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.students')->with('users',$users)->with('courses', $courses)->with('departments', $departments);
     }
     public function alumni()
     {
         $dept_id = Auth::user()->department_id;
         $departments = Department::all('id', 'code');
-        $users = User::where('userType', '=', 'Alumnus')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        // $users = User::where('userType', '=', 'Alumnus')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        $users = User::where('userType', '=', 'Alumnus')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.alumni')->with('users',$users)->with('departments', $departments);
     }
     public function teachers()
     {
         $dept_id = Auth::user()->department_id;
         $departments = Department::all('id', 'code');
-        $users = User::where('userType', '=', 'Teacher')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        // $users = User::where('userType', '=', 'Teacher')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        $users = User::where('userType', '=', 'Teacher')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.teachers')->with('users',$users)->with('departments', $departments);
     }
     public function coordinators()
     {
         $dept_id = Auth::user()->department_id;
         $departments = Department::all('id', 'code');
-        $users = User::where('userType', '=', 'Coordinator')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        // $users = User::where('userType', '=', 'Coordinator')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        $users = User::where('userType', '=', 'Coordinator')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.coordinators')->with('users',$users)->with('departments', $departments);
     }
     public function chairs()
     {
         $dept_id = Auth::user()->department_id;
         $departments = Department::all('id', 'code');
-        $users = User::where('userType', '=', 'Chair')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        // $users = User::where('userType', '=', 'Chair')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        $users = User::where('userType', '=', 'Chair')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.chairs')->with('users',$users)->with('departments', $departments);
     }
     public function admins()
     {
         $dept_id = Auth::user()->department_id;
         $departments = Department::all('id', 'code');
-        $users = User::where('userType', '=', 'Admin')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        // $users = User::where('userType', '=', 'Admin')->where('userStatus', '=', 'Approved')->where('department_id', '=', $dept_id)->get();
+        $users = User::where('userType', '=', 'Admin')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.users.admins')->with('users',$users)->with('departments', $departments);
     }
     public function store(Request $request)
