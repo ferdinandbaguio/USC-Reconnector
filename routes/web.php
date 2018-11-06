@@ -23,10 +23,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('announcements','AnnouncementController')->except('create');
 
         //View Profiles
+        Route::get('/viewStudentProfile/{id}','StudentController@viewStudentProfile');
         Route::view('/student/viewprofile', 'user.student.viewprofile');
+
+        Route::get('/viewAlumnusProfile/{id}','StudentController@viewStudentProfile');
         Route::view('/alumnus/viewprofile', 'user.alumnus.viewprofile');
+
+        Route::get('/viewTeacherProfile/{id}','TeacherController@viewTeacherProfile');
         Route::view('/teacher/viewprofile', 'user.teacher.viewprofile');
 
+        //IMAGE VIEW ON ANNOUNCEMENTS AND JOB POSTS
         Route::get('/imageView/{id}','HomeController@imageView')->name('imageView');        
     }); 
 
@@ -39,9 +45,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('student/skill', 'UserSkillController@store')->name('student.skill.add');
         Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
         
+        Route::get('/searchClass', 'StudentController@searchClass')->name('searchClass.searchClass');
+        Route::view('/classList', 'user.student.classList')->name('classList');
         
         Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
         Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
+
     });
 
     // Alumnus

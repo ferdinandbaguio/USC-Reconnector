@@ -28,7 +28,10 @@ body{
   top: 35%;
   margin: 0 auto;
 }
-.modalViewProfile{
+.modalViewProfileStudent{
+  width: 20%;
+}
+.modalTeacher{
   width: 20%;
 }
 .cardButton{
@@ -58,7 +61,10 @@ body{
     padding-right: 10px !important;
   }
 
-  .modalViewProfile{
+  .modalViewProfileStudent{
+  width: 95%;
+  }
+  .modalTeacher{
   width: 95%;
   }
 
