@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/student/viewprofile', 'user.student.viewprofile');
         Route::view('/alumnus/viewprofile', 'user.alumnus.viewprofile');
         Route::view('/teacher/viewprofile', 'user.teacher.viewprofile');
+
+        Route::get('/imageView/{id}','HomeController@imageView')->name('imageView');        
     }); 
 
 

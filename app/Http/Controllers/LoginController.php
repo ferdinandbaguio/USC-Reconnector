@@ -23,7 +23,8 @@ class LoginController extends Controller
         $counter3 = count($jobOffers);
         $counter4 = count($announcements);
 
-        return view('authenticate.landingpage')->with('counter1', $counter1)->with('counter2', $counter2)->with('counter3', $counter3)->with('counter4', $counter4);
+        return view('authenticate.landingpage')->with('counter1', $counter1)
+        ->with('counter2', $counter2)->with('counter3', $counter3)->with('counter4', $counter4);
 
         return view('authenticate.landingpage');
     }

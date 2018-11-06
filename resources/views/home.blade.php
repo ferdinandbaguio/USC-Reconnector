@@ -94,9 +94,10 @@
         <p class="m-0"> Contact: {{$latestjobpost->contactNo}} </p>
         <p class="m-0"> Email: {{$latestjobpost->email}} </p>
 
-        <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px">
-        <img src="/img/homepage_images/Pic6.jpg" class="rounded" width="150px">
-        <img src="/img/homepage_images/Pic7.jpg" class="rounded" width="150px">
+        <a href="/imageView/{{$latestjobpost->id}}" target="_blank">
+          <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px" style="max-height:100px;">
+        </a>
+
         </div>
       </div>
     </div>
