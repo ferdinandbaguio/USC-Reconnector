@@ -251,7 +251,7 @@
 			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
 			{!! Form::text('reasonsYes_text',null,['class' => 'form-control text']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFive" onclick="showPage(10)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFive" onclick="showPage(10)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END FIFTH PAGE -->
 	<!-- SIXTH PAGE -->
@@ -280,7 +280,7 @@
 			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
 			{!! Form::text('reasonsNo_text',null,['class' => 'form-control text']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END SIXTH PAGE -->
 	<!-- SEVENTH PAGE -->
@@ -358,16 +358,19 @@
 				</div> 
 				<!--   Was your first job after college related to your course/program? -->
 				{!! Form::label('isFirstJobRelated', '15. Was your first job after college related to your course/program?') !!}
+				<small class="text-danger">*Required</small>
 				@foreach($isFirstJobRelated as $data)
 				<div>{!!	Form::radio('isFirstJobRelated', $data) !!} {{$data}}</div>
 				@endforeach
 
 				<!--  What was your job position in your first work after college?l -->
 				{!! Form::label('isJobpositionFirstworkAfterCollege', '16. What was your job position in your first work after college?') !!}
+				<small class="text-danger">*Required</small>
 				{!! Form::text('isJobpositionFirstworkAfterCollege',null, ['class' => 'form-control']) !!}
 
 				<!--  Name of the company / organization you first worked in -->
 				{!! Form::label(null, '17. Name of the company / organization you first worked in ') !!}
+				<small class="text-danger">*Required</small>
 				{!! Form::text('firstCompanyworked',null, ['class' => 'form-control']) !!}
 
 

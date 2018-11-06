@@ -35,7 +35,7 @@ class GTSRequest extends FormRequest
             'program_pursued'		                => 'required_if:highest_educational_attainment,MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)',
             'name_of_graduate_school'	            => 'required_if:highest_educational_attainment,MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)',
             'address_of_graduate_school'	        => 'required_if:highest_educational_attainment,MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)',
-            // 'advance_studies'                       => 'required_if:highest_educational_attainment,MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)',
+            'advance_studies'                       => 'required_if:highest_educational_attainment,MA/MS Graduate,MA/MS (with units),PhD Graduate,PhD (with units)',
             'is_presently_employed'                 => 'required',
             //Employment Data (Status: Employed)
             'industry_currently_working'            => 'required_if:is_presently_employed,Yes',
@@ -114,7 +114,7 @@ class GTSRequest extends FormRequest
             'program_pursued.required_if'		                => '1.1 MA/MS/PhD program pursued/finished is required',
             'name_of_graduate_school.required_if'	            => '1.2 Name of Graduate School  is required',
             'address_of_graduate_school.required_if'	        => '1.3 Address of Graduate School  is required',
-            // 'advance_studies.required_if'                       => '1.4 What made you pursue advance studies? is required',
+            'advance_studies.required_if'                       => '1.4 What made you pursue advance studies? is required',
             'is_presently_employed.required'                 => '6. Are you presently employed? is required',
             //Employment Data (Status: Employed)
             'industry_currently_working.required_if'            => '7. In what industry are you currently working?  is required',
