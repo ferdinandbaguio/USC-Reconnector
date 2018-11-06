@@ -11,7 +11,7 @@ class GTSController extends Controller
 {
     public function update (GTSRequest $request, $id) {
         // dd($request->advance_studies);
-        $request->advance_studies ? $request['advance_studies'] = json_encode($request->advance_studies) : '';
+        $request->advance_studies ? $request['advance_studies'] = json_encode($request->advance_studies) : 'none';
         $request->reasonsYes ? $request['reasonsYes'] = json_encode($request->reasonsYes)  : '';
         $request->reasonsNo ? $request['reasonsNo'] = json_encode($request->reasonsNo) : '';
         $request->jobRolesExperienced ? $request['jobRolesExperienced'] = json_encode($request->jobRolesExperienced) : '';
@@ -78,20 +78,25 @@ class GTSController extends Controller
             $validated['name_of_graduate_school'] = null;
             $validated['address_of_graduate_school'] = null;
             $validated['advance_studies'] = null;
+            $validated['advance_studies_text'] = null;
             //.....
         }
 
         if($validated['is_presently_employed'] == 'Yes'){
             $validated['reasonUnemployedNow'] = null;
+            $validated['reasonUnemployedNow_text'] = null;
             $validated['reasonUnemployedNever'] = null;
+            $validated['reasonUnemployedNever_text'] = null;
             if($validated['is_first_job'] == 'Yes'){
                 $validated['reasonsNo'] = null;
+                $validated['reasonsNo_text'] = null;
                 $validated['isFirstJobRelated'] = null;
                 $validated['isJobpositionFirstworkAfterCollege'] = null;
-                $validated['nameofCompanyfirstWorkedin'] = null;
+                $validated['firstCompanyworked'] = null;
                 //.....
             }else{
                 $validated['reasonsYes'] = null;
+                $validated['reasonsYes_text'] = null;
             }
         }
         else if($validated['is_presently_employed'] == 'No, I\'m not employed now'){
@@ -121,10 +126,12 @@ class GTSController extends Controller
             $validated['reasonsNo'] = null;
             $validated['isFirstJobRelated'] = null;
             $validated['isJobpositionFirstworkAfterCollege'] = null;
-            $validated['nameofCompanyfirstWorkedin'] = null;
+            $validated['firstCompanyworked'] = null;
             $validated['monthsEmployedfirstjobAfterGraduate'] = null;
             $validated['jobRolesExperienced'] = null;
+            $validated['jobRolesExperienced_text'] = null;
             $validated['conceptsLearned'] = null;
+            $validated['conceptsLearned_text'] = null;
             $validated['programmingLanguages'] = null;
             $validated['reasonUnemployedNow'] = null;
 
