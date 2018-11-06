@@ -24,7 +24,12 @@ $(document).ready(function(){
 	
 	$('#addAchvBtnF').prop("disabled", true);
 
-
+	// DISABLE ENTER KEY ON FORM
+    $("#addAchvForm").bind("keypress", function(e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+     });
 	// DISABLE SUBMIT AFTER CLICK
 	$('#addAchvBtnF').on('click',function()
 	  {

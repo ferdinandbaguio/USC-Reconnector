@@ -87,6 +87,13 @@
         <h5 class="text-muted"> Skills
       </div>
     </div>
+    @if (count($skills) < 1)
+        <div class="row">
+          <div class="col">
+            <small class="text-muted"> No data to show.</small>
+          </div>
+        </div>
+    @endif
     <div class="row mt-1">
     @foreach($skills as $row)	
 			<div class="col-md-12">
@@ -124,6 +131,13 @@
         </button>
       </div>
     </div>
+    @if (count($achievements) < 1)
+        <div class="row">
+          <div class="col">
+            <small class="text-muted"> No data to show.</small>
+          </div>
+        </div>
+    @endif
 
     <div class="row mt-5">
       <div class="col-md-12">

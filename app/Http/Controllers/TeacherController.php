@@ -91,4 +91,11 @@ class TeacherController extends Controller
 
         return redirect()->back();   
     }
+
+    public function viewTeacherProfile($id){
+        $data = User::where('id', '=', $id)->first();
+        $achv = Achievement::where('user_id', '=', $id)->get();
+
+        return view('user.teacher.viewprofile')->with('data', $data)->with('achv', $achv);
+    }
 }
