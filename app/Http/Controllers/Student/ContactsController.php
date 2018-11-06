@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use App\Models\User;
 use App\Models\Message;
@@ -8,6 +8,7 @@ use App\Models\Receiver;
 use App\Events\NewMessage;
 use Illuminate\Http\Request;
 use App\Models\Message_Thread;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,7 +21,7 @@ class ContactsController extends Controller
         $alumni = User::where('userType', '=', 'Alumnus')->get();
         $admins = User::where('userType', '=', 'Admin')->get();
 
-        return view('user.admin.chat')
+        return view('user.alumnus.communicate')
         ->with('students', $students)
         ->with('teachers', $teachers)
         ->with('alumni', $alumni)
