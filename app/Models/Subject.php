@@ -12,7 +12,7 @@ class Subject extends Model
 
     protected $fillable = [
         'code',
-        'title',
+        'name',
         'description'
     ];
 

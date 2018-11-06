@@ -5,16 +5,26 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\JobPost;
+use App\Models\Announcement;
 
 class LoginController extends Controller
 {
 
     public function index(){
-        $user = User::where('userStatus', '=', 'Approved')->get();
+        $accApproved = User::where('userStatus', '=', 'Approved')->get();
+        $alumTracked = User::where('userType', '=', 'Alumnus')->where('updateStatus', '=', 'Updated')->get();
+        $alumTracked2 =  User::where('userType', '=', 'Alumnus')->where('updateStatus', '=', 'Recent')->get();
+        $jobOffers = JobPost::all();
+        $announcements = Announcement::all();
 
-        $counter = count($user);
+        $counter1 = count($accApproved); 
+        $counter2 = count($alumTracked)+count($alumTracked2);
+        $counter3 = count($jobOffers);
+        $counter4 = count($announcements);
 
-        return view('authenticate.landingpage')->with('counter', $counter)->with('user', $user);
+        return view('authenticate.landingpage')->with('counter1', $counter1)
+        ->with('counter2', $counter2)->with('counter3', $counter3)->with('counter4', $counter4);
 
         return view('authenticate.landingpage');
     }

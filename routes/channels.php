@@ -10,7 +10,18 @@
 | used to check if an authenticated user can listen to the channel.
 |
 */
-
-Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+use App\Models\Receiver;
+Broadcast::channel('messages.{id}', function ($user, $id) {
+    $res = Receiver::where('message_id', '=', $id)-get();
+    return $res;
+    foreach($res as $r){
+        if( $user->id == $r->recipient_id){
+            return true;
+        }
+    }
+    return false;
 });
+
+// Broadcast::channel('messages', function ($user) {
+//     return $user;
+// });

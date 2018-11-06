@@ -23,6 +23,8 @@ class CreateReceiversTable extends Migration
             $table->unsignedInteger('recipient_id');
             $table->foreign('recipient_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->boolean('is_seen')->default(false);
             
             $table->timestamps();
             $table->softDeletes();

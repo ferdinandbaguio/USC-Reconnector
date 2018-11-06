@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/student/viewprofile', 'user.student.viewprofile');
         Route::view('/alumnus/viewprofile', 'user.alumnus.viewprofile');
         Route::view('/teacher/viewprofile', 'user.teacher.viewprofile');
+
+        Route::get('/imageView/{id}','HomeController@imageView')->name('imageView');        
     }); 
 
 
@@ -92,6 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
         // School Management Controller
         Route::get('/SM/classes', 'Admin\SchoolMgmtController@classes')->name('ShowClasses');
         Route::post('/SM/store', 'Admin\SchoolMgmtController@storeClass')->name('StoreClass');
+        Route::post('/SM/store/subject', 'Admin\SchoolMgmtController@storeSubject')->name('StoreSubject');
         Route::patch('/SM/update', 'Admin\SchoolMgmtController@updateClass')->name('UpdateClass');
         Route::delete('/SM/destroy', 'Admin\SchoolMgmtController@destroyClass')->name('DeleteClass');
         Route::post('/SM/students', 'Admin\SchoolMgmtController@studentClass')->name('StudentClass');
@@ -121,6 +124,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
         Route::post('/track/load', 'Admin\TrackController@loadCountry')->name('LoadCountry');
+        //Communication
+        Route::get('/admin/chat', 'ContactsController@index')->name('Communication');
+        Route::post('/admin/chat/store', 'ContactsController@store')->name('StoreChat');
+        Route::get('/contacts', 'ContactsController@get');
+        Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+        Route::post('/conversation/send', 'ContactsController@send');
     });
     
 

@@ -93,7 +93,7 @@
             </li>
             {{-- Communicate --}}
             <li>
-                <a href="#"><i class="sidebar-item-icon fa fa-child"></i>
+                <a href="{{ route('Communication') }}"><i class="sidebar-item-icon fa fa-child"></i>
                     <span class="nav-label">Communicate</span><i class="fa fa-angle-right arrow"></i>
                 </a>
             </li>

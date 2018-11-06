@@ -64,6 +64,30 @@ class SchoolMgmtController extends Controller
             return redirect()->back()->with('error', 'Something went wrong: '.$e);
         }
     }
+    public function storeSubject(Request $request)
+    {
+        $request = $request->all();
+        if(isset($request['picture'])){
+            // Get Image
+            $filenameWithExt = $request['picture']->getClientOriginalName();
+            // Get Image Name
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get Image Extention
+            $extension = $request['picture']->getClientOriginalExtension();
+            // Rename Image
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // Save Path of Image
+            $path = $request['picture']->storeAs('public/subject_img', $filenameToStore);
+            // Store Image to Database
+            $subj['picture'] = $request['picture'];
+        }
+        $subj['code'] = $request['code'];
+        $subj['name'] = $request['name'];
+        $subj['description'] = $request['description'];
+        Subject::create($request);
+
+        return redirect()->back()->with('success', 'Created Subject: Successful!');
+    }
     public function updateClass(Request $request)
     {
         // Delete Schedule

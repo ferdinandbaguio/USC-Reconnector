@@ -19,5 +19,11 @@ class HomeController extends Controller
         return view('home',compact(['jobposts','announcements','latestjobpost','latestannouncement']));
     }
 
+    public function imageView($id){
+        $image = JobPost::where('id', $id)->value('image');
+
+        return view('imgView')->with('image',$image);
+    }
+
     
 }

@@ -116,7 +116,17 @@ $('#delete-course').on('show.bs.modal', function(event) {
 })
 
 $(function() {
-    $('#example-table').DataTable({
+    $('#example-table1').DataTable({
+        pageLength: 10, 
+        paging: false,
+        searching: false,
+    });
+    $('#example-table2').DataTable({
+        pageLength: 10, 
+        paging: false,
+        searching: false,
+    });
+    $('#example-table3').DataTable({
         pageLength: 10, 
         paging: false,
         searching: false,

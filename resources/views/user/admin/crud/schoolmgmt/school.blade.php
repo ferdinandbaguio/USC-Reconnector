@@ -29,7 +29,7 @@ School | Department | Course
             </span>
         </div>
         <div class="ibox-body">
-        <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+        <table class="table table-striped table-bordered table-hover" id="example-table1" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Code</th>
@@ -95,7 +95,7 @@ School | Department | Course
             </span>
         </div>
         <div class="ibox-body">
-        <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+        <table class="table table-striped table-bordered table-hover" id="example-table2" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Code</th>
@@ -164,7 +164,7 @@ School | Department | Course
             </span>
         </div>
         <div class="ibox-body">
-        <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+        <table class="table table-striped table-bordered table-hover" id="example-table3" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Code</th>

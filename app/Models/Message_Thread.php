@@ -6,13 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message_Thread extends Model
 {
+    protected $table = 'message_threads';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+
     protected $fillable = [
-        'title',
-        'message'
+        'message',
+        'message_id',
+        'from_id'
     ];
 
-    public function message()
+    public function message_head()
     {
-        return $this->belongsTo('App\Models\Message','message_id');
+        return $this->belongsTo('App\Models\Message');
     }
+
+    public function from()
+    {
+        return $this->belongsTo('App\Models\User','from_id');
+    }
+    
 }

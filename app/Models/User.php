@@ -82,9 +82,15 @@ class User extends Authenticatable
         return ucfirst($this->firstName) . ' ' . ucfirst($this->middleName) . ' ' . 
         ucfirst($this->lastName);
     }
-    public function messages()
+
+    public function receivers()
     {
-        return $this->hasMany('App\Models\Message','sender_id');
+        return $this->hasMany('App\Models\Receiver','recipient_id');
+    }
+
+    public function froms()
+    {
+        return $this->hasMany('App\Models\Message_Thread','from_id');
     }
 
     public function userskills()

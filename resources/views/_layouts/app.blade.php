@@ -35,15 +35,15 @@
 
   
   <div class="container-fluid contentContainer">
-  <div class="container">
+  <div class="container pt-2">
       
       @yield('content')
   </div>
   </div>
 
   {{-- Side Navigation --}}
-  <div class="sideDiv d-md-block d-lg-block d-none rounded-bottom" onmouseleave="deToggle()">
-    <div class="container-fluid pt-4">
+  <div class="sideDiv d-md-block d-lg-block d-none rounded-bottom">
+    <div class="container-fluid pt-5">
       <a href="{{ route('home') }}" class="text-white" id="hyperlink">
         <div class="row hyperlink rowSide mt-5">
           <div class="col-8 mt-3"> 
@@ -130,7 +130,6 @@
 
   {{-- Scripts --}}
   <!-- Jonas Customized JS -->
-  <script src="{{ asset('js/unique/arid.js') }}"></script>
   <script src="{{ asset('js/app.js') }}"></script>
 
 
