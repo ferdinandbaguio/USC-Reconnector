@@ -17,23 +17,23 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('idnumber')->unique();
             $table->string('password')->nullable();
-            $table->enum('sex', ['Male', 'Female']);
+            $table->enum('sex', ['Male', 'Female'])->nullable();;
             $table->string('firstName')->nullable();
             $table->string('middleName')->nullable();
             $table->string('lastName')->nullable();
             $table->string('contactNo')->nullable();
             $table->string('address')->nullable();
-            $table->string('civilstatus')->nullable();
             $table->string('birthdate')->nullable();
             $table->string('email')->nullable()->unique();
             $table->text('description')->nullable();
             $table->string('picture')->nullable();
             $table->integer('yearLevel')->nullable();
-            $table->enum('userStatus', ['Pending', 'Approved', 'Denied']);
+            $table->enum('civilStatus', ['Single', 'Married', 'Separated','Single Parent', 'Widow or Widower'])->nullable();
+            $table->enum('userStatus', ['Pending', 'Approved', 'Denied'])->nullable();
             $table->enum('userType', ['Student', 'Teacher', 'Alumnus', 
-                                        'Admin', 'Coordinator', 'Chair']);
+                                        'Admin', 'Coordinator', 'Chair'])->nullable();
             $table->enum('employmentStatus', ['Employeed', 'Unemployed(Now)', 
-                                                            'Unemployed(Never)']); 
+                                                            'Unemployed(Never)'])->nullable();
             $table->enum('updateStatus', ['Updated', 'Outdated', 
                                           'Recent'])->nullable();
             $table->string('position')->nullable();

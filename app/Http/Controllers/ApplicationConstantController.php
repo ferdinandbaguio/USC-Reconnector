@@ -64,6 +64,8 @@ class ApplicationConstantController extends Controller
         $pursueAdvanceStudies = [
             'For promotion' => 'For promotion',
             'For professional development' => 'For professional development',
+            'If other, please specifiy' => 'If other, please specifiy',
+
         ];
         $presentlyEmployed = [
             'Yes',
@@ -104,6 +106,7 @@ class ApplicationConstantController extends Controller
             'Proximity to residence' => 'Proximity to residence',
             'Peer influence' => 'Peer influence',
             'Family influence' => 'Family influence',
+            'If other, please specifiy' => 'If other, please specifiy'
 
         ];
     
@@ -112,7 +115,7 @@ class ApplicationConstantController extends Controller
             'Career challenge' => 'Career challenge',
             'Related to my special skil' => 'Related to my special skil',
             'Proximity to residence' => 'Proximity to residence',
-
+            'If other, please specifiy' => 'If other, please specifiy'
         ];
     
         $monthsEmployedfirstjobAfterGraduate = [
@@ -145,7 +148,7 @@ class ApplicationConstantController extends Controller
             'Computer Technician' => 'Computer Technician',
             'Technopreneur' => 'Technopreneur',
             'Creative Director' => 'Creative Director',
-
+            'If other, please specifiy' => 'If other, please specifiy'
         ];
         $conceptsLearned = [
             'Data Structures',
@@ -163,7 +166,7 @@ class ApplicationConstantController extends Controller
             'Information and Systems Management',
             'Presentation Skill',
             'Research Methods',
-
+            'If other, please specifiy' => 'If other, please specifiy'
     
         ];
         $reasonsUndergraduateCourse = [
@@ -184,6 +187,7 @@ class ApplicationConstantController extends Controller
             'Vocation',
             'Examination results',
             'No particular choice or no better idea on what course to take',
+            'If other, please specifiy' => 'If other, please specifiy'
    
         ];
         $rate = [
@@ -216,7 +220,7 @@ class ApplicationConstantController extends Controller
             'Starting pay is too low',
             'Waiting for companies to call back',
             'Have plans to seek job out of the country',
-
+            'If other, please specifiy' => 'If other, please specifiy'
         ];
         $reasonUnemployedNever = [
             'No job opportunity',
@@ -228,7 +232,7 @@ class ApplicationConstantController extends Controller
             'Lack of professional eligibility requirements',
             'Starting pay is too low',
             'Have plans to seek job out of the country',
-
+            'If other, please specifiy' => 'If other, please specifiy'
         ];
 
         return compact(

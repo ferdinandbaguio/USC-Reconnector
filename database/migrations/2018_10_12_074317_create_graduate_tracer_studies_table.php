@@ -28,7 +28,6 @@ class CreateGraduateTracerStudiesTable extends Migration
             $table->string('program_pursued')->nullable();
             $table->string('name_of_graduate_school')->nullable();
             $table->string('address_of_graduate_school')->nullable();
-
             $table->string('advance_studies')->nullable();
             //Employment Data
             $table->string('is_presently_employed')->nullable();
@@ -92,8 +91,15 @@ class CreateGraduateTracerStudiesTable extends Migration
             //35. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
             $table->string('suggestions')->nullable();
         
-
-
+            //text from checkbox
+            $table->string('advance_studies_text')->nullable();
+            $table->string('reasonUnemployedNow_text')->nullable();
+            $table->string('reasonUnemployedNever_text')->nullable();
+            $table->string('reasonsYes_text')->nullable();
+            $table->string('reasonsNo_text')->nullable();
+            $table->string('jobRolesExperienced_text')->nullable();
+            $table->string('conceptsLearned_text')->nullable();
+            $table->string('reasonsUndergraduateCourse_text')->nullable();
 
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')

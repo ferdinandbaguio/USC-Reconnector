@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="row mt-3">
-      <button class="btn mx-auto" id="editProfBtn">Edit Profile</button>
+      <button class="btn btn-sm mx-auto editProfBtn text-white" id="editProfBtn">Edit Profile <i class="far fa-edit"></i></button>
     </div>
 	</div>
 	<!-- LEFT BOX END-->
@@ -53,6 +53,13 @@
 				<h5 class="font-weight-bold text-muted"> Achievements </h5>
 			</div>
 		</div>
+		@if (count($achievements) < 1)
+        <div class="row">
+          <div class="col">
+            <small class="text-muted"> No data to show.</small>
+          </div>
+        </div>
+    	@endif
 		<div class="row mt-1">
 			<div class="col-md-12">
 				@foreach($achievements as $row)
@@ -66,10 +73,9 @@
 				<button type="button" class="btn btn-sm addAchvBtn" data-toggle="modal" data-target="#addAchvModal">
 					<i class="fas fa-plus-circle"></i> Add an achievement
 				</button>
-			</div>
-
-			
+			</div>		
 		</div>
+		
 
 		<!-- <div class="row mt-5">
 			<div class="col-md-5">

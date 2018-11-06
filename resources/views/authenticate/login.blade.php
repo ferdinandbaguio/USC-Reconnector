@@ -22,7 +22,7 @@
                 <div class="container-fluid py-4">
                             <form action="{{route('login.submit')}}" id="loginForm" method="POST">
                             {{ csrf_field() }}
-                            @json($errors->all())
+                            {{-- @json($errors->all()) --}}
                             <div class="row">
                                 <div class="col-md-8 mx-auto {{ $errors->has('idnumber') ? 'is-invalid' : '' }}">
                                 <label class="m-0"> ID Number:</label>
