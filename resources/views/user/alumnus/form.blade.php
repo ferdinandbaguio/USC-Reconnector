@@ -11,6 +11,11 @@
 		display: none;
 	}
 </style>
+  @if(session('success'))
+	<div class="alert alert-success">
+		 {{session('success')}}
+	</div>
+  @endif
 <div class="container">
 <center><h1>Department of Computer and Information Sciences</h1></center>
 </div>
@@ -111,14 +116,18 @@
 			{!! Form::label(null, ' 1.4 What made you pursue advance studies?') !!}
 			<small class="text-danger">*Required</small>
 			@foreach( $pursueAdvanceStudies as $data)
-				<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null) !!} {{$data}}</div>
+				@if($data == 'If other, please specifiy')
+					<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null,['class' => 'advance_studies other']) !!} {{$data}}</div>
+				@else
+					<div>{!! Form::checkbox('advance_studies[]', $data,isset($advancestudies_fm) ? $advancestudies_fm : null,['class' => 'advance_studies notOther']) !!} {{$data}}</div>
+				@endif	
 			@endforeach
-			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('advance_studies[]',null,['class' => 'form-control advance_studies']) !!}
+			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
+			{!! Form::text('advance_studies_text',null,['class' => 'form-control text']) !!}
 			
 			
 			<button type="button" class="btn btn-sm btn-outline-danger mt-3 " onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTwo" onclick="showPage(3)" disabled="disabled">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTwo" onclick="showPage(3)">Next</button>
 		</div> 
 		<!-- END SECOND PAGE -->
 
@@ -211,7 +220,7 @@
 			@endforeach
 
 			<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFour" onclick="showPage(yesNo())">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFour" onclick="showPage(yesNo())" disabled="disabled">Next</button>
 	
 		</div>
 	<!-- END FOURTH PAGE -->
@@ -228,18 +237,19 @@
 					<div class="col-12" style="border-bottom: 1px solid gray;">
 					</div>
 				</div> 
-			<!-- YES -->
-		
+
 			<!-- 23. What are your reason(s) for staying on the job? You may choose more than one answer. * -->
 			{!! Form::label(null, '14. What are your reason(s) for staying on the job? You may choose more than one answer') !!}
 			<small class="text-danger">*Required</small>
 			@foreach( $reasonYes as $data)
-			<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm: null) !!} {{$data}}</div>
+				@if($data == 'If other, please specifiy')
+					<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm : null,['class' => 'reasonsYes other']) !!} {{$data}}</div>
+				@else
+					<div>{!! Form::checkbox('reasonsYes[]', $data,isset($reasonsYes_fm) ? $reasonsYes_fm : null,['class' => 'reasonsYes notOther']) !!} {{$data}}</div>
+				@endif	
 			@endforeach
-			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('reasonsYes[]',null,['class' => 'form-control reasonsYes']) !!}
-			<!-- End of YES -->
-
+			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
+			{!! Form::text('reasonsYes_text',null,['class' => 'form-control text']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFive" onclick="showPage(10)">Next</button>
 		</div> 
@@ -257,14 +267,18 @@
 					</div>
 				</div> 
 				<!-- NO -->
-			<h2>NO</h2>
 			<!-- 23.  What were your reason(s) for changing jobs? You may choose more than one answer. -->
 			{!! Form::label('reasonsNo', '14. What were your reason(s) for changing jobs? You may choose more than one answer. ') !!}
+			<small class="text-danger">*Required</small>
 			@foreach( $reasonNo as $data)
-			<div>{!! Form::checkbox('reasonsNo[]', $data,isset($reasonsNo_fm) ? $reasonsNo_fm: null) !!} {{$data}}</div>
+				@if($data == 'If other, please specifiy')
+					<div>{!! Form::checkbox('reasonsNo[]', $data,isset($reasonsNo_fm) ? $reasonsNo_fm : null,['class' => 'reasonsNo other']) !!} {{$data}}</div>
+				@else
+					<div>{!! Form::checkbox('reasonsNo[]', $data,isset($reasonsNo_fm) ? $reasonsNo_fm : null,['class' => 'reasonsNo notOther']) !!} {{$data}}</div>
+				@endif	
 			@endforeach
-			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('reasonsNo[]',null,['class' => 'form-control reasonsNo']) !!}
+			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
+			{!! Form::text('reasonsNo_text',null,['class' => 'form-control text']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
 		</div> 
@@ -283,16 +297,21 @@
 				</div> 
 												<!-- NOT EMPLOYED NOW DATA -->
 				<!--  Please state the reason(s) why you are not employed now. You may choose more than one answer.  -->
-				<h2>NOT EMPLOYED NOW</h2>
+				
 				{!! Form::label('reasonUnemployedNow', '7. Please state the reason(s) why you are not employed now. You may choose more than one answer. ') !!}
 				@foreach( $reasonUnemployedNow as $data)
-				<div>{!! Form::checkbox('reasonUnemployedNow[]', $data,isset($reasonUnemployedNow_fm) ? $reasonUnemployedNow_fm: null) !!} {{$data}}</div>
+				@if($data == 'If other, please specifiy')
+					<div>{!! Form::checkbox('reasonUnemployedNow[]', $data,isset($reasonUnemployedNow_fm) ? $reasonUnemployedNow_fm : null,['class' => 'reasonUnemployedNow other']) !!} {{$data}}</div>
+				@else
+					<div>{!! Form::checkbox('reasonUnemployedNow[]', $data,isset($reasonUnemployedNow_fm) ? $reasonUnemployedNow_fm : null,['class' => 'reasonUnemployedNow notOther']) !!} {{$data}}</div>
+				@endif	
 				@endforeach
-				{!! Form::label(null, 'If other, please specifiy') !!}<br>
-				{!! Form::text('reasonUnemployedNow[]',null,['class' => 'form-control reasonUnemployedNow']) !!}
+				{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
+				{!! Form::text('reasonUnemployedNow_text',null,['class' => 'form-control text']) !!}
+
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)">Next</button>
-		</div> 
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)" disabled="disabled">Next</button>
+	</div> 
 	<!-- END SEVENTH PAGE -->
 	<!-- EIGHTH PAGE -->
 		<div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage page2onwards" page="8">
@@ -309,12 +328,18 @@
 												<!-- NEVER EMPLOYED DATA -->
 				<!--  Please state the reason(s) why you are not employed now. You may choose more than one answer.  -->
 			
-				{!! Form::label('reasonUnemployedNever', '7. Please state the reason(s) why you are not employed now. You may choose more than one answer. ') !!}
+				{!! Form::label(null, '7. Please state the reason(s) why you are not employed now. You may choose more than one answer. ') !!}
+
 				@foreach( $reasonUnemployedNever as $data)
-				<div>{!! Form::checkbox('reasonUnemployedNever[]', $data,isset($reasonUnemployedNever_fm) ? $reasonUnemployedNever_fm: null) !!} {{$data}}</div>
+				@if($data == 'If other, please specifiy')
+					<div>{!! Form::checkbox('reasonUnemployedNever[]', $data,isset($reasonUnemployedNever_fm) ? $reasonUnemployedNever_fm : null,['class' => 'reasonUnemployedNever other']) !!} {{$data}}</div>
+				@else
+					<div>{!! Form::checkbox('reasonUnemployedNever[]', $data,isset($reasonUnemployedNever_fm) ? $reasonUnemployedNever_fm : null,['class' => 'reasonUnemployedNever notOther']) !!} {{$data}}</div>
+				@endif	
 				@endforeach
-				{!! Form::label(null, 'If other, please specifiy') !!}<br>
-				{!! Form::text('reasonUnemployedNever[]',null,['class' => 'form-control reasonUnemployedNever']) !!}
+
+				{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
+				{!! Form::text('reasonUnemployedNever_text',null,['class' => 'form-control text']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
 				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonEight" onclick="showPage(11)">Next</button>
 		</div> 
@@ -347,7 +372,7 @@
 
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonNine" onclick="showPage(10)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonNine" onclick="showPage(10)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END NINTH PAGE -->
 	<!-- TENTH PAGE -->
@@ -372,26 +397,40 @@
 			<!-- What type of job roles have you experienced since you graduated from college? You may choose more than one answer. * -->
 			{!! Form::label(null, '19. What type of job roles have you experienced since you graduated from college? You may choose more than one answer') !!}
 			<small class="text-danger">*Required</small>
+
 			@foreach( $jobRolesExperienced as $data)
-			<div>{!! Form::checkbox('jobRolesExperienced[]', $data,isset($jobRolesExperienced_fm) ? $jobRolesExperienced_fm: null) !!} {{$data}}</div>
+				@if($data == 'If other, please specifiy')
+					<div>{!! Form::checkbox('jobRolesExperienced[]', $data,isset($jobRolesExperienced_fm) ? $jobRolesExperienced_fm : null,['class' => 'jobRolesExperienced other']) !!} {{$data}}</div>
+				@else
+					<div>{!! Form::checkbox('jobRolesExperienced[]', $data,isset($jobRolesExperienced_fm) ? $jobRolesExperienced_fm : null,['class' => 'jobRolesExperienced notOther']) !!} {{$data}}</div>
+				@endif	
 			@endforeach
-			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('jobRolesExperienced[]',null,['class' => 'form-control jobRolesExperienced']) !!}
+
+			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
+			{!! Form::text('jobRolesExperienced_text',null,['class' => 'form-control text']) !!}
+
 			<!--  What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer. -->
-			{!! Form::label('conceptsLearned', '20.What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer') !!}
+			{!! Form::label(null, '20.What concepts learned in college did you find useful in your current and previous jobs? You may choose more than one answer') !!}
 			<small class="text-danger">*Required</small>
+
 			@foreach( $conceptsLearned as $data)
-			<div>{!! Form::checkbox('conceptsLearned[]', $data, isset($conceptsLearned_fm) ? $conceptsLearned_fm: null) !!} {{$data}}</div>
+				@if($data == 'If other, please specifiy')
+					<div>{!! Form::checkbox('conceptsLearned[]', $data,isset($conceptsLearned_fm) ? $conceptsLearned_fm : null,['class' => 'conceptsLearned otherTwo']) !!} {{$data}}</div>
+				@else
+					<div>{!! Form::checkbox('conceptsLearned[]', $data,isset($conceptsLearned_fm) ? $conceptsLearned_fm : null,['class' => 'conceptsLearned notOtherTwo']) !!} {{$data}}</div>
+				@endif	
 			@endforeach
-			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('conceptsLearned[]',null,['class' => 'form-control conceptsLearned']) !!}
+
+		{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
+		{!! Form::text('conceptsLearned_text',null,['class' => 'form-control textTwo']) !!}
+
 			<!-- What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc.) . -->
 			{!! Form::label('programmingLanguages', '21.   What programming languages, framework, and technologies have you used in doing your job? Please enumerate them on the blank space below. (For example: Android, J2EE, Joomla, Oracle, etc) ') !!}
 			<small class="text-danger">*Required</small>
 			{!! Form::text('programmingLanguages', null, ['class' => 'form-control']) !!}
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTen" onclick="showPage(11)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTen" onclick="showPage(11)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END TENTH PAGE -->
 
@@ -413,11 +452,17 @@
 			<!-- Please recall your reasons for choosing your undergraduate course. You may choose more than one answer.  -->
 			{!! Form::label('reasonsUndergraduateCourse', '22. Please recall your reasons for choosing your undergraduate course. You may choose more than one answer. ') !!}
 			<small class="text-danger">*Required</small>
+
 			@foreach( $reasonsUndergraduateCourse as $data)
-			<div>{!! Form::checkbox('reasonsUndergraduateCourse[]',$data,isset($reasonsUndergraduateCourse_fm) ? $reasonsUndergraduateCourse_fm: null) !!} {{$data}}</div>
+				@if($data == 'If other, please specifiy')
+					<div>{!! Form::checkbox('reasonsUndergraduateCourse[]', $data,isset($reasonsUndergraduateCourse_fm) ? $reasonsUndergraduateCourse_fm : null,['class' => 'reasonsUndergraduateCourse other']) !!} {{$data}}</div>
+				@else
+					<div>{!! Form::checkbox('reasonsUndergraduateCourse[]', $data,isset($reasonsUndergraduateCourse_fm) ? $reasonsUndergraduateCourse_fm : null,['class' => 'reasonsUndergraduateCourse notOther']) !!} {{$data}}</div>
+				@endif	
 			@endforeach
-			{!! Form::label(null, 'If other, please specifiy') !!}<br>
-			{!! Form::text('reasonsUndergraduateCourse[]',null,['class' => 'form-control reasonsUndergraduateCourse']) !!}
+
+			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
+			{!! Form::text('reasonsUndergraduateCourse_text',null,['class' => 'form-control text']) !!}
 
 			<!-- Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes: -->
 			{!! Form::label(null, '23.  Please rate how the Department of Computer and Information Sciences has developed you for each of the following graduate attributes ') !!}

@@ -76,7 +76,16 @@ class GraduateTracerStudy extends Model
             //35. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
             'suggestions',
             'reasonUnemployedNow',
-            'reasonUnemployedNever'
+            'reasonUnemployedNever',
+
+            'advance_studies_text',
+            'reasonUnemployedNow_text',
+            'reasonUnemployedNever_text',
+            'reasonsYes_text',
+            'reasonsNo_text',
+            'jobRolesExperienced_text',
+            'conceptsLearned_text',
+            'reasonsUndergraduateCourse_text'
     ];
 
     public function graduateTracer()
