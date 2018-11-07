@@ -3,7 +3,13 @@
 body{
   background-color: #EFEFEF
 }
+.btn:hover{
+  cursor: pointer;
+}
 
+textarea:focus{
+  outline: none;
+}
 /* 
   Page Contents 
 */
@@ -52,7 +58,8 @@ body{
 }
 
 .titleColor{
-  color: #033A52;
+  color: #01212E;
+  font-weight: bold;
 }
 
 .greenLayer{
@@ -61,6 +68,16 @@ body{
 .blueLayer{
   background-image: linear-gradient(#0A5492,#1C72BB)
 }
+
+/*EDIT DROPDOWN AND BUTTON*/
+.fa-ellipsis-v:hover{
+  cursor: pointer;
+}
+.dropdown-item:focus{
+  background-color: white !important;
+  color:black;
+}
+
 /* 
   MEDIA QUERIES 
 */

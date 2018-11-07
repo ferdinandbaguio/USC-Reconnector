@@ -22,13 +22,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('jobPosts','JobPostController')->except('create');
         Route::resource('announcements','AnnouncementController')->except('create');
 
+        //Update post
+        Route::patch('announcement/postUpdate', 'AnnouncementController@update')->name('announcement.update');
+        Route::get('/deleteAnnouncement/{id}','AnnouncementController@destroy');
+
         //View Profiles
         Route::get('/viewStudentProfile/{id}','StudentController@viewStudentProfile');
         Route::view('/student/viewprofile', 'user.student.viewprofile');
-
         Route::get('/viewAlumnusProfile/{id}','StudentController@viewStudentProfile');
         Route::view('/alumnus/viewprofile', 'user.alumnus.viewprofile');
-
         Route::get('/viewTeacherProfile/{id}','TeacherController@viewTeacherProfile');
         Route::view('/teacher/viewprofile', 'user.teacher.viewprofile');
 
