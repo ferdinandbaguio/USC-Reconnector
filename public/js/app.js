@@ -57551,7 +57551,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        Echo.private('messages').listen('NewMessage', function (e) {
+        Echo.channel('messages').listen('NewMessage', function (e) {
             _this.hanleIncoming(e.message);
         });
 
@@ -57575,10 +57575,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.messages.push(message);
         },
         hanleIncoming: function hanleIncoming(message) {
-            // if (this.selectedContact && message.message_id == this.selectedContact.id) {
-            this.saveNewMessage(message);
-            return;
-            // }
+            if (this.selectedContact && message.message_id == this.selectedContact.id) {
+                message.name = message.from.full_name;
+                this.saveNewMessage(message);
+                return;
+            }
 
             // this.updateUnreadCount(message.from_contact, false);
         },
@@ -58117,7 +58118,7 @@ var render = function() {
     { staticClass: "conversation" },
     [
       _c("h1", [
-        _vm._v(_vm._s(_vm.contact ? _vm.contact.name : "Select a Contact"))
+        _vm._v(_vm._s(_vm.contact ? _vm.contact.title : "Select a Contact"))
       ]),
       _vm._v(" "),
       _c("MessagesFeed", {
@@ -58250,9 +58251,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -58313,10 +58311,6 @@ var render = function() {
             }
           },
           [
-            _c("div", { staticClass: "avatar" }, [
-              _c("img", { attrs: { src: contact.picture, alt: contact.title } })
-            ]),
-            _vm._v(" "),
             _c("div", { staticClass: "contact" }, [
               _c("p", { staticClass: "name" }, [_vm._v(_vm._s(contact.title))]),
               _vm._v(" "),

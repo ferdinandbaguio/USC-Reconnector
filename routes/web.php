@@ -14,7 +14,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
         // Logout
         Route::post('logout', 'LoginController@logout')->name('logout');
-
+    
 Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'home'], function () {
