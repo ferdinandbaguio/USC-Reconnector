@@ -193,7 +193,7 @@
                 <form method="GET" action="/searchClass">
                   {{ csrf_field() }}
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="searchSubject" placeholder="Enter subject">
+                    <input type="text" class="form-control" name="searchSubject" placeholder="Enter subject" required>
                     <div class="input-group-append">
                       <button class="btn btn-outline-primary round-0" type="submit" style="border-radius: 0 !important;">Search <i class="fas fa-search"></i></button>
                     </div>

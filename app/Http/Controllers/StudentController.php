@@ -110,8 +110,16 @@ class StudentController extends Controller
     public function searchClass(Request $request){
         $searchValue = $request->input('searchSubject');
         
-        $data = Subject::where([['name','LIKE','%'.$searchValue.'%']])->get();
-
+        $data = Group_Class::
+                            join('subjects', 'subject_id', '=', 'subjects.id')
+                            ->join('users', 'teacher_id', '=', 'users.id')
+                            ->select('group_classes.*', 'subjects.name', 'users.firstName')
+                            ->where([['subjects.name','LIKE','%'.$searchValue.'%']])
+                            ->orWhere([['group_classes.id','LIKE','%'.$searchValue.'%']])
+                            ->orWhere([['users.firstName','LIKE','%'.$searchValue.'%']])
+                            ->orWhere([['users.middleName','LIKE','%'.$searchValue.'%']])
+                            ->orWhere([['users.lastName','LIKE','%'.$searchValue.'%']])
+                            ->get();
         //dd($data);
 
         return view('user.student.classList')->with('data',$data);

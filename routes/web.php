@@ -46,7 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
         
         Route::get('/searchClass', 'StudentController@searchClass')->name('searchClass.searchClass');
-        Route::view('/classList', 'user.student.classList')->name('classList');
         
         Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
         Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
