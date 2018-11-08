@@ -16,41 +16,32 @@
       Choose a class
     </button>
     <div class="dropdown-menu" aria-labelledby="showClasses">
-      @foreach($data as $row)
-      <a class="dropdown-item" href="/viewClass/{{$row->group_class_id}}">{{$row->group_class->subject->name}}</a>
+      @foreach($classes as $row)
+      <a class="dropdown-item" href="/viewClass/{{$row->group_class->id}}">{{$row->group_class->subject->name}}</a>
       @endforeach
     </div>
   </div>
 </div>
 <!-- TOP BUTTONS END -->
 
-<div class="row fontRoboto mb-3 rounded" style="height:60vh;background: linear-gradient(#02948B,#032C41);">
-<div class="col-md-6 mx-auto mt-4">
-  <img src="/img/logo/studrec2.png" class="d-block" width="100%">
-</div>
-<div class="col-12">
-  <h1 class="text-white text-center">Choose a class to view</h1>
-</div>
-</div>
-
-
-<div class="row fontRoboto mb-3 d-none">
+<div class="row fontRoboto mb-3">
 
   <!-- LEFT BOX -->
   <div class="col-12 col-md-4">
     <div class="row bg-light rounded">
       <div class="col-12 mt-3 pb-2">
-        <h3 class="text-center" style="color:#077325"> ENG 21 </h3>
-        <p class="text-center mb-0">TTH 7:30 - 5:30</p>
-        <p class="text-center my-0">3.00 Units</p>
-        <p class="text-center my-0">Room LB445</p>
+        <h3 class="text-center" style="color:#077325"> {{$classDetails->subject->name}} </h3>
+        @foreach($classDetails->schedules as $row)
+          <p class="text-center mb-0">{{$row->schedule->day}} {{$row->schedule->class_start}} - {{$row->schedule->class_end}}</p>
+        @endforeach
+        <!-- <p class="text-center my-0">room</p> -->
       </div>
     </div>
 
     <div class="row bg-light rounded mt-3">
       <div class="col-12 mt-3">
         <h3 class="text-center" style="color:#077325"> Teacher </h3>
-        <p class="text-center"><img src="/img/homepage_images/Boy2.jpg" class="align-middle rounded-circle" width="40px" style="box-shadow: 2px 2px 8px;"><a href="#teacherModal" class="align-middle ml-2" data-toggle="modal">Teacher Alyana</a></p>
+        <p class="text-center"><img src="/storage/user_img/{{$classDetails->teacher->picture}}" class="align-middle rounded-circle" width="40px" style="box-shadow: 2px 2px 8px;"><a href="#teacherModal" class="align-middle ml-2" data-toggle="modal">{{$classDetails->teacher->fullname}}</a></p>
       </div>
     </div>
 
@@ -59,22 +50,11 @@
         <h3 class="text-center" style="color:#077325"> Students </h3>
 
         <div class="row">
+          @foreach($students as $row)
           <div class="col-6">
-          <p class=""><img src="/img/homepage_images/Girl2.jpg" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal" class="align-middle ml-2" data-toggle="modal">Bryle Baguio</a></p>
+          <p class=""><img src="/storage/user_img/{{$row->student->picture}}" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal{{$row->student->id}}" class="align-middle ml-2" data-toggle="modal">{{$row->student->fullname}}</a></p>
           </div>
-
-          <div class="col-6">
-          <p class=""><img src="/img/homepage_images/Boy2.jpg" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal" class="align-middle ml-2" data-toggle="modal">Jonas Gwapo</a></p>
-          </div>
-
-          <div class="col-6">
-          <p class=""><img src="/img/homepage_images/Girl2.jpg" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal" class="align-middle ml-2" data-toggle="modal">Bryle Baguio</a></p>
-          </div>
-
-          <div class="col-6">
-          <p class=""><img src="/img/homepage_images/Boy2.jpg" class="align-middle rounded-circle" width="25px" style="box-shadow: 2px 2px 8px;"><a href="#studentModal" class="align-middle ml-2" data-toggle="modal">Jonas Gwapo</a></p>
-          </div>
-          
+          @endforeach    
         </div>
       </div>
     </div>
@@ -143,17 +123,17 @@
 
         <div class="row">
           <div class="col-12">
-            <img src="/img/homepage_images/Boy2.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 8px; margin-top: -70px;">
+            <img src="/storage/user_img/{{$classDetails->teacher->picture}}" class="d-block mx-auto rounded-circle bg-light" width="150px" style="box-shadow: 2px 2px 8px; margin-top: -70px;">
           </div>
         </div>
 
         <div class="row mt-2">
           <div class="col-12">
-            <p class="text-center"> Teacher Alyana</p>    
-            <p class="text-center"> Contact No.: +6392828177</p>
-            <p class="text-center"> Email: teach@gmail.com</p>
+            <p class="text-center"> {{$classDetails->teacher->fullname}} </p>    
+            <p class="text-center"> {{$classDetails->teacher->contactNo}} </p>
+            <p class="text-center"> {{$classDetails->teacher->email}} </p>
 
-            <p class="text-center"> <a href="/viewTeacherProfile/82" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
+            <p class="text-center"> <a href="/viewTeacherProfile/{{$classDetails->teacher->id}}" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
           </div>
         </div>
 
@@ -163,29 +143,31 @@
 <!-- VIEW TEACHER MODAL END-->
 
 <!-- VIEW STUDENT MODAL -->
-<div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
+@foreach($students as $row)
+<div class="modal fade" id="studentModal{{$row->student->id}}" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modalViewProfileStudent" role="document">
       <div class="modal-content rounded-0">
 
         <div class="row">
           <div class="col-12">
-            <img src="/img/homepage_images/Girl2.jpg" class="d-block mx-auto rounded-circle" width="150px" style="box-shadow: 2px 2px 8px; margin-top: -70px;">
+            <img src="/storage/user_img/{{$row->student->picture}}" class="d-block mx-auto rounded-circle bg-light" width="150px" style="box-shadow: 2px 2px 8px; margin-top: -70px;">
           </div>
         </div>
 
         <div class="row mt-2">
           <div class="col-12">
-            <p class="text-center"> Student Name</p>    
-            <p class="text-center"> Contact No.: +6392828177</p>
-            <p class="text-center"> Email: teach@gmail.com</p>
+            <p class="text-center"> {{$row->student->fullname}} </p>    
+            <p class="text-center"> {{$row->student->contactNo}} </p>
+            <p class="text-center"> {{$row->student->email}} </p>
 
-            <p class="text-center"> <a href="/viewStudentProfile/83" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
+            <p class="text-center"> <a href="/viewStudentProfile/{{$row->student->id}}" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
           </div>
         </div>
 
       </div>
     </div>
   </div>
+@endforeach
 <!-- VIEW STUDENT MODAL END-->
 
 
