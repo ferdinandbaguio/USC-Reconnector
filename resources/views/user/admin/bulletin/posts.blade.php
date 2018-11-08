@@ -41,7 +41,7 @@ Posts
                         @else
                             <div class="carousel-item">
                         @endif
-                                <img class="d-block w-100 blur-image" src="/storage/post_img/{{ $posts[$i]->picture }}" alt="Post">
+                                <img class="d-block w-100 blur-image" src="/storage/post_img/{{ $posts[$i]->image }}" alt="Post">
                                 <div class="carousel-caption d-none d-md-block" id="carousel-layer">
                                     <h3>
                                         {{ $posts[$i]->title }}
@@ -68,7 +68,7 @@ Posts
         <?php $i=0;?>
         @foreach($posts as $post)
             <div class="card bg-dark text-white">
-                <img class="card-img" src="/storage/post_img/{{ $post->picture}}" alt="Card image">
+                <img class="card-img" src="/storage/post_img/{{ $post->image}}" alt="Card image">
                 <div class="card-img-overlay" id="card-layer">
                     <center>
                         <h4 id="inc-padding" class="card-title">{{ $post->title}}</h4>
