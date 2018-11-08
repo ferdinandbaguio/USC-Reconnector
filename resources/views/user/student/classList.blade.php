@@ -37,7 +37,9 @@
       <th scope="row">{{$row->id}}</th>
       <td>{{$row->subject->name}}</td>
       <td>{{$row->teacher->firstName}} {{$row->teacher->lastName}}</td>
-      <td> <button class="btn btn-sm btn-success"> Join</button> </td>
+      <form method="POST" action="">
+      <td><button class="btn btn-sm btn-success"> Join</button> </td>
+      
     </tr>
     @endforeach
   

@@ -38,7 +38,7 @@
   <div class="col-12 col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
     <div class="row">
     <div class="col-2 col-md-1 mt-2">
-      <img src="/img/homepage_images/Boy.jpg" class="rounded-circle postByImg" width="50px" /> 
+      <img src="/storage/user_img/{{$latestannouncement->users->picture}}" class="rounded-circle postByImg" width="50px" /> 
     </div>
     <div class="col-9 col-md-10 mt-2">
       <p class="m-0 text-muted"> Posted by:  {{$latestannouncement->users->fullname}} </p>
