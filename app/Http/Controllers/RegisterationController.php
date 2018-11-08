@@ -17,9 +17,18 @@ class RegisterationController extends Controller
     { 
  
         $validated = $request->validated();
+        
         $validated['idnumber'] = $validated['registeredIdnumber'];
         $validated['password'] = $validated['registeredIdnumber'];
+        $validated['civilStatus'] = $validated['civilStatus'];
         $validated['userStatus'] = 'Pending';
+        if($validated['userType'] == 'Alumnus'){
+            $validated['updateStatus'] = 'Outdated';
+            $validated['employmentStatus'] = 'Unemployed(Now)';
+        }else{
+            $validated['updateStatus'] = null;
+            $validated['employmentStatus'] = null;
+        }
         // Create Default Picture
             $pictureMaleValues = ['default_male.png', 'default_male1.png', 'default_male2.png'];
             $pictureFemaleValues = ['default_female.png', 'default_female1.png', 'default_female2.png'];
@@ -30,7 +39,7 @@ class RegisterationController extends Controller
             else{
                 $validated['picture'] = $pictureFemaleValues[$random];
             }
-
+  
         // $validated = array_except($validated, 'register_idnumber');
         User::create($validated);
         return redirect()->route('login')->with('message', 'Registeration successful!!');

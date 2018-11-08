@@ -90,7 +90,17 @@ class GTSRequest extends FormRequest
             //32. Finally, kindly write down your suggestions on the BSCS/BSIT/BSITC/ACT curriculum, other strength/weaknesses concerning your course and other activities to improve the training of ICT professionals.
           
             'reasonUnemployedNow'                   => 'required_if:is_presently_employed,No,I\'m not employed now',
-            'reasonUnemployedNever'                 => 'required_if:is_presently_employed,No, I was never employed'
+            'reasonUnemployedNever'                 => 'required_if:is_presently_employed,No, I was never employed',
+
+            'advance_studies_text'                  => 'nullable', 
+            'reasonUnemployedNow_text'              => 'nullable', 
+            'reasonUnemployedNever_text'            => 'nullable', 
+            'reasonsYes_text'                       => 'nullable', 
+            'reasonsNo_text'                        => 'nullable', 
+            'jobRolesExperienced_text'              => 'nullable', 
+            'conceptsLearned_text'                  => 'nullable', 
+            'reasonsUndergraduateCourse_text'       => 'nullable'
+        
         ];
     }
     public function messages(){
@@ -123,7 +133,7 @@ class GTSRequest extends FormRequest
             'reasonsNo.required_if'                             => '14. What were your reason(s) for changing jobs? You may choose more than one answer.  is required',
             'isFirstJobRelated.required_if'                     => '15. Was your first job after college related to your course/program? is required',
             'isJobpositionFirstworkAfterCollege.required_if'    => '16. What was your job position in your first work after college? is required',
-            'nameofCompanyfirstWorkedin.required_if'            => '17. Name of the company / organization you first worked in  is required',
+            'firstCompanyworked.required_if'                    => '17. Name of the company / organization you first worked in  is required',
             //extends
             'monthsEmployedfirstjobAfterGraduate.required_if'   => '18. How long did it take you to land on your first job after graduating from college?  is required',
             'jobRolesExperienced.required_if'                   => '19. What type of job roles have you experienced since you graduated from college? You may choose more than one answer. is required',

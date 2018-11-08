@@ -24,6 +24,8 @@ class User extends Authenticatable
         'middleName',
         'lastName',
         'email',
+        'contactNo',
+        'civilStatus',
         'description',
         'picture',
         'yearLevel',

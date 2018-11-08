@@ -8,7 +8,7 @@
 <!-- TOP BUTTONS  -->
 <div class="row mb-3 fontRoboto">
   <button class="btn btn-secondary mr-2" data-toggle="modal" data-target="#addClassModal">
-      <i class="fas fa-plus-circle align-baseline"></i> Add new class 
+      <i class="fas fa-plus-circle align-baseline"></i> Join a class 
   </button>
 
   <div class="dropdown">
@@ -143,7 +143,7 @@
             <p class="text-center"> Contact No.: +6392828177</p>
             <p class="text-center"> Email: teach@gmail.com</p>
 
-            <p class="text-center"> <a href="/home" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
+            <p class="text-center"> <a href="/viewTeacherProfile/82" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
           </div>
         </div>
 
@@ -152,9 +152,9 @@
   </div>
 <!-- VIEW TEACHER MODAL END-->
 
-<!-- VIEW TEACHER MODAL -->
+<!-- VIEW STUDENT MODAL -->
 <div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modalViewProfile" role="document">
+    <div class="modal-dialog modal-dialog-centered modalViewProfileStudent" role="document">
       <div class="modal-content rounded-0">
 
         <div class="row">
@@ -169,50 +169,35 @@
             <p class="text-center"> Contact No.: +6392828177</p>
             <p class="text-center"> Email: teach@gmail.com</p>
 
-            <p class="text-center"> <a href="/home" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
+            <p class="text-center"> <a href="/viewStudentProfile/83" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
           </div>
         </div>
 
       </div>
     </div>
   </div>
-<!-- VIEW TEACHER MODAL END-->
+<!-- VIEW STUDENT MODAL END-->
 
 
 <!-- ADD A CLASS MODAL -->
   <div class="modal fade" id="addClassModal" tabindex="-1" role="dialog" aria-labelledby="addClassModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title"> Add a class </h5>
+                <h4 class="modal-title fontRoboto"> Search for a class </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
-                <form method="POST" action="" >
-                  <div class="form-group">
-                    <label> Group #</label>
-                    <input type="text" class="form-control" placeholder="Enter group number">
-                    <label> Course Code </label>
-                    <input type="text" class="form-control" placeholder="Example: ICT 110">
-                    <label> Schedule </label>
-                    <input type="text" class="form-control" placeholder="Example: TTH 10:30 - 12:00">
-                    <label> Units </label>
-                    <input type="text" class="form-control" placeholder="Example: 3.00">
-                  </div>
-                </div>
-                <div class="modal-footer p-0">
-                    <div class="row w-100 m-0">
-                            <div class="col-6 p-0 m-0 border-primary" style="border-right:1px solid;border-bottom:1px solid;">
-                            <button type="submit" class="btn text-primary btn-light w-100">Add Class</button>
-                            </div>
-
-                            <div class="col-6 p-0 m-0 border-danger" style="border-left:1px solid;border-bottom:1px solid;">
-                            <button type="button" class="btn text-danger btn-light w-100" data-dismiss="modal">Close</button>
-                            </div>
+                <form method="GET" action="/searchClass">
+                  {{ csrf_field() }}
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="searchSubject" placeholder="Enter subject" required>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-primary round-0" type="submit" style="border-radius: 0 !important;">Search <i class="fas fa-search"></i></button>
                     </div>
-                </div>
+                  </div>
                 </form>
             </div>
         </div>

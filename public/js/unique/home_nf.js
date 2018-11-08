@@ -42,3 +42,49 @@ function hideAnn() {
 
       document.getElementById("jobI").style.display = "inline";
     }
+
+
+// TEXT AREA AUTOMATIC HEIGHT
+$(document).ready(function(){ 
+  $('.annTextArea').each(function () {
+  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;resize:none');
+  }).on('input', function () {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+  });
+});
+
+// EDIT TOGGLE FORM
+function editPost(id){
+  $('#title' + id).attr('readonly', false)
+  .removeClass("form-control-plaintext")
+  .addClass('form-control');
+
+  $('#content' + id).attr('readonly', false)
+  .removeClass("form-control-plaintext")
+  .addClass('form-control');
+
+  $('#formBtn' + id).slideDown("slow");
+  $('#titleLabel' + id).slideDown("slow");
+  $('#contentLabel' + id).slideDown("slow");
+}
+function cancelEdit(id){
+  $('#title' + id).attr('readonly', true)
+  .removeClass("form-control")
+  .addClass('form-control-plaintext');
+
+  $('#content' + id).attr('readonly', true)
+  .removeClass("form-control")
+  .addClass('form-control-plaintext');
+
+  $('#formBtn' + id).slideUp("slow");
+  $('#titleLabel' + id).slideUp("slow");
+  $('#contentLabel' + id).slideUp("slow");
+}
+
+function editPost(id){
+  
+}
+
+
+

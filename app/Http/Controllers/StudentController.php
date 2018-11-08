@@ -7,6 +7,8 @@ use Auth;
 use App\Models\User;
 use App\Models\User_Skill;
 use App\Models\Achievement;
+use App\Models\Group_Class;
+use App\Models\Subject;
 class StudentController extends Controller
 {
     /**
@@ -94,5 +96,32 @@ class StudentController extends Controller
         Achievement::find($id)->delete();
 
         return redirect()->back();   
+    }
+
+    public function viewStudentProfile($id){
+
+        $data = User::where('id', '=', $id)->first();
+        $skills = User_Skill::where('user_id', '=', $id)->get();
+        $achv = Achievement::where('user_id', '=', $id)->get();
+
+        return view('user.student.viewprofile')->with('data', $data)->with('skills', $skills)->with('achv', $achv);
+    }
+
+    public function searchClass(Request $request){
+        $searchValue = $request->input('searchSubject');
+        
+        $data = Group_Class::
+                            join('subjects', 'subject_id', '=', 'subjects.id')
+                            ->join('users', 'teacher_id', '=', 'users.id')
+                            ->select('group_classes.*', 'subjects.name', 'users.firstName')
+                            ->where([['subjects.name','LIKE','%'.$searchValue.'%']])
+                            ->orWhere([['group_classes.id','LIKE','%'.$searchValue.'%']])
+                            ->orWhere([['users.firstName','LIKE','%'.$searchValue.'%']])
+                            ->orWhere([['users.middleName','LIKE','%'.$searchValue.'%']])
+                            ->orWhere([['users.lastName','LIKE','%'.$searchValue.'%']])
+                            ->get();
+        //dd($data);
+
+        return view('user.student.classList')->with('data',$data);
     }
 }

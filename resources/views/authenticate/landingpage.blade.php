@@ -179,7 +179,6 @@
               <li class="footTxtColor"><i class="fas fa-angle-right"></i> Profiling Modules </li>
               <li class="footTxtColor"><i class="fas fa-angle-right"></i> Web Application </li>
               <li class="footTxtColor"><i class="fas fa-angle-right"></i> Alumni Tracking </li>
-              <li class="footTxtColor"><i class="fas fa-angle-right"></i> The University </li>
             </ul>
           </div>
           <div class="col-6 col-md-3">
@@ -187,7 +186,8 @@
             <ul class="list-unstyled">
               <li class="footTxtColor"><i class="fas fa-angle-right"></i> Laravel </li>
               <li class="footTxtColor"><i class="fas fa-angle-right"></i> JavaScript </li>
-              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Bootstrap 4 </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> Bootstrap </li>
+              <li class="footTxtColor"><i class="fas fa-angle-right"></i> jQuery </li>
             </ul>
           </div>
           <div class="col-6 col-md-3">

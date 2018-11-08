@@ -28,10 +28,17 @@ $(document).ready(function(){
 	
 	$('#addSkillBtnF').prop("disabled", true);
 
-
+	
+	// DISABLE ENTER KEY ON FORM
+    $("#addSkillForm").bind("keypress", function(e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+     });
 	// DISABLE SUBMIT AFTER CLICK
-	$('#addSkillBtnF').on('click', function() {
+	$('#addSkillBtnF').on('click keyup keypress', function() {
     $(this).prop('disabled', true);
+    $(this).html('Please wait');
     $("#addSkillForm").submit();
 	});
 
@@ -55,6 +62,12 @@ $(document).ready(function(){
 	$('#addAchvBtnF').prop("disabled", true);
 
 
+	// DISABLE ENTER KEY ON FORM
+    $("#addAchvForm").bind("keypress", function(e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+     });
 	// DISABLE SUBMIT AFTER CLICK
 	$('#addAchvBtnF').on('click',function()
 	  {
@@ -62,6 +75,7 @@ $(document).ready(function(){
 	    $(this).html('Please wait');
 	    $('#addAchvForm').submit();
 	 });
+	
 });
 
 
