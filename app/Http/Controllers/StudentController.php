@@ -8,7 +8,9 @@ use App\Models\User;
 use App\Models\User_Skill;
 use App\Models\Achievement;
 use App\Models\Group_Class;
+use App\Models\Student_Class;
 use App\Models\Subject;
+use App\Models\Group_Schedule;
 class StudentController extends Controller
 {
     /**
@@ -108,6 +110,10 @@ class StudentController extends Controller
     }
 
     public function searchClass(Request $request){
+        if(!isset($_GET['searchSubject'])){
+        return redirect()->back();
+        }
+        else{
         $searchValue = $request->input('searchSubject');
         
         $data = Group_Class::
@@ -122,6 +128,53 @@ class StudentController extends Controller
                             ->get();
         //dd($data);
 
-        return view('user.student.classList')->with('data',$data);
+        $checkPending = -1;
+        //return $checkStatus;
+        foreach ($data as $row) {
+            $checkStatus = Student_Class::where('student_id','=', Auth::user()->id)->where('group_class_id','=', $row->id)->first();
+                if($checkStatus != null){
+                    if($checkStatus->status == 'Pending'){
+                         $checkPending = $row->id;
+                    }else if ($checkStatus->status == 'Approved') {
+                        $checkPending = -2;
+                    }{
+
+                    }
+                }
+        }
+
+        return view('user.student.classList')->with('data',$data)->with('checkPending',$checkPending);
+        }
+    }
+
+    public function joinClass(Request $request){
+        //dd($request->all());
+        $data = $this->validate($request,[
+            'group_class_id' => 'required',
+        ]);
+
+        $data['student_id'] = Auth::user()->id;
+        $data['status'] = "Pending";
+
+
+        Student_Class::create($data);
+
+        return redirect()->back()->with('success', 'Request to join class successfull, please wait for approval');
+    }
+
+    public function listOfClasses(){
+
+        $data = Student_Class::where('status','=','Approved')->where('student_id','=', Auth::user()->id)->get();
+        return view('user.student.class')->with('data',$data);
+    }
+
+    public function viewClass($id){
+        $classes = Student_Class::where('status','=','Approved')->where('student_id','=', Auth::user()->id)->get();
+        $classDetails = Group_Class::where('id','=', $id)->first();
+        $students = Student_Class::where('student_id','=', Auth::user()->id)->where('group_class_id','=',$id)->where('status','=','Approved')->get();
+        
+        return view('user.student.viewClass')->with('classes',$classes)
+                                            ->with('classDetails',$classDetails)
+                                            ->with('students',$students);                      
     }
 }

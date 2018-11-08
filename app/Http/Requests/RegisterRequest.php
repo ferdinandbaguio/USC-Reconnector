@@ -24,10 +24,10 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'registeredIdnumber' =>'required|unique:users,idnumber',
+            'registeredIdnumber' =>'required|unique:users,idnumber|numeric',
             'lastName' => 'required|alpha_spaces',
             'firstName' => 'required|alpha_spaces',
-            'middleName' => 'sometimes|alpha_spaces',
+            'middleName' => 'nullable',
             'address' => 'required',
             'email' => 'required|email|unique:users,email',
             'contactNo' => 'required|numeric',
@@ -42,6 +42,7 @@ class RegisterRequest extends FormRequest
     }
     public function messages(){
         return [
+            
             'registeredIdnumber.unique' => 'ID number already exist.',
             'registeredIdnumber.required' => 'ID number is Required.',
             'registeredIdnumber.numeric' => 'ID number must be digit.',

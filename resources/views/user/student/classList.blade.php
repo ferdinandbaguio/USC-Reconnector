@@ -7,7 +7,7 @@
 @section('content')
 <!-- TOP BUTTONS  -->
 
-
+@include('_inc.messages')
 <div class="row">
   <form method="GET" action="/searchClass">
     {{ csrf_field() }}
@@ -37,9 +37,19 @@
       <th scope="row">{{$row->id}}</th>
       <td>{{$row->subject->name}}</td>
       <td>{{$row->teacher->firstName}} {{$row->teacher->lastName}}</td>
-      <form method="POST" action="">
-      <td><button class="btn btn-sm btn-success"> Join</button> </td>
-      
+
+      @if($checkPending == -1)
+      <form method="POST" action="{{route('join.Class')}}"> 
+      @csrf
+      <input type="hidden" name="group_class_id" value="{{$row->id}}">
+      <td><button type="submit" class="btn btn-sm btn-success">Join</button> </td>
+      </form>
+      @elseif($checkPending == $row->id)
+      <td><button class="btn btn-sm btn-warning disabled"> Pending </button> </td>
+      @elseif($checkPending == -2)
+      <td><button class="btn btn-sm btn-success disabled"> Approved </button> </td>
+      @endif
+    
     </tr>
     @endforeach
   
