@@ -118,6 +118,46 @@ $('#edit-class').on('show.bs.modal', function(event) {
     modal.find('.modal-body #gsend3').val(gsend3);
     modal.find('.modal-body #gssem3').val(gssem3);
 })
+$('#edit-subject').on('show.bs.modal', function(event) {
+    var button    = $(event.relatedTarget)
+    var code      = button.data('code')
+    var name      = button.data('name')
+    var desc      = button.data('desc')
+
+    var modal   = $(this)
+
+    modal.find('.modal-body #code').val(code);
+    modal.find('.modal-body #name').val(name);
+    modal.find('.modal-body #desc').val(desc);
+})
+$('#edit-semester').on('show.bs.modal', function(event) {
+    var button      = $(event.relatedTarget)
+    var id          = button.data('id')
+    var room      = button.data('room')
+    var status      = button.data('status')
+    var tid         = button.data('tid')
+
+    var modal   = $(this)
+
+    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #room').val(room);
+    modal.find('.modal-body #status').val(status);
+    modal.find('.modal-body #tid').val(tid);
+})
+$('#edit-year').on('show.bs.modal', function(event) {
+    var button      = $(event.relatedTarget)
+    var id          = button.data('id')
+    var room      = button.data('room')
+    var status      = button.data('status')
+    var tid         = button.data('tid')
+
+    var modal   = $(this)
+
+    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #room').val(room);
+    modal.find('.modal-body #status').val(status);
+    modal.find('.modal-body #tid').val(tid);
+})
 $('#delete-class').on('show.bs.modal', function(event){
     var button = $(event.relatedTarget)
     var id = button.data('id')

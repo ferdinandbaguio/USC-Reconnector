@@ -80,7 +80,7 @@ class UserController extends Controller
                 $request['picture'] = $pictureFemaleValues[$random];
             }
 
-            $request['password'] = bcrypt($request['idnumber']);
+            $request['password'] = $request['idnumber'];
         }
         else{
             // Get Image

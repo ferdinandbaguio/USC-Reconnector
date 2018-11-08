@@ -11,6 +11,7 @@ class Subject extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'picture',
         'code',
         'name',
         'description'

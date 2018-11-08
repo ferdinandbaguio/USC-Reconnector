@@ -49,15 +49,15 @@ class LoginController extends Controller
                 // dd("error Denied");
                 return $this->logout()->with('alert','Your access request has been Denied');  
             }else{
-                dd('uknown');
+                // dd('uknown');
             }
 
         }else{
-            dd('Error', $credentials,$auth);
+            // dd('Error', $credentials,$auth);
 
         }
 
-        // return redirect()->route('login')->withErrors(['password' => 'Incorrect Password']);
+        return redirect()->route('login')->withErrors(['password' => 'Incorrect Password']);
     }
 
     public function logout()

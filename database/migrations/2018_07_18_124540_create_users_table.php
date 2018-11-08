@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->enum('userStatus', ['Pending', 'Approved', 'Denied'])->nullable();
             $table->enum('userType', ['Student', 'Teacher', 'Alumnus', 
                                         'Admin', 'Coordinator', 'Chair'])->nullable();
-            $table->enum('employmentStatus', ['Employeed', 'Unemployed(Now)', 
+            $table->enum('employmentStatus', ['Employed', 'Unemployed(Now)', 
                                                             'Unemployed(Never)'])->nullable();
             $table->enum('updateStatus', ['Updated', 'Outdated', 
                                           'Recent'])->nullable();

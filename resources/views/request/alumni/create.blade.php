@@ -34,8 +34,8 @@
         </div>
         <div class="form-group">
             <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
-                {{Form::select('employmentStatus', ['Unemployeed' => 'Unemployeed', 
-                'Employed' => 'Employed'], null, 
+                {{Form::select('employmentStatus', ['Employed' => 'Employed', 'Unemployed(Now)' => 'Unemployed(Now)', 
+                'Unemployed(Never)' => 'Unemployed(Never)'], null, 
                 ['placeholder' => 'Select your Employment Status'])}}
         </div>
         <div class="form-group">

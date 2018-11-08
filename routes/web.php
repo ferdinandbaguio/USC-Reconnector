@@ -105,7 +105,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/SM/classes', 'Admin\SchoolMgmtController@classes')->name('ShowClasses');
         Route::post('/SM/store', 'Admin\SchoolMgmtController@storeClass')->name('StoreClass');
         Route::post('/SM/store/subject', 'Admin\SchoolMgmtController@storeSubject')->name('StoreSubject');
+        Route::post('/SM/store/semester', 'Admin\SchoolMgmtController@storeSemester')->name('StoreSemester');
+        Route::post('/SM/store/year', 'Admin\SchoolMgmtController@storeYear')->name('StoreYear');
         Route::patch('/SM/update', 'Admin\SchoolMgmtController@updateClass')->name('UpdateClass');
+        Route::patch('/SM/update/subject', 'Admin\SchoolMgmtController@updateSubject')->name('UpdateSubject');
+        Route::patch('/SM/update/semester', 'Admin\SchoolMgmtController@updateSemester')->name('UpdateSemester');
+        Route::patch('/SM/update/year', 'Admin\SchoolMgmtController@updateClass')->name('UpdateYear');
         Route::delete('/SM/destroy', 'Admin\SchoolMgmtController@destroyClass')->name('DeleteClass');
         Route::post('/SM/students', 'Admin\SchoolMgmtController@studentClass')->name('StudentClass');
         Route::post('/SM/store/student', 'Admin\SchoolMgmtController@storeStudent')->name('StoreStudent');
