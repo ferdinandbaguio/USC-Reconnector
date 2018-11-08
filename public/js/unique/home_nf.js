@@ -82,9 +82,10 @@ function cancelEdit(id){
   $('#contentLabel' + id).slideUp("slow");
 }
 
-function editPost(id){
-  
+function editJPost(id){
+
 }
 
 
 
+CKEDITOR.replace( 'article-ckeditor' );

@@ -18,9 +18,19 @@
       @endif
   </div>
 
+  @if(session('success'))
+  <div class="row p-0">
+    <div class="col-md-8 p-0 m-0">
+      <div class="alert alert-success">
+      {{session('success')}}
+      </div>
+    </div>
+  </div>
+  @endif
+  
+
   <div class="row fontRoboto"><!-- Father Row -->
   <div class="col-md-8 mb-5"> <!-- Separator column -->
-
 
   <div class="row"><!-- School Ann Header -->
     <div class="col-10 col-md-5 py-2 rounded-top greenLayer">
@@ -128,7 +138,9 @@
 
       <div class="row">
         <div class="col-12 col-md-12 mt-4">
-        <p class="m-0"> Company: {{$latestjobpost->companyName}} </p>
+        <label>Company:</label>
+        <input type="text" class="form-control-plaintext bg-light w-100 d-inline" id="company{{$latestjobpost->id}}" value="{{$latestjobpost->companyName}}" name="title" readonly>
+        
         <p class="m-0"> Location: {{$latestjobpost->address}} </p>
         <p class="m-0"> Job Title: {{$latestjobpost->jobTitle}} </p>
         <p class="m-0"> Job Description: {{$latestjobpost->description}} </p>
@@ -395,7 +407,7 @@
 
   <!-- ADD ANNOUNCEMENT MODAL END-->
 
-
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <!-- jQuery script -->
 <script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
 

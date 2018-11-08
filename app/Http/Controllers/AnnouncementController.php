@@ -39,7 +39,7 @@ class AnnouncementController extends Controller
 
         Announcement::create($data);
         
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Successfully added post');
     }
 
     /**
