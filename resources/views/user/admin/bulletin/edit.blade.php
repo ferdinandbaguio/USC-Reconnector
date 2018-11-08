@@ -20,7 +20,7 @@ Edit Post
     <div class="row">
         {{-- Show Current Post Picture --}}
         <div class="col-md-8">
-            <img src="/storage/post_img/{{ $post->picture}}">
+            <img src="/storage/post_img/{{ $post->image}}">
         </div>
         <div class="col-md-4">
             {{-- Post Picture and Title --}}

@@ -11,16 +11,16 @@ class Filter extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'post_id',
+        'announcement_id',
         'school_id',
         'department_id',
         'course_id',
         'group_class_id'
     ];
 
-    public function post()
+    public function announcement()
     {
-    	return $this->belongsTo('App\Models\Post');
+    	return $this->belongsTo('App\Models\Announcement');
     }
 
     public function school()

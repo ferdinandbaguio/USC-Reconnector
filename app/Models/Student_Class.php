@@ -12,7 +12,8 @@ class Student_Class extends Model
 
     protected $fillable = [
         'student_id',
-        'group_class_id'
+        'group_class_id',
+        'status'
     ];
 
     public function student()

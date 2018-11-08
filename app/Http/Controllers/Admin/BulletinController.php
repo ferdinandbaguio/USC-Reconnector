@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
-use App\Models\Post;
 use App\Models\School;
 use App\Models\Course;
 use App\Models\Filter;
 use App\Models\Department;
 use App\Models\Group_Class;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +17,7 @@ class BulletinController extends Controller
     public function index()
     {
         $filters = Filter::all();
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Announcement::orderBy('created_at', 'desc')->get();
         return view('user.admin.bulletin.posts')->with('posts', $posts)->with('filters', $filters);
     }
     public function create()
@@ -33,7 +33,7 @@ class BulletinController extends Controller
     public function store(Request $request)
     {
         if(!isset($request['picture'])){
-            $postToStore['picture'] = 'Post_Default.jpg';
+            $postToStore['image'] = 'Post_Default.jpg';
         }
         else{
             // Get Image
@@ -47,13 +47,13 @@ class BulletinController extends Controller
             // Save Path of Image
             $path = $request['picture']->storeAs('public/post_img', $filenameToStore);
             // Store Image to Database
-            $postToStore['picture'] = $filenameToStore;
+            $postToStore['image'] = $filenameToStore;
         }
-        $postToStore['poster_id'] = $request->poster_id;
+        $postToStore['user_id'] = $request->poster_id;
         $postToStore['title'] = $request->title;
         $postToStore['announcement'] = $request->announcement;
 
-        Post::create($postToStore);
+        Announcement::create($postToStore);
 
         if(isset($request->school_id) || isset($request->department_id) || isset($request->course_id) || isset($request->group_class_id)){
             if(isset($request->filter_option1))
@@ -65,8 +65,8 @@ class BulletinController extends Controller
             if(isset($request->filter_option4))
                 $filter['group_class_id'] = $request->group_class_id;
 
-            $postToFilter = DB::table('posts')->orderBy('created_at', 'desc')->first();
-            $filter['post_id'] = $postToFilter->id;
+            $postToFilter = DB::table('announcements')->orderBy('created_at', 'desc')->first();
+            $filter['announcement_id'] = $postToFilter->id;
             Filter::create($filter);
         }
 
@@ -78,9 +78,9 @@ class BulletinController extends Controller
         $courses = Course::all();
         $departments = Department::all();
         $group_classes = Group_Class::all();
-        $filters = Filter::where('post_id', '=', $id)->get();
+        $filters = Filter::where('announcement_id', '=', $id)->get();
 
-        $post = Post::findOrFail($id);
+        $post = Announcement::findOrFail($id);
         return view('user.admin.bulletin.edit')->with('post', $post)->with('schools', $schools)->with('departments', $departments)
                                                ->with('courses', $courses)->with('group_classes', $group_classes)->with('filters', $filters);
     }
@@ -98,13 +98,13 @@ class BulletinController extends Controller
             // Save Path of Image
             $path = $request['picture']->storeAs('public/post_img', $filenameToStore);
             // Store Image to Database
-            $postToUpdate['picture'] = $filenameToStore;
+            $postToUpdate['image'] = $filenameToStore;
         }
         
-        $postToUpdate['poster_id'] = $request->poster_id;
+        $postToUpdate['user_id'] = $request->poster_id;
         $postToUpdate['title'] = $request->title;
         $postToUpdate['announcement'] = $request->announcement;
-        $postID = Post::findOrFail($request->id);
+        $postID = Announcement::findOrFail($request->id);
         $postID->update($postToUpdate);
 
         if(isset($request->school_id) || isset($request->department_id) || isset($request->course_id) || isset($request->group_class_id)){
@@ -117,8 +117,8 @@ class BulletinController extends Controller
             if(isset($request->filter_option4))
                 $filter['group_class_id'] = $request->group_class_id;
 
-            $postToFilter = DB::table('posts')->orderBy('updated_at', 'desc')->first();
-            $filter['post_id'] = $postToFilter->id;
+            $postToFilter = DB::table('announcements')->orderBy('updated_at', 'desc')->first();
+            $filter['announcement_id'] = $postToFilter->id;
             Filter::create($filter);
         }
 
@@ -126,8 +126,8 @@ class BulletinController extends Controller
     }
     public function destroy(Request $request)
     {
-        Post::destroy($request->id);
-        $filters = Filter::where('post_id', '=', $request->id)->get();
+        Announcement::destroy($request->id);
+        $filters = Filter::where('announcement_id', '=', $request->id)->get();
         for($i = 0; $i < count($filters); $i++){
             Filter::destroy($filters[$i]->id);
         }
@@ -135,7 +135,6 @@ class BulletinController extends Controller
     }
     public function storeFilter(Request $request)
     {
-        return $request;
         if(isset($request->school_id) || isset($request->department_id) || isset($request->course_id) || isset($request->group_class_id)){
             if(isset($request->filter_option1))
                 $filter['school_id'] = $request->school_id;
@@ -145,9 +144,8 @@ class BulletinController extends Controller
                 $filter['course_id'] = $request->course_id;
             if(isset($request->filter_option4))
                 $filter['group_class_id'] = $request->group_class_id;
-            return $request;
             $postToFilter = DB::table('posts')->orderBy('updated_at', 'desc')->first();
-            $filter['post_id'] = $postToFilter->id;
+            $filter['announcement_id'] = $postToFilter->id;
             Filter::create($filter);
         }
 

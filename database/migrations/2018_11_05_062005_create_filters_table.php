@@ -16,8 +16,8 @@ class CreateFiltersTable extends Migration
         Schema::create('filters', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('post_id')->nullable();
-            $table->foreign('post_id')->references('id')->on('posts')
+            $table->unsignedInteger('announcement_id')->nullable();
+            $table->foreign('announcement_id')->references('id')->on('announcements')
             ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedInteger('school_id')->nullable();

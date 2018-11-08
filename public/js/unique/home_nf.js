@@ -84,7 +84,6 @@ function cancelEdit(id){
 
 function editJPost(id){
 
-}
 
 
 
