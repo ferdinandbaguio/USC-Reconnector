@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Receiver;
@@ -26,6 +27,62 @@ class ContactsController extends Controller
         ->with('alumni', $alumni)
         ->with('admins', $admins);
     }
+    public function liveSearch(Request $request)
+    {
+        if($request->ajax()){
+            $output = '';
+            $query = $request->get('query');
+            if($query != ''){
+                $data = DB::table('users')
+                ->where('idnumber', 'like', '%'.$query.'%')
+                ->orWhere('firstName', 'like', '%'.$query.'%')
+                ->orWhere('middleName', 'like', '%'.$query.'%')
+                ->orWhere('lastName', 'like', '%'.$query.'%')
+                ->orWhere('userType', 'like', '%'.$query.'%')
+                ->orderBy('id', 'desc')
+                ->get();
+            }
+            else{
+                $data = DB::table('users')
+                ->orderBy('id', 'desc')
+                ->get();
+            }
+            $total_row = $data->count();
+            if($total_row > 0){
+                foreach($data as $row){
+                    $output .= "
+                    <tr>
+                        <td>$row->idnumber</td>
+                        <td>$row->firstName $row->middleName $row->lastName</td>
+                        <td>$row->userType</td>
+                        <td><center>
+                        <button type='submit' class='btn btn-xs' name='id' value='$row->id' data-toggle='tooltip' data-original-title='Add'>   
+                            <i class='ti-check'></i>                              
+                        </button>
+                        </center></td>
+                    </tr>
+                    ";
+                }
+            }
+            else{
+                $output = '
+                <tr>
+                    <td align="center" colspan="5">No Data Found</td>
+                </tr>
+                ';
+            }
+            $data = array(
+                'table_data'  => $output,
+                'total_data'  => $total_row
+            );
+
+            echo json_encode($data);
+        }
+    }
+    public function add(Request $request)
+    {
+        return $request;
+    }
     public function store(Request $request)
     {
         $request = $request->all();
@@ -36,26 +93,7 @@ class ContactsController extends Controller
         $r['message_id'] = $message_id['id'];
         $r['recipient_id'] = Auth::user()->id;
         Receiver::create($r);
-        if(isset($request['rID1'])){
-            $r['message_id'] = $message_id['id'];
-            $r['recipient_id'] = $request['rID1'];
-            Receiver::create($r);
-        }
-        if(isset($request['rID2'])){
-            $r['message_id'] = $message_id['id'];
-            $r['recipient_id'] = $request['rID2'];
-            Receiver::create($r);
-        }
-        if(isset($request['rID3'])){
-            $r['message_id'] = $message_id['id'];
-            $r['recipient_id'] = $request['rID3'];
-            Receiver::create($r);
-        }
-        if(isset($request['rID4'])){
-            $r['message_id'] = $message_id['id'];
-            $r['recipient_id'] = $request['rID4'];
-            Receiver::create($r);
-        }
+
         return redirect()->back()->with('success', 'Created New Chat');
     }
     public function update(Request $request)

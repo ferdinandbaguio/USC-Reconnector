@@ -57581,7 +57581,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return;
             }
 
-            // this.updateUnreadCount(message.from_contact, false);
+            this.updateUnreadCount(message.from_contact, false);
         },
         updateUnreadCount: function updateUnreadCount(contact, reset) {
             this.contacts = this.contacts.map(function (single) {
@@ -57699,6 +57699,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MessagesFeed___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__MessagesFeed__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MessageComposer__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MessageComposer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__MessageComposer__);
+//
+//
+//
+//
 //
 //
 //
@@ -58118,7 +58122,11 @@ var render = function() {
     { staticClass: "conversation" },
     [
       _c("h1", [
-        _vm._v(_vm._s(_vm.contact ? _vm.contact.title : "Select a Contact"))
+        _vm._v(
+          _vm._s(_vm.contact ? _vm.contact.title : "Select a Contact") +
+            "\n        "
+        ),
+        _vm._m(0)
       ]),
       _vm._v(" "),
       _c("MessagesFeed", {
@@ -58130,7 +58138,24 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "span",
+      { attrs: { "data-toggle": "modal", "data-target": "#add-recipients" } },
+      [
+        _c(
+          "a",
+          { staticClass: "btn btn-info pull-right", attrs: { href: "#" } },
+          [_vm._v("Add Recipients")]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

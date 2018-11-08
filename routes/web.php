@@ -128,6 +128,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/contacts', 'ContactsController@get');
         Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
         Route::post('/conversation/send', 'ContactsController@send');
+        Route::get('/live_search/action', 'ContactsController@liveSearch')->name('live_search.action'); 
+        Route::post('/store/recipient', 'ContactsController@add')->name('store.recipient'); 
     });
     
 

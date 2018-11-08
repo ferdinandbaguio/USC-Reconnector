@@ -54,7 +54,7 @@
                     return;
                 }
 
-                // this.updateUnreadCount(message.from_contact, false);
+                this.updateUnreadCount(message.from_contact, false);
             },
             updateUnreadCount(contact, reset) {
                 this.contacts = this.contacts.map((single) => {

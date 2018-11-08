@@ -20,6 +20,7 @@ USC - Reconnector
             <div class="card">
                 <div class="card-header">
                     Communications
+                    {{-- Create New Group Chat --}}
                     <span data-toggle="modal" data-target="#create">
                         <button class="btn btn-primary pull-right" data-toggle="tooltip" 
                         data-original-title="Create A New User">
@@ -63,48 +64,56 @@ USC - Reconnector
                 'placeholder' => 'Type in Sender', 'required'])}}
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <b>{{Form::label('rID1', 'Student')}}</b>
-                <select name="rID1" class = "form-control input-rounded text-center">
-                    @foreach ($students as $student) 
-                        <option value={{$student->id}}>{{$student->full_name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-6 form-group">
-                <b>{{Form::label('rID2', 'Teacher')}}</b>
-                <select name="rID2" class = "form-control input-rounded text-center">
-                    @foreach ($teachers as $teacher) 
-                        <option value={{$teacher->id}}>{{$teacher->full_name}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <b>{{Form::label('rID3', 'Alumnus')}}</b>
-                <select name="rID3" class = "form-control input-rounded text-center">
-                    @foreach ($alumni as $alumnus) 
-                        <option value={{$alumnus->id}}>{{$alumnus->full_name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-6 form-group">
-                <b>{{Form::label('rID4', 'Admin')}}</b>
-                <select name="rID4" class = "form-control input-rounded text-center">
-                    @foreach ($admins as $admin) 
-                        <option value={{$admin->id}}>{{$admin->full_name}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+<!-- Add Recipient to Contacts Modal -->
+<div class="modal fade" id="add-recipients" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Adding New Recipients</h4>
+    </div>
+    <div class="modal-body">
+        {{-- Search Bar --}}
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="text" name="search" id="search" class="form-control input-rounded" placeholder="Search Customer Data" width="100%"/>
+                <br>
+                <div class="table-responsive">
+                    <h5 align="center">Total Users : <span id="total_records"></span></h5>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID Number</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Option</th>
+                            </tr>
+                        </thead>
+                        {!! Form::open(['route' => 'store.recipient', 'method' => 'POST', 'style' => 'display:inline-block;']) !!}
+                        @csrf
+                            <tbody>
+                            </tbody>
+                        {!! Form::close() !!}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
 </div>
 </div>
 </div>
@@ -118,6 +127,30 @@ USC - Reconnector
         var button = $(event.relatedTarget)
         var modal = $(this)
     })
+</script>
+
+<script>
+    $(document).ready(function(){
+        fetch_user_data();
+    
+        function fetch_user_data(query = ''){
+            $.ajax({
+                url:"{{ route('live_search.action') }}",
+                method:'GET',
+                data:{query:query},
+                dataType:'json',
+                success:function(data){
+                    $('tbody').html(data.table_data);
+                    $('#total_records').text(data.total_data);
+                }
+            })
+        }
+    
+        $(document).on('keyup', '#search', function(){
+            var query = $(this).val();
+            fetch_user_data(query);
+        });
+    });
 </script>
 
 @endsection
