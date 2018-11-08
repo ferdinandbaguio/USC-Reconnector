@@ -15,6 +15,8 @@ class CreateStudentClassesTable extends Migration
     {
         Schema::create('student_classes', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('status', ['Approved', 'Pending']);
+
             $table->unsignedInteger('student_id');
             $table->foreign('student_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
