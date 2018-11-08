@@ -108,10 +108,22 @@
       <div class="col-2 col-md-1 mt-2">
         <img src="/img/homepage_images/Girl.jpg" class="rounded-circle postByImg" width="50px" /> 
       </div>
-      <div class="col-10 col-md-11 mt-2">
+      <div class="col-9 col-md-10 mt-2">
         <p class="m-0 text-muted"> Posted by:  {{$latestjobpost->users->fullname}} </p>
         <p class="m-0 text-muted"> {{$latestjobpost->created_at->format('M d Y g:i A')}}</p>
       </div>
+
+      <div class="col mt-3 p-0 dropleft">
+      @if($latestjobpost->user_id == Auth::user()->id)
+      <i class="fas fa-ellipsis-v ml-md-4 text-muted" data-toggle="dropdown"></i>
+      @endif
+      <div class="dropdown">
+        <div class="dropdown-menu" id="dropdown">
+          <a class="dropdown-item" href="#edit" onclick="editJPost({{$latestjobpost->id}});">Edit</a>
+          <a class="dropdown-item" href="/deleteAnnouncement/{{$latestjobpost->id}}" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+        </div>
+      </div>
+    </div>
       </div>
 
       <div class="row">

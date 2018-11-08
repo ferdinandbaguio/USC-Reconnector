@@ -55,7 +55,6 @@ $(document).ready(function(){
 });
 
 // EDIT TOGGLE FORM
-
 function editPost(id){
   $('#title' + id).attr('readonly', false)
   .removeClass("form-control-plaintext")
@@ -81,6 +80,10 @@ function cancelEdit(id){
   $('#formBtn' + id).slideUp("slow");
   $('#titleLabel' + id).slideUp("slow");
   $('#contentLabel' + id).slideUp("slow");
+}
+
+function editPost(id){
+  
 }
 
 
