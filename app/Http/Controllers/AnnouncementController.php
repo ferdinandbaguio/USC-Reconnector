@@ -39,7 +39,7 @@ class AnnouncementController extends Controller
 
         Announcement::create($data);
         
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Successfully added post');
     }
 
     /**
@@ -71,9 +71,15 @@ class AnnouncementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request = $request->all();
+
+        $user = Announcement::findOrFail($request['id']);
+    
+        $user->update($request);
+    
+        return redirect()->back();
     }
 
     /**
@@ -84,6 +90,9 @@ class AnnouncementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //dd($id);
+        Announcement::find($id)->delete();
+
+        return redirect()->back();
     }
 }

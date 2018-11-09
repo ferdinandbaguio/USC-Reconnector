@@ -14,7 +14,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
         // Logout
         Route::post('logout', 'LoginController@logout')->name('logout');
-
+    
 Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'home'], function () {
@@ -22,13 +22,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('jobPosts','JobPostController')->except('create');
         Route::resource('announcements','AnnouncementController')->except('create');
 
+        //Update post
+        Route::patch('announcement/postUpdate', 'AnnouncementController@update')->name('announcement.update');
+        Route::get('/deleteAnnouncement/{id}','AnnouncementController@destroy');
+
         //View Profiles
         Route::get('/viewStudentProfile/{id}','StudentController@viewStudentProfile');
         Route::view('/student/viewprofile', 'user.student.viewprofile');
-
         Route::get('/viewAlumnusProfile/{id}','StudentController@viewStudentProfile');
         Route::view('/alumnus/viewprofile', 'user.alumnus.viewprofile');
-
         Route::get('/viewTeacherProfile/{id}','TeacherController@viewTeacherProfile');
         Route::view('/teacher/viewprofile', 'user.teacher.viewprofile');
 
@@ -40,13 +42,14 @@ Route::group(['middleware' => 'auth'], function () {
     // Student
     Route::group(['middleware' => 'student'], function () {  
         Route::get('/student/profile', 'StudentController@index')->name('student.profile');
-        Route::view('/student/class', 'user.student.class')->name('students');
         Route::patch('/student/description', 'DescriptionController@update')->name('student.description.update');
         Route::post('student/skill', 'UserSkillController@store')->name('student.skill.add');
         Route::post('student/achievement', 'AchievementController@store')->name('student.achievement.add');
         
+        Route::get('/student/class', 'StudentController@listOfClasses')->name('user.student.class');
+        Route::get('/viewClass/{id}', 'StudentController@viewClass')->name('view.class');
         Route::get('/searchClass', 'StudentController@searchClass')->name('searchClass.searchClass');
-        Route::view('/classList', 'user.student.classList')->name('classList');
+        Route::post('/joinClass', 'StudentController@joinClass')->name('join.Class');
         
         Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
         Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
@@ -93,6 +96,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'admin'], function () { 
         // Admin Index
         Route::view('/admin', 'user.admin.index')->name('admins');
+        // Requests Controller
+        Route::get('/student/requests', 'Admin\StudentRequestController@index')->name('ShowStudentRequest');
         // User Controller
         Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
         Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
@@ -107,8 +112,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/SM/classes', 'Admin\SchoolMgmtController@classes')->name('ShowClasses');
         Route::post('/SM/store', 'Admin\SchoolMgmtController@storeClass')->name('StoreClass');
         Route::post('/SM/store/subject', 'Admin\SchoolMgmtController@storeSubject')->name('StoreSubject');
+        Route::post('/SM/store/semester', 'Admin\SchoolMgmtController@storeSemester')->name('StoreSemester');
+        Route::post('/SM/store/year', 'Admin\SchoolMgmtController@storeYear')->name('StoreYear');
         Route::patch('/SM/update', 'Admin\SchoolMgmtController@updateClass')->name('UpdateClass');
+        Route::patch('/SM/update/subject', 'Admin\SchoolMgmtController@updateSubject')->name('UpdateSubject');
+        Route::patch('/SM/update/semester', 'Admin\SchoolMgmtController@updateSemester')->name('UpdateSemester');
+        Route::patch('/SM/update/year', 'Admin\SchoolMgmtController@updateYear')->name('UpdateYear');
         Route::delete('/SM/destroy', 'Admin\SchoolMgmtController@destroyClass')->name('DeleteClass');
+        Route::delete('/SM/destroy/subject', 'Admin\SchoolMgmtController@destroySubject')->name('DeleteSubject');
+        Route::delete('/SM/destroy/semester', 'Admin\SchoolMgmtController@destroySemester')->name('DeleteSemester');
+        Route::delete('/SM/destroy/year', 'Admin\SchoolMgmtController@destroyYear')->name('DeleteYear');
         Route::post('/SM/students', 'Admin\SchoolMgmtController@studentClass')->name('StudentClass');
         Route::post('/SM/store/student', 'Admin\SchoolMgmtController@storeStudent')->name('StoreStudent');
         Route::delete('/SM/remove/student', 'Admin\SchoolMgmtController@removeStudent')->name('RemoveStudent');
@@ -142,6 +155,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/contacts', 'ContactsController@get');
         Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
         Route::post('/conversation/send', 'ContactsController@send');
+        Route::get('/live_search/action', 'ContactsController@liveSearch')->name('live_search.action'); 
+        Route::post('/store/recipient', 'ContactsController@add')->name('store.recipient'); 
     });
     
 

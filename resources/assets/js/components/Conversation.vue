@@ -1,6 +1,10 @@
 <template>
     <div class="conversation">
-        <h1>{{ contact ? contact.name : 'Select a Contact' }}</h1>
+        <h1>{{ contact ? contact.title : 'Select a Contact' }}
+            <span data-toggle="modal" data-target="#add-recipients">
+                <a href='#' class="btn btn-info pull-right">Add Recipients</a>
+            </span>
+        </h1>
         <MessagesFeed :contact="contact" :messages="messages"/>
         <MessageComposer @send="sendMessage"/>
     </div>

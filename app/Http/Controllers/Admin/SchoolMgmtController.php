@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
+use App\Models\Year;
 use App\Models\User;
 use App\Models\School;
 use App\Models\Course;
@@ -22,14 +23,16 @@ class SchoolMgmtController extends Controller
  
     public function classes()
     {
-        $subjects = Subject::all();
         $grpclasses = Group_Class::all();
+        $subjects = Subject::all();
         $semesters = Semester::all();
+        $years = Year::all();
         $teachers = User::where('userType', '=', 'Teacher')->where('userStatus', '=', 'Approved')->get();
         return view('user.admin.crud.schoolmgmt.classes')->with('grpclasses', $grpclasses)
                                                          ->with('subjects', $subjects)
                                                          ->with('teachers', $teachers)
-                                                         ->with('semesters', $semesters);
+                                                         ->with('semesters', $semesters)
+                                                         ->with('years', $years);
     }
     public function school()
     {
@@ -80,14 +83,36 @@ class SchoolMgmtController extends Controller
             // Save Path of Image
             $path = $request['picture']->storeAs('public/subject_img', $filenameToStore);
             // Store Image to Database
-            $subj['picture'] = $request['picture'];
+            $subj['picture'] = $filenameToStore;
+        }
+        else{
+            $subj['picture'] = "Subject_Default.jpeg";
         }
         $subj['code'] = $request['code'];
         $subj['name'] = $request['name'];
         $subj['description'] = $request['description'];
-        Subject::create($request);
+        Subject::create($subj);
 
         return redirect()->back()->with('success', 'Created Subject: Successful!');
+    }
+    public function storeSemester(Request $request)
+    {
+        $request = $request->all();
+
+        $sem['name'] = $request['name'];
+        $sem['year_id'] = $request['year_id'];
+        Semester::create($sem);
+
+        return redirect()->back()->with('success', 'Created Semester: Successful!');
+    }
+    public function storeYear(Request $request)
+    {
+        $request = $request->all();
+
+        $year['name'] = $request['name'];
+        Year::create($year);
+
+        return redirect()->back()->with('success', 'Created Year: Successful!');
     }
     public function updateClass(Request $request)
     {
@@ -177,6 +202,52 @@ class SchoolMgmtController extends Controller
             }
         return redirect()->back()->with('success', 'Edited Class '.$request['id'].': Successful!');
     }
+    public function updateSubject(Request $request)
+    {
+        if(isset($request['picture'])){
+            // Get Image
+            $filenameWithExt = $request['picture']->getClientOriginalName();
+            // Get Image Name
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get Image Extention
+            $extension = $request['picture']->getClientOriginalExtension();
+            // Rename Image
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // Save Path of Image
+            $path = $request['picture']->storeAs('public/subject_img', $filenameToStore);
+            // Store Image to Database
+            $subj['picture'] = $filenameToStore;
+        }
+        $subj['id'] = $request['id'];
+        $subj['code'] = $request['code'];
+        $subj['name'] = $request['name'];
+        $subj['description'] = $request['description'];
+        $subject = Subject::find($subj['id']);
+        $subject->update($subj);
+
+        return redirect()->back()->with('success', 'Edited Subject: Successful!');
+    }
+    public function updateSemester(Request $request)
+    {
+        $sem['id'] = $request->id;
+        $sem['name'] = $request->name;
+        $sem['year_id'] = $request->year_id;
+
+        $semester = Semester::find($sem['id']);
+        $semester->update($sem);
+
+        return redirect()->back()->with('success', 'Edited Semester: Successful!');
+    }
+    public function updateYear(Request $request)
+    {
+        $yearData['id'] = $request->id;
+        $yearData['name'] = $request->name;
+
+        $year = Year::find($yearData['id']);
+        $year->update($yearData);
+
+        return redirect()->back()->with('success', 'Edited Year: Successful!');
+    }
     public function destroyClass(Request $request)
     {
         try{
@@ -186,7 +257,9 @@ class SchoolMgmtController extends Controller
                 $STD[$i] = $schedulesToDelete[$i]['schedule_id'];
             }
             Group_Class::destroy($request->id);
-            Schedule::destroy($STD);
+            if(isset($STD)){
+                Schedule::destroy($STD);
+            }
             Group_Schedule::destroy($grpschedulesToDelete);
 
             return redirect()->back()->with('success', 'Deleted Class: Successful!');
@@ -194,6 +267,21 @@ class SchoolMgmtController extends Controller
         catch(Exception $e){
             return redirect()->back()->with('error', 'Something went wrong: '.$e);
         }
+    }
+    public function destroySubject(Request $request)
+    {
+        Subject::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Subject: Successful!');
+    }
+    public function destroySemester(Request $request)
+    {
+        Semester::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Semester: Successful!');
+    }
+    public function destroyYear(Request $request)
+    {
+        Year::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Year: Successful!');
     }
     public function studentClass(Request $request)
     {
@@ -205,6 +293,7 @@ class SchoolMgmtController extends Controller
     {
         $addToSC['student_id'] = $request->student_id;
         $addToSC['group_class_id'] = $request->group_class_id;
+        $addToSC['status'] = 'Approved';
         Student_Class::create($addToSC);
         $students = User::where('userType', '=', 'Student')->where('userStatus', '=', 'Approved')->get();
         $stdclasses = Student_Class::where('group_class_id', '=', $request->group_class_id)->get();

@@ -18,9 +18,19 @@
       @endif
   </div>
 
-  <div class="row"><!-- Father Row -->
-  <div class="col-md-8 mb-5"> <!-- Separator column -->
+  @if(session('success'))
+  <div class="row p-0">
+    <div class="col-md-8 p-0 m-0">
+      <div class="alert alert-success">
+      {{session('success')}}
+      </div>
+    </div>
+  </div>
+  @endif
+  
 
+  <div class="row fontRoboto"><!-- Father Row -->
+  <div class="col-md-8 mb-5"> <!-- Separator column -->
 
   <div class="row"><!-- School Ann Header -->
     <div class="col-10 col-md-5 py-2 rounded-top greenLayer">
@@ -38,25 +48,55 @@
   <div class="col-12 col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
     <div class="row">
     <div class="col-2 col-md-1 mt-2">
-      <img src="/img/homepage_images/Boy.jpg" class="rounded-circle postByImg" width="50px" /> 
+      <img src="/storage/user_img/{{$latestannouncement->users->picture}}" class="rounded-circle postByImg" width="50px" /> 
     </div>
-    <div class="col-10 col-md-11 mt-2">
+    <div class="col-9 col-md-10 mt-2">
       <p class="m-0 text-muted"> Posted by:  {{$latestannouncement->users->fullname}} </p>
       <p class="m-0 text-muted"> {{$latestannouncement->created_at->format('M d Y g:i A')}} </p>
+    </div>
+
+    <div class="col mt-3 p-0 dropleft">
+      @if($latestannouncement->user_id == Auth::user()->id)
+      <i class="fas fa-ellipsis-v ml-md-4 text-muted" data-toggle="dropdown"></i>
+      @endif
+      <div class="dropdown">
+        <div class="dropdown-menu" id="dropdown">
+          <a class="dropdown-item" href="#edit" onclick="editPost({{$latestannouncement->id}});">Edit</a>
+          <a class="dropdown-item" href="/deleteAnnouncement/{{$latestannouncement->id}}" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+        </div>
+      </div>
     </div>
     </div>
 
     <div class="row">
       <div class="col-12 col-md-12 mt-4">
-      <strong class="titleColor"> {{$latestannouncement->title}} </strong>
-      <p class="preserveLineBreaks"> {{$latestannouncement->announcement}} </p>
+        <div class="collapse" id="titleLabel{{$latestannouncement->id}}">
+          <label>Edit title:</label>
+        </div>
+        {!! Form::open(['route' => 'announcement.update', 'method' => 'PATCH']) !!}
+        {{csrf_field()}}
+        <input type="hidden" name="id" value="{{$latestannouncement->id}}">
+        <input type="text" class="form-control-plaintext bg-light w-100 titleColor" id="title{{$latestannouncement->id}}" value="{{$latestannouncement->title}}" name="title" readonly>
+        <div class="collapse" id="contentLabel{{$latestannouncement->id}}">
+          <label>Edit content:</label>
+        </div>
+        <textarea class="form-control-plaintext bg-light w-100 preserveLineBreaks annTextArea" name="announcement" id="content{{$latestannouncement->id}}" readonly>{{$latestannouncement->announcement}}</textarea>
+      </div>
+    </div>
+    <div class="row collapse" id="formBtn{{$latestannouncement->id}}">
+      <div class="col-12 col-md-12 mt-4">
+        <input type="submit" class="btn btn-sm btn-success" value="Update">
+        <input type="reset" class="btn btn-sm btn-danger" value="Cancel" onclick="cancelEdit({{$latestannouncement->id}})">
+        {!! Form::close() !!} 
       </div>
     </div>
 
   </div>
   </div><!-- Div latest announcement container end -->
   @else
+  <center> <p class="fontRoboto text-muted mt-4"> No posts to show </p></center>
   @endunless
+
 
  
   <div class="row mt-5"><!-- Alumni Job Header -->
@@ -78,15 +118,29 @@
       <div class="col-2 col-md-1 mt-2">
         <img src="/img/homepage_images/Girl.jpg" class="rounded-circle postByImg" width="50px" /> 
       </div>
-      <div class="col-10 col-md-11 mt-2">
+      <div class="col-9 col-md-10 mt-2">
         <p class="m-0 text-muted"> Posted by:  {{$latestjobpost->users->fullname}} </p>
         <p class="m-0 text-muted"> {{$latestjobpost->created_at->format('M d Y g:i A')}}</p>
       </div>
+
+      <div class="col mt-3 p-0 dropleft">
+      @if($latestjobpost->user_id == Auth::user()->id)
+      <i class="fas fa-ellipsis-v ml-md-4 text-muted" data-toggle="dropdown"></i>
+      @endif
+      <div class="dropdown">
+        <div class="dropdown-menu" id="dropdown">
+          <a class="dropdown-item" href="#edit" onclick="editJPost({{$latestjobpost->id}});">Edit</a>
+          <a class="dropdown-item" href="/deleteAnnouncement/{{$latestjobpost->id}}" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+        </div>
+      </div>
+    </div>
       </div>
 
       <div class="row">
         <div class="col-12 col-md-12 mt-4">
-        <p class="m-0"> Company: {{$latestjobpost->companyName}} </p>
+        <label>Company:</label>
+        <input type="text" class="form-control-plaintext bg-light w-100 d-inline" id="company{{$latestjobpost->id}}" value="{{$latestjobpost->companyName}}" name="title" readonly>
+        
         <p class="m-0"> Location: {{$latestjobpost->address}} </p>
         <p class="m-0"> Job Title: {{$latestjobpost->jobTitle}} </p>
         <p class="m-0"> Job Description: {{$latestjobpost->description}} </p>
@@ -103,6 +157,7 @@
     </div>
   </div><!-- Div latest job container end -->
   @else
+  <center> <p class="fontRoboto text-muted mt-4"> No posts to show </p></center>
   @endunless
 
 
@@ -121,32 +176,69 @@
 
 
 <!-- Div Recent Announcement container -->
+<div class="container-fluid annHolder p-0">
 @foreach($announcements as $row)
+@php $i = $row->id * -1 @endphp
   <div class="row annHolder">
     <div class="col-12 col-md-12 mt-3 pb-2 postBox bg-light">
         <div class="row">
         <div class="col-2 col-md-1 mt-2">
         <img src="/img/homepage_images/Boy.jpg" class="rounded-circle postByImg" width="50px" /> 
         </div>
-        <div class="col-10 col-md-11 mt-2">
+        <div class="col-9 col-md-10 mt-2">
         <p class="m-0 text-muted"> Posted by: {{$row->users->fullname}} </p>
         <p class="m-0 text-muted"> {{$row->created_at->format('M d Y g:i A')}} </p>
+        </div>
+        <div class="col mt-3 p-0 dropleft">
+        @if($row->user_id == Auth::user()->id)
+        <i class="fas fa-ellipsis-v ml-md-4 text-muted" data-toggle="dropdown"></i>
+        @endif
+          <div class="dropdown">
+            <div class="dropdown-menu" id="dropdown">
+              <a class="dropdown-item" href="#edit" onclick="editPost({{$i}});">Edit</a>
+              <a class="dropdown-item" href="/deleteAnnouncement/{{$row->id}}" onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</a>
+            </div>
+          </div>
         </div>
         </div>
 
         <div class="row">
-        <div class="col-12 col-md-12 mt-4">
-        <strong class="titleColor"> {{$row->title}} </strong>
-        <p class="preserveLineBreaks"> {{$row->announcement}} </p>
+          <div class="col-12 col-md-12 mt-4">
+            <div class="collapse" id="titleLabel{{$i}}">
+              <label>Edit title:</label>
+            </div>
+            {!! Form::open(['route' => 'announcement.update', 'method' => 'PATCH']) !!}
+            {{csrf_field()}}
+            <input type="hidden" name="id" value="{{$row->id}}">
+            <input type="text" class="form-control-plaintext bg-light w-100 titleColor" id="title{{$i}}" value="{{$row->title}}" name="title" readonly>
+            <div class="collapse" id="contentLabel{{$i}}">
+              <label>Edit content:</label>
+            </div>
+            <textarea class="form-control-plaintext bg-light w-100 preserveLineBreaks annTextArea" name="announcement" id="content{{$i}}" readonly>{{$row->announcement}}</textarea>
+          </div>
         </div>
+        <div class="row collapse" id="formBtn{{$i}}">
+          <div class="col-12 col-md-12 mt-4">
+            <input type="submit" class="btn btn-sm btn-success" value="Update">
+            <input type="reset" class="btn btn-sm btn-danger" value="Cancel" onclick="cancelEdit({{$i}})">
+            {!! Form::close() !!} 
+          </div>
         </div>
+        
 
     </div>
   </div><!-- Div Recent Posts container end -->
 @endforeach
+@if(count($announcements) < 1)
+<center> <p class="fontRoboto text-muted mt-4"> No posts to show </p></center>
+@else
+<center> <p class="fontRoboto text-muted mt-4"> You have seen all the recent announcement posts! </p></center>
+@endif
+</div>
 
+<!-- Div recent job container -->
+<div class="container-fluid jobHolder p-0">
 @foreach($jobposts as $row)
-  <!-- Div latest job container -->
   <div class="row jobHolder">
   <div class="col-12 col-md-12 mt-3 pb-2 postBox bg-light">
     <div class="row">
@@ -176,9 +268,16 @@
   </div>
   </div><!-- Div latest job container end -->
 @endforeach
- 
+@if(count($jobposts) < 1)
+<center> <p class="fontRoboto text-muted mt-4"> No posts to show </p></center>
+@else
+<center> <p class="fontRoboto text-muted mt-4"> You have seen all the recent job posts! </p></center>
+@endif
+</div>
 
-  <center> <p class="fontRoboto text-muted mt-5"> You have seen all the recent posts! </p></center>
+
+
+
   </div><!-- Separator Column END -->
 
 
@@ -219,7 +318,7 @@
 
 
   <!-- ADD JOB OFFER MODAL -->
-  <div class="modal fade" id="jobOfferModal" tabindex="-1" role="dialog" aria-labelledby="jobOfferModal" aria-hidden="true">
+  <div class="modal fade fontRoboto" id="jobOfferModal" tabindex="-1" role="dialog" aria-labelledby="jobOfferModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -269,7 +368,7 @@
 
 
   <!-- ADD ANNOUNCEMENT MODAL -->
-<div class="modal fade" id="announcementModal" tabindex="-1" role="dialog" aria-labelledby="announcementModal" aria-hidden="true">
+<div class="modal fade fontRoboto" id="announcementModal" tabindex="-1" role="dialog" aria-labelledby="announcementModal" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -308,6 +407,11 @@
 
   <!-- ADD ANNOUNCEMENT MODAL END-->
 
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<!-- jQuery script -->
+<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
 
+<!-- Customized scripts, must be the very last -->
 <script type="text/javascript" src="/js/unique/home_nf.js"></script>
+
 @endsection

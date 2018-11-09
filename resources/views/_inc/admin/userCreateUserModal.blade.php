@@ -1,6 +1,6 @@
 {{ Form::hidden('userType', null, array('id' => 'type')) }}
 {{ Form::hidden('userStatus', 'Approved') }}
-{{ Form::hidden('employmentStatus', 'Unemployed') }}
+{{ Form::hidden('employmentStatus', 'Unemployed(Never)') }}
 {{ Form::hidden('updateStatus', 'Outdated') }}
 {{ Form::hidden('department_id', Auth::user()->department_id ) }}
 {{ Form::hidden('course_id', null ) }}
@@ -102,9 +102,8 @@
 
         <div class="col-md-6 form-group">
         <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
-            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
-                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
-                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+            {{Form::select('employmentStatus', ['Employed'         => 'Employed', 'Unemployed(Now)'    => 'Unemployed(Now)',
+                                                'Unemployed(Never)' => 'Part-Time Job'], null, 
                                                ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
                                                 'required'])}}</div>
     </div>
@@ -119,11 +118,10 @@
 
         <div class="col-md-6 form-group">
         <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
-            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
-                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
-                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
-                                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
-                                                'required'])}}</div>
+        {{Form::select('employmentStatus', ['Employed'         => 'Employed', 'Unemployed(Now)'    => 'Unemployed(Now)',
+                                            'Unemployed(Never)' => 'Part-Time Job'], null, 
+                                            ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
+                                            'required'])}}</div>
     </div>
 @elseif($userType == "Coordinator")
     <br><i>{{Form::label('coordinatorDetails', '~ Coordinator Details ~')}}</i><br><br>
@@ -136,9 +134,9 @@
 
         <div class="col-md-6 form-group">
         <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
-            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
-                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
-                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
+        <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
+            {{Form::select('employmentStatus', ['Employed'         => 'Employed', 'Unemployed(Now)'    => 'Unemployed(Now)',
+                                                'Unemployed(Never)' => 'Part-Time Job'], null, 
                                                ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
                                                 'required'])}}</div>
     </div>
@@ -153,11 +151,10 @@
 
         <div class="col-md-6 form-group">
         <b>{{Form::label('employmentStatus', 'Employment Status')}}</b>
-            {{Form::select('employmentStatus', ['Full-Time Job'         => 'Full-Time Job', 'Unemployed'    => 'Unemployed',
-                                                'Part-Time Job'         => 'Part-Time Job', 'Summer Job'    => 'Summer Job',
-                                                'On-the-Job Training'   => 'On-the-Job Training'], null, 
-                                               ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
-                                                'required'])}}</div>
+        {{Form::select('employmentStatus', ['Employed'         => 'Employed', 'Unemployed(Now)'    => 'Unemployed(Now)',
+                                            'Unemployed(Never)' => 'Part-Time Job'], null, 
+                                            ['class' => 'form-control input-rounded', 'placeholder' => 'Choose Employment Status',
+                                            'required'])}}</div>
     </div>
 @elseif($userType == "Alumnus")
     {{ Form::hidden('course_id', null) }}

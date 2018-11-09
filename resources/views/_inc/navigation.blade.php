@@ -11,9 +11,21 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('home') }}"> Home </a>
         </li>
+        @if(Auth::user()->userType == "Alumnus")
         <li class="nav-item">
-          <a class="nav-link" href="/alumnus/profile"> Profile </a>
+          <a class="nav-link" href="{{ route('alumnus.profile') }}"> Profile </a>
         </li>
+        @endif
+        @if(Auth::user()->userType == "Student")
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('student.profile') }}"> Profile </a>
+        </li>
+        @endif
+        @if(Auth::user()->userType == "Teacher")
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('teacher.profile') }}"> Profile </a>
+        </li>
+        @endif
         @if(Auth::user()->userType == "Alumnus")
         <li class="nav-item">
           <a class="nav-link" href="{{ route('alumnus.jobs') }}"> Jobs </a>

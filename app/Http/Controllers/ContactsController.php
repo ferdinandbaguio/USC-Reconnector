@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Receiver;
@@ -18,13 +19,69 @@ class ContactsController extends Controller
         $students = User::where('userType', '=', 'Student')->get();
         $teachers = User::where('userType', '=', 'Teacher')->get();
         $alumni = User::where('userType', '=', 'Alumnus')->get();
-        $admins = User::where('userType', '=', 'Admins')->get();
+        $admins = User::where('userType', '=', 'Admin')->get();
 
         return view('user.admin.chat')
         ->with('students', $students)
         ->with('teachers', $teachers)
         ->with('alumni', $alumni)
         ->with('admins', $admins);
+    }
+    public function liveSearch(Request $request)
+    {
+        if($request->ajax()){
+            $output = '';
+            $query = $request->get('query');
+            if($query != ''){
+                $data = DB::table('users')
+                ->where('idnumber', 'like', '%'.$query.'%')
+                ->orWhere('firstName', 'like', '%'.$query.'%')
+                ->orWhere('middleName', 'like', '%'.$query.'%')
+                ->orWhere('lastName', 'like', '%'.$query.'%')
+                ->orWhere('userType', 'like', '%'.$query.'%')
+                ->orderBy('id', 'desc')
+                ->get();
+            }
+            else{
+                $data = DB::table('users')
+                ->orderBy('id', 'desc')
+                ->get();
+            }
+            $total_row = $data->count();
+            if($total_row > 0){
+                foreach($data as $row){
+                    $output .= "
+                    <tr>
+                        <td>$row->idnumber</td>
+                        <td>$row->firstName $row->middleName $row->lastName</td>
+                        <td>$row->userType</td>
+                        <td><center>
+                        <button type='submit' class='btn btn-xs' name='id' value='$row->id' data-toggle='tooltip' data-original-title='Add'>   
+                            <i class='ti-check'></i>                              
+                        </button>
+                        </center></td>
+                    </tr>
+                    ";
+                }
+            }
+            else{
+                $output = '
+                <tr>
+                    <td align="center" colspan="5">No Data Found</td>
+                </tr>
+                ';
+            }
+            $data = array(
+                'table_data'  => $output,
+                'total_data'  => $total_row
+            );
+
+            echo json_encode($data);
+        }
+    }
+    public function add(Request $request)
+    {
+        return $request;
     }
     public function store(Request $request)
     {
@@ -36,26 +93,7 @@ class ContactsController extends Controller
         $r['message_id'] = $message_id['id'];
         $r['recipient_id'] = Auth::user()->id;
         Receiver::create($r);
-        if(isset($request['rID1'])){
-            $r['message_id'] = $message_id['id'];
-            $r['recipient_id'] = $request['rID1'];
-            Receiver::create($r);
-        }
-        if(isset($request['rID2'])){
-            $r['message_id'] = $message_id['id'];
-            $r['recipient_id'] = $request['rID2'];
-            Receiver::create($r);
-        }
-        if(isset($request['rID3'])){
-            $r['message_id'] = $message_id['id'];
-            $r['recipient_id'] = $request['rID3'];
-            Receiver::create($r);
-        }
-        if(isset($request['rID4'])){
-            $r['message_id'] = $message_id['id'];
-            $r['recipient_id'] = $request['rID4'];
-            Receiver::create($r);
-        }
+
         return redirect()->back()->with('success', 'Created New Chat');
     }
     public function update(Request $request)
@@ -70,23 +108,25 @@ class ContactsController extends Controller
 
         // get a collection of items where sender_id is the user who sent us a message
         // and messages_count is the number of unread messages we have from him
-        $unreadIds = Receiver::select(\DB::raw('`message_id`, count(`message_id`) as messages_count'))
-            ->where('recipient_id', Auth::user()->id)
-            ->where('is_seen', false)
-            ->groupBy('message_id')
-            ->get();
+        // $unreadIds = Receiver::select(\DB::raw('`message_id`, count(`message_id`) as messages_count'))
+        //     ->where('recipient_id', Auth::user()->id)
+        //     ->where('is_seen', false)
+        //     ->groupBy('message_id')
+        //     ->get();
 
-        $collection = collect($contacts);
+        // $collection = collect($contacts);
 
-        // add an unread key to each contact with the count of unread messages
-        $contacts = $collection->map(function($contact) use ($unreadIds) {
-            $contactUnread = $unreadIds->where('message_id', $contact->id)->first();
+        // add an unread key and other receivers array
+        // $contacts = $collection->map(function($contact) use ($unreadIds) {
 
-            $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
+        //     $contact->recipients = Receiver::select('recipient_id')->where('message_id', '=', $contact->id)->get();
 
-            return $contact;
-        });
+        //     $contactUnread = $unreadIds->where('message_id', $contact->id)->first();
 
+        //     $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
+
+        //     return $contact;
+        // });
         return response()->json($contacts);
     }
 
@@ -115,8 +155,8 @@ class ContactsController extends Controller
             'message' => $request->text
         ]);
 
-        broadcast(new NewMessage($message));
-        
+        broadcast(new NewMessage($message))->toOthers();
+
         $name = User::select('firstName','middleName', 'lastName')->where('id', '=', Auth::user()->id)->first();
         $message['name'] = $name->full_name;
         $message['myID'] = Auth::user()->id;

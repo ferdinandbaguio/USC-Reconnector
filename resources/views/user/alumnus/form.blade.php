@@ -127,7 +127,7 @@
 			
 			
 			<button type="button" class="btn btn-sm btn-outline-danger mt-3 " onclick="showPage(getPreviousPage())">Previous</button>
-			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTwo" onclick="showPage(3)">Next</button>
+			<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonTwo" onclick="showPage(3)" disabled="disabled">Next</button>
 		</div> 
 		<!-- END SECOND PAGE -->
 
