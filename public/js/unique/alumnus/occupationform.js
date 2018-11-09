@@ -7,10 +7,9 @@ function disableSelectFirst(){
 
 }
 
-
 $(document).ready(function(){
     disableSelectFirst()
-    
+
 });   
 
 

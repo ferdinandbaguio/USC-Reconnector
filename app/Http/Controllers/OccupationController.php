@@ -8,9 +8,7 @@ use App\Models\Country;
 use App\Models\Occupation;
 use Auth;
 use Illuminate\Http\Request;
-use App\Http\Requests\AreaRequest;
-use App\Http\Requests\CompanyRequest;
-use App\Http\Requests\OccupationRequest;
+
 class OccupationController extends Controller
 {
     /**
@@ -45,7 +43,7 @@ class OccupationController extends Controller
     public function store(Request $request)
     {
     //    dd($request->occupationTitle);
-        $request->validate([
+        $data =$request->validate([
             'occupationTitle' => 'required',
             'occupationAddress' => 'required',
             'salaryRangeOne' => 'required',
@@ -89,50 +87,50 @@ class OccupationController extends Controller
             'company_area_name.required' => 'This field is required',
             'company_area_address.required' => 'This field is required',
             'company_area_value.required' => 'This field is required',
-            'company_countries_area.required' => 'asdasdasdsacompany_countries_area This field is required'
+            'company_countries_area.required' => 'This field is required'
 
         ]);
-        // $companyRequest['area_countries'] = Country::where('id',$request->area_countries)->first();
-
-        // $company_area = Area::create([
-        //     'country_id' => $company_country_area->id,
-        //     'code'       => $request->company_area_code,
-        //     'name'       => $request->company_area_name,
-        //     'value'      => $request->company_area_value
-        // ]);
+        
+        $company_country_area = Country::where('id',$data['company_countries_area'])->first();
+        $company_area = Area::create([
+            'country_id' => $company_country_area->id,
+            'code'       => $data['company_area_code'],
+            'name'       => $data['company_area_name'],
+            'value'      => $data['company_area_value']
+        ]);
     
-        // $company_country = Country::where('id',$request->company_countries)->first();
-        // $company = Company::create([
-        //     'name' => $request->companyName,
-        //     'address' => $request->companyAddress,
-        //     'description' => $request->companyDescription,
-        //     'picture' => 'default_male.png' ,
-        //     'linkage_id' => null,
-        //     'country_id' => $company_country->id,
-        //     'area_id' => $company_area->id
-        // ]);   
+        $company_country = Country::where('id',$data['company_countries'])->first();
+        $company = Company::create([
+            'name' => $data['companyName'],
+            'address' => $data['companyAddress'],
+            'description' => $data['companyDescription'],
+            'picture' => 'default_male.png' ,
+            'linkage_id' => null,
+            'country_id' => $company_country->id,
+            'area_id' => $company_area->id
+        ]);   
         
-        // $area_country = Country::where('id',$request->area_countries)->first();
+        $area_country = Country::where('id',$data['area_countries'])->first();
         
-        // $area = Area::create([
-        //     'country_id' => $area_country->id,
-        //     'code'       => $request->area_code,
-        //     'name'       => $request->area_name,
-        //     'value'      => $request->area_value
-        // ]);
-        // $country = Country::where('id',$request->countries)->first();
-        // $occupation = Occupation::create([
-        //     'title' => $request->occupationTitle,
-        //     'address' => $request->occupationAddress,
-        //     'salaryRangeOne' => str_replace(',', '',$request->salaryRangeOne),
-        //     'salaryRangeTwo' => str_replace(',', '', $request->salaryRangeTwo),
-        //     'jobStart' => $request->jobStart,
-        //     'jobEnd' => $request->jobEnd,
-        //     'country_id' => $country->id,
-        //     'area_id' => $area->id,
-        //     'company_id' => $company->id,
-        //     'alumni_id' => Auth::user()->id
-        // ]);
+        $area = Area::create([
+            'country_id' => $area_country->id,
+            'code'       => $data['area_code'],
+            'name'       => $data['area_name'],
+            'value'      => $data['area_value']
+        ]);
+        $country = Country::where('id',$data['countries'])->first();
+        $occupation = Occupation::create([
+            'title' => $data['occupationTitle'],
+            'address' => $data['occupationAddress'],
+            'salaryRangeOne' => str_replace(',', '',$data['salaryRangeOne']),
+            'salaryRangeTwo' => str_replace(',', '', $data['salaryRangeTwo']),
+            'jobStart' => $data['jobStart'],
+            'jobEnd' => $data['jobEnd'],
+            'country_id' => $country->id,
+            'area_id' => $area->id,
+            'company_id' => $company->id,
+            'alumni_id' => Auth::user()->id
+        ]);
     }
 
     /**
