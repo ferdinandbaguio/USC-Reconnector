@@ -1,52 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}">
-    <title>Places Search Box</title>
-    <style>
-      
-    </style>
-  </head>
-  <body onload="mapofJonas();">
-    <div class="container">
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map" style="height:400px;"></div>
 
-    <label class="mt-5">LATITUDE</label>
-    <input type="text" id="latitudeData" readonly>
-    <label>LONGITUDE</label>
-    <input type="text" id="lngData" readonly>
-    <h3> WELL JONAS IS HANDSOME </h3>
-    </div>
-
-
-    <!-- <div class="container">
-      <div id="map2" class="w-100 bg-dark" style="height: 400px;">
-        </div>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap">
-        </script>
-        <script>
-            // Initialize and add the map
-            function initMap() {
-             var lettucey = 10.3540762;
-             var lettucey2 = 123.91157580000004;
-            // The location of San Carlos
-            var SanCarlosTalamban = {lat: lettucey, lng: lettucey2};
-            // The map, centered at San Carlos
-            var map2 = new google.maps.Map(
-                document.getElementById('map2'), {zoom: 17, center: SanCarlosTalamban});
-            // The marker, positioned at San Carlos
-            var marker = new google.maps.Marker({position: SanCarlosTalamban, map2: map2});
-            }
-        </script>
-    </div> -->
-
-
-
-    <script>
       // This example adds a search box to a map, using the Google Place Autocomplete
       // feature. People can enter geographical searches. The search box will return a
       // pick list containing a mix of places and predicted search terms.
@@ -135,8 +87,4 @@
         });
       }
 
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtg-XSKJw7nLDyIan_k_FD2z8vdlIczvY&libraries=places&callback=mapofJonas"
-         async defer></script>
-  </body>
-</html>
+   
