@@ -92,7 +92,7 @@
   <body onload="initMap()">
     <div class="container">
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map" style="height:400px;"></div>
+    <div id="map" style="height:400px;display: none;"></div>
 
     <label class="mt-5">LATITUDE</label>
     <input type="text" id="latitudeData" readonly>
