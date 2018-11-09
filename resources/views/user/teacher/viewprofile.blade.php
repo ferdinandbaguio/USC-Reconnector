@@ -22,8 +22,8 @@
 				<h5 class="font-weight-bold"> {{$data->firstName}} {{$data->middleName}} {{$data->lastName}} </h5>
 				<h6 class="text-muted"> {{$data->idnumber}} </h6>
 
-				<p class="mt-3 mb-0"> INSERT BACKEND </p>
-				<p class="mb-0">INSERT BACKEND  5 years of service </p>
+				<p class="mt-3 mb-0"> @if(isset($data->position)){{$data->position}}@endif </p>
+				<p class="mb-0"> @if(isset($data->department->name)){{$data->department->name}}@endif </p>
 			</div>
 		</div>
 	</div>
@@ -38,6 +38,13 @@
 		</div>
 		<div class="row mt-1">
 			<div class="col-md-12">
+				@if($data->description == '')
+		        <div class="row">
+		          <div class="col">
+		            <small class="text-muted"> No data to show.</small>
+		          </div>
+		        </div>
+		    	@endif
 				<p> {{$data->description}} </p>
 			</div>
 		</div>

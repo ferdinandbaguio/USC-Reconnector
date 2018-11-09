@@ -9,8 +9,8 @@ use App\Models\User_Skill;
 use App\Models\Achievement;
 use App\Models\Group_Class;
 use App\Models\Student_Class;
-use App\Models\Subject;
-use App\Models\Group_Schedule;
+use App\Models\Filter;
+use App\Models\Announcement;
 class StudentController extends Controller
 {
     /**
@@ -161,20 +161,21 @@ class StudentController extends Controller
 
         return redirect()->back()->with('success', 'Request to join class successfull, please wait for approval');
     }
-
     public function listOfClasses(){
 
         $data = Student_Class::where('status','=','Approved')->where('student_id','=', Auth::user()->id)->get();
         return view('user.student.class')->with('data',$data);
     }
-
     public function viewClass($id){
         $classes = Student_Class::where('status','=','Approved')->where('student_id','=', Auth::user()->id)->get();
         $classDetails = Group_Class::where('id','=', $id)->first();
-        $students = Student_Class::where('student_id','=', Auth::user()->id)->where('group_class_id','=',$id)->where('status','=','Approved')->get();
+        $students = Student_Class::where('group_class_id','=',$id)->where('status','=','Approved')->get();
+        $posts = Filter::where('group_class_id','=', $id)->orderBy('created_at', 'desc')->get();
         
         return view('user.student.viewClass')->with('classes',$classes)
                                             ->with('classDetails',$classDetails)
-                                            ->with('students',$students);                      
+                                            ->with('students',$students)
+                                            ->with('posts',$posts);                  
     }
+
 }

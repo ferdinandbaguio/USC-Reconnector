@@ -86,7 +86,7 @@
       </a>
       @endif
 
-      @if(Auth::user()->userType == "Student" || Auth::user()->userType == "Teacher")
+      @if(Auth::user()->userType == "Student")
       <a class="text-white" href="/student/class" id="hyperlink">
         <div class="row mt-4 hyperlink test rowSide">
             <div class="col-8 mt-3">
@@ -110,6 +110,19 @@
           </ul>
         </div>
       </div> -->
+      @endif
+
+      @if(Auth::user()->userType == "Teacher")
+      <a class="text-white" href="/teacher/class" id="hyperlink">
+        <div class="row mt-4 hyperlink test rowSide">
+            <div class="col-8 mt-3">
+              <h6 class="fontRoboto">Class</h6>
+            </div>
+            <div class="col-4 mt-2">
+              <i class="fas fa-boxes text-white" style="font-size:33px;"></i>
+            </div>
+        </div>
+      </a>
       @endif
 
       @if(Auth::user()->userType == "Student")
@@ -140,5 +153,25 @@
   <script src="{{ asset('js/app.js') }}"></script>
   @yield('scripts')
 
+  <!-- jQuery script -->
+<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
+<script src="{{ asset('salaryFormat/jquery.priceformat.min.js') }}"></script>
+<!-- Customize / Self made scripts should be the last one -->
+<script src="/js/unique/alumnus/occupationform.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    disableSelectFirst()
+    $('.salary').priceFormat({
+        prefix: '₱ ',
+        thousandsSeparator: ','
+    });
+    
+});   
+
+</script>
+ 
 </body>
 </html>
+

@@ -44,13 +44,11 @@
       <ul class="navbar-nav mr-1">
         <li class="nav-item dropdown active">
           <a class="nav-link ownerLink" id="ownerLinkDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="/img/homepage_images/Girl.jpg" class="rounded-circle" width="20px"> 
+            <img src="/storage/user_img/{{Auth::user()->picture}}" class="rounded-circle bg-light" width="20px"> 
             {{Auth::user()->full_name}} <i class="fas fa-caret-down"></i> 
           </a>
           <div class="dropdown-menu dropdown-menu-left" style="left:0" aria-labelledby="ownerLinkDropdown">
-              <a class="dropdown-item" href="/login"><i class="fas fa-cog"></i> Settings </a>
               <a class="dropdown-item" href="{{ url('authenticate/passwords/changepassword/'.Auth::user()->id) }}"><i class="fas fa-bug"></i> Change Password </a>
-              <a class="dropdown-item" href="/login"><i class="fas fa-bug"></i> Report Bugs </a>
           </div>
         </li>
       </ul>

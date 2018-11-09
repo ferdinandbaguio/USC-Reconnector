@@ -11,7 +11,7 @@
 	<div class="col-md-4 p-4 align-self-start" style="background: url('/img/div_bgs/abg.jpg');">
 		<div class="row">
 			<div class="col-12">
-				<img src="{{ asset('/img/homepage_images/Boy2.jpg') }}" width="100%">
+				<img src="/storage/user_img/{{Auth::user()->picture}}" class="bg-light" width="100%">
 			</div>
 		</div>
 
@@ -20,7 +20,7 @@
 				<h5 class="font-weight-bold"> {{Auth::user()->full_name}} </h5>
 				<h6 class="text-muted"> {{Auth::user()->idnumber}} </h6>
 
-				<p class="mt-3 mb-0"> INSERT COURSE HERE </p>
+				<p class="mt-3 mb-0"> @if(isset(Auth::user()->course->name)){{Auth::user()->course->name}}@endif </p>
 				<p class="m-0"> Year level: {{Auth::user()->yearLevel}}  </p>
 				<p class="m-0"> Birthday: {{Auth::user()->birthdate}} </p>
 				<p class="m-0"> Sex: {{Auth::user()->sex}} </p>
@@ -43,6 +43,13 @@
 		<div class="row mt-1">
 			<div class="col-md-12">
 				<p> {{Auth::user()->description}} </p> 
+				@if(Auth::user()->description == '')
+		        <div class="row">
+		          <div class="col">
+		            <small class="text-muted"> No data to show.</small>
+		          </div>
+		        </div>
+		    	@endif
 				<div class="editDescHolder">
 				<a href="#descModal" data-toggle="modal" class="editDescBtn"> Edit <i class="far fa-edit"></i> </a>
 				</div>

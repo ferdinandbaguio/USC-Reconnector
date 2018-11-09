@@ -26,6 +26,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('announcement/postUpdate', 'AnnouncementController@update')->name('announcement.update');
         Route::get('/deleteAnnouncement/{id}','AnnouncementController@destroy');
 
+        Route::patch('job/postUpdate', 'JobPostController@update')->name('jobPost.update');
+        Route::get('/deleteJobPost/{id}','JobPostController@destroy');
+
         //View Profiles
         Route::get('/viewStudentProfile/{id}','StudentController@viewStudentProfile');
         Route::view('/student/viewprofile', 'user.student.viewprofile');
@@ -50,7 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/viewClass/{id}', 'StudentController@viewClass')->name('view.class');
         Route::get('/searchClass', 'StudentController@searchClass')->name('searchClass.searchClass');
         Route::post('/joinClass', 'StudentController@joinClass')->name('join.Class');
-        
+      
+
         Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
         Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
         // Communication
@@ -81,6 +85,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/alumnus/chat', 'ContactsController@user')->name('AlumnusCommunicate');
         Route::post('/alumnus/recipient', 'ContactsController@show')->name('alumnus.recipient'); 
 
+        Route::get('alumnus/occupation','OccupationController@create')->name('occupation.form');
+        Route::post('alumnus/occupation','OccupationController@store')->name('occupation.store');
+
     });
 
     
@@ -91,6 +98,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/teacher/description', 'DescriptionController@update')->name('teacher.description.update');
         Route::post('/teacher/achievement', 'AchievementController@store')->name('teacher.achievement.add');
         
+        Route::get('/teacher/class', 'TeacherController@listOfClasses')->name('user.teacher.class');
+        Route::get('/viewClassTeacher/{id}', 'TeacherController@viewClass')->name('view.class.teacher');
+        Route::post('/classPost', 'TeacherController@classPost')->name('class.post');
+        Route::patch('class/postUpdate', 'TeacherController@updateClassPost')->name('classPost.update');
+        Route::get('/delClassPost/{id}','TeacherController@destroyClassPost');
+
         Route::get('/deleteTAchv/{id}','TeacherController@destroyAchv');   
 
         // Communication

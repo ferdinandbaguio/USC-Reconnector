@@ -109,7 +109,7 @@
                                 
                                 <div class="row mt-2">
                                     <div class="col-md-8 mx-auto {{ $errors->has('middleName') ? 'is-invalid' : '' }}">
-                                        {!! Form::label(null, 'Contact number 1 : ') !!}
+                                        {!! Form::label(null, 'Contact number : ') !!}
                                         @php  $attr = $errors->has('contactNo') ? 'is-invalid' : '' @endphp
                                         {!! Form::text('contactNo',null, ['class' => "form-control {$attr}", 'placeholder' => 'Contact number',]) !!}
                                         @if($errors->has('contactNo'))
