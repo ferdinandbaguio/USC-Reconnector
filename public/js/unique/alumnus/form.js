@@ -61,7 +61,8 @@ function pageTwoValidate(){
        if ($(q01).val() != 0 && $(q02).val() != 0 && $(q03).val() != 0 && isQAnswered(2)) {$(".nextButtonTwo").attr("disabled", false);} 
        else {$(".nextButtonTwo").attr("disabled", true);}  
     });
- 
+    if ($(q01).val() != 0 && $(q02).val() != 0 && $(q03).val() != 0 && isQAnswered(2)) {$(".nextButtonTwo").attr("disabled", false);} 
+    else {$(".nextButtonTwo").attr("disabled", true);}  
 
 }
 
@@ -105,13 +106,11 @@ function pageFiveValidate(){
     var pageFive = q01;
     pageCheckbox(5);
     pageFive.change(function(){
-        if(isQAnswered(5)){
-            $(".nextButtonFive").removeAttr("disabled", false);
-        }
-        else {
-            $(".nextButtonFive").attr("disabled", true);
-        }    
+        if(isQAnswered(5)){$(".nextButtonFive").removeAttr("disabled", false);}
+        else {$(".nextButtonFive").attr("disabled", true);}    
     });
+    if(isQAnswered(5)){$(".nextButtonFive").removeAttr("disabled", false);}
+    else {$(".nextButtonFive").attr("disabled", true);}  
 }
 
 function pageSixValidate(){
@@ -122,6 +121,8 @@ function pageSixValidate(){
         if(isQAnswered(6)){$(".nextButtonSix").removeAttr("disabled", false);}
         else {$(".nextButtonSix").attr("disabled", true);}
     });
+    if(isQAnswered(6)){$(".nextButtonSix").removeAttr("disabled", false);}
+    else {$(".nextButtonSix").attr("disabled", true);}
 }
 
 function pageSevenValidate(){
@@ -130,8 +131,10 @@ function pageSevenValidate(){
     pageCheckbox(7);
     pageSeven.change(function(){
         if(isQAnswered(7)){$(".nextButtonSeven").removeAttr("disabled", false);}
-        else {$(".nextButtonSeven").attr("disabled", true);}
+        else{$(".nextButtonSeven").attr("disabled", true);}
     });
+    if(isQAnswered(7)){$(".nextButtonSeven").removeAttr("disabled", false);}
+    else{$(".nextButtonSeven").attr("disabled", true);}
 }
 
 function pageEightValidate(){
@@ -142,6 +145,8 @@ function pageEightValidate(){
         if(isQAnswered(8)){$(".nextButtonEight").removeAttr("disabled", false);}
         else {$(".nextButtonEight").attr("disabled", true);}
     });
+    if(isQAnswered(8)){$(".nextButtonEight").removeAttr("disabled", false);}
+    else {$(".nextButtonEight").attr("disabled", true);}
 }
 
 
@@ -210,6 +215,11 @@ function pageElevenValidate(){
              $(".nextButtonEleven").attr("disabled", true);
         }
     });
+    if (isQAnswered(11) && $(q02).is(':checked') && $(q03).is(':checked') && $(q04).is(':checked') && $(q05).is(':checked') && $(q06).is(':checked') && $(q07).is(':checked') && $(q08).is(':checked') && $(q09).is(':checked') && $(q10).is(':checked') && $(q11).is(':checked') && $(q12).is(':checked') && $(q13).is(':checked') && $(q14).is(':checked') && $(q15).is(':checked') && $(q16).is(':checked') && $(q17).is(':checked') && $(q18).is(':checked') && $(q19).is(':checked') && $(q20).is(':checked') && $(q21).is(':checked') && $(q22).is(':checked')) {
+        $(".nextButtonEleven").removeAttr("disabled", false);
+    } else {
+         $(".nextButtonEleven").attr("disabled", true);
+    }
 }
 
 function isQAnswered(pageNumber){
@@ -312,7 +322,7 @@ $(document).ready(function(){
     pageNineValidate();
     pageTenValidate();
     pageElevenValidate();
-    // pageTwoCheckbox();
+
 });
 
 

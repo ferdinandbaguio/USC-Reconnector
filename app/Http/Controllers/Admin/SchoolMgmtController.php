@@ -20,6 +20,7 @@ use App\Http\Controllers\Controller;
 
 class SchoolMgmtController extends Controller
 {
+ 
     public function classes()
     {
         $grpclasses = Group_Class::all();

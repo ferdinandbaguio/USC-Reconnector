@@ -16,7 +16,6 @@ class AchievementController extends Controller
     public function index()
     {
         $achievements = Achievement::where('id',Auth::user()->id)->get();
-        dd($achievements);
         return view('user.teacher.profile', compact('achievements')); 
 
     }
