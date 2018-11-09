@@ -58194,7 +58194,31 @@ var render = function() {
             "\n        "
         ),
         _vm._v(" "),
-        _vm.user.userType == "Admin" ? _c("span", [_vm._m(0)]) : _vm._e()
+        _vm.user.userType == "Admin"
+          ? _c("span", [
+              _vm.contact
+                ? _c(
+                    "span",
+                    {
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#add-recipients"
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-info pull-right",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Add Recipients")]
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ])
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c(
@@ -58214,7 +58238,7 @@ var render = function() {
             { staticClass: "modal-dialog", attrs: { role: "document" } },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(1),
+                _vm._m(0),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", { staticClass: "row" }, [
@@ -58233,7 +58257,7 @@ var render = function() {
                       _c("br"),
                       _vm._v(" "),
                       _c("div", { staticClass: "table-responsive" }, [
-                        _vm._m(2),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c(
                           "form",
@@ -58261,7 +58285,7 @@ var render = function() {
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
-                            _vm._m(3)
+                            _vm._m(2)
                           ]
                         )
                       ])
@@ -58269,7 +58293,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm._m(3)
               ])
             ]
           )
@@ -58286,22 +58310,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { attrs: { "data-toggle": "modal", "data-target": "#add-recipients" } },
-      [
-        _c(
-          "a",
-          { staticClass: "btn btn-info pull-right", attrs: { href: "#" } },
-          [_vm._v("Add Recipients")]
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

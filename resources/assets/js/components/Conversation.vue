@@ -9,7 +9,7 @@
                 </form>
             </span> -->
             <span v-if="user.userType == 'Admin'">
-                <span data-toggle="modal" data-target="#add-recipients">
+                <span v-if="contact" data-toggle="modal" data-target="#add-recipients">
                     <a href='#' class="btn btn-info pull-right">Add Recipients</a>
                 </span>
             </span>
