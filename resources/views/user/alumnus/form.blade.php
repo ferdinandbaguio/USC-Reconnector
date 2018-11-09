@@ -251,7 +251,7 @@
 			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
 			{!! Form::text('reasonsYes_text',null,['class' => 'form-control text']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFive" onclick="showPage(10)" disabled="disabled">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonFive" onclick="showPage(10)">Next</button>
 		</div> 
 	<!-- END FIFTH PAGE -->
 	<!-- SIXTH PAGE -->
@@ -280,7 +280,7 @@
 			{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
 			{!! Form::text('reasonsNo_text',null,['class' => 'form-control text']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)" disabled="disabled">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSix" onclick="showPage(9)">Next</button>
 		</div> 
 	<!-- END SIXTH PAGE -->
 	<!-- SEVENTH PAGE -->
