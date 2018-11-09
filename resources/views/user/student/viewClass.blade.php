@@ -11,18 +11,26 @@
   <div class="col-12 col-md-4">
     <!-- TOP BUTTONS  -->
     <div class="row mb-3 fontRoboto">
+      @if(Auth::user()->userType == "Student")
       <button class="btn btn-secondary mr-2 sameNavBg" data-toggle="modal" data-target="#addClassModal">
           <i class="fas fa-plus-circle align-baseline"></i> Join a class 
       </button>
-
+      @endif
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle sameNavBg" type="button" id="showClasses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a class
         </button>
         <div class="dropdown-menu" aria-labelledby="showClasses">
+          @if(Auth::user()->userType == "Student")
           @foreach($classes as $row)
           <a class="dropdown-item" href="/viewClass/{{$row->group_class->id}}">{{$row->group_class->subject->name}}</a>
           @endforeach
+          @endif
+          @if(Auth::user()->userType == "Teacher")
+          @foreach($classes as $row)
+          <a class="dropdown-item" href="/viewClassTeacher/{{$row->id}}">{{$row->subject->name}}</a>
+          @endforeach
+          @endif
         </div>
       </div>
     </div>
@@ -74,7 +82,7 @@
     </div>
     </div>
 
-    @if(Auth::user()->userType == "Student")
+    @if(Auth::user()->userType == "Teacher")
     <!-- POST AN ANNOUNCEMENT FORM -->
     <div class="row">
       <div class="col-12 col-md-12 mt-3 pb-2 rounded-top bg-light py-3">
@@ -101,18 +109,53 @@
         <div class="col-2 col-md-1 mt-2">
           <img src="/storage/user_img/{{$row->announcement->users->picture}}" class="rounded-circle postByImg" width="50px" style="box-shadow: 0px 0px 5px;" /> 
         </div>
-        <div class="col-10 col-md-11 mt-2">
+        <div class="col-9 col-md-10 mt-2">
           <p class="m-0 text-muted"> Posted by:  {{$row->announcement->users->fullname}} </p>
           <p class="m-0 text-muted"> {{$row->created_at->format('M d Y g:i A')}} </p>
         </div>
-        </div>
-
-        <div class="row">
-          <div class="col-12 col-md-12 mt-4">
-          <h5>{{$row->announcement->title}}</h5>
-          <p class="preserveLineBreaks m-0"> {!! $row->announcement->announcement !!} </p>
+        @if($row->announcement->users->id == Auth::user()->id)
+        <div class="col mt-3 p-0 dropleft">
+          <i class="fas fa-ellipsis-v ml-md-4 text-muted" data-toggle="dropdown"></i>
+          <div class="dropdown">
+            <div class="dropdown-menu" id="dropdown">
+              <a class="dropdown-item" href="#edit{{$row->id}}" onclick="editPost({{$row->id}});">Edit</a>
+              <a class="dropdown-item" href="/delClassPost/{{$row->announcement->id}}" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+            </div>
           </div>
         </div>
+        @endif
+        </div>
+
+        <div class="container-fluid p-0 m-0" id="origHolder{{$row->id}}">
+          <div class="row">
+            <div class="col-12 col-md-12 mt-4">
+            <h5>{{$row->announcement->title}}</h5>
+            <p class="preserveLineBreaks m-0"> {!! $row->announcement->announcement !!} </p>
+            </div>
+          </div>
+        </div>
+        <!-- DIV FOR EDIT -->
+        <div class="container-fluid p-0 m-0 collapse" id="editHolder{{$row->id}}">
+          <div class="row">
+            <div class="col-12 col-md-12 mt-4">
+              <label>Edit title:</label>
+              {!! Form::open(['route' => 'announcement.update', 'method' => 'PATCH']) !!}
+              {{csrf_field()}}
+              <input type="hidden" value="{{$row->announcement->id}}" name="id">
+              <input type="text" class="form-control bg-light w-100 titleColor" value="{{$row->announcement->title}}" name="title">
+              <label class="mt-2">Edit content:</label>
+              <textarea name="announcement" id="article-ckeditor{{$row->id}}">{!! $row->announcement->announcement !!}</textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12 mt-4">
+              <input type="submit" class="btn btn-sm btn-success" value="Update">
+              <input type="reset" class="btn btn-sm btn-danger" value="Cancel" onclick="cancelEdit({{$row->id}});">
+              {!! Form::close() !!} 
+            </div>
+          </div>
+        </div>
+        <!-- DIV FOR EDIT END-->
 
         <!-- <a href="#" target="_blank">
           <img src="/storage/post_img/{{$row->announcement->image}}" class="rounded" width="150px" style="max-height:100px;">
@@ -219,13 +262,13 @@
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 
 <!-- CUSTOMIZED SCRIPTS -->
+<script type="text/javascript" src="/js/unique/home_nf.js"></script>
 <script type="text/javascript">CKEDITOR.replace('article-ckeditor');
 $(document).ready(function(){
   $('#defaultTA').on('focus',function(){
     $('#defaultTA').hide();
     $('#ckHolder').fadeIn("slow");
   });
-
 
 });
 </script>

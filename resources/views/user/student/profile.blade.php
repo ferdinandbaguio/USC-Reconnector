@@ -20,7 +20,7 @@
 				<h5 class="font-weight-bold"> {{Auth::user()->full_name}} </h5>
 				<h6 class="text-muted"> {{Auth::user()->idnumber}} </h6>
 
-				<p class="mt-3 mb-0"> INSERT COURSE HERE </p>
+				<p class="mt-3 mb-0"> @if(isset(Auth::user()->course->name)){{Auth::user()->course->name}}@endif </p>
 				<p class="m-0"> Year level: {{Auth::user()->yearLevel}}  </p>
 				<p class="m-0"> Birthday: {{Auth::user()->birthdate}} </p>
 				<p class="m-0"> Sex: {{Auth::user()->sex}} </p>

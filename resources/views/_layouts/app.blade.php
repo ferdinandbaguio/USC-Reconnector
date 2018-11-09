@@ -85,7 +85,7 @@
       </a>
       @endif
 
-      @if(Auth::user()->userType == "Student" || Auth::user()->userType == "Teacher")
+      @if(Auth::user()->userType == "Student")
       <a class="text-white" href="/student/class" id="hyperlink">
         <div class="row mt-4 hyperlink test rowSide">
             <div class="col-8 mt-3">
@@ -109,6 +109,19 @@
           </ul>
         </div>
       </div> -->
+      @endif
+
+      @if(Auth::user()->userType == "Teacher")
+      <a class="text-white" href="/teacher/class" id="hyperlink">
+        <div class="row mt-4 hyperlink test rowSide">
+            <div class="col-8 mt-3">
+              <h6 class="fontRoboto">Class</h6>
+            </div>
+            <div class="col-4 mt-2">
+              <i class="fas fa-boxes text-white" style="font-size:33px;"></i>
+            </div>
+        </div>
+      </a>
       @endif
 
       <a href="{{ route('alumnus.communicate') }}" class="text-white" id="hyperlink">

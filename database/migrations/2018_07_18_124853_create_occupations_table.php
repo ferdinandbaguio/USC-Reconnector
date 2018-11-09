@@ -20,6 +20,8 @@ class CreateOccupationsTable extends Migration
             $table->string('address');
             $table->string('salaryRangeOne');
             $table->string('salaryRangeTwo');
+            $table->string('latitude');
+            $table->string('longitude');         
             $table->date('jobStart');
             $table->date('jobEnd')->nullable();
 

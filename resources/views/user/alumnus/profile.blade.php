@@ -13,7 +13,7 @@
   <div class="col-md-4 p-4 align-self-start" style="background: url('/img/div_bgs/abg.jpg');">
     <div class="row">
       <div class="col-12">
-        <img src="{{ asset('/img/homepage_images/Boy2.jpg') }}" width="100%">
+        <img src="/storage/user_img/{{Auth::user()->picture}}" class="bg-light" width="100%">
       </div>
     </div>
 
@@ -22,11 +22,10 @@
         <h5> {{Auth::user()->full_name}} </h5>
         <h6 class="text-muted"> {{Auth::user()->idnumber}} </h6>
 
-        <p class="mt-3 mb-0"> INSERT BACKEND: COURSE TAKEN </p>
+        <p class="mt-3 mb-0"> @if(isset(Auth::user()->course->name)){{Auth::user()->course->name}}@endif </p>
         <p class="m-0"> Year level: {{Auth::user()->yearLevel}}  </p>
         <p class="m-0"> Birthday: {{Auth::user()->birthdate}} </p>
         <p class="m-0"> Sex: {{Auth::user()->sex}} </p>
-        <p class="m-0"> Batch Graduated: INSERT BACKEND </p>
 
       </div>
     </div>
@@ -47,6 +46,13 @@
     <div class="row mt-1">
       <div class="col-md-12">
         <p class="m-0"> {{Auth::user()->description}} </p>
+        @if (Auth::user()->description == '')
+        <div class="row">
+          <div class="col">
+            <small class="text-muted"> No data to show.</small>
+          </div>
+        </div>
+        @endif
         <div class="editDescHolder">
         <a href="#descModal" data-toggle="modal" class="editDescBtn"> Edit <i class="far fa-edit"></i> </a>
         </div>
@@ -55,30 +61,22 @@
 
     <div class="row mt-3">
       <div class="col-12">
-        <h5 class="text-muted"> Location <i class="fas fa-search-location"></i></h5> 
-        <small>IT.Park Qualfon Building Telstra Pizza Resto Bar</small>
+        <h5 class="text-muted"> Recent Job Location <i class="fas fa-search-location"></i></h5> 
+        <!-- <small>IT.Park Qualfon Building Telstra Pizza Resto Bar</small> -->
       </div>
     </div>
     <div class="row mt-1">
       <div class="col-md-12">
-        <!-- This is only a test map for visual purposes only no back end -->
+        @if(!isset($recentJob))
+        <div class="row">
+          <div class="col">
+            <small class="text-muted"> No data to show.</small>
+          </div>
+        </div>
+        @else
         <div id="map" class="w-100" style="/*background: url(/img/alt_imgs/GoogleMap.jpg);*/ height: 300px;">
         </div>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap">
-        </script>
-        <script>
-          initMap();
-          function initMap() {
-            // The location of San Carlos
-            var SanCarlosTalamban = {lat: 10.3304499, lng: 123.9073923};
-            // The map, centered at San Carlos
-            var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 17, center: SanCarlosTalamban});
-            // The marker, positioned at San Carlos
-            //var marker = new google.maps.Marker({position: SanCarlosTalamban, map: map});
-          }
-        </script>
+        @endif
       </div>
     </div>
 
@@ -131,7 +129,7 @@
         </button>
       </div>
     </div>
-    @if (count($achievements) < 1)
+    @if(count($achievements) < 1)
         <div class="row">
           <div class="col">
             <small class="text-muted"> No data to show.</small>
@@ -148,19 +146,17 @@
     <div class="row mt-2">
       <div class="col-md-12">
         <ul class="list-unstyled">
-          <li> <img src="/img/company_logo/lexmark-logo.png" class="align-middle rounded-circle" width="20px">
-            <a href="/alumnus/jobs" class="linkSize"> Lexmark (August 2018)</a></li>
-          <li> <img src="/img/company_logo/globe.jpg" class="rounded-circle" width="20px">
-            <a href="/alumnus/jobs" class="linkSize"> Globe (January 2018)</a></li>
-          <li> <img src="/img/company_logo/beats.png" class="align-middle rounded-circle" width="20px">
-            <a href="/alumnus/jobs" class="linkSize"> Beats (July 2018)</a></li>
-          <li> <img src="/img/company_logo/lexmark-logo.png" class="align-middle rounded-circle" width="20px">
-            <a href="/alumnus/jobs" class="linkSize"> Lexmark (August 2018)</a></li>
-          <li> <img src="/img/company_logo/globe.jpg" class="rounded-circle" width="20px">
-            <a href="/alumnus/jobs" class="linkSize"> Globe (January 2018)</a></li>
-          <li> <img src="/img/company_logo/beats.png" class="align-middle rounded-circle" width="20px">
-            <a href="/alumnus/jobs" class="linkSize"> Beats (July 2018)</a></li>
-          <li class="mt-2"><a href="/alumnus/jobs" class="linkSize">See more...</a> </li>
+          @foreach($allJob as $row)
+          <li><a href="/alumnus/jobs" class="linkSize"> {{$row->name}} </a></li>
+          @endforeach
+          @if(count($allJob) < 1)
+          <div class="row">
+            <div class="col">
+              <small class="text-muted"> No data to show.</small>
+            </div>
+          </div>
+          @endif
+          <!-- <li class="mt-2"><a href="/alumnus/jobs" class="linkSize">See more...</a> </li> -->
         </ul>
       </div>
     </div>
@@ -279,8 +275,50 @@
 <script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
 
 <!-- Custom scripts  -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap"></script>
 <script src="/js/unique/alumnus/slideToggle.js"></script>
+<span id="loc1">@if(isset($recentJob->latitude)){!!$recentJob->latitude!!}@else
+10.3304499
+@endif</span>
+<span id="loc2">@if(isset($recentJob->longitude)){!!$recentJob->longitude!!}@else
+123.9073923
+@endif</span>
+<script>
+initMap();
+function initMap() {
+            var alumLoc1 = $('#loc1').text();
+            var alumLongit = $('#loc2').text();
+            // The location of San Carlos
+            var jobLocationAlumnus = {lat: alumLoc1, lng: alumLongit};
+            // The map, centered at San Carlos
+            var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 16, center: jobLocationAlumnus});
 
+            // The marker, positioned at San Carlos
+            var iconPNG = {
+                    url: "/img/others/mapPin.png", // url
+                    scaledSize: new google.maps.Size(50, 50), // scaled size
+                    };
+            var marker = new google.maps.Marker({
+              position: jobLocationAlumnus,
+              animation: google.maps.Animation.BOUNCE,
+              //icon: iconPNG,
+              map: map
+             });
+            // The circle area by jonas
+              var specifiedLoc = new google.maps.Circle({
+                center: jobLocationAlumnus,
+                radius: 220,
+                strokeColor: "#616161",
+                strokeOpacity: 0.5,
+                strokeWeight: 2,
+                fillColor: "#616161",
+                fillOpacity: 0.4,
+                scale:10
+              });
+              specifiedLoc.setMap(map);        
+          }
+</script>
 @endsection
 
 

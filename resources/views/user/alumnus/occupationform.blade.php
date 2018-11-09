@@ -67,9 +67,10 @@
                 </div>
                 <h2>Occupation area</h2>
                 <div class="d-none" id="map"></div>
-                <input id="pac-input" class="controls" type="text" placeholder="Search Box">               
-                <input type="text" id="latitudeData" value="10.3540762" readonly>
-                <input type="text" id="lngData" value="123.91157580000004" readonly>
+                {!! Form::label('occupationTitle', 'title') !!}
+                {!! Form::text('searchbox',null,['id' => 'pac-input', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
+                <input type="text" id="latitudeData" name="latitude" readonly>
+                <input type="text" id="lngData" name="longitude" readonly>
 
                 <br>{!! Form::label('area_code', 'code') !!}
                 <br>{!! Form::text('area_code',null,['class'=>'form-group'])!!}

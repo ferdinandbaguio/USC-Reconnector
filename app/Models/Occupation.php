@@ -15,6 +15,8 @@ class Occupation extends Model
         'address',
         'salaryRangeOne',
         'salaryRangeTwo',
+        'latitude',
+        'longitude',
         'jobStart',
         'jobEnd',
         'country_id',

@@ -24,176 +24,10 @@
 @endif
   
 
-  <div class="row fontRoboto"><!-- Father Row -->
-  <div class="col-md-8 mb-5"> <!-- Separator column -->
+<div class="row fontRoboto"><!-- Father Row -->
+<div class="col-md-8 mb-5"> <!-- Separator column -->
 
-  <div class="row"><!-- School Ann Header -->
-    <div class="col-10 col-md-5 py-2 rounded-top greenLayer">
-      <p class="m-auto text-white"> Latest School Announcement </p>
-    </div>
-  </div>  
-  <div class="row">
-    <div class="col-md-12" style="border-bottom: 1px solid gray;">
-    </div>
-  </div>  <!-- School Ann Header END-->
- 
- 
-  <!-- Div latest announcement container -->
-  <div class="row">
-  <div class="col-12 col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
-    <div class="row">
-    <div class="col-2 col-md-1 mt-2">
-      <img src="/storage/user_img/{{$latestannouncement->users->picture}}" class="rounded-circle postByImg" width="50px" /> 
-    </div>
-    <div class="col-9 col-md-10 mt-2">
-      <p class="m-0 text-muted"> Posted by: {{$latestannouncement->fullname}} </p>
-      <p class="m-0 text-muted"> {{$latestannouncement->created_at->format('M d Y g:i A')}} </p>
-    </div>
-    @if($latestannouncement->user_id == Auth::user()->id)
-    <div class="col mt-3 p-0 dropleft">
-      <i class="fas fa-ellipsis-v ml-md-4 text-muted" data-toggle="dropdown"></i>
-      <div class="dropdown">
-        <div class="dropdown-menu" id="dropdown">
-          <a class="dropdown-item" href="#edit{{$latestannouncement->id}}" onclick="editPost({{$latestannouncement->id}});">Edit</a>
-          <a class="dropdown-item" href="/deleteAnnouncement/{{$latestannouncement->id}}" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
-        </div>
-      </div>
-    </div>
-    @endif
-    </div>
-
-    <div class="container-fluid p-0 m-0" id="origHolder">
-      <div class="row">
-        <div class="col-12 col-md-12 mt-4">
-          <p class="titleColor"> {{$latestannouncement->title}} </p>
-          <span class="preserveLineBreaks"> {!! $latestannouncement->announcement !!}  </span>
-          <!-- overflow-wrap: break-word; -->
-        </div>
-      </div>
-    </div>
-
-    <!-- DIV FOR EDIT -->
-    <div class="container-fluid p-0 m-0 collapse" id="editHolder">
-      <div class="row">
-        <div class="col-12 col-md-12 mt-4">
-          <label>Edit title:</label>
-          {!! Form::open(['route' => 'announcement.update', 'method' => 'PATCH']) !!}
-          {{csrf_field()}}
-          <input type="text" class="form-control bg-light w-100 titleColor" value="" name="title">
-          <label class="mt-2">Edit content:</label>
-          <textarea name="announcement" id="article-ckeditor"></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-12 mt-4">
-          <input type="submit" class="btn btn-sm btn-success" value="Update">
-          <input type="reset" class="btn btn-sm btn-danger" value="Cancel" onclick="cancelEdit();">
-          {!! Form::close() !!} 
-        </div>
-      </div>
-    </div>
-    <!-- DIV FOR EDIT END-->
-
-  </div>
-  </div><!-- Div latest announcement container end -->
-  
-  <!-- include('_inc.noPostToShow') -->
-
-
-
- 
-  <div class="row mt-5"><!-- Alumni Job Header -->
-    <div class="col-8 col-md-5 py-2 rounded-top blueLayer">
-      <p class="m-auto text-white"> Latest Alumni Job Post </p>
-    </div>
-  </div>  
-  <div class="row">
-    <div class="col-md-12" style="border-bottom: 1px solid gray;">
-    </div>
-  </div>  <!-- Alumni Job Header END-->
-
-@unless(!$latestjobpost)
-  <!-- Div latest job container -->
-  <div class="row">
-    <div class="col-md-12 mt-3 pb-2 rounded-top postBox bg-light">
-      <div class="row">
-      <div class="col-2 col-md-1 mt-2">
-        <img src="/img/homepage_images/Girl.jpg" class="rounded-circle postByImg" width="50px" /> 
-      </div>
-      <div class="col-9 col-md-10 mt-2">
-        <p class="m-0 text-muted"> Posted by:  {{$latestjobpost->users->fullname}} </p>
-        <p class="m-0 text-muted"> {{$latestjobpost->created_at->format('M d Y g:i A')}}</p>
-      </div>
-
-      <div class="col mt-3 p-0 dropleft">
-      @if($latestjobpost->user_id == Auth::user()->id)
-      <i class="fas fa-ellipsis-v ml-md-4 text-muted" data-toggle="dropdown"></i>
-      @endif
-      <div class="dropdown">
-        <div class="dropdown-menu" id="dropdown">
-          <a class="dropdown-item" href="#edit" onclick="editJPost({{$latestjobpost->id}});">Edit</a>
-          <a class="dropdown-item" href="/deleteJobPost/{{$latestjobpost->id}}" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
-        </div>
-      </div>
-    </div>
-      </div>
-
-      <div class="container-fluid p-0" id="origJHolder{{$latestjobpost->id}}">
-        <div class="row">
-          <div class="col-12 col-md-12 mt-4">
-          <p class="m-0"> Company: {{$latestjobpost->companyName}} </p>
-          <p class="m-0"> Location: {{$latestjobpost->address}} </p>
-          <p class="m-0"> Job Title: {{$latestjobpost->jobTitle}} </p>
-          <p class="m-0"> Job Description: {{$latestjobpost->description}} </p>
-          <p class="m-0"> Salary Range: {{$latestjobpost->salaryRange}} </p>
-          <p class="m-0"> Contact: {{$latestjobpost->contactNo}} </p>
-          <p class="m-0"> Email: {{$latestjobpost->email}} </p>
-
-          <a href="/imageView/{{$latestjobpost->id}}" target="_blank">
-            <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px" style="max-height:100px;">
-          </a>
-          </div>
-        </div>
-      </div>
-      @if($latestjobpost->user_id == Auth::user()->id)
-      <div class="container-fluid p-0 collapse" id="editJHolder{{$latestjobpost->id}}">
-        <div class="row">
-          {!! Form::open(['route' => 'jobPost.update', 'method' => 'PATCH', 'class'=>'w-100']) !!}
-          {{csrf_field()}}
-          <input type="hidden" value="{{$latestjobpost->id}}" name="id">
-          <div class="col-12 mt-4">
-          <label>Company Name:</label>
-          <input type="text" class="form-control" value="{{$latestjobpost->companyName}}" name="companyName"> 
-          <label>Location:</label>
-          <input type="text" class="form-control" value="{{$latestjobpost->address}}" name="address"> 
-          <label>Job Title:</label>
-          <input type="text" class="form-control" value="{{$latestjobpost->jobTitle}}" name="jobTitle"> 
-          <label>Job Description:</label>
-          <textarea class="form-control" name="description">{{$latestjobpost->description}}</textarea>
-          <label>Salary Range:</label>
-          <input type="text" class="form-control" value="{{$latestjobpost->salaryRange}}" name="salaryRange"> 
-          <label>Contact:</label>
-          <input type="text" class="form-control" value="{{$latestjobpost->contactNo}}" name="contactNo"> 
-          <label>Email:</label>
-          <input type="text" class="form-control mb-2" value="{{$latestjobpost->email}}" name="email">
-
-          <div class="col-12 mt-4 p-0">
-            <input type="submit" class="btn btn-sm btn-success" value="Update">
-            <input type="reset" class="btn btn-sm btn-danger" value="Cancel" onclick="cancelJEdit({{$latestjobpost->id}});">
-          {!! Form::close() !!} 
-          </div>
-          </div>
-        </div>
-      </div>
-      @endif
-    </div>
-  </div><!-- Div latest job container end -->
-  @else
-  @include('_inc.noPostToShow')
-  @endunless
-
-
-  <div class="row mt-5"><!-- Recent Posts Header -->
+  <div class="row mt-2"><!-- Recent Posts Header -->
     <div class="col-7 col-md-4 py-2 rounded-top annBtn greenLayer" onclick="hideJob()">
       <p class="m-auto text-white d-inline"> Announcements </p> <i class="fas fa-arrow-down text-white" id="annI"></i>
     </div>
@@ -237,8 +71,8 @@
 @endif
 @endforeach
 <!-- Div latest announcement container end -->
-@if(0 < 1)
-<center> <p class="fontRoboto text-muted mt-4"> No posts to show </p></center>
+@if(count($announcements) < 1)
+@include('_inc.noPostToShow')
 @else
 <center> <p class="fontRoboto text-muted mt-4"> You have seen all the recent announcement posts! </p></center>
 @endif
@@ -324,9 +158,9 @@
 </div><!-- Div latest job container end -->
 @endforeach
 @if(count($jobposts) < 1)
-<center> <p class="fontRoboto text-muted mt-4"> No posts to show </p></center>
+@include('_inc.noPostToShow')
 @else
-<center> <p class="fontRoboto text-muted mt-4"> You have seen all the recent job posts! </p></center>
+<center> <p class="fontRoboto text-muted mt-4"> You have seen all the recent announcement posts! </p></center>
 @endif
 </div>
 

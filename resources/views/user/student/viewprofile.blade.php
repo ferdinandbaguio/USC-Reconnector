@@ -22,7 +22,7 @@
 				<h5 class="font-weight-bold"> {{$data->fullname}} </h5>
 				<h6 class="text-muted"> {{$data->idnumber}} </h6>
 
-				<p class="mt-3 mb-0"> Bachelor of Science in Information in Communication Technology </p>
+				<p class="mt-3 mb-0"> @if(isset($data->course->name)){{$data->course->name}}@endif </p>
 				<p class="m-0"> Year level: {{$data->yearLevel}}  </p>
 				<p class="m-0"> Birthday: {{$data->birthdate}} </p>
 				<p class="m-0"> Sex: {{$data->sex}} </p>

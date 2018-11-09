@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/viewClass/{id}', 'StudentController@viewClass')->name('view.class');
         Route::get('/searchClass', 'StudentController@searchClass')->name('searchClass.searchClass');
         Route::post('/joinClass', 'StudentController@joinClass')->name('join.Class');
-        Route::post('/classPost', 'StudentController@classPost')->name('class.post');
+      
 
         Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
         Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
@@ -92,7 +92,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/teacher/description', 'DescriptionController@update')->name('teacher.description.update');
         Route::post('/teacher/achievement', 'AchievementController@store')->name('teacher.achievement.add');
         
+        Route::get('/teacher/class', 'TeacherController@listOfClasses')->name('user.teacher.class');
+        Route::get('/viewClassTeacher/{id}', 'TeacherController@viewClass')->name('view.class.teacher');
+        Route::post('/classPost', 'TeacherController@classPost')->name('class.post');
+        Route::patch('class/postUpdate', 'TeacherController@updateClassPost')->name('classPost.update');
+        Route::get('/delClassPost/{id}','TeacherController@destroyClassPost');
+
         Route::get('/deleteTAchv/{id}','TeacherController@destroyAchv');   
+
+
     });
     
 

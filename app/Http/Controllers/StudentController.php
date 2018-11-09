@@ -178,22 +178,4 @@ class StudentController extends Controller
                                             ->with('posts',$posts);                  
     }
 
-    public function classPost(Request $request){
-
-        $announcement = $this->validate($request,[
-            'title' => 'required',
-            'announcement' => 'required',
-            'image' => 'nullable'
-        ]);
-        $announcement['user_id'] = Auth::user()->id;
-        $announcementCreate = Announcement::create($announcement);
-
-        $announcementID = $announcementCreate->id;
-        $filter['announcement_id'] = $announcementCreate->id;
-        $filter['group_class_id'] = $request->input('group_class_id');
-        Filter::create($filter);
-
-        return redirect()->back();
-    }
-
 }
