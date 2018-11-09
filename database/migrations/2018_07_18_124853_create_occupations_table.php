@@ -18,8 +18,8 @@ class CreateOccupationsTable extends Migration
 
             $table->string('title');
             $table->string('address');
-            $table->float('salaryRangeOne', 9, 2);
-            $table->float('salaryRangeTwo', 9, 2);
+            $table->string('salaryRangeOne');
+            $table->string('salaryRangeTwo');
             $table->date('jobStart');
             $table->date('jobEnd')->nullable();
 

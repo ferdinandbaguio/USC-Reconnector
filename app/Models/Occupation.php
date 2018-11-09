@@ -12,12 +12,13 @@ class Occupation extends Model
 
 	protected $fillable = [
         'title',
-        'area_id',
-        'country_id',
+        'address',
         'salaryRangeOne',
         'salaryRangeTwo',
         'jobStart',
         'jobEnd',
+        'country_id',
+        'area_id',
         'company_id',
         'alumni_id'
     ];

@@ -19,38 +19,127 @@
                 @if($form->id)
                 {!! Form::model($form, ['route' => ['alumnus.form.update', $form->id], 'method' => 'patch']) !!}
                 @else 
-                {!! Form::open(['url' => route('alumnus.form.store')]) !!}
+                {!! Form::open(['url' => route('occupation.store')]) !!}
                 @endif
                 <h1>Job information</h1>
                 <hr>
-                    {!! Form::label('', 'title') !!}
-                <br>{!! Form::text('title',null,null,['class'=>'form-group'])!!}
-                <br>{!! Form::label('', 'salaryRangeOne') !!}
-                <br>{!! Form::text('salaryRangeOne',null,null,['class'=>'form-group'])!!}
-                <br>{!! Form::label('', 'salaryRangeTwo') !!}
-                <br>{!! Form::text('salaryRangeTwo',null,null,['class'=>'form-group'])!!}
-                <br>{!! Form::label('', 'jobStart') !!}
-                <br>{!! Form::text('jobStart',null,null,['class'=>'form-group'])!!}
-                <br>{!! Form::label('', 'jobEnd') !!}
-                <br>{!! Form::text('jobEnd',null,null,['class'=>'form-group'])!!}
-
-                <h1>Company information</h1>
-                <br>{!! Form::label('', 'name') !!}
-                <br>{!! Form::text('name',null,null,['class'=>'form-group'])!!}
-                <br>{!! Form::label('', 'address') !!}
-                <br>{!! Form::text('address',null,null,['class'=>'form-group'])!!}
-                <br>{!! Form::label('', 'description') !!}
-                <br>{!! Form::textarea('description',null,null,['class'=>'form-group'])!!}
+                @json($errors->all()) 
+                    {!! Form::label('occupationTitle', 'title') !!}
+                <br>{!! Form::text('occupationTitle',null,null,['class'=>'form-group'])!!}
+                    @if($errors->has('occupationTitle'))
+                    <small class="text-danger"> {{$errors->first('occupationTitle')}} </small>
+                    @endif
+                <br>{!! Form::label('occupationAddress', 'occupationAddress') !!}
+                <br>{!! Form::text('occupationAddress',null,null,['class'=>'form-group'])!!}
+                @if($errors->has('occupationAddress'))
+                <small class="text-danger"> {{$errors->first('occupationAddress')}} </small>
+                @endif
+                <br>{!! Form::label('salaryRangeOne', 'salaryRangeOne') !!}
+                <br>{!! Form::text('salaryRangeOne',null,['class'=>'form-group salary'])!!}
+                @if($errors->has('salaryRangeOne'))
+                    <small class="text-danger"> {{$errors->first('salaryRangeOne')}} </small>
+                    @endif
+                <br>{!! Form::label('salaryRangeTwo', 'salaryRangeTwo') !!}
+                <br>{!! Form::text('salaryRangeTwo',null,['class'=>'form-group salary'])!!}
+                @if($errors->has('salaryRangeTwo'))
+                    <small class="text-danger"> {{$errors->first('salaryRangeTwo')}} </small>
+                    @endif
+                <br>{!! Form::label('jobStart', 'jobStart') !!}
+                <br>{!! Form::date('jobStart',null,null,['class'=>'form-group'])!!}
+                @if($errors->has('jobStart'))
+                    <small class="text-danger"> {{$errors->first('jobStart')}} </small>
+                    @endif
+                <br>{!! Form::label('jobEnd', 'jobEnd') !!}
+                <br>{!! Form::date('jobEnd',null,null,['class'=>'form-group'])!!}
+                @if($errors->has('jobEnd'))
+                    <small class="text-danger"> {{$errors->first('jobEnd')}} </small>
+                    @endif
+                <br>{!! Form::label('countries', 'Country') !!}
+                <div>{!! Form::select('countries',['Please Choose' => NULL] + $countries,null,['class'=>'selectClass']) !!}</div>
+                @if($errors->has('countries'))
+                    <small class="text-danger"> {{$errors->first('countries')}} </small>
+                    @endif
+                <br>
+                <h2>Occupation area</h2>
+                <br>{!! Form::label('area_code', 'code') !!}
+                <br>{!! Form::text('area_code',null,['class'=>'form-group'])!!}
+                @if($errors->has('area_code'))
+                    <small class="text-danger"> {{$errors->first('area_code')}} </small>
+                    @endif
+                <br>{!! Form::label('area_name', 'name') !!}
+                <br>{!! Form::text('area_name',null,['class'=>'form-group'])!!}
+                @if($errors->has('area_name'))
+                    <small class="text-danger"> {{$errors->first('area_name')}} </small>
+                    @endif
+                <br>{!! Form::label('area_address', 'address') !!}
+                <br>{!! Form::text('area_address',null,['class'=>'form-group'])!!}
+                @if($errors->has('area_address'))
+                    <small class="text-danger"> {{$errors->first('area_address')}} </small>
+                    @endif
+                <br>{!! Form::label('area_value', 'value') !!}
+                <br>{!! Form::text('area_value',null,['class'=>'form-group'])!!}
+                @if($errors->has('area_value'))
+                    <small class="text-danger"> {{$errors->first('area_value')}} </small>
+                    @endif
+                <br>{!! Form::label('area_countries', 'Country') !!}
+                <div>{!! Form::select('area_countries',['Please Choose' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}</div>
+                @if($errors->has('area_countries'))
+                    <small class="text-danger"> {{$errors->first('area_countries')}} </small>
+                @endif
                 <hr>
+                <h1>Company information</h1>
+                <br>{!! Form::label('companyName', 'name') !!}
+                <br>{!! Form::text('companyName',null,['class'=>'form-group'])!!}
+                @if($errors->has('companyName'))
+                    <small class="text-danger"> {{$errors->first('companyName')}} </small>
+                @endif
+                <br>{!! Form::label('companyAddress', 'address') !!}
+                <br>{!! Form::text('companyAddress',null,['class'=>'form-group'])!!}
+                @if($errors->has('companyAddress'))
+                    <small class="text-danger"> {{$errors->first('companyAddress')}} </small>
+                @endif
+                <br>{!! Form::label('companyDescription', 'description') !!}
+                <br>{!! Form::textarea('companyDescription',null,['class'=>'form-group'])!!}
+                @if($errors->has('companyDescription'))
+                    <small class="text-danger"> {{$errors->first('companyDescription')}} </small>
+                @endif
+                <br>{!! Form::label('company_countries', 'Country') !!}
+                <div>{!! Form::select('company_countries',['Please Choose' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}</div>
+                @if($errors->has('company_countries'))
+                    <small class="text-danger"> {{$errors->first('company_countries')}} </small>
+                @endif
+                <h2>company area</h2>
+                <br>{!! Form::label('company_area_code', 'code') !!}
+                <br>{!! Form::text('company_area_code',null,['class'=>'form-group'])!!}
+                @if($errors->has('company_area_code'))
+                    <small class="text-danger"> {{$errors->first('company_area_code')}} </small>
+                @endif
+                <br>{!! Form::label('company_area_name', 'name') !!}
+                <br>{!! Form::text('company_area_name',null,['class'=>'form-group'])!!}
+                @if($errors->has('company_area_name'))
+                    <small class="text-danger"> {{$errors->first('company_area_name')}} </small>
+                @endif
+                <br>{!! Form::label('company_area_address', 'address') !!}
+                <br>{!! Form::text('company_area_address',null,['class'=>'form-group'])!!}
+                @if($errors->has('company_area_address'))
+                    <small class="text-danger"> {{$errors->first('company_area_address')}} </small>
+                @endif
+                <br>{!! Form::label('company_area_value', 'value') !!}
+                <br>{!! Form::text('company_area_value',null,['class'=>'form-group'])!!}
+                @if($errors->has('company_area_value'))
+                    <small class="text-danger"> {{$errors->first('company_area_value')}} </small>
+                @endif
+
+                <br>{!! Form::label('company_countries_area', 'Company Country') !!}
+                <div>{!! Form::select('company_countries_area',['Please Choose' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}</div>
+                @if($errors->has('company_countries_area'))
+                    <small class="text-danger"> {{$errors->first('company_countries_area')}} </small>
+                @endif
+                <br>
                 <button type="submit" class="btn btn-sm btn-warning text-white mt-3" >Submit</button>
                 {!! Form::close() !!}  
             </div> 
     </div> 
             <!-- END FIRST PAGE -->
 </div>
-@endsection
 
-'name',
-'address',
-'description',
-'picture',

@@ -131,7 +131,25 @@
   {{-- Scripts --}}
   <!-- Jonas Customized JS -->
   <script src="{{ asset('js/app.js') }}"></script>
+  <!-- jQuery script -->
+<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
+<script src="{{ asset('salaryFormat/jquery.priceformat.min.js') }}"></script>
+<!-- Customize / Self made scripts should be the last one -->
+<script src="/js/unique/alumnus/occupationform.js" type="text/javascript"></script>
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+    disableSelectFirst()
+    $('.salary').priceFormat({
+        prefix: '₱ ',
+        thousandsSeparator: ','
+    });
+    
+});   
+
+</script>
+ 
 </body>
 </html>
+

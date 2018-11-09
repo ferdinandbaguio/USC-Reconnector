@@ -73,6 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/deleteAAchv/{id}','AlumnusController@destroyAchv'); 
 
         Route::get('alumnus/occupation','OccupationController@create')->name('occupation.form');
+        Route::post('alumnus/occupation','OccupationController@store')->name('occupation.store');
 
     });
 
