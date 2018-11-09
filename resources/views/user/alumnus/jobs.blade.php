@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="row mb-5 pb-4 shadowBox">
+        <a href="{{route('occupation.form')}}" class="btn btn-danger">Update Job</a>
     <div class="row w-100 p-0 m-0">
         <div class="col-md-4 py-4 pr-0">
             <div class="card">
@@ -121,5 +122,7 @@
         
     </tbody>
     </table>
+    
 </div>
+
 @endsection

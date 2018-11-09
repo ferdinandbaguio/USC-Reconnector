@@ -310,7 +310,7 @@
 				{!! Form::text('reasonUnemployedNow_text',null,['class' => 'form-control text']) !!}
 
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)" disabled="disabled">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonSeven" onclick="showPage(9)" >Next</button>
 	</div> 
 	<!-- END SEVENTH PAGE -->
 	<!-- EIGHTH PAGE -->
@@ -341,7 +341,7 @@
 				{{-- {!! Form::label(null, 'If other, please specifiy') !!}<br> --}}
 				{!! Form::text('reasonUnemployedNever_text',null,['class' => 'form-control text']) !!}
 				<button type="button" class="btn btn-sm btn-outline-danger mt-3" onclick="showPage(getPreviousPage())">Previous</button>
-				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonEight" onclick="showPage(11)">Next</button>
+				<button type="button" class="btn btn-sm btn-warning text-white mt-3 nextButtonEight" onclick="showPage(11)" disabled="disabled">Next</button>
 		</div> 
 	<!-- END EIGHTH PAGE -->
 	<!-- NINTH PAGE -->

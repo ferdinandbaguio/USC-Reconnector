@@ -19,6 +19,7 @@ use App\Http\Controllers\Controller;
 
 class SchoolMgmtController extends Controller
 {
+ 
     public function classes()
     {
         $subjects = Subject::all();
