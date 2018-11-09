@@ -23,7 +23,7 @@
                 @endif
                 <h1>Job information</h1>
                 <hr>
-                @json($errors->all()) 
+                {{-- @json($errors->all())  --}}
                     {!! Form::label('occupationTitle', 'title') !!}
                 <br>{!! Form::text('occupationTitle',null,null,['class'=>'form-group'])!!}
                     @if($errors->has('occupationTitle'))
@@ -45,21 +45,22 @@
                     <small class="text-danger"> {{$errors->first('salaryRangeTwo')}} </small>
                     @endif
                 <br>{!! Form::label('jobStart', 'jobStart') !!}
-                <br>{!! Form::date('jobStart',null,null,['class'=>'form-group'])!!}
+                <br>{!! Form::date('jobStart',null,['class'=>'form-group startDate'])!!}
                 @if($errors->has('jobStart'))
                     <small class="text-danger"> {{$errors->first('jobStart')}} </small>
                     @endif
                 <br>{!! Form::label('jobEnd', 'jobEnd') !!}
-                <br>{!! Form::date('jobEnd',null,null,['class'=>'form-group'])!!}
+                <br>{!! Form::date('jobEnd',null,['class'=>'form-group'])!!}
                 @if($errors->has('jobEnd'))
                     <small class="text-danger"> {{$errors->first('jobEnd')}} </small>
                     @endif
                 <br>{!! Form::label('countries', 'Country') !!}
-                <div>{!! Form::select('countries',['Please Choose' => NULL] + $countries,null,['class'=>'selectClass']) !!}</div>
+                <div>{!! Form::select('countries',['' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}
                 @if($errors->has('countries'))
                     <small class="text-danger"> {{$errors->first('countries')}} </small>
                     @endif
                 <br>
+                </div>
                 <h2>Occupation area</h2>
                 <br>{!! Form::label('area_code', 'code') !!}
                 <br>{!! Form::text('area_code',null,['class'=>'form-group'])!!}
@@ -82,10 +83,11 @@
                     <small class="text-danger"> {{$errors->first('area_value')}} </small>
                     @endif
                 <br>{!! Form::label('area_countries', 'Country') !!}
-                <div>{!! Form::select('area_countries',['Please Choose' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}</div>
+                <div>{!! Form::select('area_countries',['' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}
                 @if($errors->has('area_countries'))
                     <small class="text-danger"> {{$errors->first('area_countries')}} </small>
                 @endif
+                 </div>
                 <hr>
                 <h1>Company information</h1>
                 <br>{!! Form::label('companyName', 'name') !!}
@@ -104,10 +106,11 @@
                     <small class="text-danger"> {{$errors->first('companyDescription')}} </small>
                 @endif
                 <br>{!! Form::label('company_countries', 'Country') !!}
-                <div>{!! Form::select('company_countries',['Please Choose' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}</div>
+                <div>{!! Form::select('company_countries',['' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}
                 @if($errors->has('company_countries'))
                     <small class="text-danger"> {{$errors->first('company_countries')}} </small>
                 @endif
+                </div>
                 <h2>company area</h2>
                 <br>{!! Form::label('company_area_code', 'code') !!}
                 <br>{!! Form::text('company_area_code',null,['class'=>'form-group'])!!}
@@ -131,10 +134,11 @@
                 @endif
 
                 <br>{!! Form::label('company_countries_area', 'Company Country') !!}
-                <div>{!! Form::select('company_countries_area',['Please Choose' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}</div>
+                <div>{!! Form::select('company_countries_area',['' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}
                 @if($errors->has('company_countries_area'))
                     <small class="text-danger"> {{$errors->first('company_countries_area')}} </small>
                 @endif
+            </div>
                 <br>
                 <button type="submit" class="btn btn-sm btn-warning text-white mt-3" >Submit</button>
                 {!! Form::close() !!}  
@@ -142,4 +146,12 @@
     </div> 
             <!-- END FIRST PAGE -->
 </div>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".startDate").datepicker({ 
+            minDate: 0, 
+            dateFormat: 'yy-mm-dd'
+        });
+    });   
+</script>
+@endsection
