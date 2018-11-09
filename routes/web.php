@@ -93,6 +93,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'admin'], function () { 
         // Admin Index
         Route::view('/admin', 'user.admin.index')->name('admins');
+        // Requests Controller
+        Route::get('/student/requests', 'Admin\StudentRequestController@index')->name('ShowStudentRequest');
         // User Controller
         Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
         Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
@@ -112,8 +114,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/SM/update', 'Admin\SchoolMgmtController@updateClass')->name('UpdateClass');
         Route::patch('/SM/update/subject', 'Admin\SchoolMgmtController@updateSubject')->name('UpdateSubject');
         Route::patch('/SM/update/semester', 'Admin\SchoolMgmtController@updateSemester')->name('UpdateSemester');
-        Route::patch('/SM/update/year', 'Admin\SchoolMgmtController@updateClass')->name('UpdateYear');
+        Route::patch('/SM/update/year', 'Admin\SchoolMgmtController@updateYear')->name('UpdateYear');
         Route::delete('/SM/destroy', 'Admin\SchoolMgmtController@destroyClass')->name('DeleteClass');
+        Route::delete('/SM/destroy/subject', 'Admin\SchoolMgmtController@destroySubject')->name('DeleteSubject');
+        Route::delete('/SM/destroy/semester', 'Admin\SchoolMgmtController@destroySemester')->name('DeleteSemester');
+        Route::delete('/SM/destroy/year', 'Admin\SchoolMgmtController@destroyYear')->name('DeleteYear');
         Route::post('/SM/students', 'Admin\SchoolMgmtController@studentClass')->name('StudentClass');
         Route::post('/SM/store/student', 'Admin\SchoolMgmtController@storeStudent')->name('StoreStudent');
         Route::delete('/SM/remove/student', 'Admin\SchoolMgmtController@removeStudent')->name('RemoveStudent');

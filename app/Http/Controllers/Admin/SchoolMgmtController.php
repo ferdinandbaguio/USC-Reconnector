@@ -84,6 +84,9 @@ class SchoolMgmtController extends Controller
             // Store Image to Database
             $subj['picture'] = $filenameToStore;
         }
+        else{
+            $subj['picture'] = "Subject_Default.jpeg";
+        }
         $subj['code'] = $request['code'];
         $subj['name'] = $request['name'];
         $subj['description'] = $request['description'];
@@ -200,12 +203,49 @@ class SchoolMgmtController extends Controller
     }
     public function updateSubject(Request $request)
     {
+        if(isset($request['picture'])){
+            // Get Image
+            $filenameWithExt = $request['picture']->getClientOriginalName();
+            // Get Image Name
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get Image Extention
+            $extension = $request['picture']->getClientOriginalExtension();
+            // Rename Image
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // Save Path of Image
+            $path = $request['picture']->storeAs('public/subject_img', $filenameToStore);
+            // Store Image to Database
+            $subj['picture'] = $filenameToStore;
+        }
+        $subj['id'] = $request['id'];
+        $subj['code'] = $request['code'];
+        $subj['name'] = $request['name'];
+        $subj['description'] = $request['description'];
+        $subject = Subject::find($subj['id']);
+        $subject->update($subj);
+
+        return redirect()->back()->with('success', 'Edited Subject: Successful!');
     }
     public function updateSemester(Request $request)
     {
+        $sem['id'] = $request->id;
+        $sem['name'] = $request->name;
+        $sem['year_id'] = $request->year_id;
+
+        $semester = Semester::find($sem['id']);
+        $semester->update($sem);
+
+        return redirect()->back()->with('success', 'Edited Semester: Successful!');
     }
     public function updateYear(Request $request)
     {
+        $yearData['id'] = $request->id;
+        $yearData['name'] = $request->name;
+
+        $year = Year::find($yearData['id']);
+        $year->update($yearData);
+
+        return redirect()->back()->with('success', 'Edited Year: Successful!');
     }
     public function destroyClass(Request $request)
     {
@@ -226,6 +266,21 @@ class SchoolMgmtController extends Controller
         catch(Exception $e){
             return redirect()->back()->with('error', 'Something went wrong: '.$e);
         }
+    }
+    public function destroySubject(Request $request)
+    {
+        Subject::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Subject: Successful!');
+    }
+    public function destroySemester(Request $request)
+    {
+        Semester::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Semester: Successful!');
+    }
+    public function destroyYear(Request $request)
+    {
+        Year::destroy($request->id);
+        return redirect()->back()->with('success', 'Deleted Year: Successful!');
     }
     public function studentClass(Request $request)
     {

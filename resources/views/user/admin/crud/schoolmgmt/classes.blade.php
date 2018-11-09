@@ -186,7 +186,7 @@ Classes
                                 </span>
 
                             {{-- Delete Button --}}
-                                <span data-toggle="modal" data-target="#delete-class" data-id="{{ $subj->id }}">
+                                <span data-toggle="modal" data-target="#delete-subject" data-id="{{ $subj->id }}">
                                     <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">   
                                         <i class="ti-trash"></i>                              
                                     </button>
@@ -204,7 +204,7 @@ Classes
         <div class="ibox">
             <div class="ibox-head">
                 <div class="ibox-title text-info">
-                    Semesters:<b><i> @if(isset($grpclasses)){{$grpclasses->count()}}@endif</i></b>
+                    Semesters:<b><i> @if(isset($semesters)){{$semesters->count()}}@endif</i></b>
                 </div>
                 <span data-toggle="modal" data-target="#create-semester">
                     <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Semester">
@@ -236,16 +236,15 @@ Classes
                         <td>
 
                             {{-- Edit Button --}}
-                                <span data-toggle="modal" data-target="#edit-class"
-                                data-id="{{ $gc->id }}"  data-status="{{ $gc->status }}" data-room="{{ $gc->room }}"
-                                data-tid="{{ $gc->teacher->id }}" data-sid="{{ $gc->subject->id }}">
+                                <span data-toggle="modal" data-target="#edit-semester"
+                                data-id="{{ $sem->id }}"  data-name="{{ $sem->name }}" data-year_id="{{ $sem->year_id }}">
                                     <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
                                         <i class="ti-pencil"></i>                                
                                     </button>
                                 </span>
 
                             {{-- Delete Button --}}
-                                <span data-toggle="modal" data-target="#delete-class" data-id="{{ $gc->id }}">
+                                <span data-toggle="modal" data-target="#delete-semester" data-id="{{ $sem->id }}">
                                     <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">   
                                         <i class="ti-trash"></i>                              
                                     </button>
@@ -263,7 +262,7 @@ Classes
         <div class="ibox">
             <div class="ibox-head">
                 <div class="ibox-title text-info">
-                   Years:<b><i> @if(isset($grpclasses)){{$grpclasses->count()}}@endif</i></b>
+                   Years:<b><i> @if(isset($years)){{$years->count()}}@endif</i></b>
                 </div>
                 <span data-toggle="modal" data-target="#create-year">
                     <button class="btn btn-info" data-toggle="tooltip" data-original-title="Create A New Year">
@@ -292,16 +291,15 @@ Classes
                         <td>
     
                             {{-- Edit Button --}}
-                                <span data-toggle="modal" data-target="#edit-class"
-                                data-id="{{ $gc->id }}"  data-status="{{ $gc->status }}" data-room="{{ $gc->room }}"
-                                data-tid="{{ $gc->teacher->id }}" data-sid="{{ $gc->subject->id }}">
+                                <span data-toggle="modal" data-target="#edit-year"
+                                data-id="{{ $year->id }}" data-name="{{ $year->name }}">
                                     <button class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="Edit">
                                         <i class="ti-pencil"></i>                                
                                     </button>
                                 </span>
     
                             {{-- Delete Button --}}
-                                <span data-toggle="modal" data-target="#delete-class" data-id="{{ $gc->id }}">
+                                <span data-toggle="modal" data-target="#delete-year" data-id="{{ $year->id }}">
                                     <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">   
                                         <i class="ti-trash"></i>                              
                                     </button>
@@ -515,10 +513,11 @@ Classes
         </button>
         <h4 class="modal-title" id="myModalLabel">Editing New Subject</h4>
     </div>
-    {!! Form::open(['route' => 'UpdateSubject', 'method' => 'POST', 
+    {!! Form::open(['route' => 'UpdateSubject', 'method' => 'PATCH', 
                     'style' => 'display:inline-block;', 'files' => TRUE]) !!}
     @csrf
     <div class="modal-body">
+        {{Form::hidden('id', null, ['id' => 'id'])}}
         <div class="row">
             <div class="col-md-4 form-group">
                 <b>{{Form::label('pic', 'Subject Picture')}}</b>
@@ -543,7 +542,7 @@ Classes
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Update', ['class' => 'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
 </div>
@@ -561,10 +560,11 @@ Classes
         </button>
         <h4 class="modal-title" id="myModalLabel">Editing New Semester</h4>
     </div>
-    {!! Form::open(['route' => 'UpdateSemester', 'method' => 'POST', 
+    {!! Form::open(['route' => 'UpdateSemester', 'method' => 'PATCH', 
                     'style' => 'display:inline-block;']) !!}
     @csrf
     <div class="modal-body">
+        {{Form::hidden('id', null, ['id' => 'id'])}}
         <div class="row">
             <div class="col-md-6 form-group">
                 <b>{{Form::label('name', 'Name')}}</b>
@@ -573,8 +573,7 @@ Classes
             </div>
             <div class="col-md-6 form-group">
                 <b>{{Form::label('name', 'Years')}}</b>
-                <select class = "form-control input-rounded text-center" name="year_id">
-                    <option disabled selected hidden>Choose Year</option>
+                <select required class = "form-control input-rounded text-center" name="year_id">
                     @foreach ($years as $year) 
                         <option value={{$year->id}}>{{$year->name}}</option>
                     @endforeach
@@ -584,7 +583,7 @@ Classes
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Update', ['class' => 'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
 </div>
@@ -602,10 +601,11 @@ Classes
         </button>
         <h4 class="modal-title" id="myModalLabel">Editing New Year</h4>
     </div>
-    {!! Form::open(['route' => 'UpdateYear', 'method' => 'POST', 
+    {!! Form::open(['route' => 'UpdateYear', 'method' => 'PATCH', 
                     'style' => 'display:inline-block;']) !!}
     @csrf
     <div class="modal-body">
+        {{Form::hidden('id', null, ['id' => 'id'])}}
         <div class="row">
             <div class="col-md-12 form-group">
                 <b>{{Form::label('name', 'Name')}}</b>
@@ -616,7 +616,7 @@ Classes
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        {{Form::submit('Create', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Update', ['class' => 'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
 </div>
@@ -634,6 +634,87 @@ Classes
         <h4 class="modal-title text-center" id="myModalLabel">Delete Class Confirmation</h4>
     </div>
     {!! Form::open(['route' => 'DeleteClass', 'method' => 'DELETE', 'style' => 'display:inline-block;']) !!}
+    @csrf
+    <div class="modal-body">
+        <p class="text-center">
+            Are you sure you want to delete this?
+        </p>
+        {{ Form::hidden('id', '', ['id' => 'id']) }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">No, Cancel</button>
+        {{Form::submit('Yes, Delete', ['class' => 'btn btn-warning'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+<!-- Delete Subject Modal -->
+<div class="modal modal-danger fade" id="delete-subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Subject Confirmation</h4>
+    </div>
+    {!! Form::open(['route' => 'DeleteSubject', 'method' => 'DELETE', 'style' => 'display:inline-block;']) !!}
+    @csrf
+    <div class="modal-body">
+        <p class="text-center">
+            Are you sure you want to delete this?
+        </p>
+        {{ Form::hidden('id', '', ['id' => 'id']) }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">No, Cancel</button>
+        {{Form::submit('Yes, Delete', ['class' => 'btn btn-warning'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+<!-- Delete Semester Modal -->
+<div class="modal modal-danger fade" id="delete-semester" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Semester Confirmation</h4>
+    </div>
+    {!! Form::open(['route' => 'DeleteSemester', 'method' => 'DELETE', 'style' => 'display:inline-block;']) !!}
+    @csrf
+    <div class="modal-body">
+        <p class="text-center">
+            Are you sure you want to delete this?
+        </p>
+        {{ Form::hidden('id', '', ['id' => 'id']) }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">No, Cancel</button>
+        {{Form::submit('Yes, Delete', ['class' => 'btn btn-warning'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+<!-- Delete Year Modal -->
+<div class="modal modal-danger fade" id="delete-year" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Year Confirmation</h4>
+    </div>
+    {!! Form::open(['route' => 'DeleteYear', 'method' => 'DELETE', 'style' => 'display:inline-block;']) !!}
     @csrf
     <div class="modal-body">
         <p class="text-center">

@@ -120,45 +120,62 @@ $('#edit-class').on('show.bs.modal', function(event) {
 })
 $('#edit-subject').on('show.bs.modal', function(event) {
     var button    = $(event.relatedTarget)
+    var id        = button.data('id')
     var code      = button.data('code')
     var name      = button.data('name')
     var desc      = button.data('desc')
 
-    var modal   = $(this)
+    var modal     = $(this)
 
+    modal.find('.modal-body #id').val(id);
     modal.find('.modal-body #code').val(code);
     modal.find('.modal-body #name').val(name);
     modal.find('.modal-body #desc').val(desc);
 })
 $('#edit-semester').on('show.bs.modal', function(event) {
-    var button      = $(event.relatedTarget)
-    var id          = button.data('id')
-    var room      = button.data('room')
-    var status      = button.data('status')
-    var tid         = button.data('tid')
+    var button    = $(event.relatedTarget)
+    var id        = button.data('id')
+    var name      = button.data('name')
+    var year_id   = button.data('year_id')
 
-    var modal   = $(this)
+    var modal     = $(this)
 
     modal.find('.modal-body #id').val(id);
-    modal.find('.modal-body #room').val(room);
-    modal.find('.modal-body #status').val(status);
-    modal.find('.modal-body #tid').val(tid);
+    modal.find('.modal-body #name').val(name);
+    modal.find('.modal-body #year_id').val(year_id);
 })
 $('#edit-year').on('show.bs.modal', function(event) {
-    var button      = $(event.relatedTarget)
-    var id          = button.data('id')
-    var room      = button.data('room')
-    var status      = button.data('status')
-    var tid         = button.data('tid')
+    var button    = $(event.relatedTarget)
+    var id        = button.data('id')
+    var name      = button.data('name')
 
     var modal   = $(this)
 
     modal.find('.modal-body #id').val(id);
-    modal.find('.modal-body #room').val(room);
-    modal.find('.modal-body #status').val(status);
-    modal.find('.modal-body #tid').val(tid);
+    modal.find('.modal-body #name').val(name);
 })
 $('#delete-class').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget)
+    var id = button.data('id')
+    var modal = $(this)
+
+    modal.find('.modal-body #id').val(id);
+})
+$('#delete-subject').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget)
+    var id = button.data('id')
+    var modal = $(this)
+
+    modal.find('.modal-body #id').val(id);
+})
+$('#delete-semester').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget)
+    var id = button.data('id')
+    var modal = $(this)
+
+    modal.find('.modal-body #id').val(id);
+})
+$('#delete-year').on('show.bs.modal', function(event){
     var button = $(event.relatedTarget)
     var id = button.data('id')
     var modal = $(this)
