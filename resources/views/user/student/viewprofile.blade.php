@@ -13,13 +13,13 @@
 	<div class="col-md-4 p-4 align-self-start" style="background: url('/img/div_bgs/abg.jpg');">
 		<div class="row">
 			<div class="col-12">
-				<img src="{{ asset('/img/homepage_images/Boy2.jpg') }}" width="100%">
+				<img src="/storage/user_img/{{$data->picture}}" class="bg-light" width="100%">
 			</div>
 		</div>
 
 		<div class="row mt-5">
 			<div class="col-12">
-				<h5 class="font-weight-bold"> {{$data->firstName}} {{$data->middleName}} {{$data->lastName}} </h5>
+				<h5 class="font-weight-bold"> {{$data->fullname}} </h5>
 				<h6 class="text-muted"> {{$data->idnumber}} </h6>
 
 				<p class="mt-3 mb-0"> Bachelor of Science in Information in Communication Technology </p>
@@ -38,6 +38,13 @@
 				<h5 class="font-weight-bold text-muted"> Description </h5>
 			</div>
 		</div>
+		@if($data->description == '')
+		<div class="row">
+		  <div class="col">
+		    <small class="text-muted"> No data to show.</small>
+		  </div>
+		</div>
+		@endif
 		<div class="row mt-1">
 			<div class="col-md-12">
 				<p> {{$data->description}} </p>

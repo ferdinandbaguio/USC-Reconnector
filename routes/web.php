@@ -26,6 +26,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('announcement/postUpdate', 'AnnouncementController@update')->name('announcement.update');
         Route::get('/deleteAnnouncement/{id}','AnnouncementController@destroy');
 
+        Route::patch('job/postUpdate', 'JobPostController@update')->name('jobPost.update');
+        Route::get('/deleteJobPost/{id}','JobPostController@destroy');
+
         //View Profiles
         Route::get('/viewStudentProfile/{id}','StudentController@viewStudentProfile');
         Route::view('/student/viewprofile', 'user.student.viewprofile');
@@ -50,7 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/viewClass/{id}', 'StudentController@viewClass')->name('view.class');
         Route::get('/searchClass', 'StudentController@searchClass')->name('searchClass.searchClass');
         Route::post('/joinClass', 'StudentController@joinClass')->name('join.Class');
-        
+        Route::post('/classPost', 'StudentController@classPost')->name('class.post');
+
         Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
         Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
 

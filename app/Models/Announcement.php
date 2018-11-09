@@ -17,4 +17,8 @@ class Announcement extends Model
     {
         return $this->belongsTo('App\Models\User','user_id');
     }
+    public function filters()
+    {
+        return $this->hasMany('App\Models\Filter');
+    }
 }

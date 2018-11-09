@@ -56,35 +56,22 @@ $(document).ready(function(){
 
 // EDIT TOGGLE FORM
 function editPost(id){
-  $('#title' + id).attr('readonly', false)
-  .removeClass("form-control-plaintext")
-  .addClass('form-control');
-
-  $('#content' + id).attr('readonly', false)
-  .removeClass("form-control-plaintext")
-  .addClass('form-control');
-
-  $('#formBtn' + id).slideDown("slow");
-  $('#titleLabel' + id).slideDown("slow");
-  $('#contentLabel' + id).slideDown("slow");
+  $('#origHolder' + id).slideUp();
+  $('#editHolder' + id).slideDown();
+  CKEDITOR.replace('article-ckeditor' + id);
 }
 function cancelEdit(id){
-  $('#title' + id).attr('readonly', true)
-  .removeClass("form-control")
-  .addClass('form-control-plaintext');
-
-  $('#content' + id).attr('readonly', true)
-  .removeClass("form-control")
-  .addClass('form-control-plaintext');
-
-  $('#formBtn' + id).slideUp("slow");
-  $('#titleLabel' + id).slideUp("slow");
-  $('#contentLabel' + id).slideUp("slow");
+  $('#origHolder' + id).slideDown();
+  $('#editHolder' + id).slideUp();
 }
-
 function editJPost(id){
+  $('#origJHolder' + id).slideUp();
+  $('#editJHolder' + id).slideDown();
+}
+function cancelJEdit(id){
+  $('#origJHolder' + id).slideDown();
+  $('#editJHolder' + id).slideUp();
+}
+  
 
 
-
-
-CKEDITOR.replace( 'article-ckeditor' );

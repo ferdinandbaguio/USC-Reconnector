@@ -5,29 +5,29 @@
 @endsection
 
 @section('content')
-<!-- TOP BUTTONS  -->
-<div class="row mb-3 fontRoboto">
-  <button class="btn btn-secondary mr-2 sameNavBg" data-toggle="modal" data-target="#addClassModal">
-      <i class="fas fa-plus-circle align-baseline"></i> Join a class 
-  </button>
-
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle sameNavBg" type="button" id="showClasses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Choose a class
-    </button>
-    <div class="dropdown-menu" aria-labelledby="showClasses">
-      @foreach($classes as $row)
-      <a class="dropdown-item" href="/viewClass/{{$row->group_class->id}}">{{$row->group_class->subject->name}}</a>
-      @endforeach
-    </div>
-  </div>
-</div>
-<!-- TOP BUTTONS END -->
-
 <div class="row fontRoboto mb-3">
 
   <!-- LEFT BOX -->
   <div class="col-12 col-md-4">
+    <!-- TOP BUTTONS  -->
+    <div class="row mb-3 fontRoboto">
+      <button class="btn btn-secondary mr-2 sameNavBg" data-toggle="modal" data-target="#addClassModal">
+          <i class="fas fa-plus-circle align-baseline"></i> Join a class 
+      </button>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle sameNavBg" type="button" id="showClasses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose a class
+        </button>
+        <div class="dropdown-menu" aria-labelledby="showClasses">
+          @foreach($classes as $row)
+          <a class="dropdown-item" href="/viewClass/{{$row->group_class->id}}">{{$row->group_class->subject->name}}</a>
+          @endforeach
+        </div>
+      </div>
+    </div>
+    <!-- TOP BUTTONS END -->
+
     <div class="row bg-light rounded">
       <div class="col-12 mt-3 pb-2">
         <h3 class="text-center" style="color:#077325"> {{$classDetails->subject->name}} </h3>
@@ -74,42 +74,59 @@
     </div>
     </div>
 
+    @if(Auth::user()->userType == "Student")
     <!-- POST AN ANNOUNCEMENT FORM -->
     <div class="row">
       <div class="col-12 col-md-12 mt-3 pb-2 rounded-top bg-light py-3">
-        <form>
-          <textarea class="form-control" placeholder="Hello teacher, post some announcements. . ."></textarea>
-
-          <input type="submit" class="btn btn-primary mt-2 ml-auto d-block" value="Post">
+        <form method="POST" action="{{route('class.post')}}">
+          {{ csrf_field() }}
+          <input type="hidden" name="group_class_id" value="{{$classDetails->id}}" required>
+          <input type="text" class="form-control mb-2" name="title" placeholder="Title">
+          <div class="collapse" id="ckHolder">
+          <textarea name="announcement" id="article-ckeditor"></textarea>
+          </div>
+          <textarea class="form-control" placeholder="Hello teacher, post some announcements. . ." id="defaultTA"></textarea>
+          <input type="submit" class="btn btn-sm btn-primary mt-2 ml-auto d-block" value="Post">
         </form>
       </div>
     </div>
     <!-- POST AN ANNOUNCEMENT FORM END-->
+    @endif
 
-    <!-- ANNOUNCEMENTs -->
+    <!-- ANNOUNCEMENTS -->
+    @foreach($posts as $row)
     <div class="row">
       <div class="col-12 col-md-12 mt-3 pb-2 rounded-top bg-light">
         <div class="row">
         <div class="col-2 col-md-1 mt-2">
-          <img src="/img/homepage_images/Boy2.jpg" class="rounded-circle postByImg" width="50px" style="box-shadow: 0px 0px 5px;" /> 
+          <img src="/storage/user_img/{{$row->announcement->users->picture}}" class="rounded-circle postByImg" width="50px" style="box-shadow: 0px 0px 5px;" /> 
         </div>
         <div class="col-10 col-md-11 mt-2">
-          <p class="m-0 text-muted"> Posted by:  Teacher Alyana </p>
-          <p class="m-0 text-muted"> October 31, 2018 9:00AM </p>
+          <p class="m-0 text-muted"> Posted by:  {{$row->announcement->users->fullname}} </p>
+          <p class="m-0 text-muted"> {{$row->created_at->format('M d Y g:i A')}} </p>
         </div>
         </div>
 
         <div class="row">
           <div class="col-12 col-md-12 mt-4">
-          <h5>Title of Announcement</h5>
-          <p class="preserveLineBreaks"> Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt Announcemnt </p>
+          <h5>{{$row->announcement->title}}</h5>
+          <p class="preserveLineBreaks m-0"> {!! $row->announcement->announcement !!} </p>
           </div>
         </div>
 
+        <!-- <a href="#" target="_blank">
+          <img src="/storage/post_img/{{$row->announcement->image}}" class="rounded" width="150px" style="max-height:100px;">
+        </a> -->
+
       </div>
     </div>
-    <!-- ANNOUNCEMENTs -->
-      <center> <p class="mt-5" style="color:#676767"> You have seen all the posts! </p></center>
+    @endforeach
+    @if(count($posts) > 1)
+    <center> <p class="mt-5" style="color:#676767"> You have seen all the posts! </p></center>
+    @elseif(count($posts) <= 0)
+    @include('_inc.noPostToShow')
+    @endif
+    <!-- ANNOUNCEMENTS -->
 
   </div>
   <!-- RIGHT BOX END-->
@@ -130,8 +147,8 @@
         <div class="row mt-2">
           <div class="col-12">
             <p class="text-center"> {{$classDetails->teacher->fullname}} </p>    
-            <p class="text-center"> {{$classDetails->teacher->contactNo}} </p>
-            <p class="text-center"> {{$classDetails->teacher->email}} </p>
+            <p class="text-center"> Contact: {{$classDetails->teacher->contactNo}} </p>
+            <p class="text-center"> Email: {{$classDetails->teacher->email}} </p>
 
             <p class="text-center"> <a href="/viewTeacherProfile/{{$classDetails->teacher->id}}" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
           </div>
@@ -157,8 +174,8 @@
         <div class="row mt-2">
           <div class="col-12">
             <p class="text-center"> {{$row->student->fullname}} </p>    
-            <p class="text-center"> {{$row->student->contactNo}} </p>
-            <p class="text-center"> {{$row->student->email}} </p>
+            <p class="text-center"> Contact: {{$row->student->contactNo}} </p>
+            <p class="text-center"> Email: {{$row->student->email}} </p>
 
             <p class="text-center"> <a href="/viewStudentProfile/{{$row->student->id}}" class="cardButton px-5 py-1 text-white mx-auto"><i class="fas fa-eye"></i> View Full Details</a> </p>
           </div>
@@ -197,5 +214,19 @@
 <!-- ADD A CLASS MODAL END-->
 
 
+<!-- jQuery -->
+<script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 
+<!-- CUSTOMIZED SCRIPTS -->
+<script type="text/javascript">CKEDITOR.replace('article-ckeditor');
+$(document).ready(function(){
+  $('#defaultTA').on('focus',function(){
+    $('#defaultTA').hide();
+    $('#ckHolder').fadeIn("slow");
+  });
+
+
+});
+</script>
 @endsection

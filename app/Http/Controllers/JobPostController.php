@@ -76,9 +76,15 @@ class JobPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request = $request->all();
+
+        $user = JobPost::findOrFail($request['id']);
+    
+        $user->update($request);
+    
+        return redirect()->back();
     }
 
     /**
@@ -89,6 +95,8 @@ class JobPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        JobPost::find($id)->delete();
+
+        return redirect()->back();
     }
 }
