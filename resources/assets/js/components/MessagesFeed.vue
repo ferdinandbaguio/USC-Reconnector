@@ -1,7 +1,7 @@
 <template>
     <div class="feed" ref="feed">
         <ul v-if="contact">
-            <li v-for="message in messages" :class="`message${message.from_id == message.myID ? ' sent' : ' received'}`" :key="message.id">
+            <li v-for="message in messages" :class="`message${message.from_id == user.id ? ' sent' : ' received'}`" :key="message.id">
                 <div class="text">
                     {{ message.message }}
                 </div><br>
@@ -20,6 +20,10 @@
             messages: {
                 type: Array,
                 required: true
+            },
+            user: {
+                type: Object,
+                default: []
             }
         },
         methods: {

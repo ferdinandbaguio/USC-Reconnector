@@ -57711,11 +57711,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        };
+    },
     props: {
         contact: {
             type: Object,
@@ -57723,6 +57782,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         messages: {
             type: Array,
+            default: []
+        },
+        user: {
+            type: Object,
             default: []
         }
     },
@@ -57864,6 +57927,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         messages: {
             type: Array,
             required: true
+        },
+        user: {
+            type: Object,
+            default: []
         }
     },
     methods: {
@@ -57904,7 +57971,7 @@ var render = function() {
                 key: message.id,
                 class:
                   "message" +
-                  (message.from_id == message.myID ? " sent" : " received")
+                  (message.from_id == _vm.user.id ? " sent" : " received")
               },
               [
                 _c("div", { staticClass: "text" }, [
@@ -58126,11 +58193,91 @@ var render = function() {
           _vm._s(_vm.contact ? _vm.contact.title : "Select a Contact") +
             "\n        "
         ),
-        _vm._m(0)
+        _vm._v(" "),
+        _vm.user.userType == "Admin" ? _c("span", [_vm._m(0)]) : _vm._e()
       ]),
       _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "add-recipients",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "myModalLabel"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-12 form-group" }, [
+                      _c("input", {
+                        staticClass: "form-control input-rounded",
+                        attrs: {
+                          type: "text",
+                          name: "search",
+                          id: "search",
+                          placeholder: "Search Customer Data",
+                          width: "100%"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "table-responsive" }, [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c(
+                          "form",
+                          {
+                            attrs: {
+                              method: "post",
+                              action: "/store/recipient"
+                            }
+                          },
+                          [
+                            _c("input", {
+                              attrs: { type: "hidden", name: "_token" },
+                              domProps: { value: _vm.csrf }
+                            }),
+                            _vm._v(" "),
+                            _vm.contact
+                              ? _c("div", [
+                                  _c("input", {
+                                    attrs: {
+                                      type: "hidden",
+                                      name: "message_id"
+                                    },
+                                    domProps: { value: _vm.contact.id }
+                                  })
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm._m(3)
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(4)
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
       _c("MessagesFeed", {
-        attrs: { contact: _vm.contact, messages: _vm.messages }
+        attrs: { user: _vm.user, contact: _vm.contact, messages: _vm.messages }
       }),
       _vm._v(" "),
       _c("MessageComposer", { on: { send: _vm.sendMessage } })
@@ -58154,6 +58301,73 @@ var staticRenderFns = [
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title", attrs: { id: "myModalLabel" } }, [
+        _vm._v("Adding New Recipients")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { attrs: { align: "center" } }, [
+      _vm._v("Total Users : "),
+      _c("span", { attrs: { id: "total_records" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", { staticClass: "table table-striped table-bordered" }, [
+      _c("thead", [
+        _c("tr", [
+          _c("th", [_vm._v("ID Number")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Name")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Type")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Option")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tbody")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -58378,7 +58592,11 @@ var render = function() {
     { staticClass: "chat-app" },
     [
       _c("Conversation", {
-        attrs: { contact: _vm.selectedContact, messages: _vm.messages },
+        attrs: {
+          contact: _vm.selectedContact,
+          user: _vm.user,
+          messages: _vm.messages
+        },
         on: { new: _vm.saveNewMessage }
       }),
       _vm._v(" "),

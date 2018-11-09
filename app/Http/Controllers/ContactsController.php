@@ -16,16 +16,11 @@ class ContactsController extends Controller
 {
     public function index()
     {
-        $students = User::where('userType', '=', 'Student')->get();
-        $teachers = User::where('userType', '=', 'Teacher')->get();
-        $alumni = User::where('userType', '=', 'Alumnus')->get();
-        $admins = User::where('userType', '=', 'Admin')->get();
-
-        return view('user.admin.chat')
-        ->with('students', $students)
-        ->with('teachers', $teachers)
-        ->with('alumni', $alumni)
-        ->with('admins', $admins);
+        return view('user.admin.chat');
+    }
+    public function user()
+    {
+        return view('user.communicate');
     }
     public function liveSearch(Request $request)
     {
@@ -56,7 +51,7 @@ class ContactsController extends Controller
                         <td>$row->firstName $row->middleName $row->lastName</td>
                         <td>$row->userType</td>
                         <td><center>
-                        <button type='submit' class='btn btn-xs' name='id' value='$row->id' data-toggle='tooltip' data-original-title='Add'>   
+                        <button type='submit' class='btn btn-xs' name='recipient_id' value='$row->id' data-toggle='tooltip' data-original-title='Add'>   
                             <i class='ti-check'></i>                              
                         </button>
                         </center></td>
@@ -81,7 +76,14 @@ class ContactsController extends Controller
     }
     public function add(Request $request)
     {
-        return $request;
+        // $is_duplicate = Receiver::where('message_id', '=', $request->message_id)->where('recipient_id', '=', $request->recipient_id)->first();
+        // if($is_duplicate == ''){
+            Receiver::create($request->all());
+            return redirect()->back()->with('success', 'Added Recipient: Successfull!');
+        // }
+        // else{
+        //     return redirect()->back()->with('warning', 'Recipient already in this Chat...');
+        // }       
     }
     public function store(Request $request)
     {
@@ -96,6 +98,11 @@ class ContactsController extends Controller
 
         return redirect()->back()->with('success', 'Created New Chat');
     }
+    // public function show(Request $request)
+    // {
+    //     $recipients = Receiver::where('message_id', '=', $request->message_id)->get();
+    //     return view('user.admin.chat')->with('recipients', $recipients);
+    // }
     public function update(Request $request)
     {
         return $request;
@@ -129,7 +136,6 @@ class ContactsController extends Controller
         // });
         return response()->json($contacts);
     }
-
     public function getMessagesFor($id)
     {
         // mark all messages with the selected contact as read
@@ -142,11 +148,9 @@ class ContactsController extends Controller
         for($i = 0; $i < count($messages); $i++){
             $name = User::select('firstName','middleName', 'lastName')->where('id', '=', $messages[$i]['from_id'])->first();
             $messages[$i]['name'] = $name->full_name;
-            $messages[$i]['myID'] =  Auth::user()->id;
         }
         return response()->json($messages);
     }
-
     public function send(Request $request)
     {
         $message = Message_Thread::create([

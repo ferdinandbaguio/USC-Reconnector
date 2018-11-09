@@ -53,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::get('/deleteSSkill/{id}','StudentController@destroySkill');
         Route::get('/deleteSAchv/{id}','StudentController@destroyAchv');
+        // Communication
+        Route::get('/student/chat', 'ContactsController@user')->name('StudentCommunicate');
+        Route::post('/student/recipient', 'ContactsController@show')->name('student.recipient'); 
 
     });
 
@@ -74,6 +77,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/alumnus/maptest', 'user.alumnus.map');
         Route::get('/deleteASkill/{id}','AlumnusController@destroySkill');  
         Route::get('/deleteAAchv/{id}','AlumnusController@destroyAchv'); 
+        //Communication
+        Route::get('/alumnus/chat', 'ContactsController@user')->name('AlumnusCommunicate');
+        Route::post('/alumnus/recipient', 'ContactsController@show')->name('alumnus.recipient'); 
 
     });
 
@@ -86,6 +92,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/teacher/achievement', 'AchievementController@store')->name('teacher.achievement.add');
         
         Route::get('/deleteTAchv/{id}','TeacherController@destroyAchv');   
+
+        // Communication
+        Route::get('/teacher/chat', 'ContactsController@user')->name('TeacherCommunicate');
+        Route::post('/teacher/recipient', 'ContactsController@show')->name('teacher.recipient'); 
     });
     
 
@@ -149,13 +159,16 @@ Route::group(['middleware' => 'auth'], function () {
         //Communication
         Route::get('/admin/chat', 'ContactsController@index')->name('Communication');
         Route::post('/admin/chat/store', 'ContactsController@store')->name('StoreChat');
-        Route::get('/contacts', 'ContactsController@get');
-        Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
-        Route::post('/conversation/send', 'ContactsController@send');
+        // Route::get('/contacts', 'ContactsController@get');
+        // Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+        // Route::post('/conversation/send', 'ContactsController@send');
         Route::get('/live_search/action', 'ContactsController@liveSearch')->name('live_search.action'); 
         Route::post('/store/recipient', 'ContactsController@add')->name('store.recipient'); 
+        Route::post('/show/recipient', 'ContactsController@show')->name('show.recipient'); 
     });
-    
+    Route::get('/contacts', 'ContactsController@get');
+    Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+    Route::post('/conversation/send', 'ContactsController@send');
 
 // Resources ==============================================================
 

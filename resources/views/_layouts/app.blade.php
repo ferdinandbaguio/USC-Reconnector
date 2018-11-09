@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="{{ asset('img/logo/Logo.ico') }}" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="{{ asset('css/unique/alumnus/topsidenav.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Not working css, commented for now -->
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
@@ -36,7 +37,7 @@
   
   <div class="container-fluid contentContainer">
   <div class="container pt-2">
-      
+      <br><br><br><br><br>
       @yield('content')
   </div>
   </div>
@@ -111,7 +112,13 @@
       </div> -->
       @endif
 
-      <a href="{{ route('alumnus.communicate') }}" class="text-white" id="hyperlink">
+      @if(Auth::user()->userType == "Student")
+      <a href="{{ route('StudentCommunicate') }}" class="text-white" id="hyperlink">
+      @elseif(Auth::user()->userType == "Teacher")
+      <a href="{{ route('TeacherCommunicate') }}" class="text-white" id="hyperlink">
+      @elseif(Auth::user()->userType == "Alumnus")
+      <a href="{{ route('AlumnusCommunicate') }}" class="text-white" id="hyperlink">
+      @endif
         <div class="row mt-4 hyperlink rowSide">
           <div class="col-8 mt-3">
             <h6 class="fontRoboto">Communication</h6>
@@ -131,7 +138,7 @@
   {{-- Scripts --}}
   <!-- Jonas Customized JS -->
   <script src="{{ asset('js/app.js') }}"></script>
-
+  @yield('scripts')
 
 </body>
 </html>
