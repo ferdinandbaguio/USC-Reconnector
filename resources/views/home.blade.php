@@ -66,6 +66,9 @@
         </div>
       </div>
     </div>
+    <a href="/imageView/{{$row->id}}" target="_blank">
+      <img src="/storage/post_img/{{$row->image}}" class="rounded" width="150px" style="max-height:100px;">
+    </a>
   </div>
 </div>
 @endif
@@ -117,9 +120,9 @@
           <p class="m-0"> Contact: {{$row->contactNo}} </p>
           <p class="m-0"> Email: {{$row->email}} </p>
 
-          <a href="/imageView/{{$row->id}}" target="_blank">
+          <!-- <a href="/imageView/{{$row->id}}" target="_blank">
             <img src="/img/homepage_images/Pic5.jpg" class="rounded" width="150px" style="max-height:100px;">
-          </a>
+          </a> -->
           </div>
         </div>
       </div>
@@ -160,7 +163,7 @@
 @if(count($jobposts) < 1)
 @include('_inc.noPostToShow')
 @else
-<center> <p class="fontRoboto text-muted mt-4"> You have seen all the recent announcement posts! </p></center>
+<center> <p class="fontRoboto text-muted mt-4"> You have seen all the recent job posts! </p></center>
 @endif
 </div>
 
@@ -228,8 +231,8 @@
                     <input type="text" class="form-control" placeholder="+639 000 0000" name="contactNo">
                     <label class="col-form-label"> Email: </label>
                     <input type="text" class="form-control" placeholder="example@gmail.com" name="email">
-                    <label class="col-form-label"> Upload Pictures (Optional): </label>
-                    <input type="file" class="form-control fontRoboto" multiple name="image">
+                    <!-- <label class="col-form-label"> Upload Pictures (Optional): </label>
+                    <input type="file" class="form-control fontRoboto" multiple name="image"> -->
                     </div>
                 </div>
                 <div class="modal-footer p-0">
@@ -251,7 +254,7 @@
 
 
 <!-- ADD ANNOUNCEMENT MODAL -->
-<div class="modal fade fontRoboto" id="announcementModal" tabindex="-1" role="dialog" aria-labelledby="announcementModal" aria-hidden="true">
+<!-- <div class="modal fade fontRoboto" id="announcementModal" tabindex="-1" role="dialog" aria-labelledby="announcementModal" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -286,7 +289,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <!-- ADD ANNOUNCEMENT MODAL END-->
 
 

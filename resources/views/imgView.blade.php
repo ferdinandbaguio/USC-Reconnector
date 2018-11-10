@@ -5,6 +5,6 @@
 </head>
 <body>
 
-<img src="{{$image}}">
+<img src="/storage/post_img/{{$image}}">
 </body>
 </html>
