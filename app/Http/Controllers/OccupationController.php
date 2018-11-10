@@ -30,8 +30,8 @@ class OccupationController extends Controller
     {
         $form = new Occupation;
         $countries = Country::orderBy('name','asc')->pluck('name', 'id')->all();
-        $data = compact('form','countries');
-        return view('user.alumnus.occupationform',$data);
+  
+        return view('user.alumnus.occupationform',compact('form','countries'));
     }
 
     /**
