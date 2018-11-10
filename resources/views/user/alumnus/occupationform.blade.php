@@ -1,9 +1,5 @@
 @extends('_layouts.app')
 
-@section('header')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/unique/alumnus/occupation.css') }}">
-@endsection
-
 @section('content')
 <div class="container-fluid p-0 mb-4">
     <div class="row">
@@ -11,11 +7,9 @@
             <div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="1">
                 <div class="row px-2">
                     <div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
-                    <p class="m-auto text-white"> Occupation Form </p>
+                    <p class="m-auto text-white"> Job Information </p>
                     </div>
-                    <div class="col-3 col-md-5 py-2">
-                        job occupation
-                    </div>
+                    
                     <div class="col-12" style="border-bottom: 1px solid gray;">
                     </div>
                 </div> 
@@ -25,35 +19,38 @@
                 @else 
                 {!! Form::open(['url' => route('occupation.store')]) !!}
                 @endif
-                <h1>Job information</h1>
+
                 <hr>
                 {{-- @json($errors->all())  --}}
-                    {!! Form::label('occupationTitle', 'title') !!}
+                    {!! Form::label('occupationTitle', 'Job Name') !!}
                 <br>{!! Form::text('occupationTitle',null,null,['class'=>'form-group'])!!}
                     @if($errors->has('occupationTitle'))
                     <small class="text-danger"> {{$errors->first('occupationTitle')}} </small>
                     @endif
-                <br>{!! Form::label('occupationAddress', 'occupationAddress') !!}
-                <br>{!! Form::text('occupationAddress',null,null,['class'=>'form-group'])!!}
+                <div class="d-none" id="map"></div>
+                <br><br>{!! Form::label('occupationAddress','Job Address') !!}
+                <br>{!! Form::text('occupationAddress',null,['id' => 'pac-input', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
+                <input type="hidden" id="latitudeData" name="latitude" readonly>
+                <input type="hidden" id="lngData" name="longitude" readonly>
                 @if($errors->has('occupationAddress'))
                 <small class="text-danger"> {{$errors->first('occupationAddress')}} </small>
                 @endif
-                <br>{!! Form::label('salaryRangeOne', 'salaryRangeOne') !!}
+                <br>{!! Form::label('salaryRangeOne', 'Minimum Salary Range') !!}
                 <br>{!! Form::text('salaryRangeOne',null,['class'=>'form-group salary'])!!}
                 @if($errors->has('salaryRangeOne'))
                     <small class="text-danger"> {{$errors->first('salaryRangeOne')}} </small>
                     @endif
-                <br>{!! Form::label('salaryRangeTwo', 'salaryRangeTwo') !!}
+                <br>{!! Form::label('salaryRangeTwo', 'Maximum Salary Range') !!}
                 <br>{!! Form::text('salaryRangeTwo',null,['class'=>'form-group salary'])!!}
                 @if($errors->has('salaryRangeTwo'))
                     <small class="text-danger"> {{$errors->first('salaryRangeTwo')}} </small>
                     @endif
-                <br>{!! Form::label('jobStart', 'jobStart') !!}
+                <br>{!! Form::label('jobStart', 'Date of Employed') !!}
                 <br>{!! Form::date('jobStart',null,['class'=>'form-group startDate'])!!}
                 @if($errors->has('jobStart'))
                     <small class="text-danger"> {{$errors->first('jobStart')}} </small>
                     @endif
-                <br>{!! Form::label('jobEnd', 'jobEnd') !!}
+                <br>{!! Form::label('jobEnd', 'End Date of contract Employed') !!}
                 <br>{!! Form::date('jobEnd',null,['class'=>'form-group'])!!}
                 @if($errors->has('jobEnd'))
                     <small class="text-danger"> {{$errors->first('jobEnd')}} </small>
@@ -65,90 +62,41 @@
                     @endif
                 <br>
                 </div>
-                <h2>Occupation area</h2>
-                <div class="d-none" id="map"></div>
-                {!! Form::label('occupationTitle', 'title') !!}
-                {!! Form::text('searchbox',null,['id' => 'pac-input', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
-                <input type="text" id="latitudeData" name="latitude" readonly>
-                <input type="text" id="lngData" name="longitude" readonly>
 
-                <br>{!! Form::label('area_code', 'code') !!}
-                <br>{!! Form::text('area_code',null,['class'=>'form-group'])!!}
-                @if($errors->has('area_code'))
-                    <small class="text-danger"> {{$errors->first('area_code')}} </small>
-                    @endif
-                <br>{!! Form::label('area_name', 'name') !!}
-                <br>{!! Form::text('area_name',null,['class'=>'form-group'])!!}
-                @if($errors->has('area_name'))
-                    <small class="text-danger"> {{$errors->first('area_name')}} </small>
-                    @endif
-                <br>{!! Form::label('area_address', 'address') !!}
-                <br>{!! Form::text('area_address',null,['class'=>'form-group'])!!}
-                @if($errors->has('area_address'))
-                    <small class="text-danger"> {{$errors->first('area_address')}} </small>
-                    @endif
-                <br>{!! Form::label('area_value', 'value') !!}
-                <br>{!! Form::text('area_value',null,['class'=>'form-group'])!!}
-                @if($errors->has('area_value'))
-                    <small class="text-danger"> {{$errors->first('area_value')}} </small>
-                    @endif
-                <br>{!! Form::label('area_countries', 'Country') !!}
-                <div>{!! Form::select('area_countries',['' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}
-                @if($errors->has('area_countries'))
-                    <small class="text-danger"> {{$errors->first('area_countries')}} </small>
-                @endif
-                 </div>
-                <hr>
-                <h1>Company information</h1>
-                <br>{!! Form::label('companyName', 'name') !!}
+                <br><br>
+                <div class="row px-2">
+                    <div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
+                    <p class="m-auto text-white"> Company Information </p>
+                    </div>
+                    
+                    <div class="col-12" style="border-bottom: 1px solid gray;">
+                    </div>
+                </div> 
+                <br>{!! Form::label('companyName', 'Companyn Name') !!}
                 <br>{!! Form::text('companyName',null,['class'=>'form-group'])!!}
                 @if($errors->has('companyName'))
                     <small class="text-danger"> {{$errors->first('companyName')}} </small>
                 @endif
-                <br>{!! Form::label('companyAddress', 'address') !!}
-                <br>{!! Form::text('companyAddress',null,['class'=>'form-group'])!!}
+                <div class="d-none" id="map"></div>
+                <br><br>{!! Form::label('companyAddress','Company Address') !!}
+                <br>{!! Form::text('companyAddress',null,['id' => 'pac-input', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
+                <input type="hidden" id="latitudeData" name="latitude" readonly>
+                <input type="hidden" id="lngData" name="longitude" readonly>
                 @if($errors->has('companyAddress'))
                     <small class="text-danger"> {{$errors->first('companyAddress')}} </small>
                 @endif
-                <br>{!! Form::label('companyDescription', 'description') !!}
+                <br>{!! Form::label('companyDescription', 'Company Background') !!}
                 <br>{!! Form::textarea('companyDescription',null,['class'=>'form-group'])!!}
                 @if($errors->has('companyDescription'))
                     <small class="text-danger"> {{$errors->first('companyDescription')}} </small>
                 @endif
-                <br>{!! Form::label('company_countries', 'Country') !!}
+                <br>{!! Form::label('company_countries', 'Company Country') !!}
                 <div>{!! Form::select('company_countries',['' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}
                 @if($errors->has('company_countries'))
                     <small class="text-danger"> {{$errors->first('company_countries')}} </small>
                 @endif
                 </div>
-                <h2>company area</h2>
-                <br>{!! Form::label('company_area_code', 'code') !!}
-                <br>{!! Form::text('company_area_code',null,['class'=>'form-group'])!!}
-                @if($errors->has('company_area_code'))
-                    <small class="text-danger"> {{$errors->first('company_area_code')}} </small>
-                @endif
-                <br>{!! Form::label('company_area_name', 'name') !!}
-                <br>{!! Form::text('company_area_name',null,['class'=>'form-group'])!!}
-                @if($errors->has('company_area_name'))
-                    <small class="text-danger"> {{$errors->first('company_area_name')}} </small>
-                @endif
-                <br>{!! Form::label('company_area_address', 'address') !!}
-                <br>{!! Form::text('company_area_address',null,['class'=>'form-group'])!!}
-                @if($errors->has('company_area_address'))
-                    <small class="text-danger"> {{$errors->first('company_area_address')}} </small>
-                @endif
-                <br>{!! Form::label('company_area_value', 'value') !!}
-                <br>{!! Form::text('company_area_value',null,['class'=>'form-group'])!!}
-                @if($errors->has('company_area_value'))
-                    <small class="text-danger"> {{$errors->first('company_area_value')}} </small>
-                @endif
-
-                <br>{!! Form::label('company_countries_area', 'Company Country') !!}
-                <div>{!! Form::select('company_countries_area',['' => 'Please Choose'] + $countries,null,['class'=>'selectClass']) !!}
-                @if($errors->has('company_countries_area'))
-                    <small class="text-danger"> {{$errors->first('company_countries_area')}} </small>
-                @endif
-            </div>
+             
                 <br>
                 <button type="submit" class="btn btn-sm btn-warning text-white mt-3" >Submit</button>
                 {!! Form::close() !!}  
@@ -156,18 +104,12 @@
     </div> 
             <!-- END FIRST PAGE -->
 </div>
-<script src="/js/unique/alumnus/mapForm.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtg-XSKJw7nLDyIan_k_FD2z8vdlIczvY&libraries=places&callback=mapofJonas" async defer></script>
-
 <script type="text/javascript">
     $(document).ready(function(){
         $(".startDate").datepicker({ 
             minDate: 0, 
             dateFormat: 'yy-mm-dd'
         });
-
-        mapofJonas();
     });   
 </script>
-
-@endsection
+@endsection 

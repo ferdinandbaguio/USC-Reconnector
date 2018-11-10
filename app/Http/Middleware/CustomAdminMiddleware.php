@@ -16,7 +16,7 @@ class CustomAdminMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check() && Auth::user()->userType == 'Admin') {
+        if (Auth::guard($guard)->check() && Auth::user()->userType == 'Admin' || Auth::user()->userType == 'Coordinator' || Auth::user()->userType == 'Chair') {
     
             return $next($request);
         }
