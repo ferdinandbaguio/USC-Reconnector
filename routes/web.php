@@ -165,16 +165,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/bulletin/store/filter', 'Admin\BulletinController@storeFilter')->name('StoreFilter');
         Route::get('/bulletin/delete/filter/{id}', 'Admin\BulletinController@destroyFilter')->name('DeleteFilter');
         // Tracking Controller
-        Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
-        Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
+        Route::get('/track/companies', 'Admin\TrackController@alumnicompany')->name('AlumniCompany');
+        // Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
+        // Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');
         Route::post('/track/load', 'Admin\TrackController@loadCountry')->name('LoadCountry');
         //Communication
         Route::get('/admin/chat', 'ContactsController@index')->name('Communication');
         Route::post('/admin/chat/store', 'ContactsController@store')->name('StoreChat');
-        // Route::get('/contacts', 'ContactsController@get');
-        // Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
-        // Route::post('/conversation/send', 'ContactsController@send');
         Route::get('/live_search/action', 'ContactsController@liveSearch')->name('live_search.action'); 
         Route::post('/store/recipient', 'ContactsController@add')->name('store.recipient'); 
         Route::post('/show/recipient', 'ContactsController@show')->name('show.recipient'); 
@@ -192,6 +190,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin
     Route::resource('registration', 'Admin\UserRegistrationController', 
+    ['only' => ['index', 'edit', 'update', 'destroy']]);
+    Route::resource('studentrequest', 'Admin\StudentRequestController', 
     ['only' => ['index', 'edit', 'update', 'destroy']]);
 
     Route::get('authenticate/passwords/changepassword/{id}', 'ChangePasswordController@showChangePass')->name('showchangepass');
