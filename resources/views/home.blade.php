@@ -67,7 +67,7 @@
       </div>
     </div>
     <a href="/imageView/{{$row->id}}" target="_blank">
-      <img src="/storage/post_img/{{$row->image}}" class="rounded" width="150px" style="max-height:100px;">
+      <img src="/storage/post_img/@if(isset($row->image)){{$row->image}}@endif" class="rounded" width="150px" style="max-height:100px;">
     </a>
   </div>
 </div>
