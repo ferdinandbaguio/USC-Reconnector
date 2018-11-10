@@ -1,9 +1,5 @@
 @extends('_layouts.app')
 
-@section('header')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/unique/alumnus/occupation.css') }}">
-@endsection
-
 @section('content')
 <div class="container-fluid p-0 mb-4">
     <div class="row">
@@ -13,9 +9,9 @@
                     <div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
                     <p class="m-auto text-white"> Occupation Form </p>
                     </div>
-                    <div class="col-3 col-md-5 py-2">
+                    {{-- <div class="col-3 col-md-5 py-2">
                         job occupation
-                    </div>
+                    </div> --}}
                     <div class="col-12" style="border-bottom: 1px solid gray;">
                     </div>
                 </div> 
@@ -66,12 +62,6 @@
                 <br>
                 </div>
                 <h2>Occupation area</h2>
-                <div class="d-none" id="map"></div>
-                {!! Form::label('occupationTitle', 'title') !!}
-                {!! Form::text('searchbox',null,['id' => 'pac-input', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
-                <input type="text" id="latitudeData" name="latitude" readonly>
-                <input type="text" id="lngData" name="longitude" readonly>
-
                 <br>{!! Form::label('area_code', 'code') !!}
                 <br>{!! Form::text('area_code',null,['class'=>'form-group'])!!}
                 @if($errors->has('area_code'))
@@ -156,18 +146,12 @@
     </div> 
             <!-- END FIRST PAGE -->
 </div>
-<script src="/js/unique/alumnus/mapForm.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtg-XSKJw7nLDyIan_k_FD2z8vdlIczvY&libraries=places&callback=mapofJonas" async defer></script>
-
 <script type="text/javascript">
     $(document).ready(function(){
         $(".startDate").datepicker({ 
             minDate: 0, 
             dateFormat: 'yy-mm-dd'
         });
-
-        mapofJonas();
     });   
 </script>
-
-@endsection
+@endsection 
