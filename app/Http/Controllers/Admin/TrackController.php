@@ -9,6 +9,7 @@ use App\Models\Company;
 use App\Models\Occupation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\GraduateTracerStudy;
 
 class TrackController extends Controller
 {
@@ -56,9 +57,40 @@ class TrackController extends Controller
         }
         return redirect()->back()->with('success', 'Countries had been Loaded');
     }
-    public function alumnicompany(Request $request)
+    public function alumnicompany()
     {
-        
+        $companies = Company::all();
+        $countries = Country::all();
+
+        return view('user.admin.tracking.alumnicompany')->with('companies', $companies)->with('countries', $countries);
+    }
+    public function storecompany(Request $request)
+    {
+        $comp['picture'] = '';
+        $comp['name'] = $request->name;
+        $comp['address'] = $request->address;
+        $comp['country_id'] = $request->country_id;
+        $comp['description'] = $request->description;
+
+        Company::create($comp);
+        return redirect()->back()->with('success', 'Company Created: Successful');
+    }
+    public function destroycompany(Request $request)
+    {
+        Company::destroy($request->id);
+        return redirect()->back()->with('success', 'Company Deleted: Successful');
+    }
+    public function alumnidata(Request $request)
+    {
+        $gts = GraduateTracerStudy::all();
+
+        return view('user.admin.tracking.alumnidata')->with('gts', $gts);
+    }
+    public function occupation(Request $request)
+    {
+        $companies = Companies::all();
+
+        return view('user.admin.tracking.alumnicompany')->with('companies', $companies);
     }
     // public function unitedstates()
     // {

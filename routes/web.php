@@ -166,6 +166,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/bulletin/delete/filter/{id}', 'Admin\BulletinController@destroyFilter')->name('DeleteFilter');
         // Tracking Controller
         Route::get('/track/companies', 'Admin\TrackController@alumnicompany')->name('AlumniCompany');
+        Route::post('/track/store/company', 'Admin\TrackController@storecompany')->name('StoreCompany');
+        Route::delete('/track/destroy/company', 'Admin\TrackController@destroycompany')->name('DeleteCompany');
+        Route::get('/track/alumni', 'Admin\TrackController@alumnidata')->name('AlumniData');
+        Route::get('/track/occupation', 'Admin\TrackController@occupation')->name('OccupationData');
         // Route::get('/track/nation', 'Admin\TrackController@nationwide')->name('ShowNation');
         // Route::get('/track/unitedstates', 'Admin\TrackController@unitedstates')->name('ShowUS');
         Route::get('/track/world', 'Admin\TrackController@worldwide')->name('ShowWorld');

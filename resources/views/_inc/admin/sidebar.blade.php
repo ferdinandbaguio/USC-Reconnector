@@ -90,6 +90,12 @@
                         <a href="{{route('AlumniCompany')}}">Companies</a>
                     </li>
                     {{-- <li>
+                        <a href="{{route('AlumniData')}}">Alumnus Graduate Tracer</a>
+                    </li>
+                    <li>
+                        <a href="{{route('OccupationData')}}">Occupations</a>
+                    </li> --}}
+                    {{-- <li>
                         <a href="{{route('ShowUS')}}">United States</a>
                     </li>
                     <li>
