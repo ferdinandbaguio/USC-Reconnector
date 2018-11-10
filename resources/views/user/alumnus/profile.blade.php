@@ -277,10 +277,10 @@
 <!-- Custom scripts  -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap"></script>
 <script src="/js/unique/alumnus/slideToggle.js"></script>
-<span id="loc1">@if(isset($recentJob->latitude)){!!$recentJob->latitude!!}@else
+<span id="loc1" class="d-none">@if(isset($recentJob->latitude)){!!$recentJob->latitude!!}@else
 10.3304499
 @endif</span>
-<span id="loc2">@if(isset($recentJob->longitude)){!!$recentJob->longitude!!}@else
+<span id="loc2" class="d-none">@if(isset($recentJob->longitude)){!!$recentJob->longitude!!}@else
 123.9073923
 @endif</span>
 <script>

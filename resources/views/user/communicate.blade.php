@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container" style="margin-top: 120px;">
     <div class="row justify-content-center">
         {{-- @if(isset($recipients))
             <div class="alert alert-secondary">

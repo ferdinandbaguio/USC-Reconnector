@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+@if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
 <div class="row mb-5 pb-4 shadowBox">
         <a href="{{route('occupation.form')}}" class="btn btn-danger">Update Job</a>
     <div class="row w-100 p-0 m-0">
@@ -12,8 +17,8 @@
             <div class="card">
             <img class="card-img-top mx-auto companyCardImg" src="/img/company_logo/globe.jpg" alt="Card image">
             <div class="card-body">
-            <h4 class="card-title">Globe Telecom</h4>
-            <p class="card-text">Location: <em> IT.Park Qualfon Building Telstra Pizza Resto Bar </em></p>
+            <h4 class="card-title">{{$latestJob->company->name}}</h4>
+            <p class="card-text">Location: <em> {{$latestJob->company->address}} </em></p>
             </div>
             </div>
         </div>
@@ -28,7 +33,7 @@
             <script>
             function initMap() {
                 // The location of San Carlos
-                var SanCarlosTalamban = {lat: 10.3304499, lng: 123.9073923};
+                var SanCarlosTalamban = {lat: $latestJob->latitude, lng: $latestJob->longitude};
                 // The map, centered at San Carlos
                 var map = new google.maps.Map(
                 document.getElementById('map'), {zoom: 17, center: SanCarlosTalamban});
@@ -47,31 +52,23 @@
         </div>
 
         <div class="col-md-12">
-        <h6> Company Name:</h6> <p class="fontRoboto">Globe Telecom</p>
+        <h6> Company Name:</h6> <p class="fontRoboto">{{$latestJob->company->name}}</p>
         </div>
-        <div class="col-md-12">
-        <h6> Industry:</h6> <p class="fontRoboto">Marketing</p>
-        </div>
+
         <div class="col-12">
-        <h6> Address:</h6>
+        <h6> Address:</h6> <p class="fontRoboto">{{$latestJob->company->address}}</p>
         </div>
+
         <div class="col-12">
-        <p class="fontRoboto">IT.Park Qualfon Building Telstra Pizza Resto Bar</p>
+        <h6> Description:</h6> <p class="fontRoboto">{{$latestJob->company->description}}</p>
         </div>
+
         <div class="col-12">
-        <h6> Description:</h6>
-        </div>
-        <div class="col-12">
-        <p class="fontRoboto">This company is full of workers. This company started in 1982 and got bankrupt after 48 years and then that's what happened. But now we are the best company in colon.</p>
-        </div>
-        <div class="col-12">
-        <h6> Services Offered:</h6>
+        <h6> </h6>
         </div>
         <div class="col-12">
         <ul>
-        <li class="fontRoboto"> Free Food </li>
-        <li class="fontRoboto"> Break Time </li>
-        <li class="fontRoboto"> Increased Salary </li>
+       
         </ul>
         </div>
     </div>
@@ -81,16 +78,14 @@
         <h5 class="fontRoboto"><i class="fas fa-building"></i> Job Information </h5>
         </div>
         <div class="col-12">
-            <h6> Job Title:</h6> <p class="fontRoboto">Secretary of the CEO</p>
+            <h6> Job Title:</h6> <p class="fontRoboto">{{$latestJob->title}}</p>
+        </div>
+
+        <div class="col-12">
+            <h6> Salary:</h6><p class="fontRoboto">{{$latestJob->salaryRangeOne}} ~ {{$latestJob->salaryRangeTwo}}</p>
         </div>
         <div class="col-12">
-            <h6> Job Description:</h6> <p class="fontRoboto">I keep the files of our boss. I call our boss when there are meetings.</p>
-        </div>
-        <div class="col-12">
-            <h6> Salary:</h6> <p class="fontRoboto">15,000 - 20,000</p>
-        </div>
-        <div class="col-12">
-            <h6> Date Employed:</h6> <p class="fontRoboto">February 31, 1973</p>
+            <h6> Date Employed:</h6> <p class="fontRoboto">{{date('M d Y', strtotime($latestJob->jobStart))}}</p>
         </div>
         <!-- JOB INFORMATION END -->
     </div>
@@ -113,9 +108,9 @@
         @foreach($jobs as $row)
             <tr>
             <th scope="row">{{$row->id}}</th>
-                <td>{{$row->name_of_company}}</td>
-                <td>{{$row->highest_educational_attainment}}</td>
-                <td>{{$row->created_at->format('M d Y g:i A')}}</td>
+                <td>{{$row->company->name}}</td>
+                <td>{{$row->title}}</td>
+                <td>{{date('M d Y', strtotime($row->jobStart))}}</td>
                 <td><a href="{{ url('alumnus/form/'.$row->id.'/edit') }}">Edit</a></td>
             </tr>
         @endforeach

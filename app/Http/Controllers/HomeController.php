@@ -26,7 +26,7 @@ class HomeController extends Controller
 
 
     public function imageView($id){
-        $image = JobPost::where('id', $id)->value('image');
+        $image = Announcement::where('id', $id)->value('image');
 
         return view('imgView')->with('image',$image);
     }

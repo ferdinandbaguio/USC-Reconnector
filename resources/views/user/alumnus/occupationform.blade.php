@@ -1,10 +1,12 @@
 @extends('_layouts.app')
-
+@section('header')	
+<link rel="stylesheet" type="text/css" href="{{ asset('css/unique/alumnus/occupation.css') }}">	
+@endsection
 @section('content')
 <div class="container-fluid p-0 mb-4">
     <div class="row">
             <!-- FIRST PAGE -->
-            <div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="1">
+            <div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="1" style="margin-top: 120px;">
                 <div class="row px-2">
                     <div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
                     <p class="m-auto text-white"> Job Information </p>
@@ -21,7 +23,7 @@
                 @endif
 
                 <hr>
-                {{-- @json($errors->all())  --}}
+                @json($errors->all())
                     {!! Form::label('occupationTitle', 'Job Name') !!}
                 <br>{!! Form::text('occupationTitle',null,null,['class'=>'form-group'])!!}
                     @if($errors->has('occupationTitle'))
@@ -30,8 +32,8 @@
                 <div class="d-none" id="map"></div>
                 <br><br>{!! Form::label('occupationAddress','Job Address') !!}
                 <br>{!! Form::text('occupationAddress',null,['id' => 'pac-input', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
-                <input type="hidden" id="latitudeData" name="latitude" readonly>
-                <input type="hidden" id="lngData" name="longitude" readonly>
+                <input type="text" id="latitudeData" name="latitude" readonly>
+                <input type="text" id="lngData" name="longitude" readonly>
                 @if($errors->has('occupationAddress'))
                 <small class="text-danger"> {{$errors->first('occupationAddress')}} </small>
                 @endif
@@ -79,9 +81,10 @@
                 @endif
                 <div class="d-none" id="map"></div>
                 <br><br>{!! Form::label('companyAddress','Company Address') !!}
-                <br>{!! Form::text('companyAddress',null,['id' => 'pac-input', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
-                <input type="hidden" id="latitudeData" name="latitude" readonly>
-                <input type="hidden" id="lngData" name="longitude" readonly>
+                <br>{!! Form::text('companyAddress',null,['id' => 'pac-input-2', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
+                <input type="text" id="latitudeData-2" name="latitude2" readonly>
+                <input type="text" id="lngData-2" name="longitude2" readonly>
+
                 @if($errors->has('companyAddress'))
                     <small class="text-danger"> {{$errors->first('companyAddress')}} </small>
                 @endif
@@ -104,12 +107,16 @@
     </div> 
             <!-- END FIRST PAGE -->
 </div>
+<script src="/js/unique/alumnus/mapForm.js"></script>	
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtg-XSKJw7nLDyIan_k_FD2z8vdlIczvY&libraries=places&callback=mapofJonas" async defer></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $(".startDate").datepicker({ 
             minDate: 0, 
             dateFormat: 'yy-mm-dd'
         });
+        mapofJonas()
+        mapofBryle()
     });   
 </script>
 @endsection 

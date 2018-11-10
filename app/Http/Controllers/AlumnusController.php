@@ -23,8 +23,9 @@ class AlumnusController extends Controller
 
     public function alumnusJobs()
     {
-        $jobs = GraduateTracerStudy::all();
-        return view('user.alumnus.jobs', compact('jobs')); 
+        $jobs = Occupation::where('alumni_id',Auth::user()->id)->get();
+        $latestJob = Occupation::orderBy('created_at', 'desc')->first();
+        return view('user.alumnus.jobs', compact('jobs','latestJob')); 
     }
 
     public function alumnusCommunicate()
