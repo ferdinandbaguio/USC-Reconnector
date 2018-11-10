@@ -25,6 +25,9 @@
                     <li>
                         <a href="/registration">Registration</a>
                     </li>
+                    <li>
+                        <a href="/studentrequest">Student Requests</a>
+                    </li>
                 </ul>
             </li>
             {{-- Users --}}
@@ -82,6 +85,9 @@
                 <ul class="nav-2-level collapse">
                     <li>
                         <a href="{{route('ShowWorld')}}">Worldwide</a>
+                    </li>
+                    <li>
+                        <a href="{{route('AlumniCompany')}}">Companies</a>
                     </li>
                     {{-- <li>
                         <a href="{{route('ShowUS')}}">United States</a>

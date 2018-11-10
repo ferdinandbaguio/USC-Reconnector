@@ -56,12 +56,16 @@ class TrackController extends Controller
         }
         return redirect()->back()->with('success', 'Countries had been Loaded');
     }
-    public function unitedstates()
+    public function alumnicompany(Request $request)
     {
-        return view('user.admin.tracking.unitedstates');
+        
     }
-    public function nationwide()
-    {       
-        return view('user.admin.tracking.nationwide');
-    }
+    // public function unitedstates()
+    // {
+    //     return view('user.admin.tracking.unitedstates');
+    // }
+    // public function nationwide()
+    // {       
+    //     return view('user.admin.tracking.nationwide');
+    // }
 }
