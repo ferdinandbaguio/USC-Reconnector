@@ -18,7 +18,12 @@ class OccupationController extends Controller
      */
     public function index()
     {
-        //
+        $form = new Occupation;
+        
+        $countries = Country::orderBy('name','asc')->pluck('name', 'id')->all();
+        $data =compact('form','countries');
+
+        return view('user.alumnus.occupationform',$data);
     }
 
     /**
@@ -28,10 +33,7 @@ class OccupationController extends Controller
      */
     public function create()
     {
-        $form = new Occupation;
-        $countries = Country::orderBy('name','asc')->pluck('name', 'id')->all();
-  
-        return view('user.alumnus.occupationform',compact('form','countries'));
+
     }
 
     /**
@@ -103,7 +105,7 @@ class OccupationController extends Controller
             'company_id' => $company->id,
             'alumni_id' => Auth::user()->id
         ]);
-        return view('user.alumnus.occupationform')->with('success','Update Successful Thank You!');
+        return redirect()->back()->with('success','Update Successful Thank You!');
     }
 
     /**
