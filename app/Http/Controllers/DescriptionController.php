@@ -41,7 +41,7 @@ class DescriptionController extends Controller
     
         $user->update($request);
     
-        return redirect()->back();
+        return redirect()->back()->with('success','You have updated your description');
     }
 
 }

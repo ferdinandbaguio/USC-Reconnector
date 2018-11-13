@@ -18,7 +18,7 @@
     <style type="text/css">
       @font-face {font-family: 'Roboto';src: url('{{ asset('css/font/Roboto/Roboto-Light.ttf')}}');}
     </style>
-    
+    <script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS, then Customized JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   
@@ -265,6 +265,8 @@
 
           @include('authenticate.login')        
           @include('authenticate.register')  
+
+  
 
   </body>
   </html>

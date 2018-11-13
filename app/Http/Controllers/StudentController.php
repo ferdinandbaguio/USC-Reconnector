@@ -90,7 +90,7 @@ class StudentController extends Controller
     {
         User_Skill::find($id)->delete();
 
-        return redirect()->back();   
+        return redirect()->back()->with('deletedSkill', 'Skill deleted');   
     }
 
     public function destroyAchv($id)

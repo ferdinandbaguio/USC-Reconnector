@@ -50,6 +50,15 @@
 		          </div>
 		        </div>
 		    	@endif
+		    	@if(session('success'))
+		    	<div class="row">
+			    	<div class="col">
+					    <div class="alert alert-success">
+					    {{session('success')}}
+						</div>
+					</div>
+				</div>
+				@endif
 				<div class="editDescHolder">
 				<a href="#descModal" data-toggle="modal" class="editDescBtn"> Edit <i class="far fa-edit"></i> </a>
 				</div>
@@ -86,7 +95,24 @@
           </div>
         </div>
     	@endif
-
+    	@if(session('successSkill'))
+		    	<div class="row mt-2">
+			    	<div class="col">
+					    <div class="alert alert-success">
+					    {{session('successSkill')}}
+						</div>
+					</div>
+				</div>
+		@endif
+		@if(session('deletedSkill'))
+		    	<div class="row mt-2">
+			    	<div class="col">
+					    <div class="alert alert-danger">
+					    {{session('deletedSkill')}}
+						</div>
+					</div>
+				</div>
+		@endif
 
 		<div class="row mt-5">
 			<div class="col-md-5">
@@ -135,7 +161,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	        <button type="submit" value="submit" name="updateDesc" class="btn btn-secondary">
+	        <button type="submit" value="submit" name="updateDesc" class="btn btn-secondary" onclick="return confirm('Are you sure you want to update your description?')">
 				<i class="fas fa-sort-amount-up"></i> Update Description
 			</button>
 			{!! Form::close() !!}			

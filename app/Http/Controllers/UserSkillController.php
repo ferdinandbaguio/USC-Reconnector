@@ -36,7 +36,7 @@ class UserSkillController extends Controller
 
         User_Skill::create($data);
 
-        return redirect()->back();
+        return redirect()->back()->with('successSkill','Success adding a skill');
     }
 
     public function edit($id)
