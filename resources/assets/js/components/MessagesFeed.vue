@@ -3,7 +3,7 @@
         <ul v-if="contact">
             <li v-for="message in messages" :class="`message${message.from_id == user.id ? ' sent' : ' received'}`" :key="message.id">
                 <div class="text">
-                    {{ message.message }}
+                    {{ message.message }} 
                 </div><br>
                 <small>{{ message.name }}</small>
             </li>

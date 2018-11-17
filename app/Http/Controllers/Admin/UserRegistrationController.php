@@ -34,8 +34,8 @@ class UserRegistrationController extends Controller
 
             return redirect()->back()->with('success', 'Edited User '.$request->id.': Successful!');
         }
-        $user = User::findOrFail($request->id)->update(['userStatus' => $request->action]);
-        return redirect()->back()->with('success', 'User #'.$request->id.' '.$request->action.': Successful!');
+        User::findOrFail($request->id)->update(['userStatus' => $request->action]);
+        return redirect()->back()->with('success', 'Edited User : Successful!');
     }
 
     public function destroy(Request $request)

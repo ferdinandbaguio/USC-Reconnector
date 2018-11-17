@@ -64,35 +64,28 @@ User Registration
                 <td>{{ $user->email }}</td>
                 {{-- OPTIONS --}}
                 <td>
-                    {!! Form::open(['route' => ['registration.update','Changing'], 'method' => 'PATCH', 
-                                    'style' => 'display:inline-block;']) !!}
-                    @csrf
-                    {{ Form::hidden('id', $user->id) }}
-                    
                     @if($users[0]->userStatus == 'Denied')
-                        {{-- Pending Request --}}
-                        <button type="submit" name="action" value="Pending"
-                            class="btn btn-warning btn-xs" data-toggle="tooltip" data-original-title="Pending">
-
-                            <i class="ti-minus"></i>
-                        </button>
+                        {{-- Pending --}}
+                        <span data-toggle="modal" data-target="#pend" data-id="{{ $user->id }}">
+                            <button class="btn btn-warning btn-xs" data-toggle="tooltip" data-original-title="Approve">   
+                                <i class="ti-minus"></i>                              
+                            </button>
+                        </span>
                     @else
-                        {{-- Approve Request --}}
-                        <button type="submit" name="action" value="Approved"
-                            class="btn btn-success btn-xs" data-toggle="tooltip" data-original-title="Approve">
+                        {{-- Approve --}}
+                        <span data-toggle="modal" data-target="#approve" data-id="{{ $user->id }}">
+                            <button class="btn btn-success btn-xs" data-toggle="tooltip" data-original-title="Approve">   
+                                <i class="ti-check"></i>                              
+                            </button>
+                        </span>
 
-                            <i class="ti-check"></i>
-                        </button>
-
-                        {{-- Deny Request --}}
-                        <button type="submit" name="action" value="Denied"
-                            class="btn btn-muted btn-xs" data-toggle="tooltip" data-original-title="Deny">
-                            
-                            <i class="ti-close"></i>                                
-                        </button>
+                        {{-- Deny --}}
+                        <span data-toggle="modal" data-target="#deny" data-id="{{ $user->id }}">
+                            <button class="btn btn-muted btn-xs" data-toggle="tooltip" data-original-title="Deny">   
+                                <i class="ti-close"></i>                              
+                            </button>
+                        </span>
                     @endif
-
-                    {!! Form::close() !!}
 
                     {{-- Edit Request --}}
                     <span   data-toggle="modal"                 data-target="#edit-request"           
@@ -106,7 +99,7 @@ User Registration
                         </button>
                     </span>
 
-                    {{-- Delete Request --}}
+                    {{-- Delete --}}
                     <span data-toggle="modal" data-target="#delete" data-id="{{ $user->id }}">
                         <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Delete">   
                             <i class="ti-trash"></i>                              
@@ -128,7 +121,7 @@ User Registration
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Editing User Request #<span id='id'></span></h4>
+        <h4 class="modal-title" id="myModalLabel">Editing User Request</span></h4>
     </div>
     {!! Form::open(['route' => ['registration.update','Updating'], 'method' => 'PATCH', 
                     'style' => 'display:inline-block;']) !!}
@@ -153,7 +146,7 @@ User Registration
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation #<span id='id'></span></h4>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</span></h4>
     </div>
     {!! Form::open(['route' => ['registration.destroy','Destroying'], 'method' => 'DELETE', 
                     'style' => 'display:inline-block;']) !!}
@@ -165,13 +158,101 @@ User Registration
         {{ Form::hidden('id', '', array('id' => 'id')) }}
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">No, Cancel</button>
-        {{Form::submit('Yes, Delete', ['class' => 'btn btn-warning'])}}
+        <button type="button" class="btn btn-mute" data-dismiss="modal">No, Cancel</button>
+        {{Form::submit('Yes, Delete', ['class' => 'btn btn-danger'])}}
     </div>
     {!! Form::close() !!}
 </div>
 </div>
 </div>
+
+<!-- Approve Modal -->
+<div class="modal modal-danger fade" id="approve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center" id="myModalLabel">Approve Confirmation</span></h4>
+    </div>
+    {!! Form::open(['route' => ['registration.update','updating'], 'method' => 'PATCH', 
+                    'style' => 'display:inline-block;']) !!}
+    @csrf
+    <div class="modal-body">
+        <p class="text-center">
+            Are you sure you want to approve this?
+        </p>
+        {{ Form::hidden('id', '', array('id' => 'id')) }}
+        {{ Form::hidden('action', 'Approved') }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-mute" data-dismiss="modal">No, Cancel</button>
+        {{Form::submit('Yes, Approve', ['class' => 'btn btn-success'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+<!-- Pend Modal -->
+<div class="modal modal-danger fade" id="pend" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center" id="myModalLabel">Pend Confirmation</span></h4>
+    </div>
+    {!! Form::open(['route' => ['registration.update','updating'], 'method' => 'PATCH', 
+                    'style' => 'display:inline-block;']) !!}
+    @csrf
+    <div class="modal-body">
+        <p class="text-center">
+            Are you sure you want to pend this?
+        </p>
+        {{ Form::hidden('id', '', array('id' => 'id')) }}
+        {{ Form::hidden('action', 'Pending') }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-mute" data-dismiss="modal">No, Cancel</button>
+        {{Form::submit('Yes, Pend it', ['class' => 'btn btn-warning'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
+<!-- Deny Modal -->
+<div class="modal modal-danger fade" id="deny" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center" id="myModalLabel">Deny Confirmation</span></h4>
+    </div>
+    {!! Form::open(['route' => ['registration.update','updating'], 'method' => 'PATCH', 
+                    'style' => 'display:inline-block;']) !!}
+    @csrf
+    <div class="modal-body">
+        <p class="text-center">
+            Are you sure you want to deny this?
+        </p>
+        {{ Form::hidden('id', '', array('id' => 'id')) }}
+        {{ Form::hidden('action', 'Denied') }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-mute" data-dismiss="modal">No, Cancel</button>
+        {{Form::submit('Yes, Deny', ['class' => 'btn btn-danger'])}}
+    </div>
+    {!! Form::close() !!}
+</div>
+</div>
+</div>
+
 
 @endsection
 

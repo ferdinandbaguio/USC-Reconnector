@@ -173,6 +173,30 @@ $('#delete').on('show.bs.modal', function(event){
     modal.find('.modal-body #id').val(id);
 })
 
+$('#approve').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget)
+    var id = button.data('id')
+    var modal = $(this)
+
+    modal.find('.modal-body #id').val(id);
+})
+
+$('#pend').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget)
+    var id = button.data('id')
+    var modal = $(this)
+
+    modal.find('.modal-body #id').val(id);
+})
+
+$('#deny').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget)
+    var id = button.data('id')
+    var modal = $(this)
+
+    modal.find('.modal-body #id').val(id);
+})
+
 $(function() {
     $('#example-table').DataTable({
         pageLength: 10, 
