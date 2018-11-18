@@ -69,7 +69,7 @@
 				</p>											
 								
 				<div class="progress">
-				  <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="{{$row->skillPercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$row->skillPercent}}%"> {{$row->skillPercent}}% </div>
+				  <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" aria-valuenow="{{$row->skillPercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$row->skillPercent}}%"> {{$row->skillPercent}}% </div>
 				</div>
 			</div>
 		@endforeach
@@ -153,11 +153,21 @@
 	      <div class="modal-body mt-4">
 	        <form method="POST" action="{{route('student.skill.add')}}" id="addSkillForm">
 	        	{{csrf_field()}}
-	        	<div class="form-group">
-	        		<label><i class="fas fa-football-ball" style="color: #3CAEC1"></i> Title of Skill</label>
-	        		<input type="text" name="skillName" class="form-control" placeholder="Skill Title" onkeyup="valCheck()" required>
+	        	<label><i class="fas fa-football-ball" style="color: #3CAEC1"></i> Title of Skill</label>
+	        	<div>        		
+	        		<input type="radio" name="skillName" value="PHP" required> PHP
 	        	</div>
-	        	<div class="form-group">
+	        	<div>        		
+	        		<input type="radio" name="skillName" value="JavaScript" required> JavaScript
+	        	</div>
+	        	<div>        		
+	        		<input type="radio" name="skillName" value="CSS" required> CSS
+	        	</div>
+	        	<div>        		
+	        		<input type="radio" name="skillName" value="Wordpress" required> Wordpress
+	        	</div>
+
+	        	<div class="form-group mt-3">
 	        		<label>Rate your skill</label>
 	        		<center><output id="rangeValue">50</output>%</center>
 	        		<input type="range" name="skillPercent" min="1" max="100" id="range" value="50" oninput="rangeValue.value = range.value" required>	        	

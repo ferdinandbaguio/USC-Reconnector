@@ -13,18 +13,12 @@ $(document).ready(function(){
 
     // FOR ADD SKILL
     // VALUE CHECKER IF INPUTS IS NULL, SUBMIT BUTTON DISABLER
-	$("#addSkillForm :input").each(function(){
-		var input = $(this); 
-
-		$(input).keyup(function(){
-			if(input.val() == 0){
-				$('#addSkillBtnF').prop("disabled", true);
-			}
-			else{
-				$('#addSkillBtnF').prop("disabled", false);
-			}
-		});
-	});
+	$('input:radio[name="skillName"]').change(
+    function(){
+        if ($(this).is(':checked') && $(this).val() != '') {
+            $('#addSkillBtnF').prop("disabled", false);
+        }
+    });
 	
 	$('#addSkillBtnF').prop("disabled", true);
 
