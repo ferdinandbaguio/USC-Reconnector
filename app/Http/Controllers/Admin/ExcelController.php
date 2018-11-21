@@ -32,4 +32,14 @@ class ExcelController extends Controller
         (new UsersImport)->import($request->uploaded_file);
         return redirect()->route('BulkRegistration');
     }
+
+    public function Undo()
+    {
+        $first = User::orderBy('created_at', 'desc')->first();
+        $new_users = User::where('created_at', '=', $first->created_at)->get();
+        for($i = 0; $i < count($new_users); $i++){
+            User::destroy($new_users[$i]->id);
+        }
+        return view('user.admin.requests.bulkregistration');
+    }
 }

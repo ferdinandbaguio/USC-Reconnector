@@ -120,6 +120,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/bulk/registration', 'Admin\ExcelController@index')->name('BulkRegistration');
         Route::get('/bulk/export', 'Admin\ExcelController@ExportUsers')->name('BulkExport');
         Route::post('/bulk/import', 'Admin\ExcelController@ImportUsers')->name('BulkImport');
+        Route::get('/bulk/undo', 'Admin\ExcelController@Undo')->name('BulkUndo');
         // User Controller
         Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
         Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
