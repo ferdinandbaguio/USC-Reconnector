@@ -28,6 +28,9 @@
                     <li>
                         <a href="/studentrequest">Student Requests</a>
                     </li>
+                    <li>
+                        <a href="/bulk/registration">Bulk Registration</a>
+                    </li>
                 </ul>
             </li>
             {{-- Users --}}

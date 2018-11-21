@@ -116,8 +116,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'admin'], function () { 
         // Admin Index
         Route::view('/admin', 'user.admin.index')->name('admins');
-        // Requests Controller
-        Route::get('/student/requests', 'Admin\StudentRequestController@index')->name('ShowStudentRequest');
+        // Request Controller
+        Route::get('/bulk/registration', 'Admin\ExcelController@index')->name('BulkRegistration');
+        Route::get('/bulk/export', 'Admin\ExcelController@ExportUsers')->name('BulkExport');
+        Route::post('/bulk/import', 'Admin\ExcelController@ImportUsers')->name('BulkImport');
         // User Controller
         Route::get('/user/students', 'Admin\UserController@students')->name('ShowStudents');
         Route::get('/user/alumni', 'Admin\UserController@alumni')->name('ShowAlumni');
@@ -186,11 +188,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/conversation/send', 'ContactsController@send');
 
 // Resources ==============================================================
-
-    //Student
-
-
-    // Teacher
 
     // Admin
     Route::resource('registration', 'Admin\UserRegistrationController', 
