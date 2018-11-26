@@ -7,6 +7,11 @@
     <div class="row">
             <!-- FIRST PAGE -->
             <div class="col-12 col-md-6 p-4 mx-auto bg-light rounded formPage" page="1" style="margin-top: 120px;">
+                @if(session('success'))
+                <div class="alert alert-success">
+                     {{session('success')}}
+                </div>
+              @endif
                 <div class="row px-2">
                     <div class="col-9 col-md-7 py-2 rounded-top" style="background-color:#0A5492;">
                     <p class="m-auto text-white"> Job Information </p>
@@ -15,13 +20,15 @@
                     <div class="col-12" style="border-bottom: 1px solid gray;">
                     </div>
                 </div> 
+                
+
                 <!-- FORM START -->
                 @if($form->id)
                 {!! Form::model($form, ['route' => ['alumnus.form.update', $form->id], 'method' => 'patch']) !!}
                 @else 
                 {!! Form::open(['url' => route('occupation.store')]) !!}
                 @endif
-
+               
                 <hr>
                 @json($errors->all())
                     {!! Form::label('occupationTitle', 'Job Name') !!}
@@ -116,7 +123,7 @@
             dateFormat: 'yy-mm-dd'
         });
         mapofJonas()
-        mapofBryle()
+
     });   
 </script>
 @endsection 

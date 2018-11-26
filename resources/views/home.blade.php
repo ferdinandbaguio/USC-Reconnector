@@ -8,7 +8,7 @@
 <div class="row mb-3 d-md-none">
   @if(Auth::user()->userType == "Teacher" || Auth::user()->userType == "Alumnus")
   <div class="col-md-12">
-    <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
+    <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Opening</button>
   </div>
   @endif
 </div>
@@ -142,7 +142,12 @@
           <label>Job Description:</label>
           <textarea class="form-control" name="description">{{$row->description}}</textarea>
           <label>Salary Range:</label>
-          <input type="text" class="form-control" value="{{$row->salaryRange}}" name="salaryRange"> 
+          <select class="form-control" name="salaryRange">
+                      <option value="5,000 - 10,000" @php if($row->salaryRange=='5000 - 10000'){ echo 'selected';} @endphp >5,000 - 10,000</option>
+                      <option value="10,000 - 15,000" @php if($row->salaryRange=='10000 - 15000'){ echo 'selected';} @endphp >10,000 - 15,000</option>
+                      <option value="15,000 - 20,000" @php if($row->salaryRange=='15,000 - 20,000'){ echo 'selected';} @endphp >15,000 - 20,000</option>
+                      <option value="20,000 and above" @php if($row->salaryRange=='20,000 and above'){ echo 'selected';} @endphp >20,000 and above</option>
+                    </select> 
           <label>Contact:</label>
           <input type="text" class="form-control" value="{{$row->contactNo}}" name="contactNo"> 
           <label>Email:</label>
@@ -177,7 +182,7 @@
     <div class="row d-none d-md-block">
       @if(Auth::user()->userType == "Teacher" || Auth::user()->userType == "Alumnus")
       <div class="col-md-12">
-        <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Offer</button>
+        <button type="button" class="addJobBtn w-100 p-2" data-toggle="modal" data-target="#jobOfferModal"> <i class="fas fa-plus"></i> Add a Job Opening</button>
       </div>
       @endif
     </div>
@@ -218,19 +223,24 @@
                     @csrf
                     <div class="form-group">
                     <label class="col-form-label"> Company: </label>
-                    <input type="text" class="form-control" placeholder="Company" name="companyName"> 
+                    <input type="text" class="form-control" placeholder="Company" name="companyName" required> 
                     <label class="col-form-label"> Address: </label>
-                    <input type="text" class="form-control" placeholder="Address" name="address">
+                    <input type="text" class="form-control" placeholder="Address" name="address" required>
                     <label class="col-form-label"> Job Title: </label>
-                    <input type="text" class="form-control" placeholder="Job Title" name="jobTitle">
+                    <input type="text" class="form-control" placeholder="Job Title" name="jobTitle" required>
                     <label class="col-form-label"> Job Description: </label>
-                    <textarea class="form-control" placeholder="Type description here..." name="description"></textarea>
+                    <textarea class="form-control" placeholder="Type description here..." name="description" required></textarea>
                     <label class="col-form-label"> Salary Range: </label>
-                    <input type="text" class="form-control" placeholder="Salary Range" name="salaryRange">
+                    <select class="form-control" name="salaryRange">
+                      <option value="5000 - 10000" selected>5,000 - 10,000</option>
+                      <option value="10000 - 15000">10,000 - 15,000</option>
+                      <option value="15,000 - 20,000">15,000 - 20,000</option>
+                      <option value="20,000 and above">20,000 and above</option>
+                    </select>
                     <label class="col-form-label"> Contact: </label>
-                    <input type="text" class="form-control" placeholder="+639 000 0000" name="contactNo">
+                    <input type="number" class="form-control" placeholder="0922 9996 999" name="contactNo" required>
                     <label class="col-form-label"> Email: </label>
-                    <input type="text" class="form-control" placeholder="example@gmail.com" name="email">
+                    <input type="email" class="form-control" placeholder="example@gmail.com" name="email" required>
                     <!-- <label class="col-form-label"> Upload Pictures (Optional): </label>
                     <input type="file" class="form-control fontRoboto" multiple name="image"> -->
                     </div>

@@ -85,7 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/alumnus/chat', 'ContactsController@user')->name('AlumnusCommunicate');
         Route::post('/alumnus/recipient', 'ContactsController@show')->name('alumnus.recipient'); 
 
-        Route::get('alumnus/occupation','OccupationController@create')->name('occupation.form');
+        Route::get('alumnus/occupation','OccupationController@index')->name('occupation.form');
         Route::post('alumnus/occupation','OccupationController@store')->name('occupation.store');
 
     });
