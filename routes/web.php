@@ -118,6 +118,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::view('/admin', 'user.admin.index')->name('admins');
         // Request Controller
         Route::get('/bulk/registration', 'Admin\ExcelController@index')->name('BulkRegistration');
+        Route::get('/bulk/download', 'Admin\ExcelController@download')->name('BulkRegistrationDownload');
         Route::get('/bulk/export', 'Admin\ExcelController@ExportUsers')->name('BulkExport');
         Route::post('/bulk/import', 'Admin\ExcelController@ImportUsers')->name('BulkImport');
         Route::get('/bulk/undo', 'Admin\ExcelController@Undo')->name('BulkUndo');
@@ -184,6 +185,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/store/recipient', 'ContactsController@add')->name('store.recipient'); 
         Route::post('/show/recipient', 'ContactsController@show')->name('show.recipient'); 
     });
+    
     Route::get('/contacts', 'ContactsController@get');
     Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
     Route::post('/conversation/send', 'ContactsController@send');

@@ -10,6 +10,12 @@
 
 Bulk Registration
 
+<div class="pull-right" data-toggle="tooltip" data-original-title="Download Bulk Registration Template">
+    <a href="{{ route('BulkRegistrationDownload') }}" class="btn btn-primary" >
+        Download <i class="ti-download"></i>
+    </a>
+</div>
+
 @endsection
 
 @section('content')
@@ -23,7 +29,7 @@ Bulk Registration
             {!! Form::open(['route' => 'BulkImport', 'method' => 'POST', 'style' => 'display:inline-block','files' => TRUE]) !!}
                 @csrf
                 <label>Bulk Register: </label>
-                <input type="file" name="uploaded_file" />
+                <input type="file" name="uploaded_file" required />
                 <button type="submit" value="Upload" class="btn btn-info" data-toggle="tooltip" data-original-title="Upload an the Excel FIle">
                     Upload <i class="ti-upload"></i>
                 </button>    

@@ -8,6 +8,7 @@ use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Response;
 
 class ExcelController extends Controller
 {
@@ -16,6 +17,13 @@ class ExcelController extends Controller
         $first = User::orderBy('created_at', 'desc')->first();
         $new_users = User::where('created_at', '=', $first->created_at)->get();
         return view('user.admin.requests.bulkregistration')->with('users', $new_users);
+    }
+
+    public function download()
+    {
+        $file = public_path()."/storage/BulkRegistrationTemplate.xlsx";
+        $header = ['Content-Type: application/xlsx'];
+        return Response::download($file, "BulkRegistrationTemplate.xlsx", $header);
     }
 
     // Exports the data into an excel file

@@ -8,10 +8,10 @@
 
 @section('title')
 
-Posts 
+Announcement 
 <a href="{{route('CreatePost')}}">
     <button class="btn btn-primary pull-right" data-toggle="tooltip" data-original-title="Create A New Post">
-        Add Post <i class="ti-plus"></i>                            
+        Add Announcement <i class="ti-plus"></i>                            
     </button>
 </a>
 
@@ -21,10 +21,10 @@ Posts
 
 <div class="row">
     <div class="col-sm-8">
-        <h5><i>All Posts</i></h5>
+        <h5><i>All Announcements</i></h5>
     </div>
     <div class="col-sm-4">
-        <h5><i>Post Cards</i></h5>
+        <h5><i>Announcement Cards</i></h5>
     </div>
 </div>
 <br>
@@ -41,7 +41,7 @@ Posts
                         @else
                             <div class="carousel-item">
                         @endif
-                                <img class="d-block w-100 blur-image" src="/storage/post_img/{{ $posts[$i]->image }}" alt="Post">
+                                <img class="d-block w-100 blur-image" src="/storage/post_img/background.png" alt="Post">
                                 <div class="carousel-caption d-none d-md-block" id="carousel-layer">
                                     <h3>
                                         {{ $posts[$i]->title }}

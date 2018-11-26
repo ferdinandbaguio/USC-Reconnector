@@ -52,7 +52,7 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
             '*.last_name'       => 'required|alpha',
             '*.first_name'      => 'required|alpha',
             '*.middle_name'     => 'nullable|alpha',
-            '*.email_address'   => 'required|email',
+            '*.email_address'   => 'required|unique:users,email|email',
             '*.year_level'      => 'required|numeric|min:1|max:5',
             '*.gender'          => ['required', Rule::in(['Male', 'Female'])],
         ];
