@@ -267,7 +267,7 @@
 
 </div>
 <!-- NEW -->
-
+@if(Auth::user()->updateStatus == null||Auth::user()->updateStatus == 'Outdated')
 <div class="container-fluid warningAlumnus">
   <div class="container fontRoboto">
     <div class="row">
@@ -281,7 +281,7 @@
       </div>
     </div>
 </div>
-
+@endif
 <i id="loc1" class="d-none">@if(isset($recentJob->latitude)){!!$recentJob->latitude!!}
 @endif</i>
 <i id="loc2" class="d-none">@if(isset($recentJob->longitude)){!!$recentJob->longitude!!}
