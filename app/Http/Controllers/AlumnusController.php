@@ -17,7 +17,7 @@ class AlumnusController extends Controller
         $skills = User_Skill::where('user_id',Auth::user()->id)->get();
         $recentJob = Occupation::where('alumni_id',Auth::user()->id)->orderBy('id','desc')->first();
         $allJob = Occupation::orderBy('id','desc')->get();
-
+        
         return view('user.alumnus.profile', compact('skills','achievements','recentJob','allJob')); 
     }
 

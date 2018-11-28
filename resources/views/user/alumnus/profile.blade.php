@@ -147,7 +147,8 @@
       <div class="col-md-12">
         <ul class="list-unstyled">
           @foreach($allJob as $row)
-          <li><a href="/alumnus/jobs" class="linkSize"> {{$row->name}} </a></li>
+          @php $year = strtotime($row->jobStart) @endphp
+          <li><a href="/alumnus/jobs" class="linkSize"> {{$row->title}} ({{date('Y', $year)}}) </a></li>
           @endforeach
           @if(count($allJob) < 1)
           <div class="row">
@@ -281,54 +282,21 @@
     </div>
 </div>
 
+<i id="loc1" class="d-none">@if(isset($recentJob->latitude)){!!$recentJob->latitude!!}
+@endif</i>
+<i id="loc2" class="d-none">@if(isset($recentJob->longitude)){!!$recentJob->longitude!!}
+@endif</i>
+
 <!-- jQuery script -->
 <script src="/js/extra/jquery-3.3.1.slim.min.js"></script>
 
 <!-- Custom scripts  -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap"></script>
-<script src="/js/unique/alumnus/slideToggle.js"></script>
-<span id="loc1" class="d-none">@if(isset($recentJob->latitude)){!!$recentJob->latitude!!}@else
-10.3304499
-@endif</span>
-<span id="loc2" class="d-none">@if(isset($recentJob->longitude)){!!$recentJob->longitude!!}@else
-123.9073923
-@endif</span>
-<script>
-initMap();
-function initMap() {
-            var alumLoc1 = $('#loc1').text();
-            var alumLongit = $('#loc2').text();
-            // The location of San Carlos
-            var jobLocationAlumnus = {lat: alumLoc1, lng: alumLongit};
-            // The map, centered at San Carlos
-            var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 16, center: jobLocationAlumnus});
 
-            // The marker, positioned at San Carlos
-            var iconPNG = {
-                    url: "/img/others/mapPin.png", // url
-                    scaledSize: new google.maps.Size(50, 50), // scaled size
-                    };
-            var marker = new google.maps.Marker({
-              position: jobLocationAlumnus,
-              animation: google.maps.Animation.BOUNCE,
-              //icon: iconPNG,
-              map: map
-             });
-            // The circle area by jonas
-              var specifiedLoc = new google.maps.Circle({
-                center: jobLocationAlumnus,
-                radius: 220,
-                strokeColor: "#616161",
-                strokeOpacity: 0.5,
-                strokeWeight: 2,
-                fillColor: "#616161",
-                fillOpacity: 0.4,
-                scale:10
-              });
-              specifiedLoc.setMap(map);        
-          }
-</script>
+<script src="/js/unique/alumnus/slideToggle.js"></script>
+<script src="/js/unique/alumnus/loadProfileMap.js"></script>
+
+
 @endsection
 
 

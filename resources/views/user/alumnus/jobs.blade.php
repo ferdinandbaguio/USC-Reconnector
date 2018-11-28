@@ -5,40 +5,20 @@
 @endsection
 
 @section('content')
-
+<div class="row">
+<a href="{{route('occupation.form')}}" class="btn btn-warning text-white ml-auto mb-2"><i class="fas fa-plus-circle"></i> Add Job </a>
+</div>
 <div class="row mb-5 pb-4 shadowBox">
-        <a href="{{route('occupation.form')}}" class="btn btn-danger">Add Job</a>
     <div class="row w-100 p-0 m-0">
-        <div class="col-md-4 py-4 pr-0">
+        <div class="col-md-4 py-4 pr-0 mx-auto">
             <div class="card">
             <img class="card-img-top mx-auto companyCardImg" src="/img/company_logo/globe.jpg" alt="Card image">
             <div class="card-body">
-            <h4 class="card-title">{{$latestJob->company->name}}</h4>
-            <p class="card-text">Location: <em> {{$latestJob->company->address}} </em></p>
+            <h4 class="card-title text-center">{{$latestJob->company->name}}</h4>
+            <p class="card-text text-center">Location: <em> {{$latestJob->company->address}} </em></p>
             </div>
             </div>
         </div>
-
-        <div class="col-md-8 py-4 pr-0">
-        <div class="col-12" style="height:100%;">
-            <div id="map" class="w-100" style="background: url(/img/alt_imgs/GoogleMap.jpg);">
-            </div>
-            <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyUWOZTrGwtkrOFAV6-ejOmll5VuhUbE&callback=initMap">
-            </script>
-            <script>
-            function initMap() {
-                // The location of San Carlos
-                var SanCarlosTalamban = {lat: $latestJob->latitude, lng: $latestJob->longitude};
-                // The map, centered at San Carlos
-                var map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 17, center: SanCarlosTalamban});
-                // The marker, positioned at San Carlos
-                //var marker = new google.maps.Marker({position: SanCarlosTalamban, map: map});
-            }
-            </script>
-        </div>
-        </div> 
     </div>
     <div class="row p-0 m-0 w-100">
     <div class="col-md-5 ml-auto p-2 mb-2 boxInside">

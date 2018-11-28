@@ -39,8 +39,8 @@
                 <div class="d-none" id="map"></div>
                 <br><br>{!! Form::label('occupationAddress','Job Address') !!}
                 <br>{!! Form::text('occupationAddress',$form->address,['id' => 'pac-input', 'class'=>'form-group controls', 'placeholder'=> 'Search Box', 'required'])!!}             
-                <input type="text" id="latitudeData" name="latitude" value="{{$form->latitude}}" readonly>
-                <input type="text" id="lngData" name="longitude" value="{{$form->latitude}}" readonly>
+                <input type="text" id="latitudeData" name="latitude" value="{{$form->latitude}}" hidden>
+                <input type="text" id="lngData" name="longitude" value="{{$form->latitude}}" hidden>
                 @if($errors->has('occupationAddress'))
                 <small class="text-danger"> {{$errors->first('occupationAddress')}} </small>
                 @endif
