@@ -68,8 +68,6 @@ class OccupationController extends Controller
             'salaryRangeTwo.required' => 'This field is required',
             'jobStart.required' => 'This field is required',
             'jobEnd.required' => 'This field is required',
-            'latitude.required' => 'This field is required',
-            'longitude.required' => 'This field is required',
             'countries.required' => 'This field is required',
             'companyName.required' => 'This field is required',
             'companyAddress.required' => 'This field is required',
@@ -105,7 +103,7 @@ class OccupationController extends Controller
             'company_id' => $company->id,
             'alumni_id' => Auth::user()->id
         ]);
-        return redirect()->back()->with('success','Update Successful Thank You!');
+        return redirect()->back()->with('success','Create Successful Thank You!');
     }
 
     /**
@@ -127,8 +125,11 @@ class OccupationController extends Controller
      */
     public function edit($id)
     {
-        $form = Occupation::find($id);
-        $data = compact('form');
+        $form = Occupation::whereId($id)->with(['company.country', 'country'])->first();
+        $countries = Country::orderBy('name','asc')->pluck('name', 'id')->prepend('Select Country', '');
+        $data =compact('form','countries');
+        // dd($form->toArray());
+
         return view('user.alumnus.occupationform',$data);
     }
 
@@ -139,7 +140,7 @@ class OccupationController extends Controller
      * @param  \App\Models\Occupation  $occupation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $data =$request->validate([
             'occupationTitle' => 'required',
@@ -173,21 +174,9 @@ class OccupationController extends Controller
             'company_countries.required' => 'This field is required'
 
         ]);
-        
-    
-        $company_country = Country::where('id',$data['company_countries'])->first();
-        $company = Company::create([
-            'name' => $data['companyName'],
-            'address' => $data['companyAddress'],
-            'description' => $data['companyDescription'],
-            'picture' => 'default_male.png' ,
-            'linkage_id' => null,
-            'country_id' => $company_country->id,
-            'area_id' => null
-        ]);   
-        
+
         $country = Country::where('id',$data['countries'])->first();
-        $occupation = Occupation::create([
+        $occupation = Occupation::whereId($id)->update([
             'title' => $data['occupationTitle'],
             'address' => $data['occupationAddress'],
             'salaryRangeOne' => str_replace(',', '',$data['salaryRangeOne']),
@@ -198,9 +187,27 @@ class OccupationController extends Controller
             'longitude' => $data['longitude'],
             'country_id' => $country->id,
             'area_id' => null,
-            'company_id' => $company->id,
             'alumni_id' => Auth::user()->id
         ]);
+
+        
+    
+        $company_country = Country::where('id',$data['company_countries'])->first();
+
+        $occupation = Occupation::find($id);
+        $company = $occupation->company()->update([
+            'name' => $data['companyName'],
+            'address' => $data['companyAddress'],
+            'description' => $data['companyDescription'],
+            'picture' => 'default_male.png' ,
+            'linkage_id' => null,
+            'country_id' => $company_country->id,
+            'area_id' => null
+        ]);   
+        
+       
+
+        return redirect()->back()->with('success','Update Successful Thank You!');
     }
 
     /**
@@ -209,8 +216,11 @@ class OccupationController extends Controller
      * @param  \App\Models\Occupation  $occupation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Occupation $occupation)
+    public function destroy($id)
     {
-        //
+
+        $occupation = Occupation::find($id);
+        $occupation->delete();
+        return redirect()->back()->with('success','Delete Successful Thank You!');
     }
 }

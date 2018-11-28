@@ -76,7 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/alumnus/form', 'GTSController@alumnusForm')->name('alumnus.form');  
         Route::get('/alumnus/form/{id}/edit','GTSController@edit')->name('alumnus.form.edit');
         Route::post('/alumnus/form','GTSController@store')->name('alumnus.form.store');
-        Route::patch('/alumnus/form/{id}/update','GTSController@update')->name('alumnus.form.update');;
+        Route::patch('/alumnus/form/{id}/update','GTSController@update')->name('alumnus.form.update');
 
         Route::view('/alumnus/maptest', 'user.alumnus.map');
         Route::get('/deleteASkill/{id}','AlumnusController@destroySkill');  
@@ -86,7 +86,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/alumnus/recipient', 'ContactsController@show')->name('alumnus.recipient'); 
 
         Route::get('alumnus/occupation','OccupationController@index')->name('occupation.form');
+        Route::get('alumnus/occupationform/{id}/edit','OccupationController@edit')->name('occupation.formedit');
         Route::post('alumnus/occupation','OccupationController@store')->name('occupation.store');
+        Route::patch('/alumnus/occupationform/{id}/update','OccupationController@update')->name('alumnus.occupationform.update');
+        Route::get('/alumnus/occupationform/{id}/delete','OccupationController@destroy')->name('alumnus.occupationform.destroy');;
 
     });
 

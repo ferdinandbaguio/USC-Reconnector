@@ -5,13 +5,9 @@
 @endsection
 
 @section('content')
-@if(session()->has('message'))
-                    <div class="alert alert-success">
-                        {{ session()->get('message') }}
-                    </div>
-                @endif
+
 <div class="row mb-5 pb-4 shadowBox">
-        <a href="{{route('occupation.form')}}" class="btn btn-danger">Update Job</a>
+        <a href="{{route('occupation.form')}}" class="btn btn-danger">Add Job</a>
     <div class="row w-100 p-0 m-0">
         <div class="col-md-4 py-4 pr-0">
             <div class="card">
@@ -92,8 +88,11 @@
     <!-- COMPANY INFORMATION END -->
     </div>
 </div>
-
+@if(Session::has('success'))
+<p class="alert alert-info">{{ Session::get('success') }}</p>
+@endif
 <div class="row mt-3 mb-5 p-3 divInfoBg" style="box-shadow: 0px 2px 4px;"> <!-- Father Row -->
+
     <h4 class="fontRoboto"><i class="fas fa-history"></i> Job History</h4>
     <table class="table">
     <thead class="thead-dark">
@@ -111,7 +110,9 @@
                 <td>{{$row->company->name}}</td>
                 <td>{{$row->title}}</td>
                 <td>{{date('M d Y', strtotime($row->jobStart))}}</td>
-                <td><a href="{{ url('alumnus/form/'.$row->id.'/edit') }}">Edit</a></td>
+                <td><a href="{{ url('alumnus/occupationform/'.$row->id.'/edit') }}">Edit</a></td>
+                <td><a href="{{ URL::to('alumnus/occupationform/'.$row->id.'/delete') }}" onclick="return confirm('Are you sure you want to delete ?');">Delete</a></td>
+               
             </tr>
         @endforeach
         
